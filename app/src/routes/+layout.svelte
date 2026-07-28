@@ -40,6 +40,11 @@
 		'inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/24 bg-[#0a0a0a]/92 text-white shadow-[0_12px_28px_rgba(20,53,45,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a0a0a]';
 	const primaryWhatsAppHref = 'https://wa.me/923116857822';
 	const secondaryWhatsAppHref = 'https://wa.me/923346657779';
+	const announcementItems = [
+		'Whole Sale Market Deals Available',
+		'Bulk Orders & Reseller Pricing on WhatsApp'
+	];
+	const announcementLoop = Array.from({ length: 8 }, () => announcementItems).flat();
 
 	let isAdminRoute = $derived(page.url.pathname.startsWith('/shahzad-secure-admin-4db067e1'));
 	let isScrolled = $derived(scrollY > 24);
@@ -203,6 +208,32 @@ fbq('init', '${metaPixelId}');`)
 		</noscript>
 	{/if}
 	{#if !isAdminRoute}
+		<!-- Full-width announcement bar -->
+		<div
+			class="announcement-strap w-full overflow-hidden bg-[#111111] text-white {isScrolled
+				? 'is-hidden'
+				: ''}"
+			aria-label="Store announcements"
+		>
+			<div class="announcement-strap__marquee">
+				<div class="announcement-strap__track">
+					{#each announcementLoop as item}
+						<span>
+							<span class="announcement-strap__dot"></span>
+							{item}
+						</span>
+					{/each}
+				</div>
+				<div class="announcement-strap__track" aria-hidden="true">
+					{#each announcementLoop as item}
+						<span>
+							<span class="announcement-strap__dot"></span>
+							{item}
+						</span>
+					{/each}
+				</div>
+			</div>
+		</div>
 		<!-- Navbar -->
 		<header class="sticky top-0 z-50 px-3 pt-0 pb-3 sm:px-5">
 			<div class="mx-auto max-w-7xl">
@@ -584,6 +615,49 @@ fbq('init', '${metaPixelId}');`)
 			0 1px 10px rgba(20, 53, 45, 0.2);
 	}
 
+	.announcement-strap {
+		position: relative;
+	}
+
+	.announcement-strap__marquee {
+		display: flex;
+		width: max-content;
+		align-items: center;
+		will-change: transform;
+		animation: announcement-strap-slide 30s linear infinite;
+	}
+
+	.announcement-strap__track {
+		display: flex;
+		flex: 0 0 auto;
+		align-items: center;
+		gap: 2rem;
+		padding: 0.6rem 1.1rem;
+		font-size: 0.64rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		line-height: 1;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.announcement-strap__track span {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.65rem;
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	.announcement-strap__dot {
+		display: inline-block;
+		width: 0.34rem;
+		height: 0.34rem;
+		flex: 0 0 auto;
+		border-radius: 9999px;
+		background: #c5a880;
+		box-shadow: 0 0 0 0.16rem rgba(197, 168, 128, 0.18);
+	}
+
 	.route-loading-pill {
 		animation: route-loading-needle 1400ms cubic-bezier(0.65, 0, 0.35, 1) infinite both;
 		transform-box: fill-box;
@@ -605,9 +679,42 @@ fbq('init', '${metaPixelId}');`)
 		}
 	}
 
+	@keyframes announcement-strap-slide {
+		0% {
+			transform: translate3d(0, 0, 0);
+		}
+		100% {
+			transform: translate3d(-50%, 0, 0);
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
+		.announcement-strap__marquee,
 		.route-loading-pill {
 			animation: none;
+		}
+	}
+
+	.announcement-strap {
+		max-height: 3rem;
+		transition:
+			max-height 0.35s ease,
+			opacity 0.3s ease,
+			padding 0.35s ease;
+	}
+
+	.announcement-strap.is-hidden {
+		max-height: 0;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	@media (max-width: 640px) {
+		.announcement-strap__track {
+			gap: 1.15rem;
+			padding: 0.5rem 0.8rem;
+			font-size: 0.56rem;
+			letter-spacing: 0.12em;
 		}
 	}
 </style>

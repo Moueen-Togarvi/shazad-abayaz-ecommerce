@@ -76,7 +76,9 @@
 	}
 
 	.hero-cinematic {
-		min-height: min(900px, calc(100svh + 4rem));
+		width: 100%;
+		max-width: 100%;
+		min-height: min(760px, calc(100svh + 4rem));
 		isolation: isolate;
 		contain: paint;
 	}
@@ -91,8 +93,22 @@
 	}
 }
 
+@media (min-width: 1024px) {
+	.hero-cinematic {
+		height: clamp(666px, calc(80svh + 26px), 806px);
+		min-height: 0;
+		aspect-ratio: auto;
+	}
+
+	.hero-bg__slide {
+		object-fit: cover;
+		object-position: center top;
+	}
+}
+
 @media (max-width: 640px) {
 	.hero-cinematic {
+		aspect-ratio: auto;
 		min-height: min(520px, calc(100svh - 1rem));
 	}
 }

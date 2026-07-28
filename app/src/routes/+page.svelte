@@ -32,6 +32,7 @@
 	let previousHeroSlideIndex = $state<number | null>(null);
 	let heroSlideDirection = $state<'next' | 'previous'>('next');
 	let previousHeroSlideTimer: ReturnType<typeof setTimeout> | undefined;
+	let heroWordTimers: ReturnType<typeof setTimeout>[] = [];
 
 	let heroHeadlinePhrases = $derived(
 		(storefrontSettings.heroHeadlinePhrases?.length
@@ -44,28 +45,28 @@
 					"Eid Sale\nShahzad Abaya's"
 				]) as string[]
 	);
-	let heroHeadlineText = $state(storefrontSettings.heroHeadlinePhrases?.[0] || 'Premium\nAbayas');
+	const heroLeadWords = ['Timeless', 'Elegant', 'Poised', 'Luminous'];
+	const heroSupportWords = ['Graceful', 'Refined', 'Regal', 'Flowing'];
+	let heroLeadWordIndex = $state(0);
+	let heroSupportWordIndex = $state(0);
+	let heroLeadDisplay = $state(heroLeadWords[0]);
+	let heroSupportDisplay = $state(heroSupportWords[0]);
+	let heroHeadingLead = $derived(`${heroLeadDisplay}.`);
+	let heroHeadingSupport = $derived(`${heroSupportDisplay}.`);
+	let heroHeadingAccent = $derived('Abayas.');
 
 	const heroSlides = [
 		{
-			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png',
-			alt: "Shahzad Abaya's hero abaya editorial slide one"
+			src: '/hero/nida-cutdana-magenta.png',
+			alt: "Magenta Nida Cutdana abaya shown from the front and back"
 		},
 		{
-			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png',
-			alt: "Shahzad Abaya's hero abaya editorial slide two"
+			src: '/hero/nida-cutdana-teal.png',
+			alt: "Teal Nida Cutdana abaya shown from the front and back"
 		},
 		{
-			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_13%20PM.png',
-			alt: "Shahzad Abaya's hero abaya editorial slide three"
-		},
-		{
-			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_07_28%20PM.png',
-			alt: "Shahzad Abaya's hero abaya editorial slide four"
-		},
-		{
-			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_25%20PM.png',
-			alt: "Shahzad Abaya's hero abaya editorial slide five"
+			src: '/hero/nida-cutdana-taupe.png',
+			alt: "Taupe Nida Cutdana abaya shown from the front and back"
 		}
 	];
 
@@ -160,10 +161,6 @@
 	);
 	const brandPattern = /^(Shahzad Abaya's|SHAHZAD ABAYA'S)$/;
 
-	function textWithBrand(value: string) {
-		return value.split(/(Shahzad Abaya's|SHAHZAD ABAYA'S)/g).filter(Boolean);
-	}
-
 	function isBrandText(value: string) {
 		return brandPattern.test(value);
 	}
@@ -228,50 +225,83 @@
 	onMount(() => {
 		let active = true;
 		let destroyAnimation: (() => void) | undefined;
-		let typewriterTimer: ReturnType<typeof setTimeout> | undefined;
 		const slideTimer = setInterval(() => {
 			showHeroSlide('next');
 		}, 3000);
-
-		let phraseIndex = 0;
-		let charIndex = 0;
-		let isDeleting = false;
-		heroHeadlineText = '';
-
-		const typeHeadline = () => {
-			if (!heroHeadlinePhrases.length) {
-				typewriterTimer = setTimeout(typeHeadline, 1000);
-				return;
-			}
-			if (phraseIndex >= heroHeadlinePhrases.length) {
-				phraseIndex = 0;
-			}
-			const phrase = heroHeadlinePhrases[phraseIndex];
-			let delay = isDeleting ? 85 : 130;
-
-			if (isDeleting) {
-				charIndex = Math.max(0, charIndex - 1);
-				heroHeadlineText = phrase.slice(0, charIndex);
-
-				if (charIndex === 0) {
-					isDeleting = false;
-					phraseIndex = (phraseIndex + 1) % heroHeadlinePhrases.length;
-					delay = 260;
-				}
-			} else {
-				charIndex = Math.min(phrase.length, charIndex + 1);
-				heroHeadlineText = phrase.slice(0, charIndex);
-
-				if (charIndex === phrase.length) {
-					isDeleting = true;
-					delay = 1200;
-				}
-			}
-
-			typewriterTimer = setTimeout(typeHeadline, delay);
+		const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const scheduleHeroWordTimer = (callback: () => void, delay: number) => {
+			const timer = setTimeout(callback, delay);
+			heroWordTimers.push(timer);
+			return timer;
+		};
+		const clearHeroWordTimers = () => {
+			for (const timer of heroWordTimers) clearTimeout(timer);
+			heroWordTimers = [];
 		};
 
-		typewriterTimer = setTimeout(typeHeadline, 120);
+		const runHeroWordCycle = () => {
+			if (!active || reduceMotionQuery.matches) return;
+			clearHeroWordTimers();
+
+			const nextLeadIndex = (heroLeadWordIndex + 1) % heroLeadWords.length;
+			const nextSupportIndex = (heroSupportWordIndex + 1) % heroSupportWords.length;
+			const nextLeadWord = heroLeadWords[nextLeadIndex];
+			const nextSupportWord = heroSupportWords[nextSupportIndex];
+
+			const deleteWord = (
+				currentText: string,
+				assign: (value: string) => void,
+				onDone: () => void
+			) => {
+				let index = currentText.length;
+				const step = () => {
+					if (!active) return;
+					assign(currentText.slice(0, index));
+					if (index === 0) {
+						onDone();
+						return;
+					}
+					index -= 1;
+					scheduleHeroWordTimer(step, 38);
+				};
+				step();
+			};
+
+			const typeWord = (nextText: string, assign: (value: string) => void, onDone: () => void) => {
+				let index = 0;
+				const step = () => {
+					if (!active) return;
+					index += 1;
+					assign(nextText.slice(0, index));
+					if (index >= nextText.length) {
+						onDone();
+						return;
+					}
+					scheduleHeroWordTimer(step, 76);
+				};
+				step();
+			};
+
+			deleteWord(heroLeadDisplay, (value) => (heroLeadDisplay = value), () => {
+				typeWord(nextLeadWord, (value) => (heroLeadDisplay = value), () => {
+					heroLeadWordIndex = nextLeadIndex;
+				});
+			});
+
+			scheduleHeroWordTimer(() => {
+				deleteWord(heroSupportDisplay, (value) => (heroSupportDisplay = value), () => {
+					typeWord(nextSupportWord, (value) => (heroSupportDisplay = value), () => {
+						heroSupportWordIndex = nextSupportIndex;
+					});
+				});
+			}, 180);
+
+			scheduleHeroWordTimer(runHeroWordCycle, 4200);
+		};
+
+		if (!reduceMotionQuery.matches) {
+			scheduleHeroWordTimer(runHeroWordCycle, 2400);
+		}
 
 		import('gsap').then(({ gsap }) => {
 			if (!active || !heroRoot) return;
@@ -336,8 +366,8 @@
 		return () => {
 			active = false;
 			clearInterval(slideTimer);
-			if (typewriterTimer) clearTimeout(typewriterTimer);
 			if (previousHeroSlideTimer) clearTimeout(previousHeroSlideTimer);
+			clearHeroWordTimers();
 			destroyAnimation?.();
 		};
 	});
@@ -387,6 +417,7 @@
 	</div>
 
 	<div class="absolute inset-0 -z-20 bg-black/12"></div>
+	<div class="hero-copy-rings pointer-events-none absolute top-1/2 left-0 z-10"></div>
 
 	<div
 		class="pointer-events-none absolute inset-x-3 top-1/2 z-30 flex -translate-y-1/2 items-center justify-between sm:inset-x-6"
@@ -419,43 +450,53 @@
 	</div>
 
 	<div
-		class="relative z-20 mx-auto flex min-h-[min(560px,100svh)] max-w-7xl items-end px-4 pt-24 pb-6 sm:min-h-0 sm:items-start sm:px-6 sm:pt-10 sm:pb-10 md:items-center md:pt-28 md:pb-16 lg:px-8"
+		class="hero-content absolute inset-0 z-20 flex items-end px-4 pt-24 pb-6 sm:items-start sm:px-6 sm:pt-10 sm:pb-10 md:items-center md:pt-28 md:pb-16 lg:px-8"
 	>
 		<div
-			class="mt-0 ml-0 max-w-[15.5rem] pb-2 text-black drop-shadow-[0_4px_18px_rgba(255,255,255,0.45)] sm:mt-16 sm:ml-10 sm:max-w-[32rem] md:mt-20 md:ml-16 md:pb-0"
+			class="hero-copy mt-0 ml-0 max-w-[16.5rem] pb-2 text-black sm:mt-16 sm:ml-8 sm:max-w-[34rem] md:mt-20 md:ml-[clamp(2rem,7vw,8rem)] md:pb-0"
 		>
 			<p
-				class="hero-reveal text-[0.58rem] font-bold tracking-[0.16em] text-black/70 uppercase sm:text-[0.68rem]"
+				class="hero-reveal inline-flex items-center gap-2 rounded-full border border-[#c5a880]/30 bg-white/72 px-3 py-1.5 text-[0.56rem] font-bold tracking-[0.16em] text-black/68 uppercase shadow-[0_8px_24px_rgba(20,20,20,0.06)] backdrop-blur-md sm:px-4 sm:py-2 sm:text-[0.66rem]"
 			>
+				<span class="h-1.5 w-1.5 rounded-full bg-[#c5a880] shadow-[0_0_0_4px_rgba(197,168,128,0.16)]"></span>
 				New Season Edit
 			</p>
 			<h1
-				class="hero-reveal mt-1.5 ml-[11px] min-h-[2.95rem] max-w-[8.5ch] font-serif text-2xl leading-[0.95] whitespace-pre-line text-black uppercase sm:mt-3 sm:ml-[7px] sm:min-h-[5.9rem] sm:text-5xl md:min-h-[6.9rem] md:text-6xl"
+				class="hero-reveal mt-3 max-w-[13.5ch] font-serif text-[2rem] leading-[0.88] tracking-[-0.05em] text-black sm:mt-5 sm:max-w-[12ch] sm:text-[3.85rem] md:max-w-[13.5ch] md:text-[clamp(4.1rem,5.1vw,5.95rem)]"
 			>
-				<span class="hero-typewriter">
-					{#each textWithBrand(heroHeadlineText) as part}
-						{#if isBrandText(part)}
-							<AbayizaWordmark class="align-baseline" />
-						{:else}
-							{part}
-						{/if}
-					{/each}
+				<span class="hero-heading-stack">
+					<span class="hero-heading-line">
+						<span>{heroHeadingLead}</span>
+						<span>{heroHeadingSupport}</span>
+					</span>
+					<span class="hero-heading-line hero-heading-line--accent">
+						<span>and</span>
+						<span class="hero-heading-logo" aria-hidden="true">
+							<img
+								src="/image.png"
+								alt=""
+								class="hero-heading-logo__image"
+								loading="eager"
+							/>
+						</span>
+						<span class="hero-brand-accent">{heroHeadingAccent}</span>
+					</span>
 				</span>
 			</h1>
 			<p
-				class="hero-reveal mt-2 max-w-[14.5rem] text-[0.66rem] leading-4 font-semibold text-black/82 sm:mt-4 sm:max-w-sm sm:text-base sm:leading-6"
+				class="hero-reveal mt-3 max-w-[15rem] font-serif text-[0.74rem] leading-4 font-medium text-black/68 italic sm:mt-5 sm:max-w-md sm:text-xl sm:leading-7"
 			>
 				Clean Nida silhouettes with soft movement, refined finishing, and everyday grace.
 			</p>
 
-			<div class="hero-reveal mt-3 flex flex-row flex-nowrap gap-1.5 sm:mt-8 sm:gap-2">
+			<div class="hero-reveal mt-4 flex flex-row flex-nowrap gap-2 sm:mt-7 sm:gap-3">
 				<a
 					href="/shop"
-					class="inline-flex min-h-7 items-center justify-center gap-1 rounded-full bg-[#0a0a0a] px-2 text-[0.56rem] font-bold whitespace-nowrap text-white shadow-[0_16px_34px_rgba(20,53,45,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:gap-2 sm:px-7 sm:text-sm"
+					class="inline-flex min-h-8 items-center justify-center gap-1.5 rounded-[0.9rem] bg-[#0a0a0a] px-3 text-[0.58rem] font-bold whitespace-nowrap text-white shadow-[0_14px_30px_rgba(10,10,10,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:gap-2.5 sm:px-7 sm:text-sm"
 				>
 					Shop Collection
 					<span
-						class="inline-flex h-3 w-3 items-center justify-center rounded-full bg-white/92 text-[#0a0a0a] sm:h-5 sm:w-5"
+						class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-md bg-white/92 text-[#0a0a0a] sm:h-5 sm:w-5"
 					>
 						<svg
 							class="h-2 w-2 sm:h-3 sm:w-3"
@@ -474,7 +515,7 @@
 				</a>
 				<a
 					href="/lookbook"
-					class="inline-flex min-h-7 items-center justify-center rounded-full border border-[#0a0a0a]/20 bg-white/72 px-2 text-[0.56rem] font-bold whitespace-nowrap text-[#0a0a0a] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:px-7 sm:text-sm"
+					class="inline-flex min-h-8 items-center justify-center rounded-[0.9rem] border border-[#0a0a0a]/14 bg-white/76 px-3 text-[0.58rem] font-bold whitespace-nowrap text-[#0a0a0a] shadow-[0_10px_26px_rgba(10,10,10,0.06)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c5a880]/50 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:px-7 sm:text-sm"
 				>
 					View Lookbook
 				</a>
@@ -674,7 +715,7 @@
 
 		<div class="grid grid-cols-2 items-stretch gap-3 sm:gap-6 lg:grid-cols-4">
 			{#each newArrivals as item}
-				<ProductCard product={item} aspectRatio="aspect-[1/1]" />
+				<ProductCard product={item} aspectRatio="aspect-[100/106.5]" />
 			{/each}
 		</div>
 
@@ -787,56 +828,156 @@
 		overflow: hidden;
 	}
 
+	.hero-copy {
+		text-shadow: 0 2px 20px rgba(255, 255, 255, 0.34);
+	}
+
+	.hero-copy-rings {
+		width: min(48rem, 64vw);
+		aspect-ratio: 1;
+		border-radius: 9999px;
+		opacity: 0.42;
+		transform: translate(-28%, -50%);
+		background: repeating-radial-gradient(
+			circle at center,
+			transparent 0,
+			transparent 5.4rem,
+			rgba(197, 168, 128, 0.22) 5.45rem,
+			transparent 5.53rem
+		);
+		mask-image: linear-gradient(to right, black 48%, transparent 94%);
+	}
+
 	.hero-bg__slide {
 		position: absolute;
 		inset: 0;
 		z-index: 0;
 		visibility: hidden;
-		transform: translateX(-100%);
-		transition: transform 950ms cubic-bezier(0.72, 0, 0.2, 1);
-		will-change: transform;
-	}
-
-	.hero-bg--previous .hero-bg__slide {
-		transform: translateX(100%);
+		opacity: 0;
+		transform: translate3d(100%, 0, 0) scale(1.025);
+		will-change: transform, opacity, filter;
 	}
 
 	.hero-bg__slide--active {
 		z-index: 2;
 		visibility: visible;
-		transform: translateX(0);
+		opacity: 1;
+		transform: translate3d(0, 0, 0) scale(1);
+		animation: hero-slide-in-next 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+
+	.hero-bg--previous .hero-bg__slide--active {
+		animation-name: hero-slide-in-previous;
 	}
 
 	.hero-bg__slide--previous-next {
 		z-index: 1;
 		visibility: visible;
-		transform: translateX(100%);
+		animation: hero-slide-out-next 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
 	}
 
 	.hero-bg__slide--previous-previous {
 		z-index: 1;
 		visibility: visible;
-		transform: translateX(-100%);
+		animation: hero-slide-out-previous 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
 	}
 
-	.hero-typewriter {
-		display: inline-block;
-		min-width: 8.5ch;
-	}
-
-	.hero-typewriter::after {
-		content: '';
-		display: inline-block;
-		height: 0.78em;
-		margin-left: 0.08em;
-		border-right: 0.055em solid currentColor;
-		animation: hero-caret-blink 0.78s steps(1) infinite;
-	}
-
-	@keyframes hero-caret-blink {
-		50% {
+	@keyframes hero-slide-in-next {
+		0% {
 			opacity: 0;
+			transform: translate3d(100%, 0, 0) scale(1.1);
+			filter: grayscale(20%) brightness(0.7);
 		}
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0) scale(1);
+			filter: grayscale(0%) brightness(1);
+		}
+	}
+
+	@keyframes hero-slide-out-next {
+		0% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0) scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: translate3d(-30%, 0, 0) scale(0.9) blur(4px);
+			filter: brightness(0.5);
+		}
+	}
+
+	@keyframes hero-slide-in-previous {
+		0% {
+			opacity: 0;
+			transform: translate3d(-100%, 0, 0) scale(1.1);
+			filter: grayscale(20%) brightness(0.7);
+		}
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0) scale(1);
+			filter: grayscale(0%) brightness(1);
+		}
+	}
+
+	@keyframes hero-slide-out-previous {
+		0% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0) scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: translate3d(30%, 0, 0) scale(0.9) blur(4px);
+			filter: brightness(0.5);
+		}
+	}
+
+	.hero-heading-stack {
+		display: inline-flex;
+		flex-direction: column;
+		gap: 0.04em;
+	}
+
+	.hero-heading-line {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 0.2em;
+	}
+
+	.hero-heading-line--accent {
+		gap: 0.18em;
+	}
+
+	.hero-heading-logo {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 0.98em;
+		height: 0.98em;
+		margin-inline: 0.04em 0.02em;
+		padding: 0.035em;
+		border-radius: 0.3em 0.22em 0.34em 0.18em;
+		background: #111111;
+		box-shadow:
+			0 12px 24px rgba(10, 10, 10, 0.22),
+			-0.02em 0 0 0 rgba(255, 255, 255, 0.96),
+			0 -0.02em 0 0 rgba(255, 255, 255, 0.96);
+		transform: translateY(0.04em) rotate(-14deg);
+	}
+
+	.hero-heading-logo__image {
+		width: 88%;
+		height: 88%;
+		background: white;
+		border-radius: 9999px;
+		object-fit: contain;
+		transform: rotate(14deg);
+	}
+
+	.hero-brand-accent {
+		color: #9b794f;
+		font-style: italic;
 	}
 
 	.sale-tape-stage {
@@ -1009,6 +1150,30 @@
 	}
 
 	@media (max-width: 640px) {
+		.hero-heading-stack {
+			gap: 0.02em;
+		}
+
+		.hero-heading-line {
+			flex-wrap: nowrap;
+		}
+
+		.hero-heading-line {
+			gap: 0.16em;
+		}
+
+		.hero-heading-logo {
+			width: 0.9em;
+			height: 0.9em;
+			border-radius: 0.22em;
+		}
+
+		.hero-copy-rings {
+			width: 34rem;
+			opacity: 0.3;
+			transform: translate(-48%, -50%);
+		}
+
 		.sale-tape-stage {
 			min-height: 3.3rem;
 			margin-inline: -2rem;
