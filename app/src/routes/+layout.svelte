@@ -624,7 +624,7 @@ fbq('init', '${metaPixelId}');`)
 		width: max-content;
 		align-items: center;
 		will-change: transform;
-		animation: announcement-strap-slide 30s linear infinite;
+		animation: announcement-strap-slide 36s linear infinite;
 	}
 
 	.announcement-strap__track {
