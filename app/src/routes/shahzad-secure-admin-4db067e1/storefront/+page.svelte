@@ -309,8 +309,9 @@
 							</span>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
+								<label for="slide1_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
 								<input
+									id="slide1_title"
 									type="text"
 									name="slide1_title"
 									value={storefrontSettings.slide1_title || ''}
@@ -319,8 +320,9 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
+								<label for="slide1_tagline" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
 								<input
+									id="slide1_tagline"
 									type="text"
 									name="slide1_tagline"
 									value={storefrontSettings.slide1_tagline || ''}
@@ -329,10 +331,11 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase"
+								<label for="slide1_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
 									>Description</label
 								>
 								<textarea
+									id="slide1_description"
 									name="slide1_description"
 									rows="3"
 									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
@@ -341,9 +344,10 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
+								<label for="slide1_promo" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
 								>
 								<input
+									id="slide1_promo"
 									type="text"
 									name="slide1_promo"
 									value={storefrontSettings.slide1_promo || ''}
@@ -352,8 +356,9 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
+								<label for="slide1_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
 								<input
+									id="slide1_link"
 									type="text"
 									name="slide1_link"
 									value={storefrontSettings.slide1_link || ''}
@@ -362,7 +367,7 @@
 							</div>
 
 							<div class="space-y-2">
-								<label class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
+								<label for="slide1_image_file" class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
 								{#if storefrontSettings.slide1_image}
 									<div
 										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
@@ -390,6 +395,7 @@
 									value={storefrontSettings.slide1_image || ''}
 								/>
 								<input
+									id="slide1_image_file"
 									type="file"
 									name="slide1_image_file"
 									accept="image/*"
@@ -407,8 +413,9 @@
 							</span>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
+								<label for="slide2_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
 								<input
+									id="slide2_title"
 									type="text"
 									name="slide2_title"
 									value={storefrontSettings.slide2_title || ''}
@@ -417,8 +424,9 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
+								<label for="slide2_tagline" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
 								<input
+									id="slide2_tagline"
 									type="text"
 									name="slide2_tagline"
 									value={storefrontSettings.slide2_tagline || ''}
@@ -427,10 +435,11 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase"
+								<label for="slide2_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
 									>Description</label
 								>
 								<textarea
+									id="slide2_description"
 									name="slide2_description"
 									rows="3"
 									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
@@ -439,9 +448,10 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
+								<label for="slide2_promo" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
 								>
 								<input
+									id="slide2_promo"
 									type="text"
 									name="slide2_promo"
 									value={storefrontSettings.slide2_promo || ''}
@@ -450,8 +460,9 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
+								<label for="slide2_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
 								<input
+									id="slide2_link"
 									type="text"
 									name="slide2_link"
 									value={storefrontSettings.slide2_link || ''}
@@ -460,7 +471,7 @@
 							</div>
 
 							<div class="space-y-2">
-								<label class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
+								<label for="slide2_image_file" class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
 								{#if storefrontSettings.slide2_image}
 									<div
 										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
@@ -488,6 +499,7 @@
 									value={storefrontSettings.slide2_image || ''}
 								/>
 								<input
+									id="slide2_image_file"
 									type="file"
 									name="slide2_image_file"
 									accept="image/*"
@@ -505,8 +517,9 @@
 							</span>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
+								<label for="slide3_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
 								<input
+									id="slide3_title"
 									type="text"
 									name="slide3_title"
 									value={storefrontSettings.slide3_title || ''}
@@ -515,8 +528,9 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
+								<label for="slide3_tagline" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
 								<input
+									id="slide3_tagline"
 									type="text"
 									name="slide3_tagline"
 									value={storefrontSettings.slide3_tagline || ''}
@@ -525,10 +539,11 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase"
+								<label for="slide3_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
 									>Description</label
 								>
 								<textarea
+									id="slide3_description"
 									name="slide3_description"
 									rows="3"
 									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
@@ -537,9 +552,10 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
+								<label for="slide3_promo" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
 								>
 								<input
+									id="slide3_promo"
 									type="text"
 									name="slide3_promo"
 									value={storefrontSettings.slide3_promo || ''}
@@ -548,8 +564,9 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
+								<label for="slide3_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
 								<input
+									id="slide3_link"
 									type="text"
 									name="slide3_link"
 									value={storefrontSettings.slide3_link || ''}
@@ -558,7 +575,7 @@
 							</div>
 
 							<div class="space-y-2">
-								<label class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
+								<label for="slide3_image_file" class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
 								{#if storefrontSettings.slide3_image}
 									<div
 										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
@@ -586,6 +603,7 @@
 									value={storefrontSettings.slide3_image || ''}
 								/>
 								<input
+									id="slide3_image_file"
 									type="file"
 									name="slide3_image_file"
 									accept="image/*"
@@ -623,8 +641,9 @@
 
 						<div class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
+								<label for="flash_sale_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
 								<input
+									id="flash_sale_title"
 									type="text"
 									name="flash_sale_title"
 									value={storefrontSettings.flash_sale_title || ''}
@@ -633,10 +652,11 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase"
+								<label for="flash_sale_subtitle" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
 									>Cursive Subtitle</label
 								>
 								<input
+									id="flash_sale_subtitle"
 									type="text"
 									name="flash_sale_subtitle"
 									value={storefrontSettings.flash_sale_subtitle || ''}
@@ -645,10 +665,11 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase"
+								<label for="flash_sale_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
 									>Discount Tagline</label
 								>
 								<input
+									id="flash_sale_description"
 									type="text"
 									name="flash_sale_description"
 									value={storefrontSettings.flash_sale_description || ''}
@@ -657,7 +678,7 @@
 							</div>
 
 							<div class="space-y-2">
-								<label class="block text-xs font-bold text-gray-700 uppercase">Model Image</label>
+								<label for="flash_sale_image_file" class="block text-xs font-bold text-gray-700 uppercase">Model Image</label>
 								{#if storefrontSettings.flash_sale_image}
 									<div
 										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
@@ -685,6 +706,7 @@
 									value={storefrontSettings.flash_sale_image || ''}
 								/>
 								<input
+									id="flash_sale_image_file"
 									type="file"
 									name="flash_sale_image_file"
 									accept="image/*"
@@ -693,10 +715,11 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase"
+								<label for="flash_sale_cta_label" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
 									>CTA Button Text</label
 								>
 								<input
+									id="flash_sale_cta_label"
 									type="text"
 									name="flash_sale_cta_label"
 									value={storefrontSettings.flash_sale_cta_label || ''}
@@ -705,10 +728,11 @@
 							</div>
 
 							<div>
-								<label class="mb-1 block text-xs font-bold text-gray-700 uppercase"
+								<label for="flash_sale_cta_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
 									>CTA Button URL</label
 								>
 								<input
+									id="flash_sale_cta_link"
 									type="text"
 									name="flash_sale_cta_link"
 									value={storefrontSettings.flash_sale_cta_link || ''}
@@ -723,10 +747,11 @@
 							</span>
 							<div class="grid max-w-sm grid-cols-3 gap-4">
 								<div>
-									<label class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
+									<label for="flash_sale_hours" class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
 										>Hours</label
 									>
 									<input
+										id="flash_sale_hours"
 										type="number"
 										name="flash_sale_hours"
 										min="0"
@@ -736,10 +761,11 @@
 									/>
 								</div>
 								<div>
-									<label class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
+									<label for="flash_sale_minutes" class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
 										>Minutes</label
 									>
 									<input
+										id="flash_sale_minutes"
 										type="number"
 										name="flash_sale_minutes"
 										min="0"
@@ -749,10 +775,11 @@
 									/>
 								</div>
 								<div>
-									<label class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
+									<label for="flash_sale_seconds" class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
 										>Seconds</label
 									>
 									<input
+										id="flash_sale_seconds"
 										type="number"
 										name="flash_sale_seconds"
 										min="0"

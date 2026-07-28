@@ -18,7 +18,7 @@
 				price: 7200,
 				salePrice: null,
 				description: 'Clean silhouette in deep midnight black, featuring a soft graceful fall.',
-				images: [{ url: '/abaya11.png' }]
+				images: [{ url: '/products/nida-cutdana/nida-cutdana-mauve-purple.png' }]
 			}
 	);
 
@@ -149,7 +149,7 @@
 							class="relative z-10 h-[290px] w-[230px] overflow-hidden rounded-2xl border border-[#0a0a0a]/6 shadow-[0_15px_35px_rgba(20,53,45,0.08)] transition-transform duration-700 group-hover:scale-[1.02] md:h-[380px] md:w-[300px]"
 						>
 							<img
-								src={spotlightProduct.images?.[0]?.url || '/abaya11.png'}
+								src={spotlightProduct.images?.[0]?.url || '/products/nida-cutdana/nida-cutdana-mauve-purple.png'}
 								alt={spotlightProduct.name}
 								class="h-full w-full object-cover"
 							/>
@@ -186,7 +186,7 @@
 							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#0a0a0a]/6 bg-[#eeece4] sm:h-24 sm:w-24 relative shadow-inner"
 						>
 							<img
-								src="/ChatGPT Image May 25, 2026, 06_25_13 PM.png"
+								src="/products/georgette-abaya/georgette-abaya-blush-pink.png"
 								alt="Premium Hijabs"
 								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 							/>
@@ -231,7 +231,7 @@
 							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#0a0a0a]/6 bg-[#eeece4] sm:h-24 sm:w-24 relative shadow-inner"
 						>
 							<img
-								src="/abaya11.png"
+								src="/products/georgette-abaya/georgette-abaya-sea-green.png"
 								alt="Everyday wear"
 								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 							/>
@@ -276,7 +276,7 @@
 							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#0a0a0a]/6 bg-[#eeece4] sm:h-24 sm:w-24 relative shadow-inner"
 						>
 							<img
-								src="/abaya22.png"
+								src="/products/cutdana-lace/cutdana-lace-navy-blue.png"
 								alt="Luxe stonework"
 								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 							/>

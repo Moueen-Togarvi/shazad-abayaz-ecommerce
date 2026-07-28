@@ -72,7 +72,7 @@
 
 				<!-- Modest abaya image -->
 				<img
-					src={settings.flashSaleImage || '/abaya_banner_occasion.png'}
+					src={settings.flashSaleImage || '/products/cutdana-lace/cutdana-lace-raspberry-magenta.png'}
 					alt="Flash Sale Abaya Highlight"
 					class="h-[95%] w-auto object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.35)] filter sm:h-[98%]"
 				/>

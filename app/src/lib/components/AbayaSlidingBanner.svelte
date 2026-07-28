@@ -13,7 +13,7 @@
 			description:
 				'Double-stitched durability and flowy silhouettes in authentic premium Nida fabric. Styled for standard modest daily wear.',
 			link: '/shop?category=nida-essentials',
-			image: '/abaya_banner_nida.png',
+			image: '/hero/nida-cutdana-teal.png',
 			bgClass: 'bg-gradient-to-br from-[#0c221a] via-[#0a0a0a] to-[#0a1c15]',
 			accentText: 'text-[#c5a880]',
 			badge: 'Bestseller Edit',
@@ -30,7 +30,7 @@
 			description:
 				'Featuring intricate hand-stitched beadwork and premium drapes on soft premium flowy georgette edits.',
 			link: '/shop?category=occasion',
-			image: '/abaya_banner_nida.png',
+			image: '/hero/nida-cutdana-magenta.png',
 			bgClass: 'bg-gradient-to-br from-[#121110] via-[#23201a] to-[#0e0e0d]',
 			accentText: 'text-[#c5a880]',
 			badge: 'New Season',
@@ -47,7 +47,7 @@
 			description:
 				'Sophisticated dark cuts with delicate gold-lace details, designed to leave a quiet, modest presence.',
 			link: '/shop?category=eid-edit',
-			image: '/ChatGPT%20Image%20May%2024,%202026,%2002_01_35%20AM.png',
+			image: '/hero/nida-cutdana-taupe.png',
 			bgClass: 'bg-gradient-to-br from-[#0d161a] via-[#122329] to-[#091013]',
 			accentText: 'text-[#c5a880]',
 			badge: 'Eid Special',
@@ -122,6 +122,7 @@
 </script>
 
 <section
+	aria-label="Featured abaya highlights"
 	class="relative overflow-hidden border-y border-[#0a0a0a]/8 bg-[#fbf9f2]"
 	onmouseenter={() => (sliderHovered = true)}
 	onmouseleave={() => (sliderHovered = false)}
