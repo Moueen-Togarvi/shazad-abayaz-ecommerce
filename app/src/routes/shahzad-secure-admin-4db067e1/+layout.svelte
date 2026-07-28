@@ -114,7 +114,7 @@
 </script>
 
 <svelte:head>
-	<title>Abayiza Admin</title>
+	<title>Shahzad Abaya's Admin</title>
 </svelte:head>
 
 {#if toast}
@@ -182,7 +182,9 @@
 			>
 				{#if showLabels}
 					<a href="/shahzad-secure-admin-4db067e1" class="flex items-baseline gap-2">
-						<span class="font-serif text-lg font-bold tracking-widest text-gray-900">ABAYIZA</span>
+						<span class="font-serif text-lg font-bold tracking-widest text-gray-900"
+							>SHAHZAD ABAYA'S</span
+						>
 						<span class="text-[10px] font-semibold tracking-[0.2em] text-admin-primary uppercase"
 							>Admin</span
 						>
@@ -305,7 +307,7 @@
 							/>
 						</svg>
 					</button>
-					<span class="font-serif text-lg font-bold tracking-widest text-gray-900">Abayiza</span>
+					<span class="font-serif text-lg font-bold tracking-widest text-gray-900">Shahzad Abaya's</span>
 				</div>
 
 				<!-- Search bar (Desktop) -->

@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Terms of Service | Abayiza</title>
+	<title>Terms of Service | Shahzad Abaya's</title>
 	<meta
 		name="description"
-		content="Read Abayiza terms of service for product orders, pricing, payment, intellectual property, and customer responsibilities."
+		content="Read Shahzad Abaya's terms of service for product orders, pricing, payment, intellectual property, and customer responsibilities."
 	/>
 </svelte:head>
 
@@ -18,7 +18,7 @@
 				1. Acceptance of Terms
 			</h2>
 			<p>
-				By accessing or using the Abayiza website, you agree to be bound by these Terms of Service.
+				By accessing or using the Shahzad Abaya's website, you agree to be bound by these Terms of Service.
 				If you do not agree, please do not use our services.
 			</p>
 		</section>
@@ -46,7 +46,7 @@
 				4. Intellectual Property
 			</h2>
 			<p>
-				All content on this site — images, text, logos, designs — is the property of Abayiza and
+				All content on this site — images, text, logos, designs — is the property of Shahzad Abaya's and
 				protected by applicable intellectual property laws. Reproduction without written consent is
 				prohibited.
 			</p>

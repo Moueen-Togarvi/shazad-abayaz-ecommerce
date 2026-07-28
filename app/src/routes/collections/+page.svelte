@@ -6,7 +6,7 @@
 	let collections = $derived((data.collections || []) as Array<any>);
 	let categorySearch = $state('');
 	const collectionsDescription =
-		'Browse Abayiza collections by modest edit, including everyday nida abayas, occasion layers, Eid pieces, and premium black abayas.';
+		"Browse Shahzad Abaya's collections by modest edit, including everyday nida abayas, occasion layers, Eid pieces, and premium black abayas.";
 	let collectionsJsonLd = $derived(
 		jsonLdScript({
 			'@context': 'https://schema.org',
@@ -68,7 +68,7 @@
 </script>
 
 <svelte:head>
-	<title>Collections | Abayiza</title>
+	<title>Collections | Shahzad Abaya's</title>
 	<meta name="description" content={collectionsDescription} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`Collections | ${SITE_NAME}`} />
@@ -88,7 +88,7 @@
 				<div>
 					<h1 class="font-serif text-4xl leading-tight uppercase sm:text-5xl">Collections</h1>
 					<p class="mt-4 max-w-2xl text-sm leading-6 font-medium text-[#52524f] sm:text-base">
-						Browse Abayiza by edit: everyday nida, occasion layers, Eid pieces, and premium black
+						Browse Shahzad Abaya's by edit: everyday nida, occasion layers, Eid pieces, and premium black
 						abayas.
 					</p>
 				</div>

@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>Categories | Abayiza Admin</title>
+	<title>Categories | Shahzad Abaya's Admin</title>
 </svelte:head>
 
 <div class="mx-auto max-w-7xl pb-12">

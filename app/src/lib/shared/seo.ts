@@ -1,9 +1,9 @@
-export const SITE_NAME = 'Abayiza';
-export const SITE_BRAND = 'Abayiza Modest Atelier';
+export const SITE_NAME = "Shahzad Abaya's";
+export const SITE_BRAND = "Shahzad Abaya's Modest Atelier";
 export const SITE_DESCRIPTION =
-	'Shop premium Abayiza abayas for modest everyday wear, occasion styling, Eid edits, and soft nida essentials.';
+	"Shop premium Shahzad Abaya's abayas for modest everyday wear, occasion styling, Eid edits, and soft nida essentials.";
 export const SITE_KEYWORDS =
-	'abayas, modest fashion, nida abaya, premium abayas, black abaya, eid abaya, Abayiza';
+	"abayas, modest fashion, nida abaya, premium abayas, black abaya, eid abaya, Shahzad Abaya's";
 export const SITE_IMAGE = '/image.png';
 export const TIKTOK_URL = 'https://www.tiktok.com/@_abayiza_';
 export const PRIMARY_WHATSAPP_URL = 'https://wa.me/923116857822';

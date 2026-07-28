@@ -2,7 +2,7 @@
 	let { data } = $props();
 	let products = $derived((data.products || []) as Array<any>);
 	const lookbookDescription =
-		'Explore the Abayiza lookbook for premium abaya styling, modest layers, nida essentials, and occasion outfit ideas.';
+		"Explore the Shahzad Abaya's lookbook for premium abaya styling, modest layers, nida essentials, and occasion outfit ideas.";
 
 	function productImage(product: any) {
 		return product.images?.[0]?.url || '/image.png';
@@ -10,12 +10,12 @@
 </script>
 
 <svelte:head>
-	<title>Lookbook | Abayiza</title>
+	<title>Lookbook | Shahzad Abaya's</title>
 	<meta name="description" content={lookbookDescription} />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Lookbook | Abayiza" />
+	<meta property="og:title" content="Lookbook | Shahzad Abaya's" />
 	<meta property="og:description" content={lookbookDescription} />
-	<meta name="twitter:title" content="Lookbook | Abayiza" />
+	<meta name="twitter:title" content="Lookbook | Shahzad Abaya's" />
 	<meta name="twitter:description" content={lookbookDescription} />
 </svelte:head>
 
@@ -31,7 +31,7 @@
 		/>
 	{/if}
 	<div class="relative z-20 px-4 text-center">
-		<p class="mb-3 text-sm tracking-widest text-white/70 uppercase">Abayiza Catalog</p>
+		<p class="mb-3 text-sm tracking-widest text-white/70 uppercase">Shahzad Abaya's Catalog</p>
 		<h1 class="mb-4 font-serif text-4xl tracking-widest text-white uppercase md:text-6xl">
 			The Lookbook
 		</h1>

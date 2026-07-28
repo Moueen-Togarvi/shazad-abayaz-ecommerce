@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>{activeTab === 'login' ? 'Sign In' : 'Create Account'} | Abayiza</title>
+	<title>{activeTab === 'login' ? 'Sign In' : 'Create Account'} | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="flex min-h-screen items-center justify-center bg-cream px-4 py-16">

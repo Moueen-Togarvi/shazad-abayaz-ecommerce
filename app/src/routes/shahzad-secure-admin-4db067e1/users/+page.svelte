@@ -32,7 +32,7 @@
 </script>
 
 <svelte:head>
-	<title>Users | Abayiza Admin</title>
+	<title>Users | Shahzad Abaya's Admin</title>
 </svelte:head>
 
 <div class="mx-auto max-w-7xl pb-12">

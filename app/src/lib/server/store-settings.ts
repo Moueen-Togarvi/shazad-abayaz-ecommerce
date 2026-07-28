@@ -3,9 +3,9 @@ import prisma from '$lib/server/prisma';
 type SettingValues = Record<string, string>;
 
 export const defaultStoreSettings: SettingValues = {
-	store_name: 'Abayiza',
-	store_contact_email: 'contact@abayiza.com',
-	sender_email: 'noreply@abayiza.com',
+	store_name: "Shahzad Abaya's",
+	store_contact_email: 'contact@shahzadabayas.com',
+	sender_email: 'noreply@shahzadabayas.com',
 	support_phone: '923116857822',
 	support_phone_secondary: '923346657779',
 	whatsapp_catalog: 'https://wa.me/c/923116857822',
@@ -27,7 +27,7 @@ export const defaultStoreSettings: SettingValues = {
 export const defaultStorefrontSettings: SettingValues = {
 	hero_eyebrow: 'New Season Edit',
 	hero_headline_phrases:
-		'Premium Abayas\nLuxury Abayas\nNida Essentials\nModest Layers\nEid Sale Abayiza',
+		"Premium Abayas\nLuxury Abayas\nNida Essentials\nModest Layers\nEid Sale Shahzad Abaya's",
 	hero_subheading:
 		'Clean Nida silhouettes with soft movement, refined finishing, and everyday grace.',
 	hero_primary_label: 'Shop Collection',
@@ -37,7 +37,7 @@ export const defaultStorefrontSettings: SettingValues = {
 	hero_images:
 		'/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png\n/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png\n/ChatGPT%20Image%20May%2025,%202026,%2006_25_13%20PM.png\n/ChatGPT%20Image%20May%2025,%202026,%2006_07_28%20PM.png\n/ChatGPT%20Image%20May%2025,%202026,%2006_25_25%20PM.png',
 	sale_tape_enabled: 'true',
-	sale_tape_items: 'EID SALE\n30% OFF\nABAYIZA',
+	sale_tape_items: "EID SALE\n30% OFF\nSHAHZAD ABAYA'S",
 	sale_tape_speed: '18',
 	show_featured_collections: 'true',
 	show_ethos: 'true',

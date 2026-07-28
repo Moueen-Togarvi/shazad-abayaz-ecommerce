@@ -68,7 +68,7 @@ const renderItemRows = (order: NotificationOrder) =>
 				<tr>
 					<td style="padding: 10px 0; border-bottom: 1px solid #eee;">
 						<strong>${escapeHtml(item.productName)}</strong><br />
-						<span style="color: #667; font-size: 12px;">${escapeHtml(options || 'Abayiza')}</span>
+						<span style="color: #667; font-size: 12px;">${escapeHtml(options || "Shahzad Abaya's")}</span>
 					</td>
 					<td style="padding: 10px 0; border-bottom: 1px solid #eee; text-align: center;">${item.quantity}</td>
 					<td style="padding: 10px 0; border-bottom: 1px solid #eee; text-align: right;">${formatMoney(item.priceAtPurchase * item.quantity)}</td>
@@ -108,7 +108,7 @@ const renderCustomerOrderEmail = (order: NotificationOrder, orderUrl: string) =>
 	return `
 		<div style="font-family: Arial, sans-serif; color: #0a0a0a; max-width: 620px; margin: 0 auto;">
 			<h1 style="font-size: 28px; margin: 0 0 8px;">Thank you for your order</h1>
-			<p style="margin: 0 0 24px; color: #52524f;">Your Abayiza order has been received successfully. We will confirm it soon.</p>
+			<p style="margin: 0 0 24px; color: #52524f;">Your Shahzad Abaya's order has been received successfully. We will confirm it soon.</p>
 			<div style="background: #fbf9f2; border: 1px solid #eee7d8; padding: 18px; margin-bottom: 20px;">
 				<p style="margin: 0 0 6px;"><strong>Order:</strong> ${escapeHtml(order.orderNumber)}</p>
 				<p style="margin: 0 0 6px;"><strong>Payment:</strong> Cash on Delivery</p>
@@ -146,7 +146,7 @@ const renderAdminOrderEmail = (order: NotificationOrder, adminOrderUrl: string) 
 	return `
 		<div style="font-family: Arial, sans-serif; color: #0a0a0a; max-width: 680px; margin: 0 auto;">
 			<h1 style="font-size: 28px; margin: 0 0 8px;">New order received</h1>
-			<p style="margin: 0 0 24px; color: #52524f;">A customer placed order ${escapeHtml(order.orderNumber)} on Abayiza.</p>
+			<p style="margin: 0 0 24px; color: #52524f;">A customer placed order ${escapeHtml(order.orderNumber)} on Shahzad Abaya's.</p>
 			<div style="background: #0a0a0a; color: #ffffff; padding: 18px; margin-bottom: 20px;">
 				<p style="margin: 0 0 6px;"><strong>Total:</strong> ${formatMoney(order.totalAmount)}</p>
 				<p style="margin: 0 0 6px;"><strong>Customer:</strong> ${escapeHtml(customerName || 'Customer')}</p>
@@ -223,7 +223,7 @@ export const sendOrderNotifications = async (order: NotificationOrder) => {
 			fallbackAdminEmail ||
 			settings.store_contact_email ||
 			'';
-		const storeName = settings.store_name || 'Abayiza';
+		const storeName = settings.store_name || "Shahzad Abaya's";
 		const from = formatSender(settings.resend_from_email || env.RESEND_FROM_EMAIL || '', storeName);
 		const origin = cleanOrigin(env.SITE_URL || env.PUBLIC_SITE_URL || env.APP_URL || order.siteUrl);
 		const adminOrderUrl = buildUrl(

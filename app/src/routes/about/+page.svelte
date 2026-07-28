@@ -4,7 +4,7 @@
 	import { SITE_NAME, absoluteUrl, jsonLdScript } from '$lib/shared/seo';
 
 	const aboutDescription =
-		'The story of Abayiza, started by university friends Chand Baloch and Mubahsir Ali after their first abaya ad video went viral.';
+		"The story of Shahzad Abaya's, started by university friends Chand Baloch and Mubahsir Ali after their first abaya ad video went viral.";
 	const aboutJsonLd = $derived(
 		jsonLdScript([
 			{
@@ -34,7 +34,7 @@
 </script>
 
 <svelte:head>
-	<title>About Abayiza | Our Story</title>
+	<title>About Shahzad Abaya's | Our Story</title>
 	<meta name="description" content={aboutDescription} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`About ${SITE_NAME} | Our Story`} />
@@ -49,7 +49,7 @@
 >
 	<img
 		src="/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png"
-		alt="Abayiza abaya editorial"
+		alt="Shahzad Abaya's abaya editorial"
 		width="1670"
 		height="941"
 		class="absolute inset-0 -z-30 h-full w-full object-cover object-center"
@@ -93,7 +93,7 @@
 <section class="bg-[#fbf9f2] px-4 py-16 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-4xl">
 		<p class="mb-4 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">
-			How Abayiza Started
+			How Shahzad Abaya's Started
 		</p>
 		<h2 class="font-serif text-3xl leading-tight uppercase sm:text-5xl">
 			From two university friends to a growing abaya brand.
@@ -101,7 +101,7 @@
 
 		<div class="mt-8 space-y-6 text-base leading-8 font-medium text-[#52524f] sm:text-lg">
 			<p>
-				Abayiza started with two friends,
+				Shahzad Abaya's started with two friends,
 				<strong class="font-black text-[#0a0a0a]">Chand Baloch</strong> and
 				<strong class="font-black text-[#0a0a0a]">Mubahsir Ali</strong>. During university, they
 				would often talk about their future and plan the kind of business they wanted to build after
@@ -115,7 +115,7 @@
 			<p>
 				That first video went viral. Orders and attention started coming in, and from that moment
 				the brand began to grow. What started as a plan between two university friends became
-				<strong class="font-black text-[#0a0a0a]"> Abayiza</strong>.
+				<strong class="font-black text-[#0a0a0a]"> Shahzad Abaya's</strong>.
 			</p>
 		</div>
 	</div>

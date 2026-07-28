@@ -266,7 +266,7 @@
 		<div class="flex w-full flex-col lg:w-1/2">
 			<div class="mb-8">
 				<p class="mb-3 text-xs font-bold tracking-[0.18em] text-gold uppercase">
-					{product.collections?.map((collection: any) => collection.name).join(' / ') || 'Abayiza'}
+					{product.collections?.map((collection: any) => collection.name).join(' / ') || "Shahzad Abaya's"}
 				</p>
 				<h1 class="mb-2 font-serif text-3xl tracking-wide text-black md:text-4xl">
 					{product.name}
@@ -420,7 +420,7 @@
 						rel="noreferrer"
 						class="text-xs font-semibold text-green-700 underline"
 					>
-						Chat with Abayiza on WhatsApp
+						Chat with Shahzad Abaya's on WhatsApp
 					</a>
 					<a
 						href={`https://wa.me/923346657779?text=${encodeURIComponent(`I want to ask about ${product.name}`)}`}
@@ -483,7 +483,7 @@
 						</p>
 						<p>
 							<strong>Returns:</strong> Exchanges are handled according to product condition and availability.
-							Please contact Abayiza support for help with sizing before ordering.
+							Please contact Shahzad Abaya's support for help with sizing before ordering.
 						</p>
 					{/if}
 				</div>

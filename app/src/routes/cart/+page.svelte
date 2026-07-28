@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>Your Bag | Abayiza</title>
+	<title>Your Bag | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
@@ -114,7 +114,7 @@
 								Add Premium Gift Wrapping ({formatMoney(giftWrapPrice)})
 							</span>
 							<span class="text-xs font-light text-gray-500"
-								>Your items will be beautifully packaged in our signature Abayiza gift box with a
+								>Your items will be beautifully packaged in our signature Shahzad Abaya's gift box with a
 								satin ribbon.</span
 							>
 						</div>

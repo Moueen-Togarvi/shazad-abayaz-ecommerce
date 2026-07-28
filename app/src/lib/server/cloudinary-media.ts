@@ -38,7 +38,7 @@ const cloudinaryUrlConfig = () => {
 const cloudName = () => env.CLOUDINARY_CLOUD_NAME?.trim() || cloudinaryUrlConfig()?.cloudName;
 const apiKey = () => env.CLOUDINARY_API_KEY?.trim() || cloudinaryUrlConfig()?.apiKey;
 const apiSecret = () => env.CLOUDINARY_API_SECRET?.trim() || cloudinaryUrlConfig()?.apiSecret;
-const baseFolder = () => env.CLOUDINARY_FOLDER?.trim() || 'abayiza';
+const baseFolder = () => env.CLOUDINARY_FOLDER?.trim() || 'shahzad-abayas';
 
 export const isCloudinaryConfigured = () => Boolean(cloudName() && apiKey() && apiSecret());
 

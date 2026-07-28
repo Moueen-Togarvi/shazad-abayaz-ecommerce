@@ -74,13 +74,13 @@
 </script>
 
 <svelte:head>
-	<title>Checkout | Abayiza</title>
+	<title>Checkout | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="min-h-screen bg-cream">
 	<header class="border-b border-gray-200 py-6">
 		<div class="mx-auto flex max-w-4xl justify-center px-4">
-			<a href="/" class="font-serif text-2xl tracking-widest uppercase">Abayiza</a>
+			<a href="/" class="font-serif text-2xl tracking-widest uppercase">Shahzad Abaya's</a>
 		</div>
 	</header>
 

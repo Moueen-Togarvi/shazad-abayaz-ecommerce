@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Returns & Exchanges | Abayiza</title>
+	<title>Returns & Exchanges | Shahzad Abaya's</title>
 	<meta
 		name="description"
-		content="Learn Abayiza return and exchange rules, eligibility, timelines, and how to request help for your abaya order."
+		content="Learn Shahzad Abaya's return and exchange rules, eligibility, timelines, and how to request help for your abaya order."
 	/>
 </svelte:head>
 
@@ -20,7 +20,7 @@
 				Our Promise
 			</h2>
 			<p>
-				We want you to love every piece from Abayiza. If for any reason you are not completely
+				We want you to love every piece from Shahzad Abaya's. If for any reason you are not completely
 				satisfied with your purchase, we are here to help. We accept returns and exchanges within <strong
 					class="font-medium text-black">14 days</strong
 				> of your delivery date.
@@ -87,7 +87,7 @@
 				How to Initiate a Return
 			</h2>
 			<div class="not-prose grid grid-cols-1 gap-6 sm:grid-cols-3">
-				{#each [{ step: '01', title: 'Contact Us', desc: 'Email support@abayiza.com or WhatsApp us with your order number and reason for return.' }, { step: '02', title: 'Ship Item Back', desc: 'Pack your item securely and ship it to our returns address. You are responsible for return shipping costs.' }, { step: '03', title: 'Refund Processed', desc: 'Once we receive and inspect your return, your refund will be processed within 5–7 business days.' }] as item}
+				{#each [{ step: '01', title: 'Contact Us', desc: 'Email support@shahzadabayas.com or WhatsApp us with your order number and reason for return.' }, { step: '02', title: 'Ship Item Back', desc: 'Pack your item securely and ship it to our returns address. You are responsible for return shipping costs.' }, { step: '03', title: 'Refund Processed', desc: 'Once we receive and inspect your return, your refund will be processed within 5–7 business days.' }] as item}
 					<div class="border border-gray-200 bg-cream p-6 text-center">
 						<div class="mb-3 font-serif text-3xl text-gold">{item.step}</div>
 						<h3 class="mb-2 text-sm font-bold tracking-widest text-black uppercase">

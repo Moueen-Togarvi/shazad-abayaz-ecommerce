@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Track Your Order | Abayiza</title>
+	<title>Track Your Order | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
@@ -121,7 +121,7 @@
 			rel="noreferrer"
 			class="text-sm font-medium tracking-widest text-green-700 uppercase transition-colors hover:text-green-800"
 		>
-			WhatsApp Abayiza
+			WhatsApp Shahzad Abaya's
 		</a>
 		<a
 			href="https://wa.me/923346657779"

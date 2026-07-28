@@ -211,7 +211,7 @@ fbq('init', '${metaPixelId}');`)
 						<a href="/" class="group inline-flex min-w-0 shrink-0 items-center gap-2.5">
 							<img
 								src="/image.png"
-								alt="Abayiza"
+								alt="Shahzad Abaya's"
 								width="640"
 								height="640"
 								class="h-12 w-12 rounded-full object-cover shadow-[0_14px_30px_rgba(20,53,45,0.28)] ring-2 ring-white/80"
@@ -451,7 +451,7 @@ fbq('init', '${metaPixelId}');`)
 				target="_blank"
 				rel="noreferrer"
 				class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/95 bg-[#25D366] text-white shadow-[0_12px_24px_rgba(20,53,45,0.22)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#1fb95a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366] sm:h-10 sm:w-10"
-				aria-label="Contact Abayiza on WhatsApp"
+				aria-label="Contact Shahzad Abaya's on WhatsApp"
 			>
 				<svg
 					class="h-5 w-5 translate-x-[0.5px] -translate-y-[0.5px] sm:h-[1.35rem] sm:w-[1.35rem]"
@@ -513,7 +513,7 @@ fbq('init', '${metaPixelId}');`)
 							target="_blank"
 							rel="noreferrer"
 							class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-white/30 hover:bg-white/12"
-							aria-label="Abayiza TikTok"
+							aria-label="Shahzad Abaya's TikTok"
 						>
 							<svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 								<path
@@ -526,7 +526,7 @@ fbq('init', '${metaPixelId}');`)
 							target="_blank"
 							rel="noreferrer"
 							class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[#25D366]/50 hover:bg-[#25D366]"
-							aria-label="Abayiza WhatsApp"
+							aria-label="Shahzad Abaya's WhatsApp"
 						>
 							<svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
 								<path
@@ -539,7 +539,7 @@ fbq('init', '${metaPixelId}');`)
 							target="_blank"
 							rel="noreferrer"
 							class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[#25D366]/50 hover:bg-[#25D366]"
-							aria-label="Abayiza WhatsApp 2"
+							aria-label="Shahzad Abaya's WhatsApp 2"
 						>
 							<svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
 								<path

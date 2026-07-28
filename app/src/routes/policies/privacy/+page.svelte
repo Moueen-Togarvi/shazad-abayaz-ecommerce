@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Privacy Policy | Abayiza</title>
+	<title>Privacy Policy | Shahzad Abaya's</title>
 	<meta
 		name="description"
-		content="Review the Abayiza privacy policy covering customer data, order information, website usage, and contact details."
+		content="Review the Shahzad Abaya's privacy policy covering customer data, order information, website usage, and contact details."
 	/>
 </svelte:head>
 
@@ -21,7 +21,7 @@
 				1. Information We Collect
 			</h2>
 			<p class="mb-3">
-				When you visit and shop at Abayiza, we collect information to provide and improve our
+				When you visit and shop at Shahzad Abaya's, we collect information to provide and improve our
 				services. This includes:
 			</p>
 			<ul class="list-disc space-y-2 pl-5">
@@ -104,8 +104,8 @@
 			<p>
 				If you have any questions about this Privacy Policy or how we handle your data, please
 				contact us at <a
-					href="mailto:privacy@abayiza.com"
-					class="text-black underline transition-colors hover:text-gold">privacy@abayiza.com</a
+					href="mailto:privacy@shahzadabayas.com"
+					class="text-black underline transition-colors hover:text-gold">privacy@shahzadabayas.com</a
 				>
 				or visit our
 				<a href="/contact" class="text-black underline transition-colors hover:text-gold"

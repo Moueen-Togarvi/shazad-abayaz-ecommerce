@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>My Wishlist | Abayiza</title>
+	<title>My Wishlist | Shahzad Abaya's</title>
 </svelte:head>
 
 <section class="bg-[#fbf9f2] px-4 py-12 text-[#0a0a0a] sm:px-6 md:py-20 lg:px-8">
@@ -75,7 +75,7 @@
 
 						<div class="flex flex-1 flex-col p-4">
 							<p class="text-xs font-bold tracking-[0.1em] text-[#52524f] uppercase">
-								{item.category || item.color || 'Abayiza'}
+								{item.category || item.color || "Shahzad Abaya's"}
 							</p>
 							<a
 								href={`/shop/${item.slug}`}

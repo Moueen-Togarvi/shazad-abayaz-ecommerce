@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>Search | Abayiza</title>
+	<title>Search | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">

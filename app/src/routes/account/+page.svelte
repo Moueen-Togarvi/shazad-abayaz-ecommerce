@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>My Account | Abayiza</title>
+	<title>My Account | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
@@ -44,7 +44,7 @@
 				rel="noreferrer"
 				class="text-sm font-medium tracking-widest text-green-700 uppercase hover:text-green-800"
 			>
-				Contact Abayiza
+				Contact Shahzad Abaya's
 			</a>
 			<a
 				href="https://wa.me/923346657779"
@@ -52,7 +52,7 @@
 				rel="noreferrer"
 				class="mt-3 block text-sm font-medium tracking-widest text-green-700 uppercase hover:text-green-800"
 			>
-				Contact Abayiza 2
+				Contact Shahzad Abaya's 2
 			</a>
 		</aside>
 	</div>

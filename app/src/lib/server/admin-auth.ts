@@ -2,11 +2,11 @@ import { env } from '$env/dynamic/private';
 import prisma from '$lib/server/prisma';
 import { createHmac, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 
-export const ADMIN_SESSION_COOKIE = 'abayiza_admin_session';
+export const ADMIN_SESSION_COOKIE = 'shahzad_admin_session';
 const SESSION_MAX_AGE = 60 * 60 * 24 * 7;
 
 const sessionSecret = () =>
-	env.ADMIN_SESSION_SECRET || env.AUTH_SECRET || env.DATABASE_URL || 'abayiza-local-admin-secret';
+	env.ADMIN_SESSION_SECRET || env.AUTH_SECRET || env.DATABASE_URL || 'shahzad-abayas-local-admin-secret';
 
 const sign = (payload: string) =>
 	createHmac('sha256', sessionSecret()).update(payload).digest('base64url');

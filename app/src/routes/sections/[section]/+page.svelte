@@ -92,7 +92,7 @@
 	}
 
 	function productCategory(item: any) {
-		return item.collections?.[0]?.name || 'Abayiza';
+		return item.collections?.[0]?.name || "Shahzad Abaya's";
 	}
 
 	function productHref(item: any) {

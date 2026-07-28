@@ -111,7 +111,7 @@ export function productPixelPayload(product: any, quantity = 1): PixelPayload {
 	const safeQuantity = Math.max(1, toNumber(quantity, 1));
 
 	return {
-		content_name: product?.name || 'Abayiza product',
+		content_name: product?.name || "Shahzad Abaya's product",
 		content_category: productCategory(product) || undefined,
 		content_type: 'product',
 		content_ids: productId ? [productId] : [],
@@ -206,7 +206,7 @@ export function trackPurchase(payload: PixelPayload, options: PixelEventOptions 
 export function trackPurchaseOnce(orderId: string, payload: PixelPayload) {
 	if (!browser || !orderId) return;
 
-	const storageKey = `abayiza_pixel_purchase_${orderId}`;
+	const storageKey = `shahzad_pixel_purchase_${orderId}`;
 	if (sessionStorage.getItem(storageKey)) return;
 
 	trackPurchase(payload, { eventId: eventId('Purchase', orderId) });

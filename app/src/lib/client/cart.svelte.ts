@@ -15,7 +15,7 @@ export function createCart() {
 
 	// Ensure localStorage is only accessed on client-side
 	if (typeof window !== 'undefined') {
-		const stored = localStorage.getItem('abayiza_cart');
+		const stored = localStorage.getItem('shahzad_cart');
 		if (stored) {
 			try {
 				items = JSON.parse(stored);
@@ -25,7 +25,7 @@ export function createCart() {
 
 	function save() {
 		if (typeof window !== 'undefined') {
-			localStorage.setItem('abayiza_cart', JSON.stringify(items));
+			localStorage.setItem('shahzad_cart', JSON.stringify(items));
 		}
 	}
 

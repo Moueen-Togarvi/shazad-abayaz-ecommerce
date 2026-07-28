@@ -63,8 +63,8 @@
 	let shopDescription = $derived(
 		metaDescription(
 			filters.category
-				? `Browse ${collections.find((collection) => collection.slug === filters.category)?.name || 'our collection'} at Abayiza with premium abayas, nida essentials, and modest occasion wear.`
-				: 'Shop Abayiza premium abayas, soft nida essentials, black abayas, Eid edits, and occasion modestwear pieces.'
+				? `Browse ${collections.find((collection) => collection.slug === filters.category)?.name || 'our collection'} at Shahzad Abaya's with premium abayas, nida essentials, and modest occasion wear.`
+				: "Shop Shahzad Abaya's premium abayas, soft nida essentials, black abayas, Eid edits, and occasion modestwear pieces."
 		)
 	);
 	let shopSocialImage = $derived(
@@ -198,7 +198,7 @@
 <section class="bg-[#fbf9f2] px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 border-b border-[#0a0a0a]/10 pb-8">
-			<p class="mb-3 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">Shop Abayiza</p>
+			<p class="mb-3 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">Shop Shahzad Abaya's</p>
 			<div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
 				<div>
 					<h1 class="font-serif text-4xl leading-tight uppercase sm:text-5xl">The Collection</h1>

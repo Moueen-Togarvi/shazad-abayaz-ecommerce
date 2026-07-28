@@ -30,7 +30,7 @@
 	}
 
 	function productCategory(item: any) {
-		return item?.collections?.[0]?.name || item?.category || 'Abayiza';
+		return item?.collections?.[0]?.name || item?.category || "Shahzad Abaya's";
 	}
 
 	function wishlistItem(item: any): WishlistItem {
@@ -39,7 +39,7 @@
 		return {
 			id: String(item?.id || ''),
 			slug: item?.slug || String(item?.id || ''),
-			name: item?.name || 'Abayiza abaya',
+			name: item?.name || "Shahzad Abaya's abaya",
 			price: Number(item?.price || item?.salePrice || 0),
 			salePrice: item?.salePrice ? Number(item.salePrice) : null,
 			image: productImage(item),

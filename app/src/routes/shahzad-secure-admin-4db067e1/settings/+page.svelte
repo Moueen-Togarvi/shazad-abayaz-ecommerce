@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Settings | Abayiza Admin</title>
+	<title>Settings | Shahzad Abaya's Admin</title>
 </svelte:head>
 
 <div class="mx-auto max-w-6xl pb-12">
@@ -343,7 +343,7 @@
 							type="email"
 							value={settings.order_notify_email}
 							class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-							placeholder="orders@abayiza.com"
+							placeholder="orders@shahzadabayas.com"
 						/>
 					</div>
 					<div>
@@ -356,7 +356,7 @@
 							type="text"
 							value={settings.resend_from_email}
 							class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-							placeholder="Abayiza <orders@abayiza.com>"
+							placeholder="Shahzad Abaya's <orders@shahzadabayas.com>"
 						/>
 					</div>
 				</div>

@@ -8,7 +8,7 @@ export type AdminFlash = {
 	message: string;
 };
 
-const ADMIN_FLASH_COOKIE = 'abayiza_admin_flash';
+const ADMIN_FLASH_COOKIE = 'shahzad_admin_flash';
 
 const flashCookieOptions = () => ({
 	path: '/shahzad-secure-admin-4db067e1',

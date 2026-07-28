@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Review Photos | Abayiza Admin</title>
+	<title>Review Photos | Shahzad Abaya's Admin</title>
 </svelte:head>
 
 <div class="mx-auto max-w-7xl pb-12">

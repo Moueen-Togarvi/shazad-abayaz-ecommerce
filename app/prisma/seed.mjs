@@ -3,8 +3,6 @@ import { randomBytes, scryptSync } from 'node:crypto';
 
 const prisma = new PrismaClient();
 
-const image = (path) => path.replaceAll(' ', '%20');
-
 const hashPassword = (password) => {
 	const salt = randomBytes(16).toString('base64url');
 	const hash = scryptSync(password, salt, 64).toString('base64url');
@@ -12,57 +10,49 @@ const hashPassword = (password) => {
 };
 
 const adminPassword =
-	process.env.ADMIN_SEED_PASSWORD || `Abayiza-${randomBytes(6).toString('base64url')}`;
+	process.env.ADMIN_SEED_PASSWORD || `ShahzadAbayas-${randomBytes(6).toString('base64url')}`;
 
 const categories = [
 	{
-		name: 'Nida Essentials',
-		slug: 'nida-essentials'
-	},
-	{
-		name: 'Occasion',
-		slug: 'occasion'
+		name: 'Georgette Abayas',
+		slug: 'georgette-abayas'
 	}
 ];
 
-const products = [
-	{
-		name: 'Haya Everyday Abaya',
-		slug: 'haya-everyday-abaya',
-		description:
-			'Simple everyday abaya with clean finishing, modest coverage, and a light comfortable feel.',
-		fabricDetails: 'Nida blend, relaxed fit, easy daily care.',
-		price: '7200',
-		salePrice: null,
-		images: ['/abaya11.png'],
-		collections: ['nida-essentials'],
-		variants: [
-			{ color: 'Black', size: 'S (52)', sku: 'ABY-HAYA-BLK-S', stockCount: 8 },
-			{ color: 'Black', size: 'M (54)', sku: 'ABY-HAYA-BLK-M', stockCount: 8 }
-		]
-	},
-	{
-		name: 'Emerald Layered Abaya',
-		slug: 'emerald-layered-abaya',
-		description:
-			'Emerald layered abaya with airy chiffon movement and a composed evening silhouette.',
-		fabricDetails: 'Layered chiffon with soft inner lining.',
-		price: '10800',
-		salePrice: '9720',
-		images: ['/abaya22.png'],
-		collections: ['occasion'],
-		variants: [
-			{ color: 'Emerald', size: 'S (52)', sku: 'ABY-EMLYR-EMR-S', stockCount: 6 },
-			{ color: 'Emerald', size: 'M (54)', sku: 'ABY-EMLYR-EMR-M', stockCount: 6 }
-		]
-	}
+const georgetteColors = [
+	{ color: 'Mauve Taupe', slug: 'mauve-taupe' },
+	{ color: 'Slate Blue', slug: 'slate-blue' },
+	{ color: 'Purple', slug: 'purple' },
+	{ color: 'Blush Pink', slug: 'blush-pink' },
+	{ color: 'Dusty Blue', slug: 'dusty-blue' },
+	{ color: 'Sea Green', slug: 'sea-green' },
+	{ color: 'Rose Pink', slug: 'rose-pink' },
+	{ color: 'Charcoal Grey', slug: 'charcoal-grey' },
+	{ color: 'Powder Blue', slug: 'powder-blue' },
+	{ color: 'Magenta', slug: 'magenta' },
+	{ color: 'Denim Blue', slug: 'denim-blue' },
+	{ color: 'Mocha Brown', slug: 'mocha-brown' }
 ];
 
-const reviewPhoto = {
-	url: image('/ChatGPT Image May 25, 2026, 06_25_30 PM.png'),
-	displayOrder: 0,
-	isVisible: true
-};
+const products = georgetteColors.map(({ color, slug }) => ({
+	name: `Stuff Soft Georgette Abaya - ${color}`,
+	slug: `stuff-soft-georgette-abaya-${slug}`,
+	description:
+		'Front open full flair abaya with elastic sleeves, complete with a matching niqab and stole.',
+	fabricDetails: 'Soft georgette fabric, front-open flair cut, elastic cuffs.',
+	price: '3500',
+	salePrice: '2500',
+	images: [`/products/georgette-abaya/georgette-abaya-${slug}.png`],
+	collections: ['georgette-abayas'],
+	variants: [
+		{
+			color,
+			size: 'Length 54/56, Chest 24/25',
+			sku: `SA-GRG-${slug.toUpperCase().replace(/-/g, '')}`,
+			stockCount: 10
+		}
+	]
+}));
 
 const clearDatabase = async () => {
 	await prisma.review.deleteMany();
@@ -71,6 +61,7 @@ const clearDatabase = async () => {
 	await prisma.order.deleteMany();
 	await prisma.address.deleteMany();
 	await prisma.coupon.deleteMany();
+	await prisma.storefrontSectionProduct.deleteMany();
 	await prisma.productImage.deleteMany();
 	await prisma.productVariant.deleteMany();
 	await prisma.product.deleteMany();
@@ -117,13 +108,11 @@ const seedDatabase = async () => {
 		});
 	}
 
-	await prisma.reviewPhoto.create({ data: reviewPhoto });
-
 	await prisma.user.create({
 		data: {
-			email: 'admin@abayiza.com',
+			email: 'admin@shahzadabayas.com',
 			passwordHash: hashPassword(adminPassword),
-			firstName: 'Abayiza',
+			firstName: 'Shahzad',
 			lastName: 'Admin',
 			role: 'SUPER_ADMIN',
 			isBlocked: false
@@ -132,10 +121,10 @@ const seedDatabase = async () => {
 };
 
 const main = async () => {
-	console.log('Cleaning Abayiza database...');
+	console.log("Cleaning Shahzad Abaya's database...");
 	await clearDatabase();
 
-	console.log('Seeding minimal production data...');
+	console.log('Seeding real production data...');
 	await seedDatabase();
 
 	const counts = await Promise.all([
@@ -159,8 +148,8 @@ const main = async () => {
 			2
 		)
 	);
-	console.log(`Admin URL: /abayiza-secure-admin-7k9x2p/login`);
-	console.log(`Admin email: admin@abayiza.com`);
+	console.log(`Admin URL: /shahzad-secure-admin-4db067e1/login`);
+	console.log(`Admin email: admin@shahzadabayas.com`);
 	console.log(`Admin password: ${adminPassword}`);
 };
 

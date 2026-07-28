@@ -42,7 +42,7 @@
 </script>
 
 <svelte:head>
-	<title>Order Received | Abayiza</title>
+	<title>Order Received | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="min-h-screen bg-[#f6f5f1] px-4 py-14">
@@ -127,7 +127,7 @@
 								<div class="min-w-0 flex-1">
 									<p class="font-medium text-[#0a0a0a]">{item.productName}</p>
 									<p class="mt-1 text-xs text-gray-500">
-										{[item.variantColor, item.variantSize].filter(Boolean).join(' / ') || 'Abayiza'} x
+										{[item.variantColor, item.variantSize].filter(Boolean).join(' / ') || "Shahzad Abaya's"} x
 										{item.quantity}
 									</p>
 								</div>

@@ -41,7 +41,7 @@
 					'Luxury\nAbayas',
 					'Nida\nEssentials',
 					'Modest\nLayers',
-					'Eid Sale\nAbayiza'
+					"Eid Sale\nShahzad Abaya's"
 				]) as string[]
 	);
 	let heroHeadlineText = $state(storefrontSettings.heroHeadlinePhrases?.[0] || 'Premium\nAbayas');
@@ -49,23 +49,23 @@
 	const heroSlides = [
 		{
 			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png',
-			alt: 'Abayiza hero abaya editorial slide one'
+			alt: "Shahzad Abaya's hero abaya editorial slide one"
 		},
 		{
 			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png',
-			alt: 'Abayiza hero abaya editorial slide two'
+			alt: "Shahzad Abaya's hero abaya editorial slide two"
 		},
 		{
 			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_13%20PM.png',
-			alt: 'Abayiza hero abaya editorial slide three'
+			alt: "Shahzad Abaya's hero abaya editorial slide three"
 		},
 		{
 			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_07_28%20PM.png',
-			alt: 'Abayiza hero abaya editorial slide four'
+			alt: "Shahzad Abaya's hero abaya editorial slide four"
 		},
 		{
 			src: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_25%20PM.png',
-			alt: 'Abayiza hero abaya editorial slide five'
+			alt: "Shahzad Abaya's hero abaya editorial slide five"
 		}
 	];
 
@@ -125,7 +125,7 @@
 	let saleTapeItems = $derived(
 		(storefrontSettings.saleTapeItems?.length
 			? storefrontSettings.saleTapeItems
-			: ['EID SALE', '30% OFF', 'ABAYIZA']) as string[]
+			: ['EID SALE', '30% OFF', "SHAHZAD ABAYA'S"]) as string[]
 	);
 	let saleTapeLoop = $derived(Array.from({ length: 8 }, () => saleTapeItems).flat());
 	let saleTapeEnabled = $derived(storefrontSettings.saleTapeEnabled !== false);
@@ -133,7 +133,7 @@
 	let homeDescription = $derived(
 		metaDescription(
 			storefrontSettings.homeMetaDescription ||
-				'Shop Abayiza for premium abayas, nida essentials, occasion edits, and refined modest fashion in Pakistan.'
+				"Shop Shahzad Abaya's for premium abayas, nida essentials, occasion edits, and refined modest fashion in Pakistan."
 		)
 	);
 	let homeJsonLd = $derived(
@@ -148,7 +148,7 @@
 			{
 				'@context': 'https://schema.org',
 				'@type': 'ItemList',
-				name: 'Featured Abayiza Products',
+				name: "Featured Shahzad Abaya's Products",
 				itemListElement: products.slice(0, 8).map((item: any, index: number) => ({
 					'@type': 'ListItem',
 					position: index + 1,
@@ -158,10 +158,10 @@
 			}
 		])
 	);
-	const brandPattern = /^(Abayiza|ABAYIZA)$/;
+	const brandPattern = /^(Shahzad Abaya's|SHAHZAD ABAYA'S)$/;
 
 	function textWithBrand(value: string) {
-		return value.split(/(Abayiza|ABAYIZA)/g).filter(Boolean);
+		return value.split(/(Shahzad Abaya's|SHAHZAD ABAYA'S)/g).filter(Boolean);
 	}
 
 	function isBrandText(value: string) {
@@ -188,7 +188,7 @@
 	}
 
 	function productCategory(item: any) {
-		return item.collections?.[0]?.name || 'Abayiza';
+		return item.collections?.[0]?.name || "Shahzad Abaya's";
 	}
 
 	function productTags(item: any) {
@@ -344,7 +344,7 @@
 </script>
 
 <svelte:head>
-	<title>Abayiza | Premium Modest Fashion</title>
+	<title>Shahzad Abaya's | Premium Modest Fashion</title>
 	<meta name="description" content={homeDescription} />
 	<meta
 		name="keywords"
@@ -771,7 +771,7 @@
 					<figure class="review-photo-card">
 						<img
 							src={photo.url}
-							alt={`Abayiza customer review ${index + 1}`}
+							alt={`Shahzad Abaya's customer review ${index + 1}`}
 							class="h-full w-full object-cover object-center"
 							loading="lazy"
 						/>

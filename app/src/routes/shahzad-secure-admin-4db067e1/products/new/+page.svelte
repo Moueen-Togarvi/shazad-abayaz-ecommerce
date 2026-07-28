@@ -53,7 +53,7 @@
 </script>
 
 <svelte:head>
-	<title>Add Product | Abayiza Admin</title>
+	<title>Add Product | Shahzad Abaya's Admin</title>
 </svelte:head>
 
 <div class="mx-auto max-w-5xl pb-12">

@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>Order {order.orderNumber} | Abayiza Admin</title>
+	<title>Order {order.orderNumber} | Shahzad Abaya's Admin</title>
 </svelte:head>
 
 <div class="mx-auto max-w-7xl pb-12">

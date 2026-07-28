@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Admin Login | Abayiza</title>
+	<title>Admin Login | Shahzad Abaya's</title>
 </svelte:head>
 
 <div class="flex min-h-screen items-center justify-center bg-white px-4 py-12">
@@ -18,7 +18,7 @@
 				A
 			</div>
 			<p class="text-xs font-black tracking-[0.18em] text-blue-600 uppercase">Secure Admin</p>
-			<h1 class="mt-2 text-2xl font-black text-gray-950">Sign in to Abayiza</h1>
+			<h1 class="mt-2 text-2xl font-black text-gray-950">Sign in to Shahzad Abaya's</h1>
 			<p class="mt-2 text-sm text-gray-500">
 				Protected with scrypt password hashing and signed sessions.
 			</p>
@@ -44,7 +44,7 @@
 					autocomplete="email"
 					value={form?.email || ''}
 					class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-					placeholder="admin@abayiza.com"
+					placeholder="admin@shahzadabayas.com"
 				/>
 			</div>
 			<div>

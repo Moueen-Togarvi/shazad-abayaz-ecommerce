@@ -4,7 +4,7 @@
 
 	let openFaq = $state(0);
 	const contactDescription =
-		'Contact Abayiza for abaya sizing help, order questions, WhatsApp support, and modest styling advice.';
+		"Contact Shahzad Abaya's for abaya sizing help, order questions, WhatsApp support, and modest styling advice.";
 
 	const faqs = [
 		{
@@ -55,7 +55,7 @@
 </script>
 
 <svelte:head>
-	<title>Contact Us | Abayiza</title>
+	<title>Contact Us | Shahzad Abaya's</title>
 	<meta name="description" content={contactDescription} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={`Contact Us | ${SITE_NAME}`} />
@@ -99,9 +99,9 @@
 						<div>
 							<h3 class="mb-1 text-sm font-bold tracking-widest text-black uppercase">Email</h3>
 							<a
-								href="mailto:support@abayiza.com"
+								href="mailto:support@shahzadabayas.com"
 								class="text-sm font-light text-gray-500 transition-colors hover:text-black"
-								>support@abayiza.com</a
+								>support@shahzadabayas.com</a
 							>
 							<p class="mt-1 text-xs text-gray-400">Response time: 24-48 hours</p>
 						</div>

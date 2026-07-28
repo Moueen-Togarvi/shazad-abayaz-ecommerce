@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Shipping Information | Abayiza</title>
+	<title>Shipping Information | Shahzad Abaya's</title>
 	<meta
 		name="description"
-		content="Read Abayiza shipping options, delivery timelines, domestic and international shipping details, and free delivery rules."
+		content="Read Shahzad Abaya's shipping options, delivery timelines, domestic and international shipping details, and free delivery rules."
 	/>
 </svelte:head>
 

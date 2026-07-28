@@ -11,13 +11,13 @@ export type WishlistItem = {
 	description?: string;
 };
 
-const STORAGE_KEY = 'abayiza_wishlist';
+const STORAGE_KEY = 'shahzad_wishlist';
 
 const normalizeItem = (item: WishlistItem): WishlistItem => ({
 	...item,
 	id: String(item.id),
 	slug: item.slug || String(item.id),
-	name: item.name || 'Abayiza abaya',
+	name: item.name || "Shahzad Abaya's abaya",
 	price: Number(item.price || item.salePrice || 0),
 	salePrice: item.salePrice ? Number(item.salePrice) : null,
 	image: item.image || '/image.png'

@@ -5,10 +5,10 @@
 	let products = $derived((data.products || []) as Array<any>);
 	let sections = $derived((data.sections || []) as Array<any>);
 	let saleTapeItems = $derived((form?.saleTapeItems ?? data.saleTapeItems ?? '') as string);
+	let storefrontSettings = $derived(data.storefrontSettings || {});
 	let heroHeadlinePhrases = $derived(
 		(form?.hero_headline_phrases ?? storefrontSettings.hero_headline_phrases ?? '') as string
 	);
-	let storefrontSettings = $derived(data.storefrontSettings || {});
 	let saleTapePreview = $derived(
 		saleTapeItems
 			.split(/\r?\n/)
@@ -106,7 +106,7 @@
 </script>
 
 <svelte:head>
-	<title>Storefront Sections | Abayiza Admin</title>
+	<title>Storefront Sections | Shahzad Abaya's Admin</title>
 </svelte:head>
 
 <div class="mx-auto max-w-7xl pb-12">
