@@ -1,6 +1,6 @@
-# Abayiza Ecommerce
+# Shahzad Abaya's Ecommerce
 
-SvelteKit storefront and admin panel for Abayiza.
+SvelteKit storefront and admin panel for Shahzad Abaya's.
 
 ## Creating a project
 
@@ -56,36 +56,34 @@ Required production environment variables:
 
 ```sh
 DATABASE_URL="your Neon pooled PostgreSQL URL with sslmode=require"
-ADMIN_SESSION_SECRET="run: openssl rand -base64 32"
-AUTH_SECRET="run: openssl rand -base64 32"
+PUBLIC_SITE_URL="https://your-vercel-domain.vercel.app"
+SITE_URL="https://your-vercel-domain.vercel.app"
+ADMIN_SESSION_SECRET="use-a-long-random-secret"
+AUTH_SECRET="use-a-long-random-secret"
 CLOUDINARY_URL="cloudinary://API_KEY:API_SECRET@CLOUD_NAME"
-CLOUDINARY_FOLDER="abayiza"
+CLOUDINARY_FOLDER="shahzad-abayas"
 ```
 
 Optional order email variables:
 
 ```sh
 RESEND_API_KEY=""
-RESEND_FROM_EMAIL="Abayiza <orders@your-domain.com>"
+RESEND_FROM_EMAIL="Shahzad Abaya's <orders@your-domain.com>"
 ORDER_NOTIFY_EMAIL=""
+PUBLIC_META_PIXEL_ID=""
+PUBLIC_TIKTOK_PIXEL_ID=""
 ```
 
 Before the first production deploy, make sure the Neon database has the latest schema:
 
 ```sh
-cd app
-npm install
-npx prisma db push
-```
+Open Vercel Project Settings -> Environment Variables and add the values above first.
 
-Manual CLI deploy:
+Then make sure your production database already has the latest schema by running `npx prisma db push`
+once from your local machine against the same `DATABASE_URL` you plan to use on Vercel.
 
-```sh
-cd app
-npm install
-npm run check
-npm run build
-npx vercel --prod
+If you want the default admin user created, run `npx prisma db seed` locally against that same
+production database before the first deploy.
 ```
 
 Do not upload local `static/uploads` to Vercel. Production product/review uploads should go to
@@ -94,7 +92,7 @@ Cloudinary because serverless file writes are not persistent.
 Admin panel URL:
 
 ```txt
-/abayiza-secure-admin-7k9x2p/login
+/shahzad-secure-admin-4db067e1/login
 ```
 
 Minimal seed/reset command:
@@ -104,7 +102,11 @@ npx prisma db seed
 ```
 
 Set `ADMIN_SEED_PASSWORD` before running the seed if you want a specific admin password. If it is
-missing, the seed command generates and prints a one-time password.
+missing, the seed command generates and prints a one-time password for:
+
+```txt
+admin@shahzadabayas.com
+```
 
 ## Image Uploads On Vercel
 
@@ -114,7 +116,7 @@ when either `CLOUDINARY_URL` exists:
 
 ```sh
 CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
-CLOUDINARY_FOLDER=abayiza
+CLOUDINARY_FOLDER=shahzad-abayas
 ```
 
 Or when these separate environment variables exist:
@@ -123,7 +125,7 @@ Or when these separate environment variables exist:
 CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
-CLOUDINARY_FOLDER=abayiza
+CLOUDINARY_FOLDER=shahzad-abayas
 ```
 
 Add the same variables in Vercel Project Settings -> Environment Variables, then redeploy.
