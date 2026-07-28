@@ -3,8 +3,13 @@
 
 	let { settings = {} } = $props();
 
-	let activeSlide = $state(0);
-	let sliderHovered = $state(false);
+let activeSlide = $state(0);
+let sliderHovered = $state(false);
+const staticBannerImages = [
+	'/products/georgette-abaya/georgette-abaya-sea-green.png',
+	'/products/georgette-abaya/georgette-abaya-magenta.png',
+	'/products/georgette-abaya/georgette-abaya-mauve-taupe.png'
+];
 
 	const defaultSliderItems = [
 		{
@@ -67,7 +72,7 @@
 			tagline: settings.slide1Tagline || defaultSliderItems[0].tagline,
 			description: settings.slide1Description || defaultSliderItems[0].description,
 			link: settings.slide1Link || defaultSliderItems[0].link,
-			image: settings.slide1Image || defaultSliderItems[0].image,
+			image: staticBannerImages[0],
 			promoBadge: settings.slide1Promo || defaultSliderItems[0].promoBadge
 		},
 		{
@@ -76,7 +81,7 @@
 			tagline: settings.slide2Tagline || defaultSliderItems[1].tagline,
 			description: settings.slide2Description || defaultSliderItems[1].description,
 			link: settings.slide2Link || defaultSliderItems[1].link,
-			image: settings.slide2Image || defaultSliderItems[1].image,
+			image: staticBannerImages[1],
 			promoBadge: settings.slide2Promo || defaultSliderItems[1].promoBadge
 		},
 		{
@@ -85,7 +90,7 @@
 			tagline: settings.slide3Tagline || defaultSliderItems[2].tagline,
 			description: settings.slide3Description || defaultSliderItems[2].description,
 			link: settings.slide3Link || defaultSliderItems[2].link,
-			image: settings.slide3Image || defaultSliderItems[2].image,
+			image: staticBannerImages[2],
 			promoBadge: settings.slide3Promo || defaultSliderItems[2].promoBadge
 		}
 	]);

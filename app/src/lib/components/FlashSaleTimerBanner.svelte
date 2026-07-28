@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import AbayizaWordmark from './AbayizaWordmark.svelte';
 
-	let { settings = {} } = $props();
+let { settings = {} } = $props();
+const staticFlashSaleImage = '/products/georgette-abaya/georgette-abaya-magenta.png';
 
 	// Calculate initial time dynamically
 	const getInitialTime = () => {
@@ -72,7 +73,7 @@
 
 				<!-- Modest abaya image -->
 				<img
-					src={settings.flashSaleImage || '/products/cutdana-lace/cutdana-lace-raspberry-magenta.png'}
+					src={staticFlashSaleImage}
 					alt="Flash Sale Abaya Highlight"
 					class="h-[95%] w-auto object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.35)] filter sm:h-[98%]"
 				/>

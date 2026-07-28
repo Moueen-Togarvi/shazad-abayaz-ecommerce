@@ -8,6 +8,7 @@
 
 	let selectedColor = $state('Midnight');
 	let selectedSize = $state('M (54)');
+	const spotlightStaticImage = '/products/georgette-abaya/georgette-abaya-charcoal-grey.png';
 
 	// Try to find Haya Everyday Abaya or Emerald Layered Abaya in products
 	let spotlightProduct = $derived(
@@ -145,15 +146,15 @@
 						class="relative order-1 flex h-[310px] items-center justify-center overflow-visible md:order-2 md:col-span-7 md:h-[400px]"
 					>
 						<!-- Image Frame with elegant border & shadow -->
-						<div
-							class="relative z-10 h-[290px] w-[230px] overflow-hidden rounded-2xl border border-[#0a0a0a]/6 shadow-[0_15px_35px_rgba(20,53,45,0.08)] transition-transform duration-700 group-hover:scale-[1.02] md:h-[380px] md:w-[300px]"
-						>
-							<img
-								src={spotlightProduct.images?.[0]?.url || '/products/nida-cutdana/nida-cutdana-mauve-purple.png'}
-								alt={spotlightProduct.name}
-								class="h-full w-full object-cover"
-							/>
-						</div>
+				<div
+					class="relative z-10 h-[290px] w-[230px] overflow-hidden rounded-2xl border border-[#0a0a0a]/6 shadow-[0_15px_35px_rgba(20,53,45,0.08)] transition-transform duration-700 group-hover:scale-[1.02] md:h-[380px] md:w-[300px]"
+				>
+					<img
+						src={spotlightStaticImage}
+						alt={spotlightProduct.name}
+						class="h-full w-full object-cover"
+					/>
+				</div>
 
 						<!-- Luxury Seal Badge -->
 						<div
