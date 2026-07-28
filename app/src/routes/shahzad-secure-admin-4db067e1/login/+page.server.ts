@@ -12,7 +12,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => ({
-	redirectTo: url.searchParams.get('redirectTo') || '/abayiza-secure-admin-7k9x2p'
+	redirectTo: url.searchParams.get('redirectTo') || '/shahzad-secure-admin-4db067e1'
 });
 
 export const actions: Actions = {
@@ -23,7 +23,7 @@ export const actions: Actions = {
 			.toLowerCase();
 		const password = String(data.get('password') || '');
 		const redirectTo = String(
-			data.get('redirectTo') || url.searchParams.get('redirectTo') || '/abayiza-secure-admin-7k9x2p'
+			data.get('redirectTo') || url.searchParams.get('redirectTo') || '/shahzad-secure-admin-4db067e1'
 		);
 
 		if (!email || !password) {
@@ -54,9 +54,9 @@ export const actions: Actions = {
 
 		throw redirect(
 			303,
-			redirectTo.startsWith('/abayiza-secure-admin-7k9x2p')
+			redirectTo.startsWith('/shahzad-secure-admin-4db067e1')
 				? redirectTo
-				: '/abayiza-secure-admin-7k9x2p'
+				: '/shahzad-secure-admin-4db067e1'
 		);
 	}
 };

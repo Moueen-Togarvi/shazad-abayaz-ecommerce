@@ -5,7 +5,7 @@
 	let {
 		product,
 		class: className = '',
-		savedClass = 'border-[#e4b43d] bg-[#e4b43d] text-white',
+		savedClass = 'border-[#c5a880] bg-[#c5a880] text-white',
 		iconClass = 'h-4 w-4'
 	} = $props<{
 		product: any;

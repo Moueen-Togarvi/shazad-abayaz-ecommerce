@@ -10,7 +10,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	const origin = siteOrigin(url.origin);
 	const body = `User-agent: *
 Allow: /
-Disallow: /abayiza-secure-admin-7k9x2p/
+Disallow: /shahzad-secure-admin-4db067e1/
 Disallow: /account
 Disallow: /cart
 Disallow: /checkout

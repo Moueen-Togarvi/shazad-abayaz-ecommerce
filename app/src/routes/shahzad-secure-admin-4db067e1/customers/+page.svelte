@@ -90,7 +90,7 @@
 					<tr
 						class="group cursor-pointer hover:bg-gray-50"
 						onclick={() =>
-							(window.location.href = `/abayiza-secure-admin-7k9x2p/customers/${customer.id}`)}
+							(window.location.href = `/shahzad-secure-admin-4db067e1/customers/${customer.id}`)}
 					>
 						<td class="px-6 py-4 whitespace-nowrap">
 							<input

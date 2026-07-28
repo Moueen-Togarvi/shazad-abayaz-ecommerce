@@ -128,7 +128,7 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'Product updated successfully.');
-		throw redirect(303, `/abayiza-secure-admin-7k9x2p/products/${params.id}`);
+		throw redirect(303, `/shahzad-secure-admin-4db067e1/products/${params.id}`);
 	},
 
 	delete: async ({ params, cookies }) => {
@@ -141,6 +141,6 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'Product deleted successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/products');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/products');
 	}
 };

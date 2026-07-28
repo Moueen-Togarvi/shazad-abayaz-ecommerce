@@ -52,7 +52,7 @@
 				class="mx-auto mb-8 max-w-sm rounded-2xl bg-white p-7 text-center shadow-[0_24px_80px_rgba(20,53,45,0.10)]"
 			>
 				<div
-					class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#fbf9f2] text-[#e4b43d]"
+					class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#fbf9f2] text-[#c5a880]"
 				>
 					<svg
 						class="h-7 w-7"
@@ -69,7 +69,7 @@
 						/>
 					</svg>
 				</div>
-				<h1 class="text-xl font-black text-[#14352d]">Thank you!</h1>
+				<h1 class="text-xl font-black text-[#0a0a0a]">Thank you!</h1>
 				<p class="mt-1 text-xs leading-5 text-gray-500">Your order has been placed successfully.</p>
 
 				<div class="relative my-6 border-t border-dashed border-gray-300">
@@ -83,17 +83,17 @@
 				<div class="grid grid-cols-2 gap-5 text-left">
 					<div>
 						<p class="text-[0.65rem] font-bold tracking-[0.16em] text-gray-400 uppercase">Order</p>
-						<p class="mt-1 text-sm font-black text-[#14352d]">{order.orderNumber}</p>
+						<p class="mt-1 text-sm font-black text-[#0a0a0a]">{order.orderNumber}</p>
 					</div>
 					<div class="text-right">
 						<p class="text-[0.65rem] font-bold tracking-[0.16em] text-gray-400 uppercase">Amount</p>
-						<p class="mt-1 text-sm font-black text-[#14352d]">{formatMoney(order.totalAmount)}</p>
+						<p class="mt-1 text-sm font-black text-[#0a0a0a]">{formatMoney(order.totalAmount)}</p>
 					</div>
 					<div class="col-span-2">
 						<p class="text-[0.65rem] font-bold tracking-[0.16em] text-gray-400 uppercase">
 							Date & time
 						</p>
-						<p class="mt-1 text-sm font-black text-[#14352d]">{formatDateTime(order.createdAt)}</p>
+						<p class="mt-1 text-sm font-black text-[#0a0a0a]">{formatDateTime(order.createdAt)}</p>
 					</div>
 				</div>
 			</div>
@@ -102,10 +102,10 @@
 				<section class="rounded-2xl bg-white p-6 shadow-[0_20px_70px_rgba(20,53,45,0.08)]">
 					<div class="mb-5 flex items-center justify-between gap-4 border-b border-gray-100 pb-4">
 						<div>
-							<p class="text-xs font-bold tracking-[0.16em] text-[#b58b2b] uppercase">
+							<p class="text-xs font-bold tracking-[0.16em] text-[#a8895f] uppercase">
 								Order details
 							</p>
-							<h2 class="mt-1 font-serif text-2xl text-[#14352d]">Cash on Delivery</h2>
+							<h2 class="mt-1 font-serif text-2xl text-[#0a0a0a]">Cash on Delivery</h2>
 						</div>
 						<span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-800">
 							{order.status}
@@ -125,13 +125,13 @@
 									{/if}
 								</div>
 								<div class="min-w-0 flex-1">
-									<p class="font-medium text-[#14352d]">{item.productName}</p>
+									<p class="font-medium text-[#0a0a0a]">{item.productName}</p>
 									<p class="mt-1 text-xs text-gray-500">
 										{[item.variantColor, item.variantSize].filter(Boolean).join(' / ') || 'Abayiza'} x
 										{item.quantity}
 									</p>
 								</div>
-								<p class="text-sm font-black text-[#14352d]">{formatMoney(item.lineTotal)}</p>
+								<p class="text-sm font-black text-[#0a0a0a]">{formatMoney(item.lineTotal)}</p>
 							</div>
 						{/each}
 					</div>
@@ -149,7 +149,7 @@
 							<span>Discount</span>
 							<span>{formatMoney(order.discountTotal)}</span>
 						</div>
-						<div class="flex justify-between pt-3 text-base font-black text-[#14352d]">
+						<div class="flex justify-between pt-3 text-base font-black text-[#0a0a0a]">
 							<span>Total</span>
 							<span>{formatMoney(order.totalAmount)}</span>
 						</div>
@@ -158,8 +158,8 @@
 
 				<aside class="space-y-6">
 					<section class="rounded-2xl bg-white p-6 shadow-[0_20px_70px_rgba(20,53,45,0.08)]">
-						<p class="text-xs font-bold tracking-[0.16em] text-[#b58b2b] uppercase">Customer</p>
-						<h2 class="mt-2 font-serif text-xl text-[#14352d]">{order.customerName}</h2>
+						<p class="text-xs font-bold tracking-[0.16em] text-[#a8895f] uppercase">Customer</p>
+						<h2 class="mt-2 font-serif text-xl text-[#0a0a0a]">{order.customerName}</h2>
 						<div class="mt-4 space-y-2 text-sm text-gray-600">
 							<p>{order.customerEmail}</p>
 							<p>{order.customerPhone}</p>
@@ -167,7 +167,7 @@
 					</section>
 
 					<section class="rounded-2xl bg-white p-6 shadow-[0_20px_70px_rgba(20,53,45,0.08)]">
-						<p class="text-xs font-bold tracking-[0.16em] text-[#b58b2b] uppercase">
+						<p class="text-xs font-bold tracking-[0.16em] text-[#a8895f] uppercase">
 							Shipping address
 						</p>
 						<div class="mt-4 space-y-3 text-sm">
@@ -175,7 +175,7 @@
 								<p class="text-[0.68rem] font-black tracking-[0.12em] text-gray-400 uppercase">
 									Name
 								</p>
-								<p class="mt-1 font-medium text-[#14352d]">
+								<p class="mt-1 font-medium text-[#0a0a0a]">
 									{address.firstName || '-'}
 									{address.lastName || ''}
 								</p>
@@ -194,13 +194,13 @@
 									<p class="text-[0.68rem] font-black tracking-[0.12em] text-gray-400 uppercase">
 										City
 									</p>
-									<p class="mt-1 font-medium text-[#14352d]">{address.city || '-'}</p>
+									<p class="mt-1 font-medium text-[#0a0a0a]">{address.city || '-'}</p>
 								</div>
 								<div>
 									<p class="text-[0.68rem] font-black tracking-[0.12em] text-gray-400 uppercase">
 										Postal Code
 									</p>
-									<p class="mt-1 font-medium text-[#14352d]">{address.postalCode || '-'}</p>
+									<p class="mt-1 font-medium text-[#0a0a0a]">{address.postalCode || '-'}</p>
 								</div>
 							</div>
 							<div class="grid grid-cols-2 gap-3">
@@ -208,13 +208,13 @@
 									<p class="text-[0.68rem] font-black tracking-[0.12em] text-gray-400 uppercase">
 										Country
 									</p>
-									<p class="mt-1 font-medium text-[#14352d]">{address.country || '-'}</p>
+									<p class="mt-1 font-medium text-[#0a0a0a]">{address.country || '-'}</p>
 								</div>
 								<div>
 									<p class="text-[0.68rem] font-black tracking-[0.12em] text-gray-400 uppercase">
 										Mobile
 									</p>
-									<p class="mt-1 font-medium text-[#14352d]">
+									<p class="mt-1 font-medium text-[#0a0a0a]">
 										{address.phone || order.customerPhone || '-'}
 									</p>
 								</div>
@@ -227,13 +227,13 @@
 			<div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
 				<a
 					href="/shop"
-					class="rounded-full bg-[#14352d] px-8 py-4 text-center text-sm font-black tracking-[0.08em] text-white uppercase transition-colors hover:bg-[#e4b43d] hover:text-[#14352d]"
+					class="rounded-full bg-[#0a0a0a] px-8 py-4 text-center text-sm font-black tracking-[0.08em] text-white uppercase transition-colors hover:bg-[#c5a880] hover:text-[#0a0a0a]"
 				>
 					Continue Shopping
 				</a>
 				<a
 					href="/track"
-					class="rounded-full border border-[#14352d] px-8 py-4 text-center text-sm font-black tracking-[0.08em] text-[#14352d] uppercase transition-colors hover:bg-white"
+					class="rounded-full border border-[#0a0a0a] px-8 py-4 text-center text-sm font-black tracking-[0.08em] text-[#0a0a0a] uppercase transition-colors hover:bg-white"
 				>
 					Track Order
 				</a>
@@ -243,13 +243,13 @@
 		<div
 			class="mx-auto max-w-md rounded-2xl bg-white p-8 text-center shadow-[0_24px_80px_rgba(20,53,45,0.10)]"
 		>
-			<h1 class="font-serif text-3xl text-[#14352d]">Order not found</h1>
+			<h1 class="font-serif text-3xl text-[#0a0a0a]">Order not found</h1>
 			<p class="mt-3 text-sm leading-6 text-gray-500">
 				Use the checkout flow again or contact support with your order number.
 			</p>
 			<a
 				href="/shop"
-				class="mt-6 inline-flex rounded-full bg-[#14352d] px-7 py-3 text-sm font-black text-white"
+				class="mt-6 inline-flex rounded-full bg-[#0a0a0a] px-7 py-3 text-sm font-black text-white"
 			>
 				Continue Shopping
 			</a>

@@ -96,7 +96,7 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'User added successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/users');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/users');
 	},
 
 	update: async ({ request, locals, cookies }) => {
@@ -135,7 +135,7 @@ export const actions: Actions = {
 		});
 
 		setAdminFlash(cookies, 'User updated successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/users');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/users');
 	},
 
 	delete: async ({ request, locals, cookies }) => {
@@ -156,6 +156,6 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'User deleted successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/users');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/users');
 	}
 };

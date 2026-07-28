@@ -29,21 +29,21 @@
 	}
 </script>
 
-<section class="border-t border-[#14352d]/8 bg-[#fbf9f2] px-4 py-16 sm:px-6 lg:px-8">
+<section class="border-t border-[#0a0a0a]/8 bg-[#fbf9f2] px-4 py-16 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-6xl">
 		<!-- Section Header -->
 		<div class="mb-12 text-center">
 			<p class="mb-2 text-xs font-bold tracking-[0.25em] text-[#8a7444] uppercase">Special Offers</p>
-			<h2 class="font-serif text-3xl font-black leading-tight text-[#14352d] uppercase sm:text-4xl">
+			<h2 class="font-serif text-3xl font-black leading-tight text-[#0a0a0a] uppercase sm:text-4xl">
 				Exclusive Deals & Edits
 			</h2>
-			<div class="h-[3px] w-12 mt-3.5 rounded bg-[#e4b43d] mx-auto"></div>
+			<div class="h-[3px] w-12 mt-3.5 rounded bg-[#c5a880] mx-auto"></div>
 		</div>
 
 		<div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12">
 			<!-- COLUMN 1: LUXURY PRODUCT HERO SPOTLIGHT (7 Cols) -->
 			<div
-				class="group relative flex flex-col justify-center overflow-hidden rounded-3xl border border-[#14352d]/6 bg-white p-6 shadow-[0_12px_36px_rgba(20,53,45,0.015)] sm:p-8 lg:col-span-7"
+				class="group relative flex flex-col justify-center overflow-hidden rounded-3xl border border-[#0a0a0a]/6 bg-white p-6 shadow-[0_12px_36px_rgba(20,53,45,0.015)] sm:p-8 lg:col-span-7"
 			>
 				<!-- Subtle radial gradient glow behind model -->
 				<div class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_70%_50%,rgba(228,180,61,0.08),transparent_55%)]"></div>
@@ -60,14 +60,14 @@
 								New Arrival Offer
 							</p>
 							<h3
-								class="mt-1 font-serif text-xl font-black leading-snug text-[#14352d] uppercase sm:text-2xl"
+								class="mt-1 font-serif text-xl font-black leading-snug text-[#0a0a0a] uppercase sm:text-2xl"
 							>
 								{spotlightProduct.name}
 							</h3>
 						</div>
 
 						<div class="flex items-baseline justify-center gap-2.5 md:justify-start">
-							<span class="text-2xl sm:text-3xl font-black text-[#14352d] tracking-tight">
+							<span class="text-2xl sm:text-3xl font-black text-[#0a0a0a] tracking-tight">
 								{spotlightProduct.salePrice
 									? formatMoney(spotlightProduct.salePrice)
 									: formatMoney(spotlightProduct.price * 0.7)}
@@ -80,14 +80,14 @@
 						<!-- Color Selector -->
 						<div class="flex w-full flex-col items-center md:items-start">
 							<span
-								class="mb-2 block font-sans text-[0.62rem] font-bold tracking-wider text-[#596c62] uppercase"
-								>Color: <span class="font-black text-[#14352d]">{selectedColor}</span></span
+								class="mb-2 block font-sans text-[0.62rem] font-bold tracking-wider text-[#52524f] uppercase"
+								>Color: <span class="font-black text-[#0a0a0a]">{selectedColor}</span></span
 							>
 							<div class="flex justify-center gap-2.5 md:justify-start">
 								{#each ['Midnight', 'Sage', 'Mocha'] as color}
 									<button
 										onclick={() => (selectedColor = color)}
-										class="relative flex h-6.5 w-6.5 items-center justify-center rounded-full border transition-all duration-300 {selectedColor === color ? 'border-[#e4b43d] ring-2 ring-[#e4b43d]/30' : 'border-gray-200'}"
+										class="relative flex h-6.5 w-6.5 items-center justify-center rounded-full border transition-all duration-300 {selectedColor === color ? 'border-[#c5a880] ring-2 ring-[#c5a880]/30' : 'border-gray-200'}"
 										aria-label={color}
 									>
 										<span
@@ -106,14 +106,14 @@
 						<!-- Size Selector -->
 						<div class="flex w-full flex-col items-center md:items-start">
 							<span
-								class="mb-2 block font-sans text-[0.62rem] font-bold tracking-wider text-[#596c62] uppercase"
-								>Size: <span class="font-black text-[#14352d]">{selectedSize}</span></span
+								class="mb-2 block font-sans text-[0.62rem] font-bold tracking-wider text-[#52524f] uppercase"
+								>Size: <span class="font-black text-[#0a0a0a]">{selectedSize}</span></span
 							>
 							<div class="flex justify-center gap-2 md:justify-start">
 								{#each ['S (52)', 'M (54)', 'L (56)'] as size}
 									<button
 										onclick={() => (selectedSize = size)}
-										class="rounded-xl border px-3.5 py-1.5 text-[0.62rem] font-black transition-all duration-300 {selectedSize === size ? 'border-[#14352d] bg-[#14352d] text-white' : 'border-gray-200 bg-[#fbf9f2] text-[#596c62] hover:border-gray-400'}"
+										class="rounded-xl border px-3.5 py-1.5 text-[0.62rem] font-black transition-all duration-300 {selectedSize === size ? 'border-[#0a0a0a] bg-[#0a0a0a] text-white' : 'border-gray-200 bg-[#fbf9f2] text-[#52524f] hover:border-gray-400'}"
 									>
 										{size.split(' ')[0]}
 									</button>
@@ -125,7 +125,7 @@
 						<div class="w-full pt-2">
 							<button
 								onclick={handleSpotlightAddToCart}
-								class="inline-flex min-h-[2.75rem] w-full items-center justify-center gap-2 rounded-2xl bg-[#e4b43d] px-5 text-xs font-black tracking-wider text-[#14352d] uppercase shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#14352d] hover:text-white"
+								class="inline-flex min-h-[2.75rem] w-full items-center justify-center gap-2 rounded-2xl bg-[#c5a880] px-5 text-xs font-black tracking-wider text-[#0a0a0a] uppercase shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0a0a0a] hover:text-white"
 							>
 								<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path
@@ -146,7 +146,7 @@
 					>
 						<!-- Image Frame with elegant border & shadow -->
 						<div
-							class="relative z-10 h-[290px] w-[230px] overflow-hidden rounded-2xl border border-[#14352d]/6 shadow-[0_15px_35px_rgba(20,53,45,0.08)] transition-transform duration-700 group-hover:scale-[1.02] md:h-[380px] md:w-[300px]"
+							class="relative z-10 h-[290px] w-[230px] overflow-hidden rounded-2xl border border-[#0a0a0a]/6 shadow-[0_15px_35px_rgba(20,53,45,0.08)] transition-transform duration-700 group-hover:scale-[1.02] md:h-[380px] md:w-[300px]"
 						>
 							<img
 								src={spotlightProduct.images?.[0]?.url || '/abaya11.png'}
@@ -157,7 +157,7 @@
 
 						<!-- Luxury Seal Badge -->
 						<div
-							class="absolute top-2 right-4 z-20 flex h-16 w-16 rotate-12 flex-col items-center justify-center rounded-full bg-[#e4b43d] text-[#14352d] shadow-lg outline outline-1 outline-offset-2 outline-[#e4b43d]/30 transition-transform duration-500 group-hover:scale-110 md:h-18 md:w-18"
+							class="absolute top-2 right-4 z-20 flex h-16 w-16 rotate-12 flex-col items-center justify-center rounded-full bg-[#c5a880] text-[#0a0a0a] shadow-lg outline outline-1 outline-offset-2 outline-[#c5a880]/30 transition-transform duration-500 group-hover:scale-110 md:h-18 md:w-18"
 						>
 							<span class="text-[0.55rem] font-bold uppercase">Save</span>
 							<span class="text-base font-black leading-none md:text-lg">30%</span>
@@ -165,7 +165,7 @@
 						</div>
 
 						<div
-							class="absolute bottom-4 left-4 z-20 rounded bg-[#14352d] px-3 py-1 text-[0.55rem] font-bold tracking-wider text-white uppercase shadow-md"
+							class="absolute bottom-4 left-4 z-20 rounded bg-[#0a0a0a] px-3 py-1 text-[0.55rem] font-bold tracking-wider text-white uppercase shadow-md"
 						>
 							Online Exclusive
 						</div>
@@ -178,12 +178,12 @@
 				<!-- CARD 1: CHIFFON HIJABS -->
 				<a
 					href="/shop?q=hijab"
-					class="group flex flex-1 items-center justify-between overflow-hidden rounded-2xl border border-[#14352d]/6 bg-white p-4.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#e4b43d]/30 hover:shadow-md"
+					class="group flex flex-1 items-center justify-between overflow-hidden rounded-2xl border border-[#0a0a0a]/6 bg-white p-4.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c5a880]/30 hover:shadow-md"
 				>
 					<div class="flex items-center gap-4 pr-2">
 						<!-- Rounded Square Thumbnail -->
 						<div
-							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#14352d]/6 bg-[#e4eee9] sm:h-24 sm:w-24 relative shadow-inner"
+							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#0a0a0a]/6 bg-[#eeece4] sm:h-24 sm:w-24 relative shadow-inner"
 						>
 							<img
 								src="/ChatGPT Image May 25, 2026, 06_25_13 PM.png"
@@ -193,21 +193,21 @@
 						</div>
 						<div class="text-left">
 							<span
-								class="mb-1 inline-flex rounded-full border border-[#e4b43d]/20 bg-[#e4b43d]/10 px-2.5 py-0.5 text-[0.52rem] font-bold tracking-wide text-[#8a7444] uppercase"
+								class="mb-1 inline-flex rounded-full border border-[#c5a880]/20 bg-[#c5a880]/10 px-2.5 py-0.5 text-[0.52rem] font-bold tracking-wide text-[#8a7444] uppercase"
 							>
 								Essential Match
 							</span>
-							<h4 class="font-serif text-sm sm:text-base font-black text-[#14352d] uppercase">
+							<h4 class="font-serif text-sm sm:text-base font-black text-[#0a0a0a] uppercase">
 								Premium Hijabs
 							</h4>
-							<p class="mt-0.5 text-[0.68rem] font-medium text-[#596c62] leading-tight">
+							<p class="mt-0.5 text-[0.68rem] font-medium text-[#52524f] leading-tight">
 								Soft Georgette & Chiffon, 12 colors.
 							</p>
 							<span class="mt-2 block text-xs font-black text-[#8a7444]">From {formatMoney(1490)}</span>
 						</div>
 					</div>
 					<div
-						class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#14352d]/5 text-[#14352d] transition-all duration-300 group-hover:bg-[#14352d] group-hover:text-white group-hover:translate-x-1"
+						class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0a0a0a]/5 text-[#0a0a0a] transition-all duration-300 group-hover:bg-[#0a0a0a] group-hover:text-white group-hover:translate-x-1"
 					>
 						<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
@@ -223,12 +223,12 @@
 				<!-- CARD 2: EVERYDAY CREPE -->
 				<a
 					href="/shop?category=daily-wear"
-					class="group flex flex-1 items-center justify-between overflow-hidden rounded-2xl border border-[#14352d]/6 bg-white p-4.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#e4b43d]/30 hover:shadow-md"
+					class="group flex flex-1 items-center justify-between overflow-hidden rounded-2xl border border-[#0a0a0a]/6 bg-white p-4.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c5a880]/30 hover:shadow-md"
 				>
 					<div class="flex items-center gap-4 pr-2">
 						<!-- Rounded Square Thumbnail -->
 						<div
-							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#14352d]/6 bg-[#e4eee9] sm:h-24 sm:w-24 relative shadow-inner"
+							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#0a0a0a]/6 bg-[#eeece4] sm:h-24 sm:w-24 relative shadow-inner"
 						>
 							<img
 								src="/abaya11.png"
@@ -242,17 +242,17 @@
 							>
 								Free Shipping
 							</span>
-							<h4 class="font-serif text-sm sm:text-base font-black text-[#14352d] uppercase">
+							<h4 class="font-serif text-sm sm:text-base font-black text-[#0a0a0a] uppercase">
 								Daily Crepe Cuts
 							</h4>
-							<p class="mt-0.5 text-[0.68rem] font-medium text-[#596c62] leading-tight">
+							<p class="mt-0.5 text-[0.68rem] font-medium text-[#52524f] leading-tight">
 								Minimalist cuts for all-day comfort.
 							</p>
 							<span class="mt-2 block text-xs font-black text-[#8a7444]">From {formatMoney(4990)}</span>
 						</div>
 					</div>
 					<div
-						class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#14352d]/5 text-[#14352d] transition-all duration-300 group-hover:bg-[#14352d] group-hover:text-white group-hover:translate-x-1"
+						class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0a0a0a]/5 text-[#0a0a0a] transition-all duration-300 group-hover:bg-[#0a0a0a] group-hover:text-white group-hover:translate-x-1"
 					>
 						<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
@@ -268,12 +268,12 @@
 				<!-- CARD 3: LUXURY EMBROIDERY -->
 				<a
 					href="/shop?category=occasion"
-					class="group flex flex-1 items-center justify-between overflow-hidden rounded-2xl border border-[#14352d]/6 bg-white p-4.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#e4b43d]/30 hover:shadow-md"
+					class="group flex flex-1 items-center justify-between overflow-hidden rounded-2xl border border-[#0a0a0a]/6 bg-white p-4.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c5a880]/30 hover:shadow-md"
 				>
 					<div class="flex items-center gap-4 pr-2">
 						<!-- Rounded Square Thumbnail -->
 						<div
-							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#14352d]/6 bg-[#e4eee9] sm:h-24 sm:w-24 relative shadow-inner"
+							class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-[#0a0a0a]/6 bg-[#eeece4] sm:h-24 sm:w-24 relative shadow-inner"
 						>
 							<img
 								src="/abaya22.png"
@@ -283,21 +283,21 @@
 						</div>
 						<div class="text-left">
 							<span
-								class="mb-1 inline-flex rounded-full border border-[#14352d]/10 bg-[#14352d]/5 px-2.5 py-0.5 text-[0.52rem] font-bold tracking-wide text-[#14352d] uppercase"
+								class="mb-1 inline-flex rounded-full border border-[#0a0a0a]/10 bg-[#0a0a0a]/5 px-2.5 py-0.5 text-[0.52rem] font-bold tracking-wide text-[#0a0a0a] uppercase"
 							>
 								Limited Edition
 							</span>
-							<h4 class="font-serif text-sm sm:text-base font-black text-[#14352d] uppercase">
+							<h4 class="font-serif text-sm sm:text-base font-black text-[#0a0a0a] uppercase">
 								Luxe Stonework
 							</h4>
-							<p class="mt-0.5 text-[0.68rem] font-medium text-[#596c62] leading-tight">
+							<p class="mt-0.5 text-[0.68rem] font-medium text-[#52524f] leading-tight">
 								Intricate hand-stitched sleeve detailing.
 							</p>
 							<span class="mt-2 block text-xs font-black text-[#8a7444]">From {formatMoney(7490)}</span>
 						</div>
 					</div>
 					<div
-						class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#14352d]/5 text-[#14352d] transition-all duration-300 group-hover:bg-[#14352d] group-hover:text-white group-hover:translate-x-1"
+						class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0a0a0a]/5 text-[#0a0a0a] transition-all duration-300 group-hover:bg-[#0a0a0a] group-hover:text-white group-hover:translate-x-1"
 					>
 						<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path

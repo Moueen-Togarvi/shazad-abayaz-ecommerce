@@ -74,7 +74,7 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'Category added successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/categories');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/categories');
 	},
 
 	update: async ({ request, cookies }) => {
@@ -126,7 +126,7 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'Category updated successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/categories');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/categories');
 	},
 
 	delete: async ({ request, cookies }) => {
@@ -157,6 +157,6 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'Category deleted successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/categories');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/categories');
 	}
 };

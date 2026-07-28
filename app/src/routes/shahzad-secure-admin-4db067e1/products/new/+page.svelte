@@ -57,7 +57,7 @@
 </svelte:head>
 
 <div class="mx-auto max-w-5xl pb-12">
-	<PageHeader title="Add Product" subtitle="Create a new product in your catalog." backHref="/abayiza-secure-admin-7k9x2p/products" />
+	<PageHeader title="Add Product" subtitle="Create a new product in your catalog." backHref="/shahzad-secure-admin-4db067e1/products" />
 
 	{#if form?.error}
 		<div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -239,7 +239,7 @@
 				<div class="sticky bottom-6">
 					<Card>
 						<Button type="submit" class="w-full">Save Product</Button>
-						<Button href="/abayiza-secure-admin-7k9x2p/products" variant="secondary" class="mt-3 w-full">
+						<Button href="/shahzad-secure-admin-4db067e1/products" variant="secondary" class="mt-3 w-full">
 							Discard
 						</Button>
 					</Card>

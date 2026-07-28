@@ -107,14 +107,14 @@
 </script>
 
 <article
-	class="group flex h-full overflow-hidden rounded-xl border border-[#14352d]/6 bg-white shadow-[0_8px_24px_rgba(20,53,45,0.01)] transition-all duration-300 hover:-translate-y-1 hover:border-[#14352d]/12 hover:shadow-[0_16px_36px_rgba(20,53,45,0.04)] {layout ===
+	class="group flex h-full overflow-hidden rounded-xl border border-[#0a0a0a]/6 bg-white shadow-[0_8px_24px_rgba(20,53,45,0.01)] transition-all duration-300 hover:-translate-y-1 hover:border-[#0a0a0a]/12 hover:shadow-[0_16px_36px_rgba(20,53,45,0.04)] {layout ===
 	'list'
 		? 'flex-col sm:flex-row'
 		: 'flex-col'} {className}"
 >
 	<!-- Image Container -->
 	<div
-		class="relative block overflow-hidden bg-[#e4eee9] {layout === 'list'
+		class="relative block overflow-hidden bg-[#eeece4] {layout === 'list'
 			? `w-full sm:w-64 sm:shrink-0 ${aspectRatio}`
 			: `w-full ${aspectRatio}`}"
 	>
@@ -138,8 +138,8 @@
 		<!-- Wishlist Floating Button -->
 		<WishlistButton
 			{product}
-			class="absolute top-3 right-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#14352d] shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-[#14352d] hover:text-white"
-			savedClass="bg-[#e4b43d] border-[#e4b43d] text-[#14352d]"
+			class="absolute top-3 right-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#0a0a0a] shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-[#0a0a0a] hover:text-white"
+			savedClass="bg-[#c5a880] border-[#c5a880] text-[#0a0a0a]"
 			iconClass="h-4 w-4"
 		/>
 
@@ -148,7 +148,7 @@
 			<button
 				type="button"
 				onclick={handleAddToCart}
-				class="absolute right-3 bottom-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#14352d] shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-[#e4b43d] hover:text-[#14352d]"
+				class="absolute right-3 bottom-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#0a0a0a] shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-[#c5a880] hover:text-[#0a0a0a]"
 				aria-label="Add to cart"
 			>
 				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +165,7 @@
 		<!-- Out of stock overlay -->
 		{#if isOutOfStock}
 			<div
-				class="absolute inset-0 z-10 flex items-center justify-center bg-[#14352d]/40 backdrop-blur-[1px]"
+				class="absolute inset-0 z-10 flex items-center justify-center bg-[#0a0a0a]/40 backdrop-blur-[1px]"
 			>
 				<span
 					class="rounded-full bg-white/95 px-3 py-1 text-[0.62rem] font-bold tracking-[0.15em] text-red-600 uppercase shadow-sm"
@@ -182,7 +182,7 @@
 			<!-- Product Name -->
 			<a
 				{href}
-				class="block truncate font-sans text-xs leading-snug font-bold text-[#14352d] uppercase transition-colors hover:text-[#c0983f] sm:line-clamp-2 sm:text-base sm:whitespace-normal"
+				class="block truncate font-sans text-xs leading-snug font-bold text-[#0a0a0a] uppercase transition-colors hover:text-[#c0983f] sm:line-clamp-2 sm:text-base sm:whitespace-normal"
 			>
 				{product.name}
 			</a>
@@ -193,7 +193,7 @@
 				<div
 					class="relative flex-1 overflow-hidden {discountPercent > 0
 						? 'border border-red-100/50 bg-red-50 text-red-600'
-						: 'border border-[#14352d]/6 bg-[#e4eee9] text-[#14352d]'} flex h-[18px] items-center rounded-md px-2 py-0.5 text-[0.48rem] font-extrabold tracking-wider uppercase sm:h-[22px] sm:text-[0.55rem]"
+						: 'border border-[#0a0a0a]/6 bg-[#eeece4] text-[#0a0a0a]'} flex h-[18px] items-center rounded-md px-2 py-0.5 text-[0.48rem] font-extrabold tracking-wider uppercase sm:h-[22px] sm:text-[0.55rem]"
 				>
 					<div class="animate-marquee-custom flex items-center gap-4 whitespace-nowrap">
 						<span class="shrink-0 whitespace-nowrap">{marqueeText}</span>
@@ -228,11 +228,11 @@
 
 		<!-- Footer Row: Price & Buy Now Button side-by-side -->
 		<div
-			class="mt-2 flex items-center justify-between gap-0.5 border-t border-[#14352d]/6 pt-2 sm:gap-2"
+			class="mt-2 flex items-center justify-between gap-0.5 border-t border-[#0a0a0a]/6 pt-2 sm:gap-2"
 		>
 			<div class="min-w-0">
 				<div class="flex items-baseline gap-1 whitespace-nowrap">
-					<span class="text-[0.68rem] font-extrabold tracking-tight text-[#14352d] sm:text-base">
+					<span class="text-[0.68rem] font-extrabold tracking-tight text-[#0a0a0a] sm:text-base">
 						{formatMoney(product.salePrice || product.price)}
 					</span>
 					{#if product.salePrice}
@@ -255,7 +255,7 @@
 				{:else}
 					<a
 						{href}
-						class="inline-flex min-h-[1.3rem] items-center gap-0.5 rounded-[5px] bg-[#14352d] px-1 py-0.5 text-[0.52rem] font-bold tracking-wider text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e4b43d] hover:text-[#14352d] sm:min-h-[2rem] sm:gap-1.5 sm:rounded-xl sm:px-2.5 sm:text-xs"
+						class="inline-flex min-h-[1.3rem] items-center gap-0.5 rounded-[5px] bg-[#0a0a0a] px-1 py-0.5 text-[0.52rem] font-bold tracking-wider text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#0a0a0a] sm:min-h-[2rem] sm:gap-1.5 sm:rounded-xl sm:px-2.5 sm:text-xs"
 					>
 						<svg
 							class="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5"

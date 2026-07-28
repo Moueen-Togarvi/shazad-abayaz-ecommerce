@@ -96,7 +96,7 @@
 </svelte:head>
 
 <div class="mx-auto max-w-5xl pb-12">
-	<PageHeader title={product.name} backHref="/abayiza-secure-admin-7k9x2p/products">
+	<PageHeader title={product.name} backHref="/shahzad-secure-admin-4db067e1/products">
 		{#snippet actions()}
 			<Badge tone={status.tone}>{status.label}</Badge>
 			<Button variant="danger" onclick={() => (showDeleteConfirm = true)}>
@@ -331,7 +331,7 @@
 				<div class="sticky bottom-6">
 					<Card>
 						<Button type="submit" class="w-full">Save Changes</Button>
-						<Button href="/abayiza-secure-admin-7k9x2p/products" variant="secondary" class="mt-3 w-full">
+						<Button href="/shahzad-secure-admin-4db067e1/products" variant="secondary" class="mt-3 w-full">
 							Cancel
 						</Button>
 					</Card>

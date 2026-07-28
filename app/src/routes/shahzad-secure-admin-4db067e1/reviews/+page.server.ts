@@ -52,7 +52,7 @@ export const actions: Actions = {
 			cookies,
 			`${imageUrls.length} review photo${imageUrls.length === 1 ? '' : 's'} uploaded successfully.`
 		);
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/reviews');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/reviews');
 	},
 
 	toggle: async ({ request, cookies }) => {
@@ -71,7 +71,7 @@ export const actions: Actions = {
 			cookies,
 			isVisible ? 'Review photo shown on storefront.' : 'Review photo hidden from storefront.'
 		);
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/reviews');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/reviews');
 	},
 
 	delete: async ({ request, cookies }) => {
@@ -91,6 +91,6 @@ export const actions: Actions = {
 		await deleteReviewImageFiles([photo.url]);
 
 		setAdminFlash(cookies, 'Review photo deleted successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/reviews');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/reviews');
 	}
 };

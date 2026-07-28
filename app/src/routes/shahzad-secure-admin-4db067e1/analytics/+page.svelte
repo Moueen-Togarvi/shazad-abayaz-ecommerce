@@ -145,7 +145,7 @@
 						{#each data.recentOrders as order}
 							<tr class="hover:bg-gray-50">
 								<td class="px-6 py-3 text-sm font-medium text-blue-600">
-									<a href={`/abayiza-secure-admin-7k9x2p/orders/${order.id}`}>{order.orderNumber}</a
+									<a href={`/shahzad-secure-admin-4db067e1/orders/${order.id}`}>{order.orderNumber}</a
 									>
 								</td>
 								<td class="px-6 py-3 text-sm text-gray-500">{order.status}</td>

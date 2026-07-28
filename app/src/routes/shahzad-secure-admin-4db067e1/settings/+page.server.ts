@@ -62,12 +62,12 @@ export const actions: Actions = {
 
 		await saveSettings(settings);
 		setAdminFlash(cookies, 'Settings updated successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/settings?saved=1');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/settings?saved=1');
 	},
 
 	reset: async ({ cookies }) => {
 		await saveSettings(defaultStoreSettings);
 		setAdminFlash(cookies, 'Settings reset successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/settings?reset=1');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/settings?reset=1');
 	}
 };

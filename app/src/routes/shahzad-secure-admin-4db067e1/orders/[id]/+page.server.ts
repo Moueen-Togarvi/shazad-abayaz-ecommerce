@@ -78,15 +78,15 @@ export const actions: Actions = {
 
 		if (status === 'DELIVERED') {
 			setAdminFlash(cookies, 'Order marked as complete.');
-			throw redirect(303, '/abayiza-secure-admin-7k9x2p/orders/completed');
+			throw redirect(303, '/shahzad-secure-admin-4db067e1/orders/completed');
 		}
 
 		if (status === 'CANCELLED') {
 			setAdminFlash(cookies, 'Order cancelled successfully.');
-			throw redirect(303, '/abayiza-secure-admin-7k9x2p/orders/cancelled');
+			throw redirect(303, '/shahzad-secure-admin-4db067e1/orders/cancelled');
 		}
 
 		setAdminFlash(cookies, 'Order status updated successfully.');
-		throw redirect(303, `/abayiza-secure-admin-7k9x2p/orders/${params.id}`);
+		throw redirect(303, `/shahzad-secure-admin-4db067e1/orders/${params.id}`);
 	}
 };

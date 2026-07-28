@@ -390,7 +390,7 @@
 					<button
 						type="button"
 						disabled={selectedVariantOutOfStock}
-						class="flex h-14 items-center justify-center gap-2 bg-[#e4b43d] px-4 text-sm font-bold tracking-widest text-[#14352d] uppercase transition-colors hover:bg-[#14352d] hover:text-white disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-600"
+						class="flex h-14 items-center justify-center gap-2 bg-[#c5a880] px-4 text-sm font-bold tracking-widest text-[#0a0a0a] uppercase transition-colors hover:bg-[#0a0a0a] hover:text-white disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-600"
 						onclick={buyNow}
 					>
 						<span>{selectedVariantOutOfStock ? 'Unavailable' : 'Buy Now'}</span>
@@ -515,12 +515,12 @@
 							</a>
 							<WishlistButton
 								product={item}
-								class="absolute right-3 bottom-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white/86 text-[#14352d] shadow-[0_10px_22px_rgba(20,53,45,0.16)] backdrop-blur transition-colors hover:bg-[#e4b43d]"
+								class="absolute right-3 bottom-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white/86 text-[#0a0a0a] shadow-[0_10px_22px_rgba(20,53,45,0.16)] backdrop-blur transition-colors hover:bg-[#c5a880]"
 								iconClass="h-4 w-4"
 							/>
 							<a
 								href={`/shop/${item.slug}`}
-								class="absolute right-14 bottom-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white/86 text-[#14352d] shadow-[0_10px_22px_rgba(20,53,45,0.16)] backdrop-blur transition-colors hover:bg-[#e4b43d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#14352d]"
+								class="absolute right-14 bottom-3 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white/86 text-[#0a0a0a] shadow-[0_10px_22px_rgba(20,53,45,0.16)] backdrop-blur transition-colors hover:bg-[#c5a880] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a]"
 								aria-label={`Open ${item.name} details`}
 							>
 								<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

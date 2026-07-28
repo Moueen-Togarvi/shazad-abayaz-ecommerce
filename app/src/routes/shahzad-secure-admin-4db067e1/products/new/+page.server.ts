@@ -70,6 +70,6 @@ export const actions: Actions = {
 		}
 
 		setAdminFlash(cookies, 'Product added successfully.');
-		throw redirect(303, `/abayiza-secure-admin-7k9x2p/products/${createdProductId}`);
+		throw redirect(303, `/shahzad-secure-admin-4db067e1/products/${createdProductId}`);
 	}
 };

@@ -16,7 +16,7 @@
 	<PageHeader title="Products" subtitle="Manage your catalog, inventory, and pricing.">
 		{#snippet actions()}
 			<Button variant="secondary" size="md">Export</Button>
-			<Button href="/abayiza-secure-admin-7k9x2p/products/new" size="md">
+			<Button href="/shahzad-secure-admin-4db067e1/products/new" size="md">
 				<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path
 						stroke-linecap="round"
@@ -79,7 +79,7 @@
 			<tr
 				class="group cursor-pointer transition-colors hover:bg-gray-50"
 				onclick={() =>
-					(window.location.href = `/abayiza-secure-admin-7k9x2p/products/${product.id}`)}
+					(window.location.href = `/shahzad-secure-admin-4db067e1/products/${product.id}`)}
 			>
 				<td class="px-6 py-4 whitespace-nowrap">
 					<div class="flex items-center gap-3">
@@ -125,7 +125,7 @@
 				<td class="px-6 py-4 text-right text-sm whitespace-nowrap">
 					<div class="flex justify-end gap-2">
 						<Button
-							href={`/abayiza-secure-admin-7k9x2p/products/${product.id}`}
+							href={`/shahzad-secure-admin-4db067e1/products/${product.id}`}
 							variant="secondary"
 							size="sm"
 							onclick={(event: MouseEvent) => event.stopPropagation()}>Edit</Button

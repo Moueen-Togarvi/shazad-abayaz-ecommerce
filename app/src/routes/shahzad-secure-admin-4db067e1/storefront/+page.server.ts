@@ -173,7 +173,7 @@ export const actions: Actions = {
 		await saveSettings(settings);
 
 		setAdminFlash(cookies, 'Promo Banners and Flash Sale Timer updated successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/storefront');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/storefront');
 	},
 
 	saveSaleTape: async ({ request, cookies }) => {
@@ -193,7 +193,7 @@ export const actions: Actions = {
 		});
 
 		setAdminFlash(cookies, 'Sale tape text updated successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/storefront');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/storefront');
 	},
 
 	saveHero: async ({ request, cookies }) => {
@@ -213,7 +213,7 @@ export const actions: Actions = {
 		});
 
 		setAdminFlash(cookies, 'Hero typewriter phrases updated successfully.');
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/storefront');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/storefront');
 	},
 
 	saveSection: async ({ request, cookies }) => {
@@ -274,6 +274,6 @@ export const actions: Actions = {
 
 		const section = HOME_SECTION_CONFIGS.find((item) => item.key === sectionKey);
 		setAdminFlash(cookies, `${section?.title ?? 'Storefront section'} updated successfully.`);
-		throw redirect(303, '/abayiza-secure-admin-7k9x2p/storefront');
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/storefront');
 	}
 };

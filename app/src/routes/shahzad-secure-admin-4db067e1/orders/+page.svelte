@@ -26,10 +26,10 @@
 <div class="mx-auto max-w-7xl">
 	<PageHeader title="Active Orders" subtitle="Orders that still need attention. Completed and cancelled orders have their own pages.">
 		{#snippet actions()}
-			<Button href="/abayiza-secure-admin-7k9x2p/orders/completed" variant="secondary">
+			<Button href="/shahzad-secure-admin-4db067e1/orders/completed" variant="secondary">
 				Completed
 			</Button>
-			<Button href="/abayiza-secure-admin-7k9x2p/orders/cancelled" variant="danger">
+			<Button href="/shahzad-secure-admin-4db067e1/orders/cancelled" variant="danger">
 				Cancelled
 			</Button>
 		{/snippet}
@@ -57,7 +57,7 @@
 				<div class="flex gap-2">
 					<Button type="submit" class="flex-1">Filter</Button>
 					<a
-						href="/abayiza-secure-admin-7k9x2p/orders"
+						href="/shahzad-secure-admin-4db067e1/orders"
 						class="inline-flex items-center justify-center rounded-lg border border-admin-border bg-white px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
 					>
 						Clear
@@ -79,7 +79,7 @@
 			<tr
 				class="group cursor-pointer transition-colors hover:bg-gray-50"
 				onclick={() =>
-					(window.location.href = `/abayiza-secure-admin-7k9x2p/orders/${order.id}`)}
+					(window.location.href = `/shahzad-secure-admin-4db067e1/orders/${order.id}`)}
 			>
 				<td class="px-6 py-4 text-sm font-medium whitespace-nowrap text-gray-900">
 					{order.orderNumber}

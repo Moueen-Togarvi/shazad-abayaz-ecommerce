@@ -7,20 +7,20 @@
 	let isSidebarOpen = $state(true);
 	let isMobileMenuOpen = $state(false);
 	let adminUser = $derived(data.adminUser);
-	let isAuthPage = $derived(page.url.pathname === '/abayiza-secure-admin-7k9x2p/login');
+	let isAuthPage = $derived(page.url.pathname === '/shahzad-secure-admin-4db067e1/login');
 	let toast = $state<{ type: string; message: string } | null>(null);
 	let toastTimer: ReturnType<typeof setTimeout> | undefined;
 
 	const isActive = (href: string) => {
-		if (href === '/abayiza-secure-admin-7k9x2p') return page.url.pathname === href;
-		if (href === '/abayiza-secure-admin-7k9x2p/orders/completed')
+		if (href === '/shahzad-secure-admin-4db067e1') return page.url.pathname === href;
+		if (href === '/shahzad-secure-admin-4db067e1/orders/completed')
 			return page.url.pathname.startsWith(href);
-		if (href === '/abayiza-secure-admin-7k9x2p/orders/cancelled')
+		if (href === '/shahzad-secure-admin-4db067e1/orders/cancelled')
 			return page.url.pathname.startsWith(href);
-		if (href === '/abayiza-secure-admin-7k9x2p/orders') {
+		if (href === '/shahzad-secure-admin-4db067e1/orders') {
 			return (
 				page.url.pathname === href ||
-				/^\/abayiza-secure-admin-7k9x2p\/orders\/(?!(completed|cancelled))/.test(page.url.pathname)
+				/^\/shahzad-secure-admin-4db067e1\/orders\/(?!(completed|cancelled))/.test(page.url.pathname)
 			);
 		}
 		return page.url.pathname.startsWith(href);
@@ -57,36 +57,36 @@
 	const navGroups: NavGroup[] = [
 		{
 			heading: 'Overview',
-			items: [{ href: '/abayiza-secure-admin-7k9x2p', label: 'Dashboard', icon: 'dashboard' }]
+			items: [{ href: '/shahzad-secure-admin-4db067e1', label: 'Dashboard', icon: 'dashboard' }]
 		},
 		{
 			heading: 'Orders',
 			items: [
-				{ href: '/abayiza-secure-admin-7k9x2p/orders', label: 'Active', icon: 'orders' },
-				{ href: '/abayiza-secure-admin-7k9x2p/orders/completed', label: 'Completed', icon: 'completed' },
-				{ href: '/abayiza-secure-admin-7k9x2p/orders/cancelled', label: 'Cancelled', icon: 'cancelled' }
+				{ href: '/shahzad-secure-admin-4db067e1/orders', label: 'Active', icon: 'orders' },
+				{ href: '/shahzad-secure-admin-4db067e1/orders/completed', label: 'Completed', icon: 'completed' },
+				{ href: '/shahzad-secure-admin-4db067e1/orders/cancelled', label: 'Cancelled', icon: 'cancelled' }
 			]
 		},
 		{
 			heading: 'Catalog',
 			items: [
-				{ href: '/abayiza-secure-admin-7k9x2p/products', label: 'Products', icon: 'products' },
-				{ href: '/abayiza-secure-admin-7k9x2p/categories', label: 'Categories', icon: 'categories' },
-				{ href: '/abayiza-secure-admin-7k9x2p/reviews', label: 'Review Photos', icon: 'reviews' }
+				{ href: '/shahzad-secure-admin-4db067e1/products', label: 'Products', icon: 'products' },
+				{ href: '/shahzad-secure-admin-4db067e1/categories', label: 'Categories', icon: 'categories' },
+				{ href: '/shahzad-secure-admin-4db067e1/reviews', label: 'Review Photos', icon: 'reviews' }
 			]
 		},
 		{
 			heading: 'Customers',
 			items: [
-				{ href: '/abayiza-secure-admin-7k9x2p/customers', label: 'Customers', icon: 'customers' },
-				{ href: '/abayiza-secure-admin-7k9x2p/users', label: 'Team & Roles', icon: 'users' }
+				{ href: '/shahzad-secure-admin-4db067e1/customers', label: 'Customers', icon: 'customers' },
+				{ href: '/shahzad-secure-admin-4db067e1/users', label: 'Team & Roles', icon: 'users' }
 			]
 		},
 		{
 			heading: 'Insights',
 			items: [
-				{ href: '/abayiza-secure-admin-7k9x2p/analytics', label: 'Analytics', icon: 'analytics' },
-				{ href: '/abayiza-secure-admin-7k9x2p/storefront', label: 'Storefront', icon: 'storefront' }
+				{ href: '/shahzad-secure-admin-4db067e1/analytics', label: 'Analytics', icon: 'analytics' },
+				{ href: '/shahzad-secure-admin-4db067e1/storefront', label: 'Storefront', icon: 'storefront' }
 			]
 		}
 	];
@@ -181,7 +181,7 @@
 				class={`flex h-16 shrink-0 items-center border-b border-admin-border ${showLabels ? 'justify-between px-5' : 'justify-center px-2'}`}
 			>
 				{#if showLabels}
-					<a href="/abayiza-secure-admin-7k9x2p" class="flex items-baseline gap-2">
+					<a href="/shahzad-secure-admin-4db067e1" class="flex items-baseline gap-2">
 						<span class="font-serif text-lg font-bold tracking-widest text-gray-900">ABAYIZA</span>
 						<span class="text-[10px] font-semibold tracking-[0.2em] text-admin-primary uppercase"
 							>Admin</span
@@ -259,9 +259,9 @@
 
 			<div class="shrink-0 border-t border-admin-border p-3">
 				<a
-					href="/abayiza-secure-admin-7k9x2p/settings"
+					href="/shahzad-secure-admin-4db067e1/settings"
 					title={showLabels ? '' : 'Settings'}
-					class={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${showLabels ? '' : 'justify-center px-0'} ${isActive('/abayiza-secure-admin-7k9x2p/settings') ? 'bg-admin-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'}`}
+					class={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${showLabels ? '' : 'justify-center px-0'} ${isActive('/shahzad-secure-admin-4db067e1/settings') ? 'bg-admin-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'}`}
 				>
 					<svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path
@@ -334,7 +334,7 @@
 					<div class="relative">
 						<form
 							method="POST"
-							action="/abayiza-secure-admin-7k9x2p/logout"
+							action="/shahzad-secure-admin-4db067e1/logout"
 							class="flex items-center gap-3"
 						>
 							<div class="hidden text-right sm:block">

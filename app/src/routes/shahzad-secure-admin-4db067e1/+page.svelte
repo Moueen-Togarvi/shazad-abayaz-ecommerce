@@ -118,7 +118,7 @@
 		<Card title="Catalog Products">
 			{#snippet header()}
 				<a
-					href="/abayiza-secure-admin-7k9x2p/products"
+					href="/shahzad-secure-admin-4db067e1/products"
 					class="text-sm font-medium text-admin-primary hover:underline">View all</a
 				>
 			{/snippet}
@@ -157,7 +157,7 @@
 		<Card title="Recent Orders" class="lg:col-span-2">
 			{#snippet header()}
 				<a
-					href="/abayiza-secure-admin-7k9x2p/orders"
+					href="/shahzad-secure-admin-4db067e1/orders"
 					class="text-sm font-medium text-admin-primary hover:underline">View all</a
 				>
 			{/snippet}
@@ -173,7 +173,7 @@
 					<tr class="transition-colors hover:bg-gray-50">
 						<td class="px-6 py-4 text-sm font-medium whitespace-nowrap text-gray-900">
 							<a
-								href="/abayiza-secure-admin-7k9x2p/orders/{order.id}"
+								href="/shahzad-secure-admin-4db067e1/orders/{order.id}"
 								class="text-admin-primary hover:underline">#{order.shortId}</a
 							>
 						</td>

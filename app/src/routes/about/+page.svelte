@@ -45,7 +45,7 @@
 </svelte:head>
 
 <section
-	class="relative isolate -mt-[4.25rem] overflow-hidden bg-[#14352d] text-white md:-mt-[4.75rem]"
+	class="relative isolate -mt-[4.25rem] overflow-hidden bg-[#0a0a0a] text-white md:-mt-[4.75rem]"
 >
 	<img
 		src="/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png"
@@ -75,13 +75,13 @@
 			<div class="mt-8 flex flex-wrap gap-3">
 				<a
 					href="/shop"
-					class="inline-flex min-h-12 items-center justify-center rounded-full bg-[#c8ff46] px-6 text-sm font-black text-[#14352d] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+					class="inline-flex min-h-12 items-center justify-center rounded-full bg-[#c8ff46] px-6 text-sm font-black text-[#0a0a0a] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
 				>
 					Shop Abayas
 				</a>
 				<a
 					href="/contact"
-					class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/42 bg-white/12 px-6 text-sm font-black text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#14352d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+					class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/42 bg-white/12 px-6 text-sm font-black text-white backdrop-blur-md transition-colors hover:bg-white hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
 				>
 					Talk to Us
 				</a>
@@ -90,20 +90,20 @@
 	</div>
 </section>
 
-<section class="bg-[#fbf9f2] px-4 py-16 text-[#14352d] sm:px-6 lg:px-8">
+<section class="bg-[#fbf9f2] px-4 py-16 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-4xl">
-		<p class="mb-4 text-xs font-black tracking-[0.2em] text-[#b58b2b] uppercase">
+		<p class="mb-4 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">
 			How Abayiza Started
 		</p>
 		<h2 class="font-serif text-3xl leading-tight uppercase sm:text-5xl">
 			From two university friends to a growing abaya brand.
 		</h2>
 
-		<div class="mt-8 space-y-6 text-base leading-8 font-medium text-[#596c62] sm:text-lg">
+		<div class="mt-8 space-y-6 text-base leading-8 font-medium text-[#52524f] sm:text-lg">
 			<p>
 				Abayiza started with two friends,
-				<strong class="font-black text-[#14352d]">Chand Baloch</strong> and
-				<strong class="font-black text-[#14352d]">Mubahsir Ali</strong>. During university, they
+				<strong class="font-black text-[#0a0a0a]">Chand Baloch</strong> and
+				<strong class="font-black text-[#0a0a0a]">Mubahsir Ali</strong>. During university, they
 				would often talk about their future and plan the kind of business they wanted to build after
 				graduation.
 			</p>
@@ -115,7 +115,7 @@
 			<p>
 				That first video went viral. Orders and attention started coming in, and from that moment
 				the brand began to grow. What started as a plan between two university friends became
-				<strong class="font-black text-[#14352d]"> Abayiza</strong>.
+				<strong class="font-black text-[#0a0a0a]"> Abayiza</strong>.
 			</p>
 		</div>
 	</div>

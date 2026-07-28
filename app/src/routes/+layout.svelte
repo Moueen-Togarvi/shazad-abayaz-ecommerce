@@ -37,11 +37,11 @@
 	];
 
 	const iconButtonClass =
-		'inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/24 bg-[#14352d]/92 text-white shadow-[0_12px_28px_rgba(20,53,45,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] hover:text-[#14352d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#14352d]';
+		'inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/24 bg-[#0a0a0a]/92 text-white shadow-[0_12px_28px_rgba(20,53,45,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a0a0a]';
 	const primaryWhatsAppHref = 'https://wa.me/923116857822';
 	const secondaryWhatsAppHref = 'https://wa.me/923346657779';
 
-	let isAdminRoute = $derived(page.url.pathname.startsWith('/abayiza-secure-admin-7k9x2p'));
+	let isAdminRoute = $derived(page.url.pathname.startsWith('/shahzad-secure-admin-4db067e1'));
 	let isScrolled = $derived(scrollY > 24);
 	let isNavigating = $derived(Boolean(navigating.to));
 	let canonicalHref = $derived(canonicalUrl(page.url));
@@ -99,7 +99,7 @@
 
 	function shouldNoindex(url: URL) {
 		const noindexPrefixes = [
-			'/abayiza-secure-admin-7k9x2p',
+			'/shahzad-secure-admin-4db067e1',
 			'/account',
 			'/cart',
 			'/checkout',
@@ -179,7 +179,7 @@ fbq('init', '${metaPixelId}');`)
 
 <svelte:head>
 	<meta name="robots" content={robotsMeta} />
-	<meta name="theme-color" content="#14352d" />
+	<meta name="theme-color" content="#0a0a0a" />
 	<link rel="canonical" href={canonicalHref} />
 	<meta property="og:site_name" content={SITE_NAME} />
 	<meta property="og:locale" content="en_PK" />
@@ -235,8 +235,8 @@ fbq('init', '${metaPixelId}');`)
 									class={`rounded-full px-3.5 py-2 transition-all duration-300 ${
 										page.url.pathname === item.href ||
 										(item.href !== '/' && page.url.pathname.startsWith(item.href))
-											? 'bg-[#14352d] text-white shadow-[0_10px_24px_rgba(20,53,45,0.18)]'
-											: 'text-[#14352d] hover:bg-[#c8ff46]/88 hover:text-[#14352d]'
+											? 'bg-[#0a0a0a] text-white shadow-[0_10px_24px_rgba(20,53,45,0.18)]'
+											: 'text-[#0a0a0a] hover:bg-[#c8ff46]/88 hover:text-[#0a0a0a]'
 									}`}
 								>
 									{item.label}
@@ -246,7 +246,7 @@ fbq('init', '${metaPixelId}');`)
 
 						<form action="/search" method="GET" class="ml-auto hidden min-w-0 lg:block">
 							<label
-								class="flex h-11 w-[13rem] items-center gap-2 overflow-hidden rounded-full border border-white/24 bg-[#14352d]/88 pr-3 pl-4 text-white shadow-[0_12px_28px_rgba(20,53,45,0.16)] backdrop-blur-md transition-colors focus-within:bg-[#14352d]"
+								class="flex h-11 w-[13rem] items-center gap-2 overflow-hidden rounded-full border border-white/24 bg-[#0a0a0a]/88 pr-3 pl-4 text-white shadow-[0_12px_28px_rgba(20,53,45,0.16)] backdrop-blur-md transition-colors focus-within:bg-[#0a0a0a]"
 							>
 								<svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path
@@ -295,7 +295,7 @@ fbq('init', '${metaPixelId}');`)
 								</svg>
 								{#if wishlist.totalItems > 0}
 									<span
-										class="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#c5a880] px-1 text-[9px] font-bold text-[#1f2926]"
+										class="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#c5a880] px-1 text-[9px] font-bold text-[#121212]"
 									>
 										{wishlist.totalItems}
 									</span>
@@ -314,7 +314,7 @@ fbq('init', '${metaPixelId}');`)
 								</svg>
 								{#if cart.totalItems > 0}
 									<span
-										class="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#c5a880] px-1 text-[9px] font-bold text-[#1f2926]"
+										class="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#c5a880] px-1 text-[9px] font-bold text-[#121212]"
 									>
 										{cart.totalItems}
 									</span>
@@ -353,7 +353,7 @@ fbq('init', '${metaPixelId}');`)
 
 				{#if mobileMenuOpen}
 					<div
-						class="mt-2 overflow-hidden rounded-[1.25rem] border border-white/24 bg-[#14352d]/92 p-3 text-white shadow-[0_22px_60px_rgba(20,53,45,0.22)] backdrop-blur-xl lg:hidden"
+						class="mt-2 overflow-hidden rounded-[1.25rem] border border-white/24 bg-[#0a0a0a]/92 p-3 text-white shadow-[0_22px_60px_rgba(20,53,45,0.22)] backdrop-blur-xl lg:hidden"
 					>
 						<form action="/search" method="GET">
 							<label
@@ -383,7 +383,7 @@ fbq('init', '${metaPixelId}');`)
 									class={`rounded-2xl px-4 py-3 text-sm font-semibold transition-all ${
 										page.url.pathname === item.href ||
 										(item.href !== '/' && page.url.pathname.startsWith(item.href))
-											? 'bg-[#c8ff46] text-[#14352d] shadow-[0_12px_28px_rgba(200,255,70,0.16)]'
+											? 'bg-[#c8ff46] text-[#0a0a0a] shadow-[0_12px_28px_rgba(200,255,70,0.16)]'
 											: 'bg-white/9 text-white hover:bg-white/16'
 									}`}
 									onclick={() => (mobileMenuOpen = false)}
@@ -430,7 +430,7 @@ fbq('init', '${metaPixelId}');`)
 						href={primaryWhatsAppHref}
 						target="_blank"
 						rel="noreferrer"
-						class="inline-flex min-h-9 items-center justify-center rounded-full border border-white/95 bg-white px-4 text-[0.68rem] font-black tracking-[0.1em] text-[#14352d] uppercase shadow-[0_12px_24px_rgba(20,53,45,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366]"
+						class="inline-flex min-h-9 items-center justify-center rounded-full border border-white/95 bg-white px-4 text-[0.68rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase shadow-[0_12px_24px_rgba(20,53,45,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366]"
 						aria-label="Contact original owner on WhatsApp"
 					>
 						WhatsApp 1
@@ -439,7 +439,7 @@ fbq('init', '${metaPixelId}');`)
 						href={secondaryWhatsAppHref}
 						target="_blank"
 						rel="noreferrer"
-						class="inline-flex min-h-9 items-center justify-center rounded-full border border-white/95 bg-white px-4 text-[0.68rem] font-black tracking-[0.1em] text-[#14352d] uppercase shadow-[0_12px_24px_rgba(20,53,45,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366]"
+						class="inline-flex min-h-9 items-center justify-center rounded-full border border-white/95 bg-white px-4 text-[0.68rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase shadow-[0_12px_24px_rgba(20,53,45,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366]"
 						aria-label="Contact company on WhatsApp"
 					>
 						WhatsApp 2
@@ -577,7 +577,7 @@ fbq('init', '${metaPixelId}');`)
 
 <style>
 	.brand-adaptive-text {
-		color: #14352d;
+		color: #0a0a0a;
 		text-shadow:
 			0 1px 8px rgba(255, 255, 255, 0.94),
 			0 2px 16px rgba(255, 255, 255, 0.62),

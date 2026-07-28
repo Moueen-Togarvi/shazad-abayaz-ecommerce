@@ -13,7 +13,7 @@
 			<p class="mt-1 text-sm text-gray-500">Orders marked Complete are saved here.</p>
 		</div>
 		<a
-			href="/abayiza-secure-admin-7k9x2p/orders"
+			href="/shahzad-secure-admin-4db067e1/orders"
 			class="inline-flex rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
 		>
 			Active Orders
@@ -64,7 +64,7 @@
 					Filter
 				</button>
 				<a
-					href="/abayiza-secure-admin-7k9x2p/orders/completed"
+					href="/shahzad-secure-admin-4db067e1/orders/completed"
 					class="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50"
 				>
 					Clear
@@ -114,7 +114,7 @@
 					<tr
 						class="cursor-pointer hover:bg-gray-50"
 						onclick={() =>
-							(window.location.href = `/abayiza-secure-admin-7k9x2p/orders/${order.id}`)}
+							(window.location.href = `/shahzad-secure-admin-4db067e1/orders/${order.id}`)}
 					>
 						<td class="px-6 py-4 text-sm font-medium whitespace-nowrap text-blue-600">
 							{order.orderNumber}

@@ -361,7 +361,7 @@
 
 <section
 	bind:this={heroRoot}
-	class="hero-cinematic relative isolate -mt-[4.25rem] overflow-hidden bg-[#e4eee9] text-[#14352d] md:-mt-[4.75rem]"
+	class="hero-cinematic relative isolate -mt-[4.25rem] overflow-hidden bg-[#eeece4] text-[#0a0a0a] md:-mt-[4.75rem]"
 >
 	<div
 		class="hero-bg absolute inset-0 -z-30"
@@ -393,7 +393,7 @@
 	>
 		<button
 			type="button"
-			class="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/78 text-[#14352d] shadow-[0_14px_32px_rgba(20,53,45,0.20)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#14352d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+			class="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/78 text-[#0a0a0a] shadow-[0_14px_32px_rgba(20,53,45,0.20)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0a0a0a] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
 			aria-label="Previous hero image"
 			onclick={() => showHeroSlide('previous')}
 		>
@@ -408,7 +408,7 @@
 		</button>
 		<button
 			type="button"
-			class="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/78 text-[#14352d] shadow-[0_14px_32px_rgba(20,53,45,0.20)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#14352d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+			class="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/78 text-[#0a0a0a] shadow-[0_14px_32px_rgba(20,53,45,0.20)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0a0a0a] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
 			aria-label="Next hero image"
 			onclick={() => showHeroSlide('next')}
 		>
@@ -451,11 +451,11 @@
 			<div class="hero-reveal mt-3 flex flex-row flex-nowrap gap-1.5 sm:mt-8 sm:gap-2">
 				<a
 					href="/shop"
-					class="inline-flex min-h-7 items-center justify-center gap-1 rounded-full bg-[#14352d] px-2 text-[0.56rem] font-bold whitespace-nowrap text-white shadow-[0_16px_34px_rgba(20,53,45,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#14352d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#14352d] sm:min-h-12 sm:gap-2 sm:px-7 sm:text-sm"
+					class="inline-flex min-h-7 items-center justify-center gap-1 rounded-full bg-[#0a0a0a] px-2 text-[0.56rem] font-bold whitespace-nowrap text-white shadow-[0_16px_34px_rgba(20,53,45,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:gap-2 sm:px-7 sm:text-sm"
 				>
 					Shop Collection
 					<span
-						class="inline-flex h-3 w-3 items-center justify-center rounded-full bg-white/92 text-[#14352d] sm:h-5 sm:w-5"
+						class="inline-flex h-3 w-3 items-center justify-center rounded-full bg-white/92 text-[#0a0a0a] sm:h-5 sm:w-5"
 					>
 						<svg
 							class="h-2 w-2 sm:h-3 sm:w-3"
@@ -474,7 +474,7 @@
 				</a>
 				<a
 					href="/lookbook"
-					class="inline-flex min-h-7 items-center justify-center rounded-full border border-[#14352d]/20 bg-white/72 px-2 text-[0.56rem] font-bold whitespace-nowrap text-[#14352d] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#14352d] sm:min-h-12 sm:px-7 sm:text-sm"
+					class="inline-flex min-h-7 items-center justify-center rounded-full border border-[#0a0a0a]/20 bg-white/72 px-2 text-[0.56rem] font-bold whitespace-nowrap text-[#0a0a0a] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:px-7 sm:text-sm"
 				>
 					View Lookbook
 				</a>
@@ -508,19 +508,19 @@
 <CategoryCircleCards {collections} />
 
 <!-- Featured Collections -->
-<section class="border-t border-[#14352d]/8 bg-[#fbf9f2] px-4 py-16 sm:px-6 lg:px-8">
+<section class="border-t border-[#0a0a0a]/8 bg-[#fbf9f2] px-4 py-16 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-6xl">
 		<div class="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 			<div>
 				<p class="mb-3 text-xs font-bold tracking-[0.18em] text-[#7b6a3d] uppercase">
 					Curated Edits
 				</p>
-				<h2 class="font-serif text-3xl leading-tight text-[#14352d] uppercase sm:text-4xl">
+				<h2 class="font-serif text-3xl leading-tight text-[#0a0a0a] uppercase sm:text-4xl">
 					Signature Collections
 				</h2>
 			</div>
 			<div class="max-w-md space-y-4 sm:text-right">
-				<p class="text-sm leading-6 font-medium text-[#596c62]">
+				<p class="text-sm leading-6 font-medium text-[#52524f]">
 					Refined edits for the pieces you reach for most: daily essentials, occasion layers, and
 					timeless black abayas.
 				</p>
@@ -539,7 +539,7 @@
 			<div class="mt-8 text-center">
 				<a
 					href={signatureCollectionsSection.viewAllHref}
-					class="inline-flex min-h-11 items-center justify-center rounded-full border border-[#14352d]/12 bg-white px-6 text-xs font-black tracking-[0.12em] text-[#14352d] uppercase shadow-[0_12px_28px_rgba(20,53,45,0.08)] transition-colors hover:border-[#e4b43d] hover:bg-[#e4b43d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#14352d]"
+					class="inline-flex min-h-11 items-center justify-center rounded-full border border-[#0a0a0a]/12 bg-white px-6 text-xs font-black tracking-[0.12em] text-[#0a0a0a] uppercase shadow-[0_12px_28px_rgba(20,53,45,0.08)] transition-colors hover:border-[#c5a880] hover:bg-[#c5a880] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a]"
 				>
 					View All
 				</a>
@@ -555,11 +555,11 @@
 <section class="bg-cream px-4 pt-4 pb-6 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div
-			class="flex flex-col items-center justify-between gap-6 rounded-[2rem] border border-[#14352d]/6 bg-white p-6 shadow-[0_12px_36px_rgba(20,53,45,0.02)] sm:p-8 lg:flex-row lg:px-12"
+			class="flex flex-col items-center justify-between gap-6 rounded-[2rem] border border-[#0a0a0a]/6 bg-white p-6 shadow-[0_12px_36px_rgba(20,53,45,0.02)] sm:p-8 lg:flex-row lg:px-12"
 		>
 			<!-- Title -->
 			<div class="shrink-0 text-center lg:text-left">
-				<h3 class="font-serif text-xl font-black tracking-wide text-[#14352d] sm:text-2xl">
+				<h3 class="font-serif text-xl font-black tracking-wide text-[#0a0a0a] sm:text-2xl">
 					Exceptional Quality <span class="text-red-600">Delivered</span>
 				</h3>
 			</div>
@@ -569,7 +569,7 @@
 				<!-- Feature 1 -->
 				<div class="flex items-center gap-3">
 					<div
-						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#14352d]/5 text-[#14352d]"
+						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0a0a0a]/5 text-[#0a0a0a]"
 					>
 						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
@@ -587,7 +587,7 @@
 						</svg>
 					</div>
 					<div class="text-left leading-tight">
-						<span class="block text-xs font-black text-[#14352d] uppercase">Free Shipping</span>
+						<span class="block text-xs font-black text-[#0a0a0a] uppercase">Free Shipping</span>
 						<span class="block text-[0.62rem] font-medium text-gray-500">Nationwide Delivery</span>
 					</div>
 				</div>
@@ -595,7 +595,7 @@
 				<!-- Feature 2 -->
 				<div class="flex items-center gap-3">
 					<div
-						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#14352d]/5 text-[#14352d]"
+						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0a0a0a]/5 text-[#0a0a0a]"
 					>
 						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
@@ -607,7 +607,7 @@
 						</svg>
 					</div>
 					<div class="text-left leading-tight">
-						<span class="block text-xs font-black text-[#14352d] uppercase">10K+ Happy</span>
+						<span class="block text-xs font-black text-[#0a0a0a] uppercase">10K+ Happy</span>
 						<span class="block text-[0.62rem] font-medium text-gray-500">Satisfied Customers</span>
 					</div>
 				</div>
@@ -615,7 +615,7 @@
 				<!-- Feature 3 -->
 				<div class="flex items-center gap-3">
 					<div
-						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#14352d]/5 text-[#14352d]"
+						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0a0a0a]/5 text-[#0a0a0a]"
 					>
 						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
@@ -627,7 +627,7 @@
 						</svg>
 					</div>
 					<div class="text-left leading-tight">
-						<span class="block text-xs font-black text-[#14352d] uppercase">Premium Fabric</span>
+						<span class="block text-xs font-black text-[#0a0a0a] uppercase">Premium Fabric</span>
 						<span class="block text-[0.62rem] font-medium text-gray-500">Quality Guarantee</span>
 					</div>
 				</div>
@@ -635,7 +635,7 @@
 				<!-- Feature 4 -->
 				<div class="flex items-center gap-3">
 					<div
-						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#14352d]/5 text-[#14352d]"
+						class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0a0a0a]/5 text-[#0a0a0a]"
 					>
 						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
@@ -653,7 +653,7 @@
 						</svg>
 					</div>
 					<div class="text-left leading-tight">
-						<span class="block text-xs font-black text-[#14352d] uppercase">100% Authentic</span>
+						<span class="block text-xs font-black text-[#0a0a0a] uppercase">100% Authentic</span>
 						<span class="block text-[0.62rem] font-medium text-gray-500">Original Abayas</span>
 					</div>
 				</div>
@@ -682,7 +682,7 @@
 			<div class="mt-8 text-center">
 				<a
 					href={newArrivalsSection.viewAllHref}
-					class="inline-flex min-h-11 items-center justify-center rounded-full border border-[#14352d]/12 bg-white px-6 text-xs font-black tracking-[0.12em] text-[#14352d] uppercase shadow-[0_12px_28px_rgba(20,53,45,0.08)] transition-colors hover:border-[#e4b43d] hover:bg-[#e4b43d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#14352d]"
+					class="inline-flex min-h-11 items-center justify-center rounded-full border border-[#0a0a0a]/12 bg-white px-6 text-xs font-black tracking-[0.12em] text-[#0a0a0a] uppercase shadow-[0_12px_28px_rgba(20,53,45,0.08)] transition-colors hover:border-[#c5a880] hover:bg-[#c5a880] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a]"
 				>
 					View All
 				</a>
@@ -701,14 +701,14 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="mb-8 flex flex-col gap-6">
 			<div class="text-center">
-				<h2 class="font-serif text-3xl tracking-widest text-[#14352d] uppercase">Most Loved</h2>
+				<h2 class="font-serif text-3xl tracking-widest text-[#0a0a0a] uppercase">Most Loved</h2>
 			</div>
 
 			<div class="category-ribbon" aria-label="Bestseller categories">
 				<div class="category-ribbon__track">
 					{#each bestsellerCategoryTags as tag}
 						<span
-							class="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-[#14352d]/10 bg-[#fffaf0] px-4 text-[0.68rem] font-black tracking-[0.12em] text-[#14352d] uppercase shadow-[0_10px_22px_rgba(20,53,45,0.08)]"
+							class="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-[#0a0a0a]/10 bg-[#fffaf0] px-4 text-[0.68rem] font-black tracking-[0.12em] text-[#0a0a0a] uppercase shadow-[0_10px_22px_rgba(20,53,45,0.08)]"
 						>
 							{tag}
 						</span>
@@ -740,7 +740,7 @@
 			<div class="mt-8 text-center">
 				<a
 					href={mostLovedSection.viewAllHref}
-					class="inline-flex min-h-11 items-center justify-center rounded-full border border-[#14352d]/12 bg-white px-6 text-xs font-black tracking-[0.12em] text-[#14352d] uppercase shadow-[0_12px_28px_rgba(20,53,45,0.08)] transition-colors hover:border-[#e4b43d] hover:bg-[#e4b43d] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#14352d]"
+					class="inline-flex min-h-11 items-center justify-center rounded-full border border-[#0a0a0a]/12 bg-white px-6 text-xs font-black tracking-[0.12em] text-[#0a0a0a] uppercase shadow-[0_12px_28px_rgba(20,53,45,0.08)] transition-colors hover:border-[#c5a880] hover:bg-[#c5a880] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a]"
 				>
 					View All
 				</a>
@@ -756,8 +756,8 @@
 	<!-- Review Photos -->
 	<section class="overflow-hidden bg-cream py-16 sm:py-20">
 		<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-			<p class="mb-4 text-xs font-black tracking-[0.2em] text-[#b58b2b] uppercase">Customer Love</p>
-			<h2 class="font-serif text-3xl tracking-widest text-[#14352d] uppercase sm:text-4xl">
+			<p class="mb-4 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">Customer Love</p>
+			<h2 class="font-serif text-3xl tracking-widest text-[#0a0a0a] uppercase sm:text-4xl">
 				Reviews
 			</h2>
 		</div>
@@ -857,8 +857,8 @@
 	.sale-tape--gold {
 		top: 0.45rem;
 		transform: rotate(0deg);
-		background: #e4b43d;
-		color: #14352d;
+		background: #c5a880;
+		color: #0a0a0a;
 	}
 
 	.sale-tape__track {
@@ -982,7 +982,7 @@
 		flex-shrink: 0;
 		overflow: hidden;
 		border-radius: 0.45rem;
-		background: #e4eee9;
+		background: #eeece4;
 		box-shadow: 0 18px 44px rgba(20, 53, 45, 0.1);
 		outline: 1px solid rgba(20, 53, 45, 0.1);
 	}

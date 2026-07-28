@@ -12,7 +12,7 @@
 <div class="mx-auto max-w-5xl pb-12">
 	<div class="mb-6 flex items-center space-x-4">
 		<a
-			href="/abayiza-secure-admin-7k9x2p/customers"
+			href="/shahzad-secure-admin-4db067e1/customers"
 			aria-label="Back to customers"
 			class="rounded-md border border-gray-300 bg-white p-2 text-gray-500 shadow-sm hover:bg-gray-50"
 		>
@@ -82,7 +82,7 @@
 								{#each customer.orders as order}
 									<tr class="hover:bg-gray-50">
 										<td class="px-6 py-4 text-sm font-medium text-blue-600">
-											<a href={`/abayiza-secure-admin-7k9x2p/orders/${order.id}`}
+											<a href={`/shahzad-secure-admin-4db067e1/orders/${order.id}`}
 												>{order.orderNumber}</a
 											>
 										</td>

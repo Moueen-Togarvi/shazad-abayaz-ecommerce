@@ -192,7 +192,7 @@
 					<div class="flex flex-wrap gap-2">
 						{#each heroHeadlinePhrases.split(/\r?\n/).map(item => item.trim()).filter(Boolean) as phrase}
 							<span
-								class="rounded-full bg-[#14352d] px-3 py-1.5 text-xs font-black tracking-[0.12em] text-[#e4b43d] uppercase"
+								class="rounded-full bg-[#0a0a0a] px-3 py-1.5 text-xs font-black tracking-[0.12em] text-[#c5a880] uppercase"
 							>
 								{phrase}
 							</span>
@@ -251,7 +251,7 @@
 					<div class="flex flex-wrap gap-2">
 						{#each saleTapePreview as item}
 							<span
-								class="rounded-full bg-[#e4b43d] px-3 py-1.5 text-xs font-black tracking-[0.12em] text-[#14352d] uppercase"
+								class="rounded-full bg-[#c5a880] px-3 py-1.5 text-xs font-black tracking-[0.12em] text-[#0a0a0a] uppercase"
 							>
 								{item}
 							</span>
@@ -303,7 +303,7 @@
 						<!-- Slide 1 -->
 						<div class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4">
 							<span
-								class="inline-flex items-center rounded-md bg-[#14352d]/10 px-2 py-1 text-xs font-bold text-[#14352d]"
+								class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
 							>
 								Slide 1: Nida Essentials
 							</span>
@@ -401,7 +401,7 @@
 						<!-- Slide 2 -->
 						<div class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4">
 							<span
-								class="inline-flex items-center rounded-md bg-[#e4b43d]/15 px-2 py-1 text-xs font-bold text-[#b58b2b]"
+								class="inline-flex items-center rounded-md bg-[#c5a880]/15 px-2 py-1 text-xs font-bold text-[#a8895f]"
 							>
 								Slide 2: Occasion Wear
 							</span>
@@ -499,7 +499,7 @@
 						<!-- Slide 3 -->
 						<div class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4">
 							<span
-								class="inline-flex items-center rounded-md bg-[#14352d]/10 px-2 py-1 text-xs font-bold text-[#14352d]"
+								class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
 							>
 								Slide 3: Eid Signature
 							</span>

@@ -5,5 +5,5 @@ import { redirect, type RequestHandler } from '@sveltejs/kit';
 export const POST: RequestHandler = async ({ cookies }) => {
 	cookies.delete(ADMIN_SESSION_COOKIE, { path: '/' });
 	setAdminFlash(cookies, 'Logged out successfully.');
-	throw redirect(303, '/abayiza-secure-admin-7k9x2p/login');
+	throw redirect(303, '/shahzad-secure-admin-4db067e1/login');
 };

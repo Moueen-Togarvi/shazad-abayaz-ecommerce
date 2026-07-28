@@ -11,7 +11,7 @@ export type AdminFlash = {
 const ADMIN_FLASH_COOKIE = 'abayiza_admin_flash';
 
 const flashCookieOptions = () => ({
-	path: '/abayiza-secure-admin-7k9x2p',
+	path: '/shahzad-secure-admin-4db067e1',
 	httpOnly: true,
 	sameSite: 'lax' as const,
 	secure: env.NODE_ENV === 'production',
@@ -31,7 +31,7 @@ export const consumeAdminFlash = (cookies: Cookies): AdminFlash | null => {
 	const raw = cookies.get(ADMIN_FLASH_COOKIE);
 	if (!raw) return null;
 
-	cookies.delete(ADMIN_FLASH_COOKIE, { path: '/abayiza-secure-admin-7k9x2p' });
+	cookies.delete(ADMIN_FLASH_COOKIE, { path: '/shahzad-secure-admin-4db067e1' });
 
 	try {
 		const flash = JSON.parse(Buffer.from(raw, 'base64url').toString('utf8')) as Partial<AdminFlash>;

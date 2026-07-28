@@ -80,17 +80,17 @@ const renderItemRows = (order: NotificationOrder) =>
 const renderTotals = (order: NotificationOrder) => `
 	<div style="border-top: 1px solid #eee; padding-top: 14px; margin-top: 16px;">
 		<p style="margin: 0 0 6px; display: flex; justify-content: space-between; gap: 16px;">
-			<span style="color: #596c62;">Subtotal</span>
+			<span style="color: #52524f;">Subtotal</span>
 			<strong>${formatMoney(order.subtotal)}</strong>
 		</p>
 		<p style="margin: 0 0 6px; display: flex; justify-content: space-between; gap: 16px;">
-			<span style="color: #596c62;">Shipping</span>
+			<span style="color: #52524f;">Shipping</span>
 			<strong>${formatMoney(order.shippingCost)}</strong>
 		</p>
 		${
 			order.discountTotal > 0
 				? `<p style="margin: 0 0 6px; display: flex; justify-content: space-between; gap: 16px;">
-					<span style="color: #596c62;">Discount</span>
+					<span style="color: #52524f;">Discount</span>
 					<strong>${formatMoney(order.discountTotal)}</strong>
 				</p>`
 				: ''
@@ -106,9 +106,9 @@ const renderCustomerOrderEmail = (order: NotificationOrder, orderUrl: string) =>
 	const rows = renderItemRows(order);
 
 	return `
-		<div style="font-family: Arial, sans-serif; color: #14352d; max-width: 620px; margin: 0 auto;">
+		<div style="font-family: Arial, sans-serif; color: #0a0a0a; max-width: 620px; margin: 0 auto;">
 			<h1 style="font-size: 28px; margin: 0 0 8px;">Thank you for your order</h1>
-			<p style="margin: 0 0 24px; color: #596c62;">Your Abayiza order has been received successfully. We will confirm it soon.</p>
+			<p style="margin: 0 0 24px; color: #52524f;">Your Abayiza order has been received successfully. We will confirm it soon.</p>
 			<div style="background: #fbf9f2; border: 1px solid #eee7d8; padding: 18px; margin-bottom: 20px;">
 				<p style="margin: 0 0 6px;"><strong>Order:</strong> ${escapeHtml(order.orderNumber)}</p>
 				<p style="margin: 0 0 6px;"><strong>Payment:</strong> Cash on Delivery</p>
@@ -117,7 +117,7 @@ const renderCustomerOrderEmail = (order: NotificationOrder, orderUrl: string) =>
 			${
 				orderUrl
 					? `<p style="margin: 0 0 22px;">
-						<a href="${escapeHtml(orderUrl)}" style="display: inline-block; background: #14352d; color: #ffffff; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 700;">View your order</a>
+						<a href="${escapeHtml(orderUrl)}" style="display: inline-block; background: #0a0a0a; color: #ffffff; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 700;">View your order</a>
 					</p>`
 					: ''
 			}
@@ -133,7 +133,7 @@ const renderCustomerOrderEmail = (order: NotificationOrder, orderUrl: string) =>
 			</table>
 			${renderTotals(order)}
 			<p style="margin: 0 0 8px;"><strong>Shipping address</strong></p>
-			<p style="margin: 0; color: #596c62;">${escapeHtml(addressLine(order.shippingAddress))}</p>
+			<p style="margin: 0; color: #52524f;">${escapeHtml(addressLine(order.shippingAddress))}</p>
 		</div>
 	`;
 };
@@ -144,16 +144,16 @@ const renderAdminOrderEmail = (order: NotificationOrder, adminOrderUrl: string) 
 		`${order.shippingAddress.firstName || ''} ${order.shippingAddress.lastName || ''}`.trim();
 
 	return `
-		<div style="font-family: Arial, sans-serif; color: #14352d; max-width: 680px; margin: 0 auto;">
+		<div style="font-family: Arial, sans-serif; color: #0a0a0a; max-width: 680px; margin: 0 auto;">
 			<h1 style="font-size: 28px; margin: 0 0 8px;">New order received</h1>
-			<p style="margin: 0 0 24px; color: #596c62;">A customer placed order ${escapeHtml(order.orderNumber)} on Abayiza.</p>
-			<div style="background: #14352d; color: #ffffff; padding: 18px; margin-bottom: 20px;">
+			<p style="margin: 0 0 24px; color: #52524f;">A customer placed order ${escapeHtml(order.orderNumber)} on Abayiza.</p>
+			<div style="background: #0a0a0a; color: #ffffff; padding: 18px; margin-bottom: 20px;">
 				<p style="margin: 0 0 6px;"><strong>Total:</strong> ${formatMoney(order.totalAmount)}</p>
 				<p style="margin: 0 0 6px;"><strong>Customer:</strong> ${escapeHtml(customerName || 'Customer')}</p>
 				<p style="margin: 0;"><strong>Email:</strong> ${escapeHtml(order.guestEmail || 'No email')}</p>
 			</div>
 			<p style="margin: 0 0 22px;">
-				<a href="${escapeHtml(adminOrderUrl)}" style="display: inline-block; background: #e4b43d; color: #14352d; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 800;">Open order in admin</a>
+				<a href="${escapeHtml(adminOrderUrl)}" style="display: inline-block; background: #c5a880; color: #0a0a0a; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 800;">Open order in admin</a>
 			</p>
 			<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
 				<thead>
@@ -167,7 +167,7 @@ const renderAdminOrderEmail = (order: NotificationOrder, adminOrderUrl: string) 
 			</table>
 			${renderTotals(order)}
 			<p style="margin: 18px 0 8px;"><strong>Shipping address</strong></p>
-			<p style="margin: 0; color: #596c62;">${escapeHtml(addressLine(order.shippingAddress))}</p>
+			<p style="margin: 0; color: #52524f;">${escapeHtml(addressLine(order.shippingAddress))}</p>
 		</div>
 	`;
 };
@@ -228,7 +228,7 @@ export const sendOrderNotifications = async (order: NotificationOrder) => {
 		const origin = cleanOrigin(env.SITE_URL || env.PUBLIC_SITE_URL || env.APP_URL || order.siteUrl);
 		const adminOrderUrl = buildUrl(
 			origin,
-			`/abayiza-secure-admin-7k9x2p/orders/${encodeURIComponent(order.id)}`
+			`/shahzad-secure-admin-4db067e1/orders/${encodeURIComponent(order.id)}`
 		);
 		const customerOrderUrl = buildUrl(
 			origin,
