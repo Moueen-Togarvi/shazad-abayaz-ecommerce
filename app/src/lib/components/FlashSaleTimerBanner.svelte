@@ -1,17 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import AbayizaWordmark from './AbayizaWordmark.svelte';
 
-let { settings = {} } = $props();
-const staticFlashSaleImage = '/products/georgette-abaya/georgette-abaya-magenta.png';
+	let { settings = {} } = $props<{ settings?: Record<string, any> }>();
 
-	// Calculate initial time dynamically
-	const getInitialTime = () => {
+	const staticFlashSaleImage = '/products/georgette-abaya/georgette-abaya-charcoal-grey.png';
+
+	function getInitialTime() {
 		const h = settings.flashSaleHours !== undefined ? Number(settings.flashSaleHours) : 2;
-		const m = settings.flashSaleMinutes !== undefined ? Number(settings.flashSaleMinutes) : 14;
-		const s = settings.flashSaleSeconds !== undefined ? Number(settings.flashSaleSeconds) : 30;
+		const m = settings.flashSaleMinutes !== undefined ? Number(settings.flashSaleMinutes) : 12;
+		const s = settings.flashSaleSeconds !== undefined ? Number(settings.flashSaleSeconds) : 40;
 		return h * 3600 + m * 60 + s;
-	};
+	}
 
 	let timeLeft = $state(getInitialTime());
 
@@ -21,12 +20,9 @@ const staticFlashSaleImage = '/products/georgette-abaya/georgette-abaya-magenta.
 
 	onMount(() => {
 		const interval = setInterval(() => {
-			if (timeLeft > 0) {
-				timeLeft--;
-			} else {
-				timeLeft = getInitialTime(); // reset/loop
-			}
+			timeLeft = timeLeft > 0 ? timeLeft - 1 : getInitialTime();
 		}, 1000);
+
 		return () => clearInterval(interval);
 	});
 
@@ -35,166 +31,187 @@ const staticFlashSaleImage = '/products/georgette-abaya/georgette-abaya-magenta.
 	}
 </script>
 
-<section class="relative overflow-hidden border-y border-[#0a0a0a]/8 bg-[#fbf9f2]">
+<section class="relative overflow-hidden border-y border-[#0a0a0a]/8 bg-white py-5 sm:py-7">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div
-			class="relative my-6 flex h-[530px] w-full flex-col items-stretch justify-between overflow-hidden rounded-2xl border border-[#c5a880]/20 bg-[#0a0a0a] shadow-[0_20px_50px_rgba(20,53,45,0.15)] sm:h-[360px] sm:flex-row md:h-[420px]"
+			class="relative grid min-h-[480px] overflow-hidden rounded-[1.75rem] border border-[#d8b7f0]/45 bg-[#2a0d45] shadow-[0_22px_50px_rgba(54,18,83,0.18)] sm:min-h-[390px] lg:grid-cols-[0.72fr_1.28fr]"
 		>
-			<!-- Fine Lines Grid Overlay (Subtle) -->
-			<div
-				class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:24px_24px]"
-			></div>
-
-			<!-- Glowing gold blur background element -->
-			<div
-				class="pointer-events-none absolute top-1/2 left-1/4 h-80 w-80 -translate-y-1/2 rounded-full bg-[#c5a880]/10 blur-[90px]"
-			></div>
-
-			<!-- Left Section: Model in Abaya (using transparent generated asset) -->
-			<div
-				class="relative z-10 flex h-[180px] w-full shrink-0 items-end justify-center overflow-hidden px-4 sm:h-full sm:w-[38%] sm:justify-start sm:pl-12 md:w-[42%]"
-			>
-				<!-- Concentric background circles framing the model -->
-				<div
-					class="pointer-events-none absolute top-1/2 left-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c5a880]/8 sm:left-[-20px] sm:h-[360px] sm:w-[360px]"
-				></div>
-				<div
-					class="pointer-events-none absolute top-1/2 left-1/2 h-[160px] w-[160px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#fffaf0]/5 sm:left-[10px] sm:h-[280px] sm:w-[280px]"
-				></div>
-
-				<!-- Sparkle accent -->
-				<svg
-					class="absolute top-12 left-1/2 h-4 w-4 animate-pulse text-[#c5a880] opacity-30"
-					fill="currentColor"
-					viewBox="0 0 24 24"
-				>
-					<path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" />
+			<div class="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,#b687d8_0%,#7d3aa1_24%,#522072_48%,#2c123f_100%)]"></div>
+			<div class="pointer-events-none absolute inset-0 opacity-35">
+				<svg class="h-full w-full" viewBox="0 0 1200 520" preserveAspectRatio="none" aria-hidden="true">
+					<path
+						d="M1115 326c-84 20-91 104-84 167M1030 480c76-68 142-45 205-91M-40 320c90-5 92 80 136 92M240 20c105 19 107 109 152 156"
+						fill="none"
+						stroke="#e9c7ff"
+						stroke-width="1.2"
+						opacity="0.55"
+					/>
+					<path
+						d="M875 500c85-70 168 3 245-91M720 52c106-48 205-15 284-67"
+						fill="none"
+						stroke="#f2dcff"
+						stroke-width="0.8"
+						opacity="0.35"
+					/>
 				</svg>
-
-				<!-- Modest abaya image -->
-				<img
-					src={staticFlashSaleImage}
-					alt="Flash Sale Abaya Highlight"
-					class="h-[95%] w-auto object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.35)] filter sm:h-[98%]"
-				/>
 			</div>
 
-			<!-- Right Section: Offer Info & Countdown -->
+			<div class="pointer-events-none absolute top-10 right-8 hidden text-[#e9c7ff]/75 sm:block">
+				<div class="grid grid-cols-4 gap-3">
+					{#each Array(16) as _}
+						<span class="size-1 rounded-full bg-current"></span>
+					{/each}
+				</div>
+			</div>
+
+			<div class="pointer-events-none absolute bottom-9 left-8 hidden text-white/55 sm:block">
+				<div class="grid grid-cols-5 gap-3">
+					{#each Array(20) as _}
+						<span class="size-1 rounded-full bg-current"></span>
+					{/each}
+				</div>
+			</div>
+
 			<div
-				class="relative z-10 flex flex-grow flex-col items-center justify-center px-4 py-6 text-center sm:px-12 sm:py-0 md:px-16"
+				class="relative z-10 flex min-h-[330px] items-end justify-center overflow-hidden border-b border-[#e6d3f5] bg-white px-4 pt-6 lg:min-h-full lg:border-r lg:border-b-0"
 			>
-				<!-- Badge -->
-				<div class="mb-2.5 flex items-center justify-center gap-1.5 sm:mb-4">
-					<span
-						class="inline-flex rounded-full border border-[#c5a880]/20 bg-[#c5a880]/10 px-3 py-1.5 text-[0.58rem] font-black tracking-[0.1em] text-[#c5a880] uppercase sm:text-[0.68rem]"
-					>
-						Limited Edition Offer
-					</span>
-				</div>
-
-				<!-- Title Ribbon -->
-				<div class="relative my-1 inline-block self-center">
-					<h3
-						class="xs:text-[1.2rem] rotate-[-1.5deg] rounded bg-[#c5a880] px-3 py-1.5 font-serif text-[1.05rem] font-black tracking-wide text-[#0a0a0a] uppercase shadow-lg sm:px-5 sm:py-2.5 sm:text-3xl md:text-4xl lg:text-[2.2rem]"
-					>
-						{settings.flashSaleTitle || 'FLASH SALE'}
-					</h3>
-					<!-- Cursive overlapping text -->
-					<span
-						class="absolute -right-2 -bottom-2 rotate-[2.5deg] font-serif text-sm text-[#fffaf0] italic drop-shadow-md select-none sm:-right-6 sm:text-2xl md:text-3xl"
-					>
-						{settings.flashSaleSubtitle || 'Ends Soon!'}
-					</span>
-				</div>
-
-				<!-- Promo details description -->
-				<p
-					class="mt-3 w-full text-center text-[0.62rem] font-black tracking-[0.15em] text-[#fffaf0]/80 uppercase sm:mt-6 sm:text-xs sm:tracking-[0.25em] md:text-[0.85rem]"
+				<div class="pointer-events-none absolute inset-y-0 left-0 w-4 bg-[#c8a4e5] sm:w-6"></div>
+				<div class="pointer-events-none absolute inset-y-0 right-0 w-4 bg-[#f4edf8] sm:w-6"></div>
+				<svg
+					class="pointer-events-none absolute inset-0 text-[#a875ce]/28"
+					viewBox="0 0 420 430"
+					preserveAspectRatio="none"
+					aria-hidden="true"
 				>
-					{settings.flashSaleDescription || 'UP TO 70% OFF SELECTED ITEMS'}
-				</p>
+					<path
+						d="M-25 270c76 5 84 82 135 92M245 16c86 13 130 66 150 145"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.2"
+					/>
+				</svg>
 
-				<!-- Countdown Timer Box -->
-				<div class="mt-4 flex flex-col items-center gap-2 sm:mt-6">
-					<span
-						class="text-[0.55rem] font-bold tracking-[0.15em] text-[#c5a880] uppercase sm:text-[0.62rem]"
-					>
-						Remaining Time:
-					</span>
+				<div
+					class="relative z-10 mb-0 h-[300px] w-[84%] max-w-[380px] overflow-visible rounded-t-full border border-[#dfc7f1] bg-[#eee4dc] shadow-[0_18px_38px_rgba(87,43,122,0.14)] sm:h-[390px] lg:h-[88%] lg:w-[82%]"
+				>
+					<div class="pointer-events-none absolute inset-3 rounded-t-full border-t-[8px] border-l-[8px] border-r-[8px] border-[#ead9f7]"></div>
+					<div class="pointer-events-none absolute -right-[6%] top-[20%] h-[76%] w-[16%] bg-[#eadfd7]"></div>
+					<img
+						src={staticFlashSaleImage}
+						alt="Limited edition abaya flash sale"
+						class="relative z-10 h-full w-full object-cover object-top drop-shadow-[0_18px_28px_rgba(48,17,71,0.12)]"
+					/>
 
 					<div
-						class="flex items-center justify-center gap-2 rounded-xl border border-white/5 bg-[#173f35]/60 p-2.5 shadow-inner backdrop-blur sm:p-3.5"
+						class="absolute -right-7 top-10 z-20 flex size-24 flex-col items-center justify-center rounded-full border-2 border-[#d7b6ef] bg-[#7f35bd] text-center text-white shadow-[0_14px_30px_rgba(91,38,130,0.25)] sm:-right-8 sm:size-28"
 					>
-						<!-- Hours -->
-						<div class="flex flex-col items-center gap-1">
-							<div class="flex gap-0.5 sm:gap-1">
+						<span class="text-sm font-black uppercase">Save</span>
+						<span class="text-3xl font-black leading-none sm:text-4xl">30%</span>
+						<span class="text-sm font-black uppercase">Off</span>
+					</div>
+
+					<span
+						class="absolute bottom-3 left-3 z-20 rounded-md bg-[#7f35bd] px-4 py-2 text-xs font-black text-white uppercase shadow-[0_10px_24px_rgba(91,38,130,0.25)] sm:px-5 sm:text-sm"
+					>
+						Online Exclusive
+					</span>
+				</div>
+			</div>
+
+			<div class="relative z-10 flex flex-col items-center justify-center px-5 py-7 text-center sm:px-10 lg:px-14">
+				<div
+					class="mb-4 rounded-full border border-white/25 bg-white/25 px-6 py-1.5 text-[0.64rem] font-black text-white uppercase shadow-[inset_0_1px_0_rgba(255,255,255,0.42)] sm:px-9 sm:text-xs"
+				>
+					Limited Edition Offer
+				</div>
+
+				<div class="relative">
+					<h3
+						class="font-serif text-[2.6rem] leading-none font-black text-white uppercase text-balance sm:text-[4.6rem] lg:text-[5.3rem]"
+					>
+						{settings.flashSaleTitle || 'Flash Sale'}
+					</h3>
+					<p
+						class="-mt-2 font-serif text-[2.05rem] leading-none text-[#dfa4ff] italic sm:-mt-4 sm:text-[3.35rem] lg:text-[3.8rem]"
+					>
+						{settings.flashSaleSubtitle || 'Ends soon!'}
+					</p>
+				</div>
+
+				<div class="mt-4 flex w-full max-w-2xl items-center gap-3 text-[#e9c7ff]">
+					<span class="h-px flex-1 bg-current/55"></span>
+					<span class="text-lg">✦</span>
+					<span class="h-px flex-1 bg-current/55"></span>
+				</div>
+
+				<p
+					class="mt-3 text-[0.78rem] font-black text-white uppercase text-pretty sm:text-sm"
+				>
+					{settings.flashSaleDescription || 'Up to 70% off selected items'}
+				</p>
+
+				<div class="mt-5 w-full max-w-[31rem] rounded-2xl border border-[#d8a7f5]/55 px-4 py-3 sm:px-6">
+					<div class="-mt-6 mb-2.5 flex items-center justify-center gap-3">
+						<span class="hidden h-px w-20 bg-[#e9c7ff]/60 sm:block"></span>
+						<span class="bg-[#522072] px-3 text-[0.68rem] font-black text-white uppercase">
+							Remaining Time:
+						</span>
+						<span class="hidden h-px w-20 bg-[#e9c7ff]/60 sm:block"></span>
+					</div>
+
+					<div class="flex items-center justify-center gap-2 sm:gap-4">
+						<div class="flex flex-col items-center gap-2">
+							<div class="flex gap-1.5">
 								{#each pad(hours) as digit}
 									<div
-										class="flex h-8 w-6 items-center justify-center rounded-md bg-[#fffaf0] text-sm font-black text-[#0a0a0a] shadow-md sm:h-13 sm:w-10 sm:text-xl"
+										class="flex h-12 w-9 items-center justify-center rounded-lg bg-white text-2xl font-black text-[#4c1d68] shadow-[0_8px_18px_rgba(30,9,45,0.25)] tabular-nums sm:h-15 sm:w-12 sm:text-3xl"
 									>
 										{digit}
 									</div>
 								{/each}
 							</div>
-							<span
-								class="mt-1 text-[0.48rem] font-semibold tracking-[0.12em] text-white/50 uppercase sm:text-[0.58rem]"
-								>Hours</span
-							>
+							<span class="text-[0.62rem] font-black text-white uppercase sm:text-xs">Hours</span>
 						</div>
 
-						<div class="pb-4 text-sm font-bold text-[#c5a880] sm:pb-5 sm:text-lg">:</div>
+						<div class="pb-7 text-2xl font-black text-white sm:text-3xl">:</div>
 
-						<!-- Minutes -->
-						<div class="flex flex-col items-center gap-1">
-							<div class="flex gap-0.5 sm:gap-1">
+						<div class="flex flex-col items-center gap-2">
+							<div class="flex gap-1.5">
 								{#each pad(minutes) as digit}
 									<div
-										class="flex h-8 w-6 items-center justify-center rounded-md bg-[#fffaf0] text-sm font-black text-[#0a0a0a] shadow-md sm:h-13 sm:w-10 sm:text-xl"
+										class="flex h-12 w-9 items-center justify-center rounded-lg bg-white text-2xl font-black text-[#4c1d68] shadow-[0_8px_18px_rgba(30,9,45,0.25)] tabular-nums sm:h-15 sm:w-12 sm:text-3xl"
 									>
 										{digit}
 									</div>
 								{/each}
 							</div>
-							<span
-								class="mt-1 text-[0.48rem] font-semibold tracking-[0.12em] text-white/50 uppercase sm:text-[0.58rem]"
-								>Mins</span
-							>
+							<span class="text-[0.62rem] font-black text-white uppercase sm:text-xs">Mins</span>
 						</div>
 
-						<div class="pb-4 text-sm font-bold text-[#c5a880] sm:pb-5 sm:text-lg">:</div>
+						<div class="pb-7 text-2xl font-black text-white sm:text-3xl">:</div>
 
-						<!-- Seconds -->
-						<div class="flex flex-col items-center gap-1">
-							<div class="flex gap-0.5 sm:gap-1">
+						<div class="flex flex-col items-center gap-2">
+							<div class="flex gap-1.5">
 								{#each pad(seconds) as digit}
 									<div
-										class="flex h-8 w-6 items-center justify-center rounded-md bg-[#fffaf0] text-sm font-black text-[#0a0a0a] shadow-md sm:h-13 sm:w-10 sm:text-xl"
+										class="flex h-12 w-9 items-center justify-center rounded-lg bg-white text-2xl font-black text-[#4c1d68] shadow-[0_8px_18px_rgba(30,9,45,0.25)] tabular-nums sm:h-15 sm:w-12 sm:text-3xl"
 									>
 										{digit}
 									</div>
 								{/each}
 							</div>
-							<span
-								class="mt-1 text-[0.48rem] font-semibold tracking-[0.12em] text-white/50 uppercase sm:text-[0.58rem]"
-								>Secs</span
-							>
+							<span class="text-[0.62rem] font-black text-white uppercase sm:text-xs">Secs</span>
 						</div>
 					</div>
 				</div>
 
-				<!-- Action button -->
 				<a
 					href={settings.flashSaleCtaLink || '/shop?on-sale=true'}
-					class="mt-4 inline-flex min-h-9 items-center justify-center gap-2 rounded-full bg-[#fffaf0] px-5 text-[0.62rem] font-black text-[#0a0a0a] uppercase shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#0a0a0a] hover:shadow-lg sm:mt-6 sm:min-h-11 sm:px-8 sm:text-[0.72rem]"
+					class="mt-5 inline-flex min-h-11 items-center justify-center gap-3 rounded-full border border-white/50 bg-white/90 px-9 text-sm font-black text-[#542071] uppercase shadow-[0_0_24px_rgba(225,159,255,0.42)] transition-colors duration-200 hover:bg-[#f2dcff] sm:min-h-12 sm:px-14"
 				>
 					{settings.flashSaleCtaLabel || 'Shop The Sale'}
-					<svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2.8"
-							d="M9 5l7 7-7 7"
-						/>
+					<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7" />
 					</svg>
 				</a>
 			</div>

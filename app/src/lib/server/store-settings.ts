@@ -70,7 +70,7 @@ export const defaultStorefrontSettings: SettingValues = {
 	slide3_description:
 		'Sophisticated dark cuts with delicate gold-lace details, designed to leave a quiet, modest presence.',
 	slide3_link: '/shop?category=eid-edit',
-	slide3_image: '/abaya_banner_eid.png',
+	slide3_image: '/banner-section/banner-3.png',
 	slide3_promo: '30% OFF',
 
 	// Flash Sale

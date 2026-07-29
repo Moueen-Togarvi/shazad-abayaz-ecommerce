@@ -57,7 +57,7 @@
 	/>
 	<div class="absolute inset-0 -z-20 bg-[#10261f]/50"></div>
 	<div
-		class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-[#fbf9f2] via-[#fbf9f2]/20 to-transparent"
+		class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-white via-white/20 to-transparent"
 	></div>
 
 	<div
@@ -90,7 +90,7 @@
 	</div>
 </section>
 
-<section class="bg-[#fbf9f2] px-4 py-16 text-[#0a0a0a] sm:px-6 lg:px-8">
+<section class="bg-white px-4 py-16 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-4xl">
 		<p class="mb-4 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">
 			How Shahzad Abaya's Started

@@ -51,22 +51,6 @@ const buildHomeSections = (
 	);
 
 export const load: PageServerLoad = async () => {
-	// Temporary asset copy bypass
-	try {
-		const fs = await import('fs');
-		const src =
-			'../../../../.gemini/antigravity/brain/35f96b21-aa9a-4c5e-8619-79ba54254658/abaya_banner_eid_1782321830120.png';
-		const dest = 'static/abaya_banner_eid.png';
-		if (fs.existsSync(src)) {
-			fs.copyFileSync(src, dest);
-			console.log('SUCCESS: Copied abaya_banner_eid.png');
-		} else {
-			console.log('SOURCE NOT FOUND:', src);
-		}
-	} catch (err) {
-		console.error('Bypass copy error:', err);
-	}
-
 	try {
 		const storefrontSectionProduct = (prisma as any).storefrontSectionProduct;
 		const [products, productCount, collections, reviewPhotos, placements, storefrontSettings] =

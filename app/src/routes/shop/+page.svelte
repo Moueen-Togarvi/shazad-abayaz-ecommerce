@@ -195,7 +195,7 @@
 	{@html shopJsonLd}
 </svelte:head>
 
-<section class="bg-[#fbf9f2] px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
+<section class="bg-white px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 border-b border-[#0a0a0a]/10 pb-8">
 			<p class="mb-3 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">Shop Shahzad Abaya's</p>
@@ -234,7 +234,7 @@
 				<label class="flex items-center gap-2 text-sm font-medium text-[#52524f]">
 					<span>Sort by</span>
 					<select
-						class="rounded-full border border-[#0a0a0a]/10 bg-[#fbf9f2] px-4 py-2 text-sm font-bold text-[#0a0a0a] focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
+						class="rounded-full border border-[#0a0a0a]/10 bg-white px-4 py-2 text-sm font-bold text-[#0a0a0a] focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
 					>
 						<option>Featured</option>
 						<option>New Arrivals</option>
@@ -244,7 +244,7 @@
 				</label>
 
 				<div
-					class="hidden items-center gap-2 rounded-full border border-[#0a0a0a]/10 bg-[#fbf9f2] p-1 md:flex"
+					class="hidden items-center gap-2 rounded-full border border-[#0a0a0a]/10 bg-white p-1 md:flex"
 				>
 					<button
 						type="button"
@@ -287,7 +287,7 @@
 						</h2>
 						<a
 							href="/shop"
-							class="rounded-full border border-[#0a0a0a]/10 px-2.5 py-1 text-[0.65rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase transition-colors hover:bg-[#fbf9f2]"
+							class="rounded-full border border-[#0a0a0a]/10 px-2.5 py-1 text-[0.65rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase transition-colors hover:bg-white"
 						>
 							Clear
 						</a>
@@ -308,7 +308,7 @@
 								bind:value={searchQuery}
 								oninput={handleSearchInput}
 								placeholder="Search by name, color..."
-								class="h-9 w-full rounded-md border-[#0a0a0a]/15 bg-[#fbf9f2] text-xs font-semibold text-[#0a0a0a] placeholder:text-[#52524f]/70 focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
+								class="h-9 w-full rounded-md border-[#0a0a0a]/15 bg-white text-xs font-semibold text-[#0a0a0a] placeholder:text-[#52524f]/70 focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
 							/>
 						</div>
 
@@ -319,7 +319,7 @@
 									class="flex min-h-8 cursor-pointer items-center justify-between rounded-md border px-2.5 text-xs font-bold transition-colors {selectedCategory ===
 									''
 										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 								>
 									<span>All categories</span>
 									<input
@@ -336,7 +336,7 @@
 										class="flex min-h-8 cursor-pointer items-center justify-between gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedCategory ===
 										collection.slug
 											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 									>
 										<span>{collection.name}</span>
 										<input
@@ -359,7 +359,7 @@
 									class="flex min-h-8 cursor-pointer items-center gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedColor ===
 									''
 										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 								>
 									<span
 										class="h-3.5 w-3.5 rounded-full border border-current bg-white"
@@ -380,7 +380,7 @@
 										class="flex min-h-8 cursor-pointer items-center gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedColor ===
 										color
 											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 									>
 										<span
 											class="h-3.5 w-3.5 rounded-full border border-[#0a0a0a]/20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]"
@@ -408,7 +408,7 @@
 									class="inline-flex min-h-8 cursor-pointer items-center rounded-full border px-3 text-xs font-black transition-colors {selectedSize ===
 									''
 										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 								>
 									All
 									<input
@@ -425,7 +425,7 @@
 										class="inline-flex min-h-8 cursor-pointer items-center rounded-full border px-3 text-xs font-black transition-colors {selectedSize ===
 										size
 											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 									>
 										{size}
 										<input

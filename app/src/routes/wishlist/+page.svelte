@@ -25,7 +25,7 @@
 	<title>My Wishlist | Shahzad Abaya's</title>
 </svelte:head>
 
-<section class="bg-[#fbf9f2] px-4 py-12 text-[#0a0a0a] sm:px-6 md:py-20 lg:px-8">
+<section class="bg-white px-4 py-12 text-[#0a0a0a] sm:px-6 md:py-20 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-10 text-center">
 			<p class="mb-3 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">Saved Abayas</p>
@@ -114,7 +114,7 @@
 								</div>
 								<button
 									type="button"
-									class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#0a0a0a] transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+									class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#0a0a0a]/10 bg-white text-[#0a0a0a] transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-700"
 									aria-label={`Remove ${item.name} from wishlist`}
 									onclick={() => wishlist.removeItem(item.id)}
 								>

@@ -78,7 +78,7 @@
 	{@html collectionsJsonLd}
 </svelte:head>
 
-<section class="bg-[#fbf9f2] px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
+<section class="bg-white px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 border-b border-[#0a0a0a]/10 pb-8">
 			<p class="mb-3 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">
@@ -163,7 +163,7 @@
 									{collection.name}
 								</h2>
 								<span
-									class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#0a0a0a] transition-colors group-hover:bg-[#c5a880]"
+									class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#0a0a0a]/10 bg-white text-[#0a0a0a] transition-colors group-hover:bg-[#c5a880]"
 									aria-hidden="true"
 								>
 									<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

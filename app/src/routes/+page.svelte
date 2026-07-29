@@ -526,7 +526,7 @@
 
 {#if saleTapeEnabled && saleTapeItems.length}
 	<!-- Eid Sale Tape -->
-	<section class="relative overflow-hidden bg-[#f7f4ec] px-4 py-4 sm:px-6 lg:px-8">
+	<section class="relative overflow-hidden bg-white px-4 py-4 sm:px-6 lg:px-8">
 		<div class="sale-tape-stage" aria-hidden="true">
 			<div class="sale-tape sale-tape--gold">
 				<div class="sale-tape__track sale-tape__track--ltr">
@@ -549,7 +549,7 @@
 <CategoryCircleCards {collections} />
 
 <!-- Featured Collections -->
-<section class="border-t border-[#0a0a0a]/8 bg-[#fbf9f2] px-4 py-16 sm:px-6 lg:px-8">
+<section class="border-t border-[#0a0a0a]/8 bg-white px-4 py-16 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-6xl">
 		<div class="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 			<div>
@@ -590,7 +590,7 @@
 </section>
 
 <!-- Abaya Low-Height Sliding Banner -->
-<AbayaSlidingBanner settings={storefrontSettings} />
+<AbayaSlidingBanner />
 
 <!-- Features / Trust Banner -->
 <section class="bg-cream px-4 pt-4 pb-6 sm:px-6 lg:px-8">

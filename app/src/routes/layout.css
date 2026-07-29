@@ -3,7 +3,7 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-	--color-cream: #f7f5ef;
+	--color-cream: #ffffff;
 	--color-white: #ffffff;
 	--color-black: #0a0a0a;
 	--color-dusty-rose: #d1b8b4;
@@ -46,7 +46,7 @@
 @layer base {
 	body {
 		@apply font-sans text-black antialiased;
-		background-color: var(--color-cream);
+		background-color: var(--color-white);
 	}
 
 	h1,

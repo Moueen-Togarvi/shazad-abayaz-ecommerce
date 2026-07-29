@@ -145,7 +145,7 @@
 	{@html sectionJsonLd}
 </svelte:head>
 
-<section class="bg-[#fbf9f2] px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
+<section class="bg-white px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 border-b border-[#0a0a0a]/10 pb-8">
 			<a
@@ -207,7 +207,7 @@
 						</h2>
 						<a
 							href={section.href}
-							class="rounded-full border border-[#0a0a0a]/10 px-2.5 py-1 text-[0.65rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase transition-colors hover:bg-[#fbf9f2]"
+							class="rounded-full border border-[#0a0a0a]/10 px-2.5 py-1 text-[0.65rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase transition-colors hover:bg-white"
 						>
 							Clear
 						</a>
@@ -227,7 +227,7 @@
 								type="search"
 								bind:value={searchQuery}
 								placeholder="Search by name, color..."
-								class="h-9 w-full rounded-md border-[#0a0a0a]/15 bg-[#fbf9f2] text-xs font-semibold text-[#0a0a0a] placeholder:text-[#52524f]/70 focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
+								class="h-9 w-full rounded-md border-[#0a0a0a]/15 bg-white text-xs font-semibold text-[#0a0a0a] placeholder:text-[#52524f]/70 focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
 							/>
 						</div>
 
@@ -238,7 +238,7 @@
 									class="flex min-h-8 cursor-pointer items-center justify-between rounded-md border px-2.5 text-xs font-bold transition-colors {selectedCategory ===
 									''
 										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 								>
 									<span>All categories</span>
 									<input
@@ -254,7 +254,7 @@
 										class="flex min-h-8 cursor-pointer items-center justify-between gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedCategory ===
 										category.slug
 											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 									>
 										<span>{category.name}</span>
 										<input
@@ -276,7 +276,7 @@
 									class="flex min-h-8 cursor-pointer items-center gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedColor ===
 									''
 										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 								>
 									<span
 										class="h-3.5 w-3.5 rounded-full border border-current bg-white"
@@ -296,7 +296,7 @@
 										class="flex min-h-8 cursor-pointer items-center gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedColor ===
 										color
 											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 									>
 										<span
 											class="h-3.5 w-3.5 rounded-full border border-[#0a0a0a]/20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]"
@@ -323,7 +323,7 @@
 									class="inline-flex min-h-8 cursor-pointer items-center rounded-full border px-3 text-xs font-black transition-colors {selectedSize ===
 									''
 										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 								>
 									All
 									<input
@@ -339,7 +339,7 @@
 										class="inline-flex min-h-8 cursor-pointer items-center rounded-full border px-3 text-xs font-black transition-colors {selectedSize ===
 										size
 											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-[#fbf9f2] text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
 									>
 										{size}
 										<input

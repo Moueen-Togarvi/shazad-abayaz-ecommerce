@@ -8,7 +8,7 @@
 	);
 </script>
 
-<section class="overflow-hidden border-t border-[#0a0a0a]/8 bg-[#f7f4ec] py-10 sm:py-14">
+<section class="overflow-hidden border-t border-[#0a0a0a]/8 bg-white py-10 sm:py-14">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-col gap-8">
 			<div class="text-center">

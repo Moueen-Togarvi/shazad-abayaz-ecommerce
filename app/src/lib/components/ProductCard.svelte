@@ -74,10 +74,6 @@
 			: 0
 	);
 
-	let marqueeText = $derived(
-		discountPercent > 0 ? `${discountPercent}% OFF * SALE` : 'NEW COLLECTION * BESTSELLER'
-	);
-
 	function getColorHex(colorName: string) {
 		const colorsMap: Record<string, string> = {
 			black: '#000000',
@@ -174,122 +170,169 @@
 				</span>
 			</div>
 		{/if}
+
+		<svg
+			class="pointer-events-none absolute right-0 bottom-0 left-0 z-20 h-[10px] w-full text-white"
+			viewBox="0 0 360 20"
+			preserveAspectRatio="none"
+			aria-hidden="true"
+		>
+			<path d="M0 20V9.3C64-2.7 112 12 174 7 242.5 1.3 296 2.7 360 11.7V20H0Z" fill="currentColor" />
+		</svg>
 	</div>
 
 	<!-- Info Container -->
-	<div class="relative flex flex-1 flex-col justify-between p-3.5 text-left sm:p-4">
-		<div class="space-y-1">
-			<!-- Product Name -->
-			<a
-				{href}
-				class="block truncate font-sans text-xs leading-snug font-bold text-[#0a0a0a] uppercase transition-colors hover:text-[#c0983f] sm:line-clamp-2 sm:text-base sm:whitespace-normal"
-			>
-				{product.name}
-			</a>
+	<div
+		class="relative z-10 flex flex-1 flex-col justify-between bg-white p-2.5 pt-2 text-left shadow-[inset_0_1px_0_rgba(124,58,237,0.08)] sm:p-3 sm:pt-2.5"
+	>
+		<svg
+			class="pointer-events-none absolute top-2 right-0 size-28 text-[#b894e4]/16 sm:size-36"
+			fill="none"
+			viewBox="0 0 120 120"
+			aria-hidden="true"
+		>
+			<path
+				d="M86 8c-10 18-13 36-8 54 4 16 2 30-8 42"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+			/>
+			<path
+				d="M78 36c18-5 27-15 29-30-18 3-28 13-29 30ZM76 58c18 1 30-6 37-20-18-2-31 5-37 20ZM69 82c15 6 28 3 39-8-15-7-29-4-39 8ZM82 28c-15 1-26-5-33-18 16-2 28 5 33 18ZM77 52c-14-2-24-11-29-26 16 1 26 10 29 26Z"
+				stroke="currentColor"
+				stroke-width="1.8"
+				stroke-linejoin="round"
+			/>
+			<circle cx="87" cy="66" r="2" fill="currentColor" />
+			<circle cx="78" cy="76" r="1.5" fill="currentColor" />
+			<circle cx="94" cy="78" r="1.5" fill="currentColor" />
+		</svg>
 
-			<!-- Animating Discount Marquee and Color Dots -->
-			<div class="flex items-center justify-between gap-3 pt-1 pb-1">
-				<!-- Marquee Strap -->
-				<div
-					class="relative flex-1 overflow-hidden {discountPercent > 0
-						? 'border border-red-100/50 bg-red-50 text-red-600'
-						: 'border border-[#0a0a0a]/6 bg-[#eeece4] text-[#0a0a0a]'} flex h-[18px] items-center rounded-md px-2 py-0.5 text-[0.48rem] font-extrabold tracking-wider uppercase sm:h-[22px] sm:text-[0.55rem]"
+		<div class="relative z-10 space-y-2">
+			<div class="flex items-center justify-between gap-2">
+				<span
+					class="inline-flex items-center gap-1 rounded bg-[#8b3edb] px-1.5 py-0.5 text-[0.42rem] font-black text-white uppercase shadow-[0_6px_14px_rgba(139,62,219,0.2)] sm:text-[0.48rem]"
 				>
-					<div class="animate-marquee-custom flex items-center gap-4 whitespace-nowrap">
-						<span class="shrink-0 whitespace-nowrap">{marqueeText}</span>
-						<span class="shrink-0">•</span>
-						<span class="shrink-0 whitespace-nowrap">{marqueeText}</span>
-						<span class="shrink-0">•</span>
-						<span class="shrink-0 whitespace-nowrap">{marqueeText}</span>
-						<span class="shrink-0">•</span>
-						<span class="shrink-0 whitespace-nowrap">{marqueeText}</span>
-					</div>
-				</div>
+					<svg class="size-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+						<path d="M10 1.8 12.7 7.3l6.1.9-4.4 4.3 1 6.1L10 15.7l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L10 1.8Z" />
+					</svg>
+					Premium
+				</span>
 
-				<!-- Color dots -->
 				{#if colors.length > 0}
 					<div class="flex shrink-0 items-center gap-1">
 						{#each colors.slice(0, 3) as color}
 							<span
-								class="h-2 w-2 rounded-full border border-black/10 shadow-sm sm:h-2.5 sm:w-2.5"
+								class="size-2 rounded-full border border-black/10 shadow-sm sm:size-2.5"
 								style="background-color: {getColorHex(color)}"
 								title={color}
 							></span>
 						{/each}
-						{#if colors.length > 3}
-							<span class="text-[0.58rem] font-bold text-gray-500 sm:text-[0.62rem]"
-								>+{colors.length - 3}</span
-							>
-						{/if}
 					</div>
 				{/if}
 			</div>
-		</div>
 
-		<!-- Footer Row: Price & Buy Now Button side-by-side -->
-		<div
-			class="mt-2 flex items-center justify-between gap-0.5 border-t border-[#0a0a0a]/6 pt-2 sm:gap-2"
-		>
-			<div class="min-w-0">
-				<div class="flex items-baseline gap-1 whitespace-nowrap">
-					<span class="text-[0.68rem] font-extrabold tracking-tight text-[#0a0a0a] sm:text-base">
-						{formatMoney(product.salePrice || product.price)}
+			<a
+				{href}
+				class="relative block font-serif text-[0.78rem] leading-tight font-black text-[#241238] uppercase transition-colors hover:text-[#7c3aed] sm:line-clamp-2 sm:text-[0.95rem]"
+			>
+				{product.name}
+			</a>
+
+			<div
+				class="relative grid grid-cols-2 overflow-hidden rounded-lg border border-[#e9ddfb] bg-[#fbf8ff]/95 text-[#6b42a0] shadow-[0_8px_24px_rgba(124,58,237,0.08)]"
+			>
+				<svg
+					class="pointer-events-none absolute inset-y-2 left-1/2 h-auto w-1 -translate-x-1/2 text-[#b894e4]/45"
+					viewBox="0 0 4 48"
+					preserveAspectRatio="none"
+					aria-hidden="true"
+				>
+					<path
+						d="M2 2v44"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-dasharray="1 7"
+					/>
+				</svg>
+
+				<div class="flex min-w-0 items-center justify-center gap-1 px-1 py-1">
+					<svg class="size-4 shrink-0 text-[#8b3edb]" fill="currentColor" viewBox="0 0 20 20">
+						<path d="M17.7 9.3 10.7 2.3A1 1 0 0 0 10 2H3a1 1 0 0 0-1 1v7c0 .3.1.5.3.7l7 7a1 1 0 0 0 1.4 0l7-7a1 1 0 0 0 0-1.4ZM6 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
+					</svg>
+					<span class="text-[0.46rem] leading-tight font-black uppercase sm:text-[0.54rem]">
+						{discountPercent || 20}% Off Sale
 					</span>
-					{#if product.salePrice}
-						<span class="text-[0.5rem] font-bold text-red-600 line-through sm:text-xs">
-							{formatMoney(product.price)}
-						</span>
-					{/if}
+				</div>
+
+				<div class="flex min-w-0 items-center justify-center gap-1 px-1 py-1">
+					<svg class="size-4 shrink-0 text-[#7c3aed]" fill="currentColor" viewBox="0 0 20 20">
+						<path d="M5 5a3 3 0 1 1 5 2.2A3 3 0 1 1 15 5h1a1 1 0 0 1 1 1v3H3V6a1 1 0 0 1 1-1h1Zm2 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1Zm4 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1ZM3 11h6v7H5a2 2 0 0 1-2-2v-5Zm8 7v-7h6v5a2 2 0 0 1-2 2h-4Z" />
+					</svg>
+					<span class="text-[0.46rem] leading-tight font-black uppercase sm:text-[0.54rem]">
+						Limited Offer
+					</span>
 				</div>
 			</div>
+		</div>
 
-			<!-- Action Button -->
-			<div class="shrink-0">
+		<div class="relative z-10 mt-2 pt-1.5">
+			<svg
+				class="absolute top-0 left-0 h-3 w-full text-[#dfcff4]"
+				viewBox="0 0 320 16"
+				preserveAspectRatio="none"
+				aria-hidden="true"
+			>
+				<path
+					d="M0 9c24-8 45 8 69 0s45-8 69 0 45 8 69 0 45-8 69 0 30 4 44 0"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+				/>
+			</svg>
+
+			<div class="flex items-center justify-between gap-2 pt-1.5">
+				<div class="w-[4.6rem] min-w-0 sm:w-[5.8rem]">
+					<div class="flex items-baseline gap-1.5 whitespace-nowrap">
+						<span class="text-[0.86rem] font-black text-[#150b26] tabular-nums sm:text-[1.08rem]">
+							{formatMoney(product.salePrice || product.price)}
+						</span>
+						{#if product.salePrice}
+							<span
+								class="text-[0.52rem] font-bold text-red-600 line-through tabular-nums sm:text-[0.68rem]"
+							>
+								{formatMoney(product.price)}
+							</span>
+						{/if}
+					</div>
+				</div>
+
 				{#if isOutOfStock}
 					<button
 						disabled
-						class="inline-flex min-h-[1.3rem] cursor-not-allowed items-center justify-center rounded-[5px] bg-gray-100 px-1 text-[0.52rem] font-bold text-gray-400 uppercase sm:min-h-[2rem] sm:rounded-xl sm:px-2.5 sm:text-xs"
+						class="inline-flex min-h-7 cursor-not-allowed items-center justify-center rounded-full bg-gray-100 px-2.5 text-[0.56rem] font-black text-gray-400 uppercase sm:min-h-8 sm:px-3 sm:text-[0.68rem]"
 					>
 						Sold Out
 					</button>
 				{:else}
 					<a
 						{href}
-						class="inline-flex min-h-[1.3rem] items-center gap-0.5 rounded-[5px] bg-[#0a0a0a] px-1 py-0.5 text-[0.52rem] font-bold tracking-wider text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#0a0a0a] sm:min-h-[2rem] sm:gap-1.5 sm:rounded-xl sm:px-2.5 sm:text-xs"
+						class="inline-flex min-h-7 shrink-0 items-center justify-center gap-1 rounded-full bg-[#7c2ec4] px-2.5 text-[0.56rem] font-black text-white shadow-[0_8px_18px_rgba(124,46,196,0.22)] transition-colors duration-200 hover:bg-[#5f219d] sm:min-h-8 sm:gap-1.5 sm:px-3 sm:text-[0.68rem]"
 					>
-						<svg
-							class="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
+						<svg class="size-3 sm:size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
 								stroke-width="2"
-								d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+								d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13 5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
 							/>
 						</svg>
-						Buy<span class="hidden sm:inline"> Now</span>
+						Buy Now
 					</a>
 				{/if}
 			</div>
 		</div>
 	</div>
 </article>
-
-<style>
-	@keyframes marquee {
-		0% {
-			transform: translateX(0%);
-		}
-		100% {
-			transform: translateX(-50%);
-		}
-	}
-	.animate-marquee-custom {
-		display: flex;
-		width: max-content;
-		animation: marquee 10s linear infinite;
-	}
-</style>

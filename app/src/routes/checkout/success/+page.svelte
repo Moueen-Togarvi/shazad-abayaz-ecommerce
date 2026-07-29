@@ -45,14 +45,14 @@
 	<title>Order Received | Shahzad Abaya's</title>
 </svelte:head>
 
-<div class="min-h-screen bg-[#f6f5f1] px-4 py-14">
+<div class="min-h-screen bg-white px-4 py-14">
 	{#if order}
 		<div class="mx-auto max-w-5xl">
 			<div
 				class="mx-auto mb-8 max-w-sm rounded-2xl bg-white p-7 text-center shadow-[0_24px_80px_rgba(20,53,45,0.10)]"
 			>
 				<div
-					class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#fbf9f2] text-[#c5a880]"
+					class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-white text-[#c5a880]"
 				>
 					<svg
 						class="h-7 w-7"
@@ -73,10 +73,10 @@
 				<p class="mt-1 text-xs leading-5 text-gray-500">Your order has been placed successfully.</p>
 
 				<div class="relative my-6 border-t border-dashed border-gray-300">
-					<span class="absolute top-1/2 -left-10 h-8 w-8 -translate-y-1/2 rounded-full bg-[#f6f5f1]"
+					<span class="absolute top-1/2 -left-10 h-8 w-8 -translate-y-1/2 rounded-full bg-white"
 					></span>
 					<span
-						class="absolute top-1/2 -right-10 h-8 w-8 -translate-y-1/2 rounded-full bg-[#f6f5f1]"
+						class="absolute top-1/2 -right-10 h-8 w-8 -translate-y-1/2 rounded-full bg-white"
 					></span>
 				</div>
 
