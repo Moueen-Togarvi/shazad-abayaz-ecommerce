@@ -2,7 +2,11 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const category = { name: 'Handmade Cutdana Lace Abayas', slug: 'handmade-cutdana-lace-abayas' };
+const category = {
+	name: 'Handmade Cutdana Lace Abayas',
+	slug: 'handmade-cutdana-lace-abayas',
+	imageUrl: '/products/cutdana-lace/cutdana-lace-sage-grey.png'
+};
 
 const items = [
 	{ color: 'Raspberry Magenta', slug: 'raspberry-magenta' },
@@ -41,11 +45,10 @@ const main = async () => {
 
 	await prisma.collection.upsert({
 		where: { slug: category.slug },
-		update: {},
+		update: { imageUrl: category.imageUrl },
 		create: {
 			...category,
 			description: null,
-			imageUrl: null,
 			isVisible: true,
 			displayOrder: 2
 		}

@@ -54,49 +54,31 @@ type FallbackProductOptions = {
 
 const fallbackCollectionSeed: StorefrontCollectionBase[] = [
 	{
-		id: 'fallback-collection-nida-essentials',
-		name: 'Nida Essentials',
-		slug: 'nida-essentials',
+		id: 'fallback-collection-georgette-abayas',
+		name: 'Georgette Abayas',
+		slug: 'georgette-abayas',
 		description: null,
-		imageUrl: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png',
+		imageUrl: '/products/georgette-abaya/georgette-abaya-slate-blue.png',
 		isVisible: true,
 		displayOrder: 0
 	},
 	{
-		id: 'fallback-collection-occasion',
-		name: 'Occasion',
-		slug: 'occasion',
+		id: 'fallback-collection-nida-cutdana-abayas',
+		name: 'Nida Cutdana Abayas',
+		slug: 'nida-cutdana-abayas',
 		description: null,
-		imageUrl: '/abaya22.png',
+		imageUrl: '/products/nida-cutdana/nida-cutdana-teal-classic.png',
 		isVisible: true,
 		displayOrder: 1
 	},
 	{
-		id: 'fallback-collection-daily-wear',
-		name: 'Daily Wear',
-		slug: 'daily-wear',
+		id: 'fallback-collection-handmade-cutdana-lace-abayas',
+		name: 'Handmade Cutdana Lace Abayas',
+		slug: 'handmade-cutdana-lace-abayas',
 		description: null,
-		imageUrl: '/abaya11.png',
+		imageUrl: '/products/cutdana-lace/cutdana-lace-sage-grey.png',
 		isVisible: true,
 		displayOrder: 2
-	},
-	{
-		id: 'fallback-collection-premium-nida',
-		name: 'Premium Nida',
-		slug: 'premium-nida',
-		description: null,
-		imageUrl: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png',
-		isVisible: true,
-		displayOrder: 3
-	},
-	{
-		id: 'fallback-collection-eid-edit',
-		name: 'Eid Edit',
-		slug: 'eid-edit',
-		description: null,
-		imageUrl: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png',
-		isVisible: true,
-		displayOrder: 4
 	}
 ];
 

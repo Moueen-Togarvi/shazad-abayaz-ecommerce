@@ -15,7 +15,8 @@ const adminPassword =
 const categories = [
 	{
 		name: 'Georgette Abayas',
-		slug: 'georgette-abayas'
+		slug: 'georgette-abayas',
+		imageUrl: '/products/georgette-abaya/georgette-abaya-slate-blue.png'
 	}
 ];
 
@@ -75,7 +76,6 @@ const seedDatabase = async () => {
 		data: categories.map((category, index) => ({
 			...category,
 			description: null,
-			imageUrl: null,
 			isVisible: true,
 			displayOrder: index
 		}))
