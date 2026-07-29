@@ -6,8 +6,11 @@ export const SITE_KEYWORDS =
 	"abayas, modest fashion, nida abaya, premium abayas, black abaya, eid abaya, Shahzad Abaya's";
 export const SITE_IMAGE = '/image.png';
 export const TIKTOK_URL = 'https://www.tiktok.com/@_abayiza_';
-export const PRIMARY_WHATSAPP_URL = 'https://wa.me/923116857822';
-export const SECONDARY_WHATSAPP_URL = 'https://wa.me/923346657779';
+export const STORE_ADDRESS = 'H block Meena Bazar Attock city';
+export const SUPPORT_PHONE_DISPLAY = '03269222727';
+export const SUPPORT_PHONE_INTERNATIONAL = '+92 326 9222727';
+export const PRIMARY_WHATSAPP_URL = 'https://wa.me/923269222727';
+export const SECONDARY_WHATSAPP_URL = '';
 
 export function cleanOrigin(origin: string) {
 	return String(origin || '').replace(/\/+$/, '');

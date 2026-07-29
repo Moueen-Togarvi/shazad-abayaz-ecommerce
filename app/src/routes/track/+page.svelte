@@ -116,20 +116,12 @@
 	<div class="mt-12 border-t border-gray-200 pt-12 text-center">
 		<p class="mb-4 text-sm font-light text-gray-500">Need help with your order?</p>
 		<a
-			href="https://wa.me/923116857822"
+			href="https://wa.me/923269222727"
 			target="_blank"
 			rel="noreferrer"
 			class="text-sm font-medium tracking-widest text-green-700 uppercase transition-colors hover:text-green-800"
 		>
 			WhatsApp Shahzad Abaya's
-		</a>
-		<a
-			href="https://wa.me/923346657779"
-			target="_blank"
-			rel="noreferrer"
-			class="ml-4 text-sm font-medium tracking-widest text-green-700 uppercase transition-colors hover:text-green-800"
-		>
-			WhatsApp 2
 		</a>
 	</div>
 </div>

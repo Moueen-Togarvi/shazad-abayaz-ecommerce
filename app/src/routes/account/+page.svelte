@@ -39,20 +39,12 @@
 				Use WhatsApp for real order support and product availability.
 			</p>
 			<a
-				href="https://wa.me/923116857822"
+				href="https://wa.me/923269222727"
 				target="_blank"
 				rel="noreferrer"
 				class="text-sm font-medium tracking-widest text-green-700 uppercase hover:text-green-800"
 			>
 				Contact Shahzad Abaya's
-			</a>
-			<a
-				href="https://wa.me/923346657779"
-				target="_blank"
-				rel="noreferrer"
-				class="mt-3 block text-sm font-medium tracking-widest text-green-700 uppercase hover:text-green-800"
-			>
-				Contact Shahzad Abaya's 2
 			</a>
 		</aside>
 	</div>

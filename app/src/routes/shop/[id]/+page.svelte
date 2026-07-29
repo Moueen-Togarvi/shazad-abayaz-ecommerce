@@ -415,20 +415,12 @@
 				<div>
 					<p class="mb-1 text-sm font-medium">WhatsApp catalog source</p>
 					<a
-						href={`https://wa.me/923116857822?text=${encodeURIComponent(`I want to ask about ${product.name}`)}`}
+						href={`https://wa.me/923269222727?text=${encodeURIComponent(`I want to ask about ${product.name}`)}`}
 						target="_blank"
 						rel="noreferrer"
 						class="text-xs font-semibold text-green-700 underline"
 					>
 						Chat with Shahzad Abaya's on WhatsApp
-					</a>
-					<a
-						href={`https://wa.me/923346657779?text=${encodeURIComponent(`I want to ask about ${product.name}`)}`}
-						target="_blank"
-						rel="noreferrer"
-						class="mt-2 block text-xs font-semibold text-green-700 underline"
-					>
-						Chat on WhatsApp 2
 					</a>
 				</div>
 			</div>

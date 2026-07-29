@@ -11,10 +11,12 @@
 	import { wishlist } from '$lib/client/wishlist.svelte';
 	import {
 		PRIMARY_WHATSAPP_URL,
-		SECONDARY_WHATSAPP_URL,
 		SITE_BRAND,
 		SITE_IMAGE,
 		SITE_NAME,
+		STORE_ADDRESS,
+		SUPPORT_PHONE_DISPLAY,
+		SUPPORT_PHONE_INTERNATIONAL,
 		TIKTOK_URL,
 		absoluteUrl,
 		jsonLdScript
@@ -38,8 +40,7 @@
 
 	const iconButtonClass =
 		'inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/24 bg-[#0a0a0a]/92 text-white shadow-[0_12px_28px_rgba(20,53,45,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a0a0a]';
-	const primaryWhatsAppHref = 'https://wa.me/923116857822';
-	const secondaryWhatsAppHref = 'https://wa.me/923346657779';
+	const primaryWhatsAppHref = PRIMARY_WHATSAPP_URL;
 	const announcementItems = [
 		'Whole Sale Market Deals Available',
 		'Bulk Orders & Reseller Pricing on WhatsApp'
@@ -69,19 +70,18 @@
 				url: absoluteUrl('/', page.url.origin),
 				logo: socialImage,
 				image: socialImage,
-				sameAs: [TIKTOK_URL, PRIMARY_WHATSAPP_URL, SECONDARY_WHATSAPP_URL],
+				address: {
+					'@type': 'PostalAddress',
+					streetAddress: STORE_ADDRESS,
+					addressLocality: 'Attock city',
+					addressCountry: 'PK'
+				},
+				sameAs: [TIKTOK_URL, PRIMARY_WHATSAPP_URL],
 				contactPoint: [
 					{
 						'@type': 'ContactPoint',
 						contactType: 'customer support',
-						telephone: '+92 311 6857822',
-						areaServed: 'PK',
-						availableLanguage: ['en', 'ur']
-					},
-					{
-						'@type': 'ContactPoint',
-						contactType: 'customer support',
-						telephone: '+92 334 6657779',
+						telephone: SUPPORT_PHONE_INTERNATIONAL,
 						areaServed: 'PK',
 						availableLanguage: ['en', 'ur']
 					}
@@ -465,18 +465,9 @@ fbq('init', '${metaPixelId}');`)
 						target="_blank"
 						rel="noreferrer"
 						class="inline-flex min-h-9 items-center justify-center rounded-full border border-white/95 bg-white px-4 text-[0.68rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase shadow-[0_12px_24px_rgba(20,53,45,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366]"
-						aria-label="Contact original owner on WhatsApp"
+						aria-label="Contact Shahzad Abaya's on WhatsApp"
 					>
-						WhatsApp 1
-					</a>
-					<a
-						href={secondaryWhatsAppHref}
-						target="_blank"
-						rel="noreferrer"
-						class="inline-flex min-h-9 items-center justify-center rounded-full border border-white/95 bg-white px-4 text-[0.68rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase shadow-[0_12px_24px_rgba(20,53,45,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8ff46] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366]"
-						aria-label="Contact company on WhatsApp"
-					>
-						WhatsApp 2
+						WhatsApp {SUPPORT_PHONE_DISPLAY}
 					</a>
 				</div>
 			{/if}
@@ -532,6 +523,15 @@ fbq('init', '${metaPixelId}');`)
 							<li>
 								<a href="/size-guide" class="transition-colors hover:text-gold">Size Guide</a>
 							</li>
+							<li class="leading-6">
+								<span class="block text-gray-200">Address</span>
+								<span>{STORE_ADDRESS}</span>
+							</li>
+							<li>
+								<a href={primaryWhatsAppHref} target="_blank" rel="noreferrer" class="transition-colors hover:text-gold">
+									Contact: {SUPPORT_PHONE_DISPLAY}
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -561,19 +561,6 @@ fbq('init', '${metaPixelId}');`)
 							rel="noreferrer"
 							class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[#25D366]/50 hover:bg-[#25D366]"
 							aria-label="Shahzad Abaya's WhatsApp"
-						>
-							<svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-								<path
-									d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.066 7.926a7.9 7.9 0 0 0 1.057 3.965L0 16l4.204-1.103a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.928-7.93a7.9 7.9 0 0 0-2.325-5.606M7.998 14.524a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.002 3.628-2.959 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.331.065-.133.034-.247-.015-.346-.05-.099-.445-1.076-.612-1.47-.16-.39-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.397 2.132 3.383 2.992.473.205.842.327 1.13.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
-								/>
-							</svg>
-						</a>
-						<a
-							href={secondaryWhatsAppHref}
-							target="_blank"
-							rel="noreferrer"
-							class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[#25D366]/50 hover:bg-[#25D366]"
-							aria-label="Shahzad Abaya's WhatsApp 2"
 						>
 							<svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
 								<path

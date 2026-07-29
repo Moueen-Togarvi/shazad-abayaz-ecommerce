@@ -198,22 +198,21 @@
 <section class="bg-white px-4 py-10 text-[#0a0a0a] sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 border-b border-[#0a0a0a]/10 pb-8">
-			<p class="mb-3 text-xs font-black tracking-[0.2em] text-[#a8895f] uppercase">Shop Shahzad Abaya's</p>
+			<p class="mb-3 text-xs font-black tracking-[0.2em] text-[#8b45b8] uppercase">Shop Shahzad Abaya's</p>
 			<div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
 				<div>
-					<h1 class="font-serif text-4xl leading-tight uppercase sm:text-5xl">The Collection</h1>
-					<p class="mt-4 max-w-2xl text-sm leading-6 font-medium text-[#52524f] sm:text-base">
-						Explore premium abayas for daily wear, occasion styling, and refined modest wardrobes.
-					</p>
+					<h1 class="font-serif text-4xl leading-tight uppercase sm:text-5xl">
+						The <span class="text-[#7e2bb8]">Collection</span>
+					</h1>
 				</div>
 				<div class="flex flex-wrap gap-2">
 					<span
-						class="rounded-full border border-[#0a0a0a]/10 bg-white px-4 py-2 text-xs font-bold text-[#0a0a0a]"
+						class="rounded-full border border-[#8b45b8]/18 bg-[#fbf7ff] px-4 py-2 text-xs font-bold text-[#3b174f]"
 					>
 						{pagination.total} Matching
 					</span>
 					<span
-						class="rounded-full border border-[#0a0a0a]/10 bg-white px-4 py-2 text-xs font-bold text-[#0a0a0a]"
+						class="rounded-full border border-[#8b45b8]/18 bg-[#fbf7ff] px-4 py-2 text-xs font-bold text-[#3b174f]"
 					>
 						{totalProducts} Total
 					</span>
@@ -222,7 +221,7 @@
 		</div>
 
 		<div
-			class="mb-8 flex flex-col gap-4 rounded-md border border-[#0a0a0a]/10 bg-white/86 p-4 shadow-[0_18px_45px_rgba(20,53,45,0.08)] md:flex-row md:items-center md:justify-between"
+			class="mb-8 flex flex-col gap-4 rounded-md border border-[#8b45b8]/14 bg-white/86 p-4 shadow-[0_18px_45px_rgba(126,43,184,0.07)] md:flex-row md:items-center md:justify-between"
 		>
 			<div class="flex items-center justify-between gap-3">
 				<p class="text-sm font-bold text-[#52524f]">
@@ -234,7 +233,7 @@
 				<label class="flex items-center gap-2 text-sm font-medium text-[#52524f]">
 					<span>Sort by</span>
 					<select
-						class="rounded-full border border-[#0a0a0a]/10 bg-white px-4 py-2 text-sm font-bold text-[#0a0a0a] focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
+						class="rounded-full border border-[#8b45b8]/18 bg-white px-4 py-2 text-sm font-bold text-[#0a0a0a] focus:border-[#8b45b8] focus:ring-[#8b45b8]"
 					>
 						<option>Featured</option>
 						<option>New Arrivals</option>
@@ -250,8 +249,8 @@
 						type="button"
 						aria-label="Grid view"
 						class="inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors {isGridView
-							? 'bg-[#0a0a0a] text-white'
-							: 'text-[#52524f] hover:bg-white'}"
+							? 'bg-[#7e2bb8] text-white'
+							: 'text-[#52524f] hover:bg-[#fbf7ff]'}"
 						onclick={() => (isGridView = true)}
 					>
 						<svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -262,8 +261,8 @@
 						type="button"
 						aria-label="List view"
 						class="inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors {!isGridView
-							? 'bg-[#0a0a0a] text-white'
-							: 'text-[#52524f] hover:bg-white'}"
+							? 'bg-[#7e2bb8] text-white'
+							: 'text-[#52524f] hover:bg-[#fbf7ff]'}"
 						onclick={() => (isGridView = false)}
 					>
 						<svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -279,15 +278,15 @@
 				<form
 					method="GET"
 					action="/shop"
-					class="sticky top-28 rounded-md border border-[#0a0a0a]/10 bg-white/92 p-3 shadow-[0_18px_45px_rgba(20,53,45,0.08)]"
+					class="sticky top-28 rounded-md border border-[#8b45b8]/14 bg-white/92 p-3 shadow-[0_18px_45px_rgba(126,43,184,0.07)]"
 				>
 					<div class="mb-3 flex items-center justify-between gap-3">
-						<h2 class="text-sm font-black tracking-[0.14em] text-[#a8895f] uppercase">
+						<h2 class="text-sm font-black tracking-[0.14em] text-[#8b45b8] uppercase">
 							Filter Search
 						</h2>
 						<a
 							href="/shop"
-							class="rounded-full border border-[#0a0a0a]/10 px-2.5 py-1 text-[0.65rem] font-black tracking-[0.1em] text-[#0a0a0a] uppercase transition-colors hover:bg-white"
+							class="rounded-full border border-[#8b45b8]/18 px-2.5 py-1 text-[0.65rem] font-black tracking-[0.1em] text-[#3b174f] uppercase transition-colors hover:bg-[#fbf7ff]"
 						>
 							Clear
 						</a>
@@ -308,7 +307,7 @@
 								bind:value={searchQuery}
 								oninput={handleSearchInput}
 								placeholder="Search by name, color..."
-								class="h-9 w-full rounded-md border-[#0a0a0a]/15 bg-white text-xs font-semibold text-[#0a0a0a] placeholder:text-[#52524f]/70 focus:border-[#0a0a0a] focus:ring-[#0a0a0a]"
+								class="h-9 w-full rounded-md border-[#8b45b8]/18 bg-white text-xs font-semibold text-[#0a0a0a] placeholder:text-[#52524f]/70 focus:border-[#8b45b8] focus:ring-[#8b45b8]"
 							/>
 						</div>
 
@@ -318,8 +317,8 @@
 								<label
 									class="flex min-h-8 cursor-pointer items-center justify-between rounded-md border px-2.5 text-xs font-bold transition-colors {selectedCategory ===
 									''
-										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										? 'border-[#7e2bb8] bg-[#7e2bb8] text-white'
+										: 'border-[#8b45b8]/12 bg-white text-[#52524f] hover:border-[#8b45b8]/35 hover:text-[#3b174f]'}"
 								>
 									<span>All categories</span>
 									<input
@@ -335,8 +334,8 @@
 									<label
 										class="flex min-h-8 cursor-pointer items-center justify-between gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedCategory ===
 										collection.slug
-											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											? 'border-[#7e2bb8] bg-[#7e2bb8] text-white'
+											: 'border-[#8b45b8]/12 bg-white text-[#52524f] hover:border-[#8b45b8]/35 hover:text-[#3b174f]'}"
 									>
 										<span>{collection.name}</span>
 										<input
@@ -352,14 +351,14 @@
 							</div>
 						</div>
 
-						<div class="border-t border-[#0a0a0a]/10 pt-3">
+						<div class="hidden border-t border-[#0a0a0a]/10 pt-3 sm:block">
 							<h3 class="mb-2 text-[0.68rem] font-black tracking-[0.14em] uppercase">Color</h3>
 							<div class="grid grid-cols-2 gap-1.5">
 								<label
 									class="flex min-h-8 cursor-pointer items-center gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedColor ===
 									''
-										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										? 'border-[#7e2bb8] bg-[#7e2bb8] text-white'
+										: 'border-[#8b45b8]/12 bg-white text-[#52524f] hover:border-[#8b45b8]/35 hover:text-[#3b174f]'}"
 								>
 									<span
 										class="h-3.5 w-3.5 rounded-full border border-current bg-white"
@@ -379,8 +378,8 @@
 									<label
 										class="flex min-h-8 cursor-pointer items-center gap-2 rounded-md border px-2.5 text-xs font-bold transition-colors {selectedColor ===
 										color
-											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											? 'border-[#7e2bb8] bg-[#7e2bb8] text-white'
+											: 'border-[#8b45b8]/12 bg-white text-[#52524f] hover:border-[#8b45b8]/35 hover:text-[#3b174f]'}"
 									>
 										<span
 											class="h-3.5 w-3.5 rounded-full border border-[#0a0a0a]/20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]"
@@ -401,14 +400,14 @@
 							</div>
 						</div>
 
-						<div class="border-t border-[#0a0a0a]/10 pt-3">
+						<div class="hidden border-t border-[#0a0a0a]/10 pt-3 sm:block">
 							<h3 class="mb-2 text-[0.68rem] font-black tracking-[0.14em] uppercase">Size</h3>
 							<div class="flex flex-wrap gap-1.5">
 								<label
 									class="inline-flex min-h-8 cursor-pointer items-center rounded-full border px-3 text-xs font-black transition-colors {selectedSize ===
 									''
-										? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-										: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+										? 'border-[#7e2bb8] bg-[#7e2bb8] text-white'
+										: 'border-[#8b45b8]/12 bg-white text-[#52524f] hover:border-[#8b45b8]/35 hover:text-[#3b174f]'}"
 								>
 									All
 									<input
@@ -424,8 +423,8 @@
 									<label
 										class="inline-flex min-h-8 cursor-pointer items-center rounded-full border px-3 text-xs font-black transition-colors {selectedSize ===
 										size
-											? 'border-[#0a0a0a] bg-[#0a0a0a] text-white'
-											: 'border-[#0a0a0a]/10 bg-white text-[#52524f] hover:border-[#0a0a0a]/30 hover:text-[#0a0a0a]'}"
+											? 'border-[#7e2bb8] bg-[#7e2bb8] text-white'
+											: 'border-[#8b45b8]/12 bg-white text-[#52524f] hover:border-[#8b45b8]/35 hover:text-[#3b174f]'}"
 									>
 										{size}
 										<input

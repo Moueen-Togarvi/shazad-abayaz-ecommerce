@@ -1,6 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { SITE_NAME, absoluteUrl, jsonLdScript } from '$lib/shared/seo';
+	import {
+		PRIMARY_WHATSAPP_URL,
+		SITE_NAME,
+		STORE_ADDRESS,
+		SUPPORT_PHONE_DISPLAY,
+		absoluteUrl,
+		jsonLdScript
+	} from '$lib/shared/seo';
 
 	let openFaq = $state(0);
 	const contactDescription =
@@ -117,21 +124,41 @@
 							<h3 class="mb-1 text-sm font-bold tracking-widest text-black uppercase">WhatsApp</h3>
 							<div class="space-y-1">
 								<a
-									href="https://wa.me/923116857822"
+									href={PRIMARY_WHATSAPP_URL}
 									target="_blank"
 									rel="noreferrer"
 									class="block text-sm font-light text-gray-500 transition-colors hover:text-black"
-									>+92 311 685 7822</a
-								>
-								<a
-									href="https://wa.me/923346657779"
-									target="_blank"
-									rel="noreferrer"
-									class="block text-sm font-light text-gray-500 transition-colors hover:text-black"
-									>+92 334 665 7779</a
+									>{SUPPORT_PHONE_DISPLAY}</a
 								>
 							</div>
 							<p class="mt-1 text-xs text-gray-400">Available for catalog and order support</p>
+						</div>
+					</div>
+
+					<div class="flex items-start">
+						<svg
+							class="mt-0.5 mr-4 h-5 w-5 text-[#8b45b8]"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="1.5"
+								d="M12 21s7-5.25 7-11a7 7 0 1 0-14 0c0 5.75 7 11 7 11Z"
+							/>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="1.5"
+								d="M12 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+							/>
+						</svg>
+						<div>
+							<h3 class="mb-1 text-sm font-bold tracking-widest text-black uppercase">Address</h3>
+							<p class="text-sm font-light text-gray-500">{STORE_ADDRESS}</p>
 						</div>
 					</div>
 				</div>

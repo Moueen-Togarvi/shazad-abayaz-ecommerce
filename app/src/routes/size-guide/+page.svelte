@@ -153,7 +153,7 @@
 				>Contact Us</a
 			>
 			<a
-				href="https://wa.me/923116857822"
+				href="https://wa.me/923269222727"
 				target="_blank"
 				rel="noreferrer"
 				class="flex items-center justify-center gap-2 bg-[#25D366] px-8 py-3 text-sm tracking-widest text-white uppercase transition-opacity hover:opacity-90"
@@ -164,14 +164,6 @@
 					/></svg
 				>
 				Custom Order on WhatsApp
-			</a>
-			<a
-				href="https://wa.me/923346657779"
-				target="_blank"
-				rel="noreferrer"
-				class="border border-[#25D366] px-8 py-3 text-sm tracking-widest text-green-700 uppercase transition-colors hover:bg-green-50"
-			>
-				WhatsApp 2
 			</a>
 		</div>
 	</div>
