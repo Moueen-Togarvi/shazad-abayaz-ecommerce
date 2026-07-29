@@ -57,16 +57,8 @@
 
 	const heroSlides = [
 		{
-			src: '/hero/nida-cutdana-magenta.png',
-			alt: "Magenta Nida Cutdana abaya shown from the front and back"
-		},
-		{
-			src: '/hero/nida-cutdana-teal.png',
-			alt: "Teal Nida Cutdana abaya shown from the front and back"
-		},
-		{
-			src: '/hero/nida-cutdana-taupe.png',
-			alt: "Taupe Nida Cutdana abaya shown from the front and back"
+			src: '/hero/custom-hero.png',
+			alt: 'Shahzad Abayas hero banner'
 		}
 	];
 
@@ -416,112 +408,92 @@
 		{/each}
 	</div>
 
-	<div class="absolute inset-0 -z-20 bg-black/12"></div>
-	<div class="hero-copy-rings pointer-events-none absolute top-1/2 left-0 z-10"></div>
-
 	<div
-		class="pointer-events-none absolute inset-x-3 top-1/2 z-30 flex -translate-y-1/2 items-center justify-between sm:inset-x-6"
-	>
-		<button
-			type="button"
-			class="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/78 text-[#0a0a0a] shadow-[0_14px_32px_rgba(20,53,45,0.20)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0a0a0a] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-			aria-label="Previous hero image"
-			onclick={() => showHeroSlide('previous')}
-		>
-			<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2.2"
-					d="M15 19l-7-7 7-7"
-				/>
-			</svg>
-		</button>
-		<button
-			type="button"
-			class="pointer-events-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/78 text-[#0a0a0a] shadow-[0_14px_32px_rgba(20,53,45,0.20)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0a0a0a] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-			aria-label="Next hero image"
-			onclick={() => showHeroSlide('next')}
-		>
-			<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7" />
-			</svg>
-		</button>
-	</div>
-
-	<div
-		class="hero-content absolute inset-0 z-20 flex items-end px-4 pt-24 pb-6 sm:items-start sm:px-6 sm:pt-10 sm:pb-10 md:items-center md:pt-28 md:pb-16 lg:px-8"
+		class="absolute inset-y-0 left-0 z-20 flex w-full items-center justify-center px-5 text-center sm:w-[58%] sm:translate-x-[10%] sm:justify-center sm:px-8 lg:w-[55%] lg:translate-x-[18%]"
 	>
 		<div
-			class="hero-copy mt-0 ml-0 max-w-[16.5rem] pb-2 text-black sm:mt-16 sm:ml-8 sm:max-w-[34rem] md:mt-20 md:ml-[clamp(2rem,7vw,8rem)] md:pb-0"
+			class="max-w-[22rem] px-4 py-4 drop-shadow-[0_2px_12px_rgba(255,255,255,0.72)] sm:max-w-[25rem] sm:px-5 lg:max-w-[27rem]"
 		>
 			<p
-				class="hero-reveal inline-flex items-center gap-2 rounded-full border border-[#c5a880]/30 bg-white/72 px-3 py-1.5 text-[0.56rem] font-bold tracking-[0.16em] text-black/68 uppercase shadow-[0_8px_24px_rgba(20,20,20,0.06)] backdrop-blur-md sm:px-4 sm:py-2 sm:text-[0.66rem]"
+				class="mb-2 text-[0.54rem] font-black tracking-[0.34em] text-[#8b45b8] uppercase sm:mb-3 sm:text-[0.68rem]"
 			>
-				<span class="h-1.5 w-1.5 rounded-full bg-[#c5a880] shadow-[0_0_0_4px_rgba(197,168,128,0.16)]"></span>
-				New Season Edit
+				Timeless Elegance
 			</p>
-			<h1
-				class="hero-reveal mt-3 max-w-[13.5ch] font-serif text-[2rem] leading-[0.88] tracking-[-0.05em] text-black sm:mt-5 sm:max-w-[12ch] sm:text-[3.85rem] md:max-w-[13.5ch] md:text-[clamp(4.1rem,5.1vw,5.95rem)]"
-			>
-				<span class="hero-heading-stack">
-					<span class="hero-heading-line">
-						<span>{heroHeadingLead}</span>
-						<span>{heroHeadingSupport}</span>
-					</span>
-					<span class="hero-heading-line hero-heading-line--accent">
-						<span>and</span>
-						<span class="hero-heading-logo" aria-hidden="true">
-							<img
-								src="/image.png"
-								alt=""
-								class="hero-heading-logo__image"
-								loading="eager"
-							/>
-						</span>
-						<span class="hero-brand-accent">{heroHeadingAccent}</span>
-					</span>
-				</span>
-			</h1>
-			<p
-				class="hero-reveal mt-3 max-w-[15rem] font-serif text-[0.74rem] leading-4 font-medium text-black/68 italic sm:mt-5 sm:max-w-md sm:text-xl sm:leading-7"
-			>
-				Clean Nida silhouettes with soft movement, refined finishing, and everyday grace.
-			</p>
-
-			<div class="hero-reveal mt-4 flex flex-row flex-nowrap gap-2 sm:mt-7 sm:gap-3">
-				<a
-					href="/shop"
-					class="inline-flex min-h-8 items-center justify-center gap-1.5 rounded-[0.9rem] bg-[#0a0a0a] px-3 text-[0.58rem] font-bold whitespace-nowrap text-white shadow-[0_14px_30px_rgba(10,10,10,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c5a880] hover:text-[#0a0a0a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:gap-2.5 sm:px-7 sm:text-sm"
-				>
-					Shop Collection
-					<span
-						class="inline-flex h-3.5 w-3.5 items-center justify-center rounded-md bg-white/92 text-[#0a0a0a] sm:h-5 sm:w-5"
-					>
-						<svg
-							class="h-2 w-2 sm:h-3 sm:w-3"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2.4"
-								d="M7 17L17 7M9 7h8v8"
-							/>
-						</svg>
-					</span>
-				</a>
-				<a
-					href="/lookbook"
-					class="inline-flex min-h-8 items-center justify-center rounded-[0.9rem] border border-[#0a0a0a]/14 bg-white/76 px-3 text-[0.58rem] font-bold whitespace-nowrap text-[#0a0a0a] shadow-[0_10px_26px_rgba(10,10,10,0.06)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c5a880]/50 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0a0a0a] sm:min-h-12 sm:px-7 sm:text-sm"
-				>
-					View Lookbook
-				</a>
+			<div class="mb-1 flex items-center justify-center gap-2.5 text-[#a764c8]">
+				<span class="h-px w-8 bg-current"></span>
+				<span class="size-1.5 rotate-45 bg-current"></span>
+				<span class="h-px w-8 bg-current"></span>
 			</div>
+			<h1
+				class="font-serif text-[2.35rem] leading-none font-normal tracking-[0.12em] text-[#3b174f] uppercase sm:text-[3.8rem] lg:text-[4.8rem]"
+			>
+				Shahzad
+			</h1>
+			<h2
+				class="-mt-1 font-serif text-[1.8rem] leading-none font-normal tracking-[0.08em] text-[#3b174f] uppercase sm:-mt-2 sm:text-[3rem] lg:text-[3.9rem]"
+			>
+				Abayaz
+			</h2>
+			<p
+				class="-mt-0.5 font-serif text-[1.35rem] leading-none text-[#9c55bd] italic sm:-mt-1 sm:text-[2.05rem] lg:text-[2.45rem]"
+				style="font-family: 'Playfair Display', Georgia, serif;"
+			>
+				Collection
+			</p>
+			<p
+				class="mt-3 text-[0.54rem] font-black tracking-[0.24em] text-[#4a255e] uppercase sm:mt-4 sm:text-[0.68rem]"
+			>
+				• Modesty. Elegance. You •
+			</p>
+			<p
+				class="mx-auto mt-2.5 max-w-[16rem] text-[0.62rem] leading-snug font-semibold text-[#5c3a68] text-pretty sm:text-xs"
+			>
+				Discover our premium abaya collection crafted for every moment of your life.
+			</p>
 		</div>
 	</div>
+
+	<div
+		class="absolute bottom-8 left-[18%] z-20 hidden grid grid-cols-4 gap-5 text-center text-[#8b45b8] sm:grid lg:left-[26%] lg:gap-7"
+	>
+		<div class="flex flex-col items-center gap-1.5">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m12 3 7 6-7 12L5 9l7-6Z" />
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 9h14M9 9l3 12 3-12" />
+				</svg>
+			</span>
+			<span class="text-[0.5rem] font-black leading-tight uppercase">Premium<br />Quality</span>
+		</div>
+		<div class="flex flex-col items-center gap-1.5">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 4C12 4 6 8 5 18c8 0 14-5 15-14Z" />
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 18c4-5 8-7 13-9" />
+				</svg>
+			</span>
+			<span class="text-[0.5rem] font-black leading-tight uppercase">Lightweight<br />& Comfort</span>
+		</div>
+		<div class="flex flex-col items-center gap-1.5">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" />
+					<circle cx="12" cy="12" r="3" stroke-width="1.8" />
+				</svg>
+			</span>
+			<span class="text-[0.5rem] font-black leading-tight uppercase">Elegant<br />Design</span>
+		</div>
+		<div class="flex flex-col items-center gap-1.5">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3 19 6v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Z" />
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 12 2 2 4-5" />
+				</svg>
+			</span>
+			<span class="text-[0.5rem] font-black leading-tight uppercase">All Day<br />Confidence</span>
+		</div>
+	</div>
+
 </section>
 
 {#if saleTapeEnabled && saleTapeItems.length}
@@ -557,13 +529,13 @@
 					Curated Edits
 				</p>
 				<h2 class="font-serif text-3xl leading-tight text-[#0a0a0a] uppercase sm:text-4xl">
-					Signature Collections
+					Signature <span class="text-[#7e2bb8]">Collections</span>
 				</h2>
 			</div>
 			<div class="max-w-md space-y-4 sm:text-right">
-				<p class="text-sm leading-6 font-medium text-[#52524f]">
+				<p class="text-sm leading-6 font-medium text-[#5f5365]">
 					Refined edits for the pieces you reach for most: daily essentials, occasion layers, and
-					timeless black abayas.
+					<span class="font-bold text-[#7e2bb8]">timeless black abayas.</span>
 				</p>
 			</div>
 		</div>
@@ -708,8 +680,12 @@
 	<div class="mx-auto max-w-6xl">
 		<div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
 			<div>
-				<h2 class="mb-2 font-serif text-3xl tracking-widest text-black uppercase">New Arrivals</h2>
-				<p class="font-light text-gray-500">The latest additions to our collection</p>
+				<h2 class="mb-2 font-serif text-3xl tracking-widest text-black uppercase">
+					New <span class="text-[#7e2bb8]">Arrivals</span>
+				</h2>
+				<p class="font-light text-[#6f6076]">
+					The latest additions to our <span class="font-semibold text-[#8b45b8]">collection</span>
+				</p>
 			</div>
 		</div>
 
@@ -742,14 +718,16 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="mb-8 flex flex-col gap-6">
 			<div class="text-center">
-				<h2 class="font-serif text-3xl tracking-widest text-[#0a0a0a] uppercase">Most Loved</h2>
+				<h2 class="font-serif text-3xl tracking-widest text-[#0a0a0a] uppercase">
+					Most <span class="text-[#7e2bb8]">Loved</span>
+				</h2>
 			</div>
 
 			<div class="category-ribbon" aria-label="Bestseller categories">
 				<div class="category-ribbon__track">
 					{#each bestsellerCategoryTags as tag}
 						<span
-							class="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-[#0a0a0a]/10 bg-[#fffaf0] px-4 text-[0.68rem] font-black tracking-[0.12em] text-[#0a0a0a] uppercase shadow-[0_10px_22px_rgba(20,53,45,0.08)]"
+							class="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-[#8b45b8]/18 bg-[#fbf7ff] px-4 text-[0.68rem] font-black tracking-[0.12em] text-[#2f143f] uppercase shadow-[0_10px_22px_rgba(126,43,184,0.08)]"
 						>
 							{tag}
 						</span>

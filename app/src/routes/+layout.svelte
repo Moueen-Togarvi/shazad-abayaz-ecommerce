@@ -239,7 +239,10 @@ fbq('init', '${metaPixelId}');`)
 			<div class="mx-auto max-w-7xl">
 				<div class="transition-all duration-300">
 					<div class="flex h-14 items-center justify-between gap-2">
-						<a href="/" class="group inline-flex min-w-0 shrink-0 items-center gap-2.5">
+						<a
+							href="/"
+							class="group inline-flex min-w-0 shrink-0 items-center gap-2.5 rounded-full border border-white/70 bg-white/86 py-1 pr-4 pl-1.5 shadow-[0_12px_30px_rgba(72,38,96,0.14)] backdrop-blur-md"
+						>
 							<img
 								src="/image.png"
 								alt="Shahzad Abaya's"
@@ -248,9 +251,9 @@ fbq('init', '${metaPixelId}');`)
 								class="h-12 w-12 rounded-full object-cover shadow-[0_14px_30px_rgba(20,53,45,0.28)] ring-2 ring-white/80"
 							/>
 							<span class="hidden leading-none sm:block">
-								<AbayizaWordmark class="brand-adaptive-text block text-sm" />
+								<AbayizaWordmark class="block text-sm text-[#3a174e]" />
 								<span
-									class="brand-adaptive-text mt-1 block text-[10px] font-semibold tracking-[0.18em] uppercase"
+									class="mt-1 block text-[10px] font-semibold tracking-[0.18em] text-[#6d3b87] uppercase"
 									>Modest Atelier</span
 								>
 							</span>
