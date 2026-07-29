@@ -491,48 +491,78 @@ fbq('init', '${metaPixelId}');`)
 			</a>
 		</div>
 
-		<!-- Minimal Footer -->
-		<footer class="bg-black pt-16 pb-8 text-white">
+		<!-- Footer -->
+		<footer class="bg-[#0b0710] pt-14 pb-8 text-white sm:pt-16">
 			<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 md:text-left lg:px-8">
-				<div class="grid grid-cols-1 gap-12 md:grid-cols-3">
-					<div class="col-span-1 md:col-span-1">
-						<h3 class="mb-6 text-xl"><AbayizaWordmark /></h3>
-						<p class="text-sm font-light text-gray-400">
-							Elevating modest fashion with premium craftsmanship and timeless design.
+				<div class="grid grid-cols-1 gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr_1.1fr] lg:gap-10">
+					<div class="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6">
+						<h3 class="mb-4 text-xl text-white"><AbayizaWordmark /></h3>
+						<p class="text-sm leading-6 font-light text-white/60 text-pretty">
+							Where elegance meets modesty — premium abayas crafted for everyday grace and
+							occasion-ready confidence.
 						</p>
+						<div
+							class="mt-5 inline-flex rounded-full border border-[#8b45b8]/35 bg-[#8b45b8]/12 px-4 py-2 text-[0.68rem] font-black tracking-[0.12em] text-[#d8b4fe] uppercase"
+						>
+							Shahzad Abaya's
+						</div>
 					</div>
-					<div>
-						<h4 class="mb-6 text-sm font-medium tracking-widest text-gray-200 uppercase">Shop</h4>
-						<ul class="space-y-4 text-sm font-light text-gray-400">
-							<li><a href="/shop" class="transition-colors hover:text-gold">All Products</a></li>
+
+					<div class="pt-2">
+						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-[#d8b4fe] uppercase">Shop</h4>
+						<ul class="space-y-3 text-sm font-light text-white/58">
+							<li><a href="/shop" class="transition-colors hover:text-white">All Products</a></li>
 							<li>
-								<a href="/collections" class="transition-colors hover:text-gold">Categories</a>
+								<a href="/collections" class="transition-colors hover:text-white">Categories</a>
 							</li>
 							<li>
-								<a href="/search" class="transition-colors hover:text-gold">Search Catalog</a>
+								<a href="/search" class="transition-colors hover:text-white">Search Catalog</a>
 							</li>
 						</ul>
 					</div>
-					<div>
-						<h4 class="mb-6 text-sm font-medium tracking-widest text-gray-200 uppercase">Help</h4>
-						<ul class="space-y-4 text-sm font-light text-gray-400">
-							<li><a href="/contact" class="transition-colors hover:text-gold">Contact Us</a></li>
+
+					<div class="pt-2">
+						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-[#d8b4fe] uppercase">Support</h4>
+						<ul class="space-y-3 text-sm font-light text-white/58">
+							<li><a href="/contact" class="transition-colors hover:text-white">Contact Us</a></li>
 							<li>
-								<a href="/faq" class="transition-colors hover:text-gold">Shipping & Returns</a>
+								<a href="/faq" class="transition-colors hover:text-white">Shipping & Returns</a>
 							</li>
 							<li>
-								<a href="/size-guide" class="transition-colors hover:text-gold">Size Guide</a>
+								<a href="/size-guide" class="transition-colors hover:text-white">Size Guide</a>
 							</li>
-							<li class="leading-6">
-								<span class="block text-gray-200">Address</span>
+							<li>
+								<a href="/policies/privacy" class="transition-colors hover:text-white">Privacy Policy</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="rounded-[1.75rem] border border-[#8b45b8]/24 bg-[#8b45b8]/10 p-6">
+						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-[#d8b4fe] uppercase">
+							Visit & Contact
+						</h4>
+						<div class="space-y-4 text-sm leading-6 text-white/68">
+							<div>
+								<span class="block text-[0.68rem] font-black tracking-[0.14em] text-white uppercase"
+									>Address</span
+								>
 								<span>{STORE_ADDRESS}</span>
-							</li>
-							<li>
-								<a href={primaryWhatsAppHref} target="_blank" rel="noreferrer" class="transition-colors hover:text-gold">
-									Contact: {SUPPORT_PHONE_DISPLAY}
+							</div>
+							<div>
+								<span class="block text-[0.68rem] font-black tracking-[0.14em] text-white uppercase"
+									>Contact</span
+								>
+								<a
+									href={primaryWhatsAppHref}
+									target="_blank"
+									rel="noreferrer"
+									class="inline-flex items-center gap-2 font-semibold text-[#d8b4fe] transition-colors hover:text-white"
+								>
+									<span class="inline-flex size-2 rounded-full bg-[#25D366]"></span>
+									{SUPPORT_PHONE_DISPLAY}
 								</a>
-							</li>
-						</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div
