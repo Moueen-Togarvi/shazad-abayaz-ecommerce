@@ -398,7 +398,7 @@
 				height="941"
 				fetchpriority={index === 0 ? 'high' : 'auto'}
 				aria-hidden={index !== heroSlideIndex}
-				class="hero-bg__slide h-full w-full bg-[#eadac8] object-cover object-center"
+				class="hero-bg__slide h-full w-full bg-[#eadac8] object-cover object-[72%_center] sm:object-center"
 				class:hero-bg__slide--active={index === heroSlideIndex}
 				class:hero-bg__slide--previous-next={index === previousHeroSlideIndex &&
 					heroSlideDirection === 'next'}
@@ -409,44 +409,44 @@
 	</div>
 
 	<div
-		class="absolute inset-y-0 left-0 z-20 flex w-full items-center justify-center px-5 text-center sm:w-[58%] sm:translate-x-[10%] sm:justify-center sm:px-8 lg:w-[55%] lg:translate-x-[18%]"
+		class="absolute inset-y-0 left-0 z-20 flex w-[62%] -translate-y-8 items-center justify-start px-4 text-left sm:w-[58%] sm:translate-x-[10%] sm:translate-y-0 sm:justify-center sm:px-8 sm:text-center lg:w-[55%] lg:translate-x-[18%]"
 	>
 		<div
-			class="max-w-[22rem] px-4 py-4 drop-shadow-[0_2px_12px_rgba(255,255,255,0.72)] sm:max-w-[25rem] sm:px-5 lg:max-w-[27rem]"
+			class="max-w-[12rem] px-1 py-4 drop-shadow-[0_2px_12px_rgba(255,255,255,0.72)] sm:max-w-[25rem] sm:px-5 lg:max-w-[27rem]"
 		>
 			<p
-				class="mb-2 text-[0.54rem] font-black tracking-[0.34em] text-[#8b45b8] uppercase sm:mb-3 sm:text-[0.68rem]"
+				class="mb-1.5 text-[0.42rem] font-black tracking-[0.24em] text-[#8b45b8] uppercase sm:mb-3 sm:text-[0.68rem] sm:tracking-[0.34em]"
 			>
 				Timeless Elegance
 			</p>
-			<div class="mb-1 flex items-center justify-center gap-2.5 text-[#a764c8]">
-				<span class="h-px w-8 bg-current"></span>
+			<div class="mb-1 flex items-center justify-start gap-2 text-[#a764c8] sm:justify-center sm:gap-2.5">
+				<span class="h-px w-6 bg-current sm:w-8"></span>
 				<span class="size-1.5 rotate-45 bg-current"></span>
-				<span class="h-px w-8 bg-current"></span>
+				<span class="h-px w-6 bg-current sm:w-8"></span>
 			</div>
 			<h1
-				class="font-serif text-[2.35rem] leading-none font-normal tracking-[0.12em] text-[#3b174f] uppercase sm:text-[3.8rem] lg:text-[4.8rem]"
+				class="font-serif text-[1.45rem] leading-none font-normal tracking-[0.1em] text-[#3b174f] uppercase sm:text-[3.8rem] sm:tracking-[0.12em] lg:text-[4.8rem]"
 			>
 				Shahzad
 			</h1>
 			<h2
-				class="-mt-1 font-serif text-[1.8rem] leading-none font-normal tracking-[0.08em] text-[#3b174f] uppercase sm:-mt-2 sm:text-[3rem] lg:text-[3.9rem]"
+				class="-mt-0.5 font-serif text-[1.16rem] leading-none font-normal tracking-[0.06em] text-[#3b174f] uppercase sm:-mt-2 sm:text-[3rem] sm:tracking-[0.08em] lg:text-[3.9rem]"
 			>
-				Abayaz
+				Abaya's
 			</h2>
 			<p
-				class="-mt-0.5 font-serif text-[1.35rem] leading-none text-[#9c55bd] italic sm:-mt-1 sm:text-[2.05rem] lg:text-[2.45rem]"
+				class="-mt-0.5 font-serif text-[0.95rem] leading-none text-[#9c55bd] italic sm:-mt-1 sm:text-[2.05rem] lg:text-[2.45rem]"
 				style="font-family: 'Playfair Display', Georgia, serif;"
 			>
 				Collection
 			</p>
 			<p
-				class="mt-3 text-[0.54rem] font-black tracking-[0.24em] text-[#4a255e] uppercase sm:mt-4 sm:text-[0.68rem]"
+				class="mt-2 text-[0.42rem] font-black tracking-[0.13em] text-[#4a255e] uppercase sm:mt-4 sm:text-[0.68rem] sm:tracking-[0.24em]"
 			>
 				• Modesty. Elegance. You •
 			</p>
 			<p
-				class="mx-auto mt-2.5 max-w-[16rem] text-[0.62rem] leading-snug font-semibold text-[#5c3a68] text-pretty sm:text-xs"
+				class="mt-1.5 max-w-[10rem] text-[0.42rem] leading-snug font-semibold text-[#5c3a68] text-pretty sm:mx-auto sm:mt-2.5 sm:max-w-[16rem] sm:text-xs"
 			>
 				Discover our premium abaya collection crafted for every moment of your life.
 			</p>

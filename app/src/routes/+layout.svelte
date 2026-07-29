@@ -241,7 +241,7 @@ fbq('init', '${metaPixelId}');`)
 					<div class="flex h-14 items-center justify-between gap-2">
 						<a
 							href="/"
-							class="group inline-flex min-w-0 shrink-0 items-center gap-2.5 rounded-full border border-white/70 bg-white/86 py-1 pr-4 pl-1.5 shadow-[0_12px_30px_rgba(72,38,96,0.14)] backdrop-blur-md"
+							class="group inline-flex min-w-0 shrink-0 items-center gap-0 rounded-full border border-white/70 bg-white/86 py-1 pr-1.5 pl-1.5 shadow-[0_12px_30px_rgba(72,38,96,0.14)] backdrop-blur-md sm:gap-2.5 sm:pr-4"
 						>
 							<img
 								src="/image.png"
@@ -251,10 +251,10 @@ fbq('init', '${metaPixelId}');`)
 								class="h-12 w-12 rounded-full object-cover shadow-[0_14px_30px_rgba(20,53,45,0.28)] ring-2 ring-white/80"
 							/>
 							<span class="hidden leading-none sm:block">
-								<AbayizaWordmark class="block text-sm text-[#3a174e]" />
+								<AbayizaWordmark class="block text-sm text-black" />
 								<span
-									class="mt-1 block text-[10px] font-semibold tracking-[0.18em] text-[#6d3b87] uppercase"
-									>Modest Atelier</span
+									class="mt-1 block text-[9px] font-semibold tracking-[0.08em] text-black"
+									>Where Elegance Meets Modesty</span
 								>
 							</span>
 						</a>

@@ -56,24 +56,24 @@
 	onmouseenter={() => (sliderHovered = true)}
 	onmouseleave={() => (sliderHovered = false)}
 >
-	<div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+	<div class="mx-auto max-w-7xl px-3 py-3 sm:px-6 lg:px-8">
 		<div
-			class="relative h-[310px] w-full overflow-hidden rounded-2xl border border-[#0a0a0a]/10 bg-white shadow-[0_20px_50px_rgba(20,53,45,0.05)] sm:h-[400px] md:h-[450px] lg:h-[520px]"
+			class="relative h-[168px] w-full overflow-hidden rounded-2xl border border-[#0a0a0a]/10 bg-[#fff5f8] shadow-[0_20px_50px_rgba(20,53,45,0.05)] sm:h-[400px] sm:bg-white md:h-[450px] lg:h-[520px]"
 		>
 			{#each bannerSlides as slide, index}
 				<img
 					src={slide.image}
 					alt={slide.alt}
-					class="absolute inset-0 size-full object-cover object-center transition-transform duration-[800ms] ease-in-out"
+					class="absolute inset-0 size-full object-contain object-center transition-transform duration-[800ms] ease-in-out sm:object-cover"
 					style="transform: translateX({(index - activeSlide) * 100}%);"
 					loading={index === 0 ? 'eager' : 'lazy'}
 				/>
 			{/each}
 
-			<div class="absolute inset-y-0 left-2 z-20 flex items-center sm:left-4">
+			<div class="absolute inset-y-0 left-1.5 z-20 flex items-center sm:left-4">
 				<button
 					onclick={handlePrev}
-					class="flex size-8 items-center justify-center rounded-full border border-white/30 bg-[#0a0a0a]/35 text-white shadow-md backdrop-blur-sm transition-colors duration-200 hover:bg-white hover:text-[#0a0a0a] sm:size-10"
+					class="flex size-7 items-center justify-center rounded-full border border-white/30 bg-[#0a0a0a]/30 text-white shadow-md backdrop-blur-sm transition-colors duration-200 hover:bg-white hover:text-[#0a0a0a] sm:size-10"
 					aria-label="Previous banner"
 				>
 					<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,10 +87,10 @@
 				</button>
 			</div>
 
-			<div class="absolute inset-y-0 right-2 z-20 flex items-center sm:right-4">
+			<div class="absolute inset-y-0 right-1.5 z-20 flex items-center sm:right-4">
 				<button
 					onclick={handleNext}
-					class="flex size-8 items-center justify-center rounded-full border border-white/30 bg-[#0a0a0a]/35 text-white shadow-md backdrop-blur-sm transition-colors duration-200 hover:bg-white hover:text-[#0a0a0a] sm:size-10"
+					class="flex size-7 items-center justify-center rounded-full border border-white/30 bg-[#0a0a0a]/30 text-white shadow-md backdrop-blur-sm transition-colors duration-200 hover:bg-white hover:text-[#0a0a0a] sm:size-10"
 					aria-label="Next banner"
 				>
 					<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -104,7 +104,7 @@
 				</button>
 			</div>
 
-			<div class="absolute inset-x-0 bottom-3 z-20 flex justify-center gap-2">
+			<div class="absolute inset-x-0 bottom-2 z-20 flex justify-center gap-2 sm:bottom-3">
 				{#each bannerSlides as _, idx}
 					<button
 						onclick={() => {

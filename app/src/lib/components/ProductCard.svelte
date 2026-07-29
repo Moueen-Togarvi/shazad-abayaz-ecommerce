@@ -293,15 +293,15 @@
 				/>
 			</svg>
 
-			<div class="flex items-center justify-between gap-2 pt-1.5">
-				<div class="w-[4.6rem] min-w-0 sm:w-[5.8rem]">
-					<div class="flex items-baseline gap-1.5 whitespace-nowrap">
-						<span class="text-[0.86rem] font-black text-[#150b26] tabular-nums sm:text-[1.08rem]">
+			<div class="flex items-center justify-between gap-1 pt-1.5 sm:gap-2">
+				<div class="w-[3.85rem] min-w-0 sm:w-[5.8rem]">
+					<div class="flex items-baseline gap-1 whitespace-nowrap sm:gap-1.5">
+						<span class="text-[0.74rem] font-black text-[#150b26] tabular-nums sm:text-[1.08rem]">
 							{formatMoney(product.salePrice || product.price)}
 						</span>
 						{#if product.salePrice}
 							<span
-								class="text-[0.52rem] font-bold text-red-600 line-through tabular-nums sm:text-[0.68rem]"
+								class="text-[0.46rem] font-bold text-red-600 line-through tabular-nums sm:text-[0.68rem]"
 							>
 								{formatMoney(product.price)}
 							</span>
@@ -319,9 +319,9 @@
 				{:else}
 					<a
 						{href}
-						class="inline-flex min-h-7 shrink-0 items-center justify-center gap-1 rounded-full bg-[#7c2ec4] px-2.5 text-[0.56rem] font-black text-white shadow-[0_8px_18px_rgba(124,46,196,0.22)] transition-colors duration-200 hover:bg-[#5f219d] sm:min-h-8 sm:gap-1.5 sm:px-3 sm:text-[0.68rem]"
+						class="inline-flex min-h-6 shrink-0 items-center justify-center gap-0.5 rounded-full bg-[#7c2ec4] px-1.5 text-[0.48rem] font-black text-white shadow-[0_8px_18px_rgba(124,46,196,0.22)] transition-colors duration-200 hover:bg-[#5f219d] sm:min-h-8 sm:gap-1.5 sm:px-3 sm:text-[0.68rem]"
 					>
-						<svg class="size-3 sm:size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<svg class="size-2.5 sm:size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
