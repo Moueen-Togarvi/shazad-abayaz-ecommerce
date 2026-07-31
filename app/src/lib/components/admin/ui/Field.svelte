@@ -20,7 +20,7 @@
 
 <div class={klass}>
 	{#if label}
-		<label for={forId} class="mb-1.5 block text-sm font-medium text-gray-700">
+		<label for={forId} class="mb-1.5 block truncate text-sm font-medium whitespace-nowrap text-gray-700">
 			{label}{#if required}<span class="ml-0.5 text-red-500">*</span>{/if}
 		</label>
 	{/if}

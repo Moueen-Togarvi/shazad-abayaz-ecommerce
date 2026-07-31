@@ -159,7 +159,7 @@
 					<div class="space-y-3">
 						{#each variants as variant, index (variant.id)}
 							<div class="rounded-xl border border-admin-border bg-gray-50/60 p-4">
-								<div class="grid gap-3 md:grid-cols-2 lg:grid-cols-[7rem_minmax(0,1fr)_11rem_minmax(0,1.15fr)_7rem_minmax(0,1fr)_auto] lg:items-end">
+								<div class="grid gap-3 md:grid-cols-2 lg:grid-cols-[6rem_minmax(9rem,1fr)_minmax(9rem,1fr)_minmax(0,1.15fr)_6rem_minmax(0,1fr)_auto] lg:items-start">
 									<Field label="Type" class="text-xs">
 										{#snippet children()}
 											<select
@@ -246,7 +246,7 @@
 										type="button"
 										variant="danger"
 										size="sm"
-										class="w-full lg:w-auto"
+										class="w-full lg:mt-6.5 lg:w-auto"
 										disabled={variants.length === 1}
 										onclick={() => removeVariant(variant.id)}
 									>
