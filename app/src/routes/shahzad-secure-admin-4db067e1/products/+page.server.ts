@@ -49,5 +49,30 @@ export const actions: Actions = {
 
 		setAdminFlash(cookies, 'Product deleted successfully.');
 		throw redirect(303, '/shahzad-secure-admin-4db067e1/products');
+	},
+
+	bulkDelete: async ({ request, cookies }) => {
+		const data = await request.formData();
+		const ids = data
+			.getAll('ids')
+			.map((value) => String(value).trim())
+			.filter(Boolean);
+
+		if (!ids.length) {
+			return fail(400, { error: 'No products were selected.' });
+		}
+
+		let count = 0;
+		try {
+			const result = await prisma.product.deleteMany({
+				where: { id: { in: ids } }
+			});
+			count = result.count;
+		} catch {
+			return fail(500, { error: 'Failed to delete selected products.' });
+		}
+
+		setAdminFlash(cookies, `${count} product${count === 1 ? '' : 's'} deleted successfully.`);
+		throw redirect(303, '/shahzad-secure-admin-4db067e1/products');
 	}
 };

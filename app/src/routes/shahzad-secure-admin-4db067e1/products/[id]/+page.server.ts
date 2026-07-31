@@ -53,7 +53,7 @@ export const actions: Actions = {
 		}
 
 		try {
-			const uploadedImageUrls = await saveProductImageFiles(data);
+			const uploadedImages = await saveProductImageFiles(data);
 			const removeImageIds = data
 				.getAll('removeImageIds')
 				.map((value) => String(value).trim())
@@ -94,7 +94,24 @@ export const actions: Actions = {
 				await deleteProductImageFiles(imagesToRemove.map((image) => image.url));
 			}
 
-			if (uploadedImageUrls.length) {
+			// Apply colour re-assignments on images that already existed.
+			const existingImageIds = data.getAll('existingImageIds').map((value) => String(value));
+			const existingImageColors = data.getAll('existingImageColors').map((value) => String(value).trim());
+			await Promise.all(
+				existingImageIds
+					// Pair each id with its colour BEFORE filtering, so removing an
+					// image doesn't shift the remaining colours out of alignment.
+					.map((imageId, index) => ({ imageId, color: existingImageColors[index] || null }))
+					.filter((entry) => entry.imageId && !removeImageIds.includes(entry.imageId))
+					.map((entry) =>
+						prisma.productImage.updateMany({
+							where: { id: entry.imageId, productId: params.id },
+							data: { color: entry.color }
+						})
+					)
+			);
+
+			if (uploadedImages.length) {
 				const imageOrder = await prisma.productImage.aggregate({
 					where: { productId: params.id },
 					_max: { displayOrder: true }
@@ -102,10 +119,11 @@ export const actions: Actions = {
 				const nextDisplayOrder = (imageOrder._max.displayOrder ?? -1) + 1;
 
 				await prisma.productImage.createMany({
-					data: uploadedImageUrls.map((url, index) => ({
+					data: uploadedImages.map((image, index) => ({
 						productId: params.id,
-						url,
+						url: image.url,
 						altText: product.name,
+						color: image.color,
 						displayOrder: nextDisplayOrder + index
 					}))
 				});

@@ -8,6 +8,7 @@
 		isEmpty = false,
 		colspan = 1,
 		class: klass = '',
+		header,
 		children
 	}: {
 		columns?: string[];
@@ -16,6 +17,7 @@
 		isEmpty?: boolean;
 		colspan?: number;
 		class?: string;
+		header?: Snippet;
 		children: Snippet;
 	} = $props();
 </script>
@@ -25,12 +27,16 @@
 		<table class="min-w-full divide-y divide-admin-border">
 			<thead class="bg-gray-50/80">
 				<tr>
-					{#each columns as column}
+					{#each columns as column, index}
 						<th
 							scope="col"
 							class="px-6 py-3 text-left text-xs font-semibold tracking-wide text-gray-500 uppercase whitespace-nowrap"
 						>
-							{column}
+							{#if index === 0 && header}
+								{@render header()}
+							{:else}
+								{column}
+							{/if}
 						</th>
 					{/each}
 				</tr>

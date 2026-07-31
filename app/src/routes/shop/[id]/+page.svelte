@@ -17,6 +17,14 @@
 	let activeTab = $state('details');
 
 	let images = $derived(product.images?.map((image: any) => image.url) || []);
+	// Index of the first image tagged with each colour, so picking a colour can
+	// jump the gallery straight to that colour's photo.
+	let colorImageIndex = $derived(
+		(product.images || []).reduce((map: Record<string, number>, image: any, index: number) => {
+			if (image.color && !(image.color in map)) map[image.color] = index;
+			return map;
+		}, {})
+	);
 	let colors = $derived(
 		Array.from(
 			new Set<string>(
@@ -137,7 +145,10 @@
 
 	$effect(() => {
 		if (product.variants?.length) {
-			if (!selectedColor) selectedColor = product.variants[0].color || '';
+			if (!selectedColor) {
+				selectedColor = product.variants[0].color || '';
+				if (selectedColor in colorImageIndex) activeImage = colorImageIndex[selectedColor];
+			}
 			if (!selectedSize) selectedSize = product.variants[0].size || '';
 			if (!availableSizes.includes(selectedSize)) selectedSize = availableSizes[0] || '';
 		}
@@ -161,7 +172,7 @@
 			name: product.name,
 			price: Number(product.salePrice || product.price),
 			quantity,
-			image: images[0] || '',
+			image: images[activeImage] || images[0] || '',
 			color: selectedColor,
 			size: selectedSize
 		});
@@ -302,7 +313,10 @@
 						{#each colors as color}
 							<button
 								type="button"
-								onclick={() => (selectedColor = color)}
+								onclick={() => {
+								selectedColor = color;
+								if (color in colorImageIndex) activeImage = colorImageIndex[color];
+							}}
 								class="h-8 w-8 rounded-full border border-gray-200 ring-1 ring-offset-2 transition-all {selectedColor ===
 								color
 									? 'ring-black'

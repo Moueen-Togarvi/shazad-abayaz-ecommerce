@@ -3,6 +3,7 @@
 	import {
 		Badge,
 		Button,
+		Modal,
 		PageHeader,
 		Table,
 		productStatus
@@ -10,6 +11,23 @@
 
 	let { data } = $props();
 	let products = $derived((data.products || []) as Array<any>);
+
+	let selectedIds = $state<Set<string>>(new Set());
+	let showBulkDeleteConfirm = $state(false);
+
+	let allSelected = $derived(products.length > 0 && selectedIds.size === products.length);
+	let someSelected = $derived(selectedIds.size > 0 && !allSelected);
+
+	function toggleSelectAll() {
+		selectedIds = allSelected ? new Set() : new Set(products.map((p) => p.id));
+	}
+
+	function toggleOne(id: string) {
+		const next = new Set(selectedIds);
+		if (next.has(id)) next.delete(id);
+		else next.add(id);
+		selectedIds = next;
+	}
 </script>
 
 <div class="mx-auto max-w-7xl">
@@ -67,20 +85,58 @@
 		</div>
 	</div>
 
+	{#if selectedIds.size > 0}
+		<div
+			class="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-admin-primary/30 bg-admin-primary/5 px-4 py-3"
+		>
+			<p class="text-sm font-medium text-gray-700">
+				{selectedIds.size} product{selectedIds.size === 1 ? '' : 's'} selected
+			</p>
+			<div class="flex items-center gap-2">
+				<Button variant="secondary" size="sm" onclick={() => (selectedIds = new Set())}>
+					Clear
+				</Button>
+				<Button variant="danger" size="sm" onclick={() => (showBulkDeleteConfirm = true)}>
+					Delete Selected
+				</Button>
+			</div>
+		</div>
+	{/if}
+
 	<!-- Product Table -->
 	<Table
-		columns={['Product', 'Status', 'Price', 'Inventory', 'Categories', 'Actions']}
+		columns={['', 'Product', 'Status', 'Price', 'Inventory', 'Categories', 'Actions']}
 		isEmpty={products.length === 0}
 		emptyTitle="No products yet"
 		emptyDescription="Create your first product to get started."
-		colspan={6}
+		colspan={7}
 	>
+		{#snippet header()}
+			<input
+				type="checkbox"
+				checked={allSelected}
+				indeterminate={someSelected}
+				onclick={(event) => event.stopPropagation()}
+				onchange={toggleSelectAll}
+				aria-label="Select all products"
+				class="h-4 w-4 rounded border-gray-300 text-admin-primary focus:ring-admin-primary/30"
+			/>
+		{/snippet}
 		{#each products as product (product.id)}
 			<tr
 				class="group cursor-pointer transition-colors hover:bg-gray-50"
 				onclick={() =>
 					(window.location.href = `/shahzad-secure-admin-4db067e1/products/${product.id}`)}
 			>
+				<td class="px-6 py-4 whitespace-nowrap" onclick={(event) => event.stopPropagation()}>
+					<input
+						type="checkbox"
+						checked={selectedIds.has(product.id)}
+						onchange={() => toggleOne(product.id)}
+						aria-label={`Select ${product.name}`}
+						class="h-4 w-4 rounded border-gray-300 text-admin-primary focus:ring-admin-primary/30"
+					/>
+				</td>
 				<td class="px-6 py-4 whitespace-nowrap">
 					<div class="flex items-center gap-3">
 						<div
@@ -199,3 +255,22 @@
 		</div>
 	</div>
 </div>
+
+<Modal
+	open={showBulkDeleteConfirm}
+	title="Delete selected products?"
+	description={`This will permanently delete ${selectedIds.size} product${selectedIds.size === 1 ? '' : 's'}, along with their images and variants. This cannot be undone.`}
+	onClose={() => (showBulkDeleteConfirm = false)}
+>
+	{#snippet actions()}
+		<Button variant="secondary" onclick={() => (showBulkDeleteConfirm = false)}>Cancel</Button>
+		<form method="POST" action="?/bulkDelete">
+			{#each selectedIds as id (id)}
+				<input type="hidden" name="ids" value={id} />
+			{/each}
+			<Button type="submit" variant="primary" class="bg-red-600 hover:bg-red-700">
+				Yes, Delete
+			</Button>
+		</form>
+	{/snippet}
+</Modal>

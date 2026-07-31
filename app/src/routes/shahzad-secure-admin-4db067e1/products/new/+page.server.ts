@@ -31,11 +31,11 @@ export const actions: Actions = {
 			return fail(400, { error: 'Product slug already exists. Change the title or slug.' });
 		}
 
-		let imageUrls: string[];
+		let savedImages: Awaited<ReturnType<typeof saveProductImageFiles>>;
 		let createdProductId: string;
 
 		try {
-			imageUrls = await saveProductImageFiles(data);
+			savedImages = await saveProductImageFiles(data);
 
 			const createdProduct = await prisma.product.create({
 				data: {
@@ -48,11 +48,12 @@ export const actions: Actions = {
 					collections: {
 						connect: product.collectionIds.map((id) => ({ id }))
 					},
-					images: imageUrls.length
+					images: savedImages.length
 						? {
-								create: imageUrls.map((url, index) => ({
-									url,
+								create: savedImages.map((image, index) => ({
+									url: image.url,
 									altText: product.name,
+									color: image.color,
 									displayOrder: index
 								}))
 							}

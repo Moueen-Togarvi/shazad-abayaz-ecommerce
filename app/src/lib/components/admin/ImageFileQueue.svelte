@@ -5,16 +5,19 @@
 		id: number;
 		file: File;
 		previewUrl: string;
+		color: string;
 	};
 
 	let {
 		inputId = 'product-image-picker',
 		label = 'Add Image',
-		emptyText = 'Select images one by one. New images will appear here before saving.'
+		emptyText = 'Select images one by one. New images will appear here before saving.',
+		colors = []
 	} = $props<{
 		inputId?: string;
 		label?: string;
 		emptyText?: string;
+		colors?: string[];
 	}>();
 
 	let pickerInput: HTMLInputElement;
@@ -40,7 +43,8 @@
 			{
 				id: nextImageId++,
 				file,
-				previewUrl: URL.createObjectURL(file)
+				previewUrl: URL.createObjectURL(file),
+				color: ''
 			}
 		];
 
@@ -115,6 +119,21 @@
 					>
 						{image.file.name}
 					</p>
+					{#if colors.length}
+						<div class="px-2 pb-2">
+							<select
+								bind:value={image.color}
+								class="block w-full rounded-md border border-gray-300 bg-white px-1.5 py-1 text-[11px] text-gray-700 focus:border-admin-primary focus:ring-1 focus:ring-admin-primary/20 focus:outline-none"
+								aria-label={`Colour for ${image.file.name}`}
+							>
+								<option value="">No colour</option>
+								{#each colors as color}
+									<option value={color}>{color}</option>
+								{/each}
+							</select>
+						</div>
+					{/if}
+					<input type="hidden" name="imageColors" value={image.color} />
 				</div>
 			{/each}
 		</div>

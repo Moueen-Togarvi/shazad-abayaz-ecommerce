@@ -33,6 +33,15 @@
 		{ name: 'Dusty Rose', hex: '#c08497' }
 	];
 
+	let variantColorNames = $derived([
+		...new Set(
+			variants
+				.filter((variant) => variant.type === 'color')
+				.map((variant) => variant.color.trim())
+				.filter(Boolean)
+		)
+	]);
+
 	const addVariant = (type: VariantKind = 'size') => {
 		variants = [
 			...variants,
@@ -79,7 +88,11 @@
 				</Card>
 
 				<Card title="Media">
-					<ImageFileQueue inputId="new-product-image-picker" label="Add Image" />
+					<ImageFileQueue
+						inputId="new-product-image-picker"
+						label="Add Image"
+						colors={variantColorNames}
+					/>
 				</Card>
 
 				<Card title="Pricing">
