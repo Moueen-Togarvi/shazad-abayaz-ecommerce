@@ -91,14 +91,14 @@
 	<title>Checkout | Shahzad Abaya's</title>
 </svelte:head>
 
-<div class="min-h-screen bg-cream">
+<div class="min-h-screen bg-[#f8f5ef]">
 	<header class="border-b border-gray-200 py-6">
 		<div class="mx-auto flex max-w-6xl justify-center px-4">
 			<a href="/" class="font-serif text-2xl tracking-widest uppercase">Shahzad Abaya's</a>
 		</div>
 	</header>
 
-	<div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-10 md:flex-row md:gap-10">
+	<div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 md:flex-row md:gap-10 lg:py-12">
 		<div class="w-full md:w-[64%] lg:w-[68%]">
 			<nav class="mb-10 flex items-center text-xs tracking-widest uppercase">
 				<a href="/cart" class="text-gray-400 hover:text-black">Cart</a>
@@ -339,7 +339,8 @@
 								<div class="ml-3">
 									<p class="text-sm font-medium text-black">Cash on Delivery Shipping</p>
 									<p class="text-xs text-gray-500">
-										{totalPieces} {totalPieces === 1 ? 'piece' : 'pieces'} in cart
+										{totalPieces}
+										{totalPieces === 1 ? 'piece' : 'pieces'} in cart
 									</p>
 								</div>
 							</div>
@@ -347,7 +348,9 @@
 						</div>
 					</div>
 
-					<div class="mb-8 rounded-2xl border border-[#eadfce] bg-[#fcfaf6] p-4 shadow-[0_8px_24px_rgba(161,137,92,0.08)]">
+					<div
+						class="mb-8 rounded-2xl border border-[#eadfce] bg-[#fcfaf6] p-4 shadow-[0_8px_24px_rgba(161,137,92,0.08)]"
+					>
 						<div class="flex items-start justify-between gap-3">
 							<div>
 								<p class="text-xs font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
@@ -357,21 +360,27 @@
 									Advance delivery charges apply
 								</h3>
 							</div>
-							<span class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase">
+							<span
+								class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase"
+							>
 								COD
 							</span>
 						</div>
 
 						<p class="mt-3 text-sm leading-6 text-[#4f463d]">
-							If you choose Cash on Delivery, order confirmation requires advance payment of delivery charges.
+							If you choose Cash on Delivery, order confirmation requires advance payment of
+							delivery charges.
 						</p>
 						<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
-							اگر آپ COD منتخب کرتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع کروانا ضروری ہے۔
+							اگر آپ COD منتخب کرتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع
+							کروانا ضروری ہے۔
 						</p>
 
 						<div class="mt-4 grid gap-2 sm:grid-cols-2">
 							{#each codDeliveryCharges as charge}
-								<div class="flex items-center justify-between rounded-lg bg-white px-3 py-2 text-sm text-[#2f2924]">
+								<div
+									class="flex items-center justify-between rounded-lg bg-white px-3 py-2 text-sm text-[#2f2924]"
+								>
 									<span>{charge.quantity}</span>
 									<span class="font-semibold">{charge.label}</span>
 								</div>
@@ -462,26 +471,30 @@
 						</div>
 
 						<div class="border-t border-gray-100 bg-[#fcfaf6] p-5 sm:p-6">
-							<div class="rounded-2xl border border-[#e8dfcf] bg-white p-4 text-left shadow-[0_10px_30px_rgba(161,137,92,0.08)] sm:p-5">
+							<div
+								class="rounded-2xl border border-[#e8dfcf] bg-white p-4 text-left shadow-[0_10px_30px_rgba(161,137,92,0.08)] sm:p-5"
+							>
 								<div class="mb-4 flex items-start justify-between gap-3">
 									<div>
 										<p class="text-xs font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
 											Online Order Policy
 										</p>
-										<h3 class="mt-1 font-serif text-lg text-[#1f1a17]">
-											COD Confirmation Details
-										</h3>
+										<h3 class="mt-1 font-serif text-lg text-[#1f1a17]">COD Confirmation Details</h3>
 									</div>
-									<span class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase">
+									<span
+										class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase"
+									>
 										COD
 									</span>
 								</div>
 
 								<p class="text-sm leading-6 text-[#4f463d]">
-									Cash on Delivery orders require advance payment of delivery charges for order confirmation.
+									Cash on Delivery orders require advance payment of delivery charges for order
+									confirmation.
 								</p>
 								<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
-									اگر آپ کیش آن ڈیلیوری چاہتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع کروانا ضروری ہے۔
+									اگر آپ کیش آن ڈیلیوری چاہتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس
+									میں جمع کروانا ضروری ہے۔
 								</p>
 
 								<div class="mt-5 grid gap-4 lg:grid-cols-2">
@@ -510,7 +523,9 @@
 										</h4>
 										<div class="mt-3 space-y-2 text-sm text-[#2f2924]">
 											{#each codDeliveryCharges as charge}
-												<div class="flex items-center justify-between gap-4 rounded-lg bg-[#faf5ec] px-3 py-2">
+												<div
+													class="flex items-center justify-between gap-4 rounded-lg bg-[#faf5ec] px-3 py-2"
+												>
 													<span>{charge.quantity}</span>
 													<span class="font-semibold">{charge.label}</span>
 												</div>
@@ -520,9 +535,14 @@
 								</div>
 
 								<div class="mt-5 rounded-xl border border-[#f1dfc2] bg-[#fff8ec] p-4">
-									<p class="text-xs font-semibold tracking-[0.18em] text-[#9a7330] uppercase">Note</p>
+									<p class="text-xs font-semibold tracking-[0.18em] text-[#9a7330] uppercase">
+										Note
+									</p>
 									<div class="mt-2 space-y-2 text-sm leading-6 text-[#55483b]">
-										<p>Order confirm karne ke liye upar diye gaye kisi bhi account mein payment zaroor share karein.</p>
+										<p>
+											Order confirm karne ke liye upar diye gaye kisi bhi account mein payment
+											zaroor share karein.
+										</p>
 										<p>
 											Payment bhejne ke baad screenshot WhatsApp par send karein:
 											<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
@@ -568,14 +588,16 @@
 			{/if}
 		</div>
 
-		<div class="w-full border-l border-gray-200 md:w-[36%] md:pl-8 lg:w-[32%] lg:pl-10">
+		<div
+			class="h-fit w-full rounded-2xl border border-black/8 bg-white p-5 shadow-[0_18px_50px_rgba(35,28,20,0.07)] md:sticky md:top-6 md:w-[36%] lg:w-[32%]"
+		>
 			{#if cart.items.length === 0}
 				<div class="mb-6 rounded border border-gray-200 p-4 text-sm text-gray-500">
 					Your bag is empty. Add a product before checkout.
 				</div>
 			{:else}
 				{#each cart.items as item}
-					<div class="mb-6 flex items-center">
+					<div class="mb-5 flex items-center rounded-xl border border-black/6 bg-[#fcfaf6] p-3">
 						<div class="relative h-16 w-16 flex-shrink-0 border border-gray-200 bg-gray-100">
 							<img src={item.image} alt={item.name} class="h-full w-full object-cover" />
 							<span
@@ -586,9 +608,17 @@
 						</div>
 						<div class="ml-4 flex-grow">
 							<h4 class="font-serif text-sm">{item.name}</h4>
-							<p class="text-xs font-light text-gray-500">
-								{[item.color, item.size].filter(Boolean).join(' / ')}
-							</p>
+							<div
+								class="mt-2 flex flex-wrap gap-1.5 text-[10px] font-bold tracking-wide uppercase"
+							>
+								{#if item.color && item.color !== 'Default'}<span
+										class="rounded-full bg-white px-2 py-1 text-gray-600 ring-1 ring-black/8"
+										>Colour · {item.color}</span
+									>{/if}
+								{#if item.size && item.size !== 'One Size'}<span
+										class="rounded-full bg-black px-2 py-1 text-white">Size · {item.size}</span
+									>{/if}
+							</div>
 						</div>
 						<span class="ml-4 text-right text-sm font-medium"
 							>{formatMoney(item.price * item.quantity)}</span

@@ -77,7 +77,8 @@ export const actions: Actions = {
 				price: Number(item.price ?? 0),
 				quantity: Math.max(1, Math.trunc(Number(item.quantity ?? 1))),
 				color: item.color ? String(item.color) : null,
-				size: item.size ? String(item.size) : null
+				size: item.size ? String(item.size) : null,
+				image: item.image ? String(item.image) : undefined
 			}))
 			.filter(
 				(item) => item.name && Number.isFinite(item.price) && item.price >= 0 && item.quantity > 0
@@ -150,8 +151,8 @@ export const actions: Actions = {
 				price: Number(product.salePrice ?? product.price),
 				quantity: item.quantity,
 				color: variant.color,
-				size: variant.size
-				,image:
+				size: variant.size,
+				image:
 					product.images.find((image) => image.color === variant.color)?.url ||
 					product.images.find((image) => image.url === item.image)?.url ||
 					product.images[0]?.url ||

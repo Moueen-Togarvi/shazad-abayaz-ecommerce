@@ -80,29 +80,28 @@ export const parseProductForm = (data: FormData): ParsedProductForm => {
 
 	const rowCount = Math.max(variantTypes.length, variantColors.length, variantSizes.length);
 	const parsedVariants = Array.from({ length: rowCount }, (_, index) => {
-			// Each row is one purchasable colour + size combination. variantType is
-			// retained as an optional input only so older open admin forms still submit safely.
-			const color = getValue(variantColors, index) || 'Default';
-			const colorHexRaw = color === 'Default' ? '' : getValue(variantColorHexes, index);
-			const colorHex = isValidHex(colorHexRaw) ? colorHexRaw.toLowerCase() : null;
-			const size = getValue(variantSizes, index) || 'One Size';
-			const stockCountValue = Number(getValue(variantStocks, index) || 0);
-			const stockCount = Number.isFinite(stockCountValue)
-				? Math.max(0, Math.trunc(stockCountValue))
-				: 0;
-			const sku =
-				getValue(variantSkus, index) ||
-				`${skuPart(slug) || 'PRODUCT'}-${skuPart(color) || 'DEFAULT'}-${skuPart(size) || 'SIZE'}-${index + 1}`;
+		// Each row is one purchasable colour + size combination. variantType is
+		// retained as an optional input only so older open admin forms still submit safely.
+		const color = getValue(variantColors, index) || 'Default';
+		const colorHexRaw = color === 'Default' ? '' : getValue(variantColorHexes, index);
+		const colorHex = isValidHex(colorHexRaw) ? colorHexRaw.toLowerCase() : null;
+		const size = getValue(variantSizes, index) || 'One Size';
+		const stockCountValue = Number(getValue(variantStocks, index) || 0);
+		const stockCount = Number.isFinite(stockCountValue)
+			? Math.max(0, Math.trunc(stockCountValue))
+			: 0;
+		const sku =
+			getValue(variantSkus, index) ||
+			`${skuPart(slug) || 'PRODUCT'}-${skuPart(color) || 'DEFAULT'}-${skuPart(size) || 'SIZE'}-${index + 1}`;
 
-			return {
-				color,
-				colorHex,
-				size,
-				stockCount,
-				sku
-			};
-		})
-		.filter((variant) => variant.color || variant.size);
+		return {
+			color,
+			colorHex,
+			size,
+			stockCount,
+			sku
+		};
+	}).filter((variant) => variant.color || variant.size);
 	const variants =
 		productStatus === 'OUT_OF_STOCK'
 			? parsedVariants.map((variant) => ({ ...variant, stockCount: 0 }))

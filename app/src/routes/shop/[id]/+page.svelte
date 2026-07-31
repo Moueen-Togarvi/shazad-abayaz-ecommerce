@@ -44,18 +44,33 @@
 	let selectedColor = $state('');
 	let selectedSize = $state('');
 	let availableSizes = $derived(
-		(product.variants || [])
-			.filter((variant: any) => !selectedColor || variant.color === selectedColor)
-			.map((variant: any) => variant.size)
-			.filter(
-				(size: string, index: number, list: string[]) =>
-					size && size.toLowerCase() !== 'default' && list.indexOf(size) === index
-			)
+		(() => {
+			const sizes = (product.variants || [])
+				.filter((variant: any) => !selectedColor || variant.color === selectedColor)
+				.map((variant: any) => variant.size)
+				.filter(
+					(size: string, index: number, list: string[]) =>
+						size && size.toLowerCase() !== 'default' && list.indexOf(size) === index
+				);
+			const fittedSizes = sizes.filter((size: string) => size.toLowerCase() !== 'one size');
+			return fittedSizes.length ? fittedSizes : sizes;
+		})()
 	);
 	let selectedVariant = $derived(
 		(product.variants || []).find(
 			(variant: any) => variant.color === selectedColor && variant.size === selectedSize
-		) || product.variants?.[0]
+		) ||
+			(product.variants || []).find(
+				(variant: any) => variant.color === selectedColor && variant.size === 'One Size'
+			) ||
+			(product.variants || []).find((variant: any) => variant.size === selectedSize) ||
+			product.variants?.[0]
+	);
+	let selectedColorImage = $derived(
+		product.images?.find((image: any) => image.color === selectedColor)?.url ||
+			images[activeImage] ||
+			images[0] ||
+			''
 	);
 	let productOutOfStock = $derived(
 		!product.variants?.some((variant: any) => Number(variant.stockCount || 0) > 0)
@@ -173,7 +188,7 @@
 			name: product.name,
 			price: Number(product.salePrice || product.price),
 			quantity,
-			image: images[activeImage] || images[0] || '',
+			image: selectedColorImage,
 			color: selectedColor,
 			size: selectedSize
 		});
@@ -292,7 +307,8 @@
 		<div class="flex w-full flex-col lg:w-1/2">
 			<div class="mb-8">
 				<p class="mb-3 text-xs font-bold tracking-[0.18em] text-gold uppercase">
-					{product.collections?.map((collection: any) => collection.name).join(' / ') || "Shahzad Abaya's"}
+					{product.collections?.map((collection: any) => collection.name).join(' / ') ||
+						"Shahzad Abaya's"}
 				</p>
 				<h1 class="mb-2 font-serif text-3xl tracking-wide text-black md:text-4xl">
 					{product.name}
@@ -323,9 +339,9 @@
 							<button
 								type="button"
 								onclick={() => {
-								selectedColor = color;
-								if (color in colorImageIndex) activeImage = colorImageIndex[color];
-							}}
+									selectedColor = color;
+									if (color in colorImageIndex) activeImage = colorImageIndex[color];
+								}}
 								class="h-8 w-8 rounded-full border border-gray-200 ring-1 ring-offset-2 transition-all {selectedColor ===
 								color
 									? 'ring-black'
@@ -358,11 +374,26 @@
 							<button
 								type="button"
 								onclick={() => (selectedSize = size)}
-								class="border py-3 text-sm font-medium transition-colors {selectedSize === size
+								class="min-h-16 overflow-hidden rounded-lg border text-sm transition-all {selectedSize ===
+								size
 									? 'border-black bg-black text-white'
-									: 'border-gray-200 text-black hover:border-black'}"
+									: 'border-gray-200 bg-white text-black hover:border-black'}"
 							>
-								{size}
+								{#if /\(([^)]+)\)/.test(size)}
+									<span class="flex h-full items-stretch">
+										<span class="flex flex-1 items-center justify-center px-2 font-bold"
+											>{size.split(' ')[0]}</span
+										>
+										<span
+											class="flex min-w-16 flex-col items-center justify-center border-l border-current/20 px-2 text-[10px] uppercase"
+										>
+											<span class="opacity-60">Length</span>
+											<strong class="text-sm">{size.match(/\(([^)]+)\)/)?.[1]}&quot;</strong>
+										</span>
+									</span>
+								{:else}
+									<span class="font-semibold">{size}</span>
+								{/if}
 							</button>
 						{/each}
 					</div>

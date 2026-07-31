@@ -1,11 +1,18 @@
 <script lang="ts">
 	import ImageFileQueue from '$lib/components/admin/ImageFileQueue.svelte';
-	import { Button, Card, Field, PageHeader, Select, TextInput, Textarea } from '$lib/components/admin/ui';
+	import {
+		Button,
+		Card,
+		Field,
+		PageHeader,
+		Select,
+		TextInput,
+		Textarea
+	} from '$lib/components/admin/ui';
 
-	type VariantKind = 'size' | 'color';
 	type VariantRow = {
 		id: number;
-		type: VariantKind;
+		type: 'color';
 		size: string;
 		color: string;
 		colorHex: string;
@@ -17,7 +24,15 @@
 	let collections = $derived((data.collections || []) as Array<any>);
 	let nextVariantId = 2;
 	let variants = $state<VariantRow[]>([
-		{ id: 1, type: 'size', size: 'S (52)', color: 'Black', colorHex: '#000000', stockCount: 0, sku: '' }
+		{
+			id: 1,
+			type: 'color',
+			size: 'S (52)',
+			color: 'Black',
+			colorHex: '#000000',
+			stockCount: 0,
+			sku: ''
+		}
 	]);
 
 	const sizes = ['XS (50)', 'S (52)', 'M (54)', 'L (56)', 'XL (58)', 'XXL (60)', 'S-XL', 'XS-L'];
@@ -36,18 +51,18 @@
 	let variantColorNames = $derived([
 		...new Set(
 			variants
-				.filter((variant) => variant.type === 'color')
 				.map((variant) => variant.color.trim())
+				.filter((color) => color.toLowerCase() !== 'default')
 				.filter(Boolean)
 		)
 	]);
 
-	const addVariant = (type: VariantKind = 'size') => {
+	const addVariant = () => {
 		variants = [
 			...variants,
 			{
 				id: nextVariantId++,
-				type,
+				type: 'color',
 				size: 'S (52)',
 				color: 'Black',
 				colorHex: '#000000',
@@ -68,7 +83,11 @@
 </svelte:head>
 
 <div class="mx-auto max-w-5xl pb-12">
-	<PageHeader title="Add Product" subtitle="Create a new product in your catalog." backHref="/shahzad-secure-admin-4db067e1/products" />
+	<PageHeader
+		title="Add Product"
+		subtitle="Create a new product in your catalog."
+		backHref="/shahzad-secure-admin-4db067e1/products"
+	/>
 
 	{#if form?.error}
 		<div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -82,8 +101,18 @@
 				<Card title="Details">
 					<div class="space-y-5">
 						<TextInput label="Title" name="name" placeholder="e.g. Ayla Nida Abaya" required />
-						<TextInput label="Slug" name="slug" placeholder="auto-generated if empty" help="URL-friendly identifier. Leave blank to auto-generate from the title." />
-						<Textarea label="Description" name="description" rows={5} placeholder="Describe fabric, silhouette, and care details…" />
+						<TextInput
+							label="Slug"
+							name="slug"
+							placeholder="auto-generated if empty"
+							help="URL-friendly identifier. Leave blank to auto-generate from the title."
+						/>
+						<Textarea
+							label="Description"
+							name="description"
+							rows={5}
+							placeholder="Describe fabric, silhouette, and care details…"
+						/>
 					</div>
 				</Card>
 
@@ -97,19 +126,32 @@
 
 				<Card title="Pricing">
 					<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-						<TextInput label="Price" name="price" type="number" step="0.01" prefix="Rs." placeholder="0.00" required />
-						<TextInput label="Discount Price" name="salePrice" type="number" step="0.01" prefix="Rs." placeholder="0.00" help="Optional — sale price shown instead of the regular price." />
+						<TextInput
+							label="Price"
+							name="price"
+							type="number"
+							step="0.01"
+							prefix="Rs."
+							placeholder="0.00"
+							required
+						/>
+						<TextInput
+							label="Discount Price"
+							name="salePrice"
+							type="number"
+							step="0.01"
+							prefix="Rs."
+							placeholder="0.00"
+							help="Optional — sale price shown instead of the regular price."
+						/>
 					</div>
 				</Card>
 
 				<Card title="Variants">
 					{#snippet header()}
 						<div class="flex flex-wrap gap-2">
-							<Button type="button" variant="secondary" size="sm" onclick={() => addVariant('size')}>
-								Add Size
-							</Button>
-							<Button type="button" variant="secondary" size="sm" onclick={() => addVariant('color')}>
-								Add Colour
+							<Button type="button" variant="secondary" size="sm" onclick={addVariant}>
+								Add colour / size option
 							</Button>
 						</div>
 					{/snippet}
@@ -119,7 +161,7 @@
 							<div class="rounded-xl border border-admin-border bg-gray-50/60 p-4">
 								<div
 									class="grid gap-3 md:items-end {variant.type === 'color'
-										? 'md:grid-cols-[9rem_1fr_10rem_7rem_1fr_auto]'
+										? 'md:grid-cols-[7rem_1fr_10rem_10rem_7rem_1fr_auto]'
 										: 'md:grid-cols-[9rem_1fr_7rem_1fr_auto]'}"
 								>
 									<Field label="Type" class="text-xs">
@@ -127,11 +169,13 @@
 											<select
 												name="variantType"
 												bind:value={variant.type}
+												disabled
 												class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
 											>
 												<option value="size">Size</option>
 												<option value="color">Colour</option>
 											</select>
+											<input type="hidden" name="variantType" value="color" />
 										{/snippet}
 									</Field>
 
@@ -160,7 +204,18 @@
 													placeholder="e.g. Emerald Velvet"
 													class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
 												/>
-												<input type="hidden" name="variantSize" value="One Size" />
+											{/snippet}
+										</Field>
+
+										<Field label="Size / Length" class="text-xs">
+											{#snippet children()}
+												<select
+													name="variantSize"
+													bind:value={variant.size}
+													class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
+												>
+													{#each sizes as size}<option value={size}>{size}</option>{/each}
+												</select>
 											{/snippet}
 										</Field>
 
@@ -248,7 +303,11 @@
 
 			<div class="space-y-6">
 				<Card title="Status">
-					<Select name="productStatus" label="Visibility" help="Draft stays hidden. Out of Stock stays visible but disables cart and checkout.">
+					<Select
+						name="productStatus"
+						label="Visibility"
+						help="Draft stays hidden. Out of Stock stays visible but disables cart and checkout."
+					>
 						<option value="ACTIVE">Active</option>
 						<option value="OUT_OF_STOCK">Out of Stock</option>
 						<option value="DRAFT">Draft</option>
@@ -280,7 +339,11 @@
 				<div class="sticky bottom-6">
 					<Card>
 						<Button type="submit" class="w-full">Save Product</Button>
-						<Button href="/shahzad-secure-admin-4db067e1/products" variant="secondary" class="mt-3 w-full">
+						<Button
+							href="/shahzad-secure-admin-4db067e1/products"
+							variant="secondary"
+							class="mt-3 w-full"
+						>
 							Discard
 						</Button>
 					</Card>
