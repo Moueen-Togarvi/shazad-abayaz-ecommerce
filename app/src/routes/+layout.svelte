@@ -241,7 +241,7 @@ fbq('init', '${metaPixelId}');`)
 					<div class="flex h-14 items-center justify-between gap-2">
 						<a
 							href="/"
-							class="group inline-flex min-w-0 shrink-0 items-center gap-0 rounded-full border border-white/70 bg-white/86 py-1 pr-1.5 pl-1.5 shadow-[0_12px_30px_rgba(72,38,96,0.14)] backdrop-blur-md sm:gap-2.5 sm:pr-4"
+							class="group inline-flex min-w-0 shrink-0 items-center gap-0 rounded-full border border-white/70 bg-white/86 py-1 pr-1.5 pl-1.5 shadow-[0_12px_30px_rgba(0,0,0,0.14)] backdrop-blur-md sm:gap-2.5 sm:pr-4"
 						>
 							<img
 								src="/image.png"
@@ -492,7 +492,7 @@ fbq('init', '${metaPixelId}');`)
 		</div>
 
 		<!-- Footer -->
-		<footer class="bg-[#0b0710] pt-14 pb-8 text-white sm:pt-16">
+		<footer class="bg-[#0a0a0a] pt-14 pb-8 text-white sm:pt-16">
 			<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 md:text-left lg:px-8">
 				<div class="grid grid-cols-1 gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr_1.1fr] lg:gap-10">
 					<div class="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6">
@@ -502,14 +502,14 @@ fbq('init', '${metaPixelId}');`)
 							occasion-ready confidence.
 						</p>
 						<div
-							class="mt-5 inline-flex rounded-full border border-[#8b45b8]/35 bg-[#8b45b8]/12 px-4 py-2 text-[0.68rem] font-black tracking-[0.12em] text-[#d8b4fe] uppercase"
+							class="mt-5 inline-flex rounded-full border border-white/35 bg-white/12 px-4 py-2 text-[0.68rem] font-black tracking-[0.12em] text-white uppercase"
 						>
 							Shahzad Abaya's
 						</div>
 					</div>
 
 					<div class="pt-2">
-						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-[#d8b4fe] uppercase">Shop</h4>
+						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-white/80 uppercase">Shop</h4>
 						<ul class="space-y-3 text-sm font-light text-white/58">
 							<li><a href="/shop" class="transition-colors hover:text-white">All Products</a></li>
 							<li>
@@ -522,7 +522,7 @@ fbq('init', '${metaPixelId}');`)
 					</div>
 
 					<div class="pt-2">
-						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-[#d8b4fe] uppercase">Support</h4>
+						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-white/80 uppercase">Support</h4>
 						<ul class="space-y-3 text-sm font-light text-white/58">
 							<li><a href="/contact" class="transition-colors hover:text-white">Contact Us</a></li>
 							<li>
@@ -537,8 +537,8 @@ fbq('init', '${metaPixelId}');`)
 						</ul>
 					</div>
 
-					<div class="rounded-[1.75rem] border border-[#8b45b8]/24 bg-[#8b45b8]/10 p-6">
-						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-[#d8b4fe] uppercase">
+					<div class="rounded-[1.75rem] border border-white/24 bg-white/10 p-6">
+						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-white/80 uppercase">
 							Visit & Contact
 						</h4>
 						<div class="space-y-4 text-sm leading-6 text-white/68">
@@ -556,7 +556,7 @@ fbq('init', '${metaPixelId}');`)
 									href={primaryWhatsAppHref}
 									target="_blank"
 									rel="noreferrer"
-									class="inline-flex items-center gap-2 font-semibold text-[#d8b4fe] transition-colors hover:text-white"
+									class="inline-flex items-center gap-2 font-semibold text-white/80 transition-colors hover:text-white"
 								>
 									<span class="inline-flex size-2 rounded-full bg-[#25D366]"></span>
 									{SUPPORT_PHONE_DISPLAY}

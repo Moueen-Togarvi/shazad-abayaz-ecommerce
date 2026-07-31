@@ -9,7 +9,7 @@
 </script>
 
 <section class="relative overflow-hidden border-t border-[#0a0a0a]/8 bg-white py-10 sm:py-14">
-	<div class="pointer-events-none absolute top-8 left-0 hidden h-[18rem] w-[18rem] -translate-x-1/3 text-[#8b45b8]/12 sm:block" aria-hidden="true">
+	<div class="pointer-events-none absolute top-8 left-0 hidden h-[18rem] w-[18rem] -translate-x-1/3 text-black/12 sm:block" aria-hidden="true">
 		<svg class="h-full w-full" viewBox="0 0 260 260" fill="none">
 			<path d="M74 218C82 158 115 100 180 48" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
 			<path d="M98 174C76 158 70 128 83 104C107 116 116 147 98 174Z" stroke="currentColor" stroke-width="2" />
@@ -20,7 +20,7 @@
 			<circle cx="73" cy="218" r="4" fill="currentColor" />
 		</svg>
 	</div>
-	<div class="pointer-events-none absolute right-0 bottom-4 hidden h-[19rem] w-[19rem] translate-x-1/3 rotate-180 text-[#8b45b8]/10 sm:block" aria-hidden="true">
+	<div class="pointer-events-none absolute right-0 bottom-4 hidden h-[19rem] w-[19rem] translate-x-1/3 rotate-180 text-black/10 sm:block" aria-hidden="true">
 		<svg class="h-full w-full" viewBox="0 0 260 260" fill="none">
 			<path d="M74 218C82 158 115 100 180 48" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
 			<path d="M98 174C76 158 70 128 83 104C107 116 116 147 98 174Z" stroke="currentColor" stroke-width="2" />
@@ -36,7 +36,7 @@
 		<div class="flex flex-col gap-8">
 			<div class="text-center">
 				<h2 class="font-serif text-2xl tracking-widest text-[#0a0a0a] uppercase">
-					Shop by <span class="text-[#7e2bb8]">Category</span>
+					Shop by <span class="text-[#0a0a0a]">Category</span>
 				</h2>
 			</div>
 
@@ -52,7 +52,7 @@
 							class="group flex w-[4.5rem] shrink-0 flex-col items-center gap-3 sm:w-[7.5rem]"
 						>
 							<div
-								class="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center overflow-hidden rounded-full bg-[#f7f1ff] ring-1 ring-[#8b45b8]/18 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_20px_rgba(126,43,184,0.14)] group-hover:ring-2 group-hover:ring-[#8b45b8] sm:h-[7.5rem] sm:w-[7.5rem]"
+								class="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center overflow-hidden rounded-full bg-gray-50 ring-1 ring-black/18 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.14)] group-hover:ring-2 group-hover:ring-black sm:h-[7.5rem] sm:w-[7.5rem]"
 							>
 								<img
 									src={category.imageUrl || '/image.png'}
@@ -61,7 +61,7 @@
 								/>
 							</div>
 							<span
-								class="text-center font-serif text-[0.65rem] font-semibold tracking-[0.1em] text-[#0a0a0a] uppercase transition-colors group-hover:text-[#7e2bb8] sm:text-xs"
+								class="text-center font-serif text-[0.65rem] font-semibold tracking-[0.1em] text-[#0a0a0a] uppercase transition-colors group-hover:text-black sm:text-xs"
 							>
 								{category.name}
 							</span>

@@ -29,7 +29,7 @@
 			title: 'Premium Abayas',
 			description: 'Soft Nida Fabric | Full Flare, 12 Colors',
 			price: 1490,
-			badgeClass: 'bg-[#efe6fb] text-[#6d35a4]'
+			badgeClass: 'bg-[#f5f5f5] text-[#3a3a3a]'
 		},
 		{
 			href: '/shop?category=daily-wear',
@@ -47,7 +47,7 @@
 			title: 'Luxe Stonework',
 			description: 'Intricate Hand-Embellished Detailing',
 			price: 7490,
-			badgeClass: 'bg-[#efe6fb] text-[#6d35a4]'
+			badgeClass: 'bg-[#f5f5f5] text-[#3a3a3a]'
 		}
 	];
 
@@ -62,17 +62,17 @@
 	}
 </script>
 
-<section class="relative overflow-hidden border-t border-[#0a0a0a]/8 bg-[#fbf8ff] px-4 py-10 sm:px-6 lg:px-8">
+<section class="relative overflow-hidden border-t border-[#0a0a0a]/8 bg-[#fafafa] px-4 py-10 sm:px-6 lg:px-8">
 	<div
-		class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,#efe5ff_0%,transparent_44%)]"
+		class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,#f0f0f0_0%,transparent_44%)]"
 	></div>
 
 	<div class="relative mx-auto max-w-7xl">
 		<div class="mb-8 text-center">
-			<h2 class="font-serif text-3xl font-black leading-tight text-[#1c1727] uppercase sm:text-4xl lg:text-5xl">
-				Exclusive <span class="text-[#7b3fb1]">Deals & Edits</span>
+			<h2 class="font-serif text-3xl font-black leading-tight text-[#0f0f10] uppercase sm:text-4xl lg:text-5xl">
+				Exclusive <span class="text-[#0a0a0a]">Deals & Edits</span>
 			</h2>
-			<div class="mt-4 flex items-center justify-center gap-3 text-[#8b45c4]">
+			<div class="mt-4 flex items-center justify-center gap-3 text-[#4a4a4a]">
 				<span class="h-px w-10 bg-current"></span>
 				<span class="text-sm">◆</span>
 				<span class="h-px w-10 bg-current"></span>
@@ -81,10 +81,10 @@
 
 		<div class="grid grid-cols-1 gap-6 lg:grid-cols-[1.12fr_0.74fr]">
 			<div
-				class="relative overflow-hidden rounded-[1.6rem] border border-[#eadcf8] bg-white/92 p-5 shadow-[0_18px_48px_rgba(79,38,113,0.12)] sm:p-7 lg:min-h-[500px]"
+				class="relative overflow-hidden rounded-[1.6rem] border border-[#e5e5e5] bg-white/92 p-5 shadow-[0_18px_48px_rgba(0,0,0,0.12)] sm:p-7 lg:min-h-[500px]"
 			>
 				<svg
-					class="pointer-events-none absolute right-2 bottom-3 size-28 text-[#8d56bd]/25 sm:size-36"
+					class="pointer-events-none absolute right-2 bottom-3 size-28 text-[#7a7a7a]/25 sm:size-36"
 					fill="none"
 					viewBox="0 0 120 120"
 					aria-hidden="true"
@@ -106,31 +106,31 @@
 				<div class="grid h-full grid-cols-1 items-center gap-6 md:grid-cols-[0.88fr_1.12fr]">
 					<div class="order-2 flex flex-col items-start md:order-1">
 						<span
-							class="inline-flex items-center gap-2 rounded-full border border-[#d9c3ef] bg-[#f8f1ff] px-4 py-2 text-[0.68rem] font-black text-[#6d35a4] uppercase"
+							class="inline-flex items-center gap-2 rounded-full border border-[#dcdcdc] bg-[#f5f5f5] px-4 py-2 text-[0.68rem] font-black text-[#3a3a3a] uppercase"
 						>
 							<span>✦</span>
 							New Arrival Offer
 						</span>
 
 						<h3
-							class="mt-5 max-w-[18rem] font-serif text-2xl font-black leading-tight text-[#1c1727] uppercase sm:text-3xl"
+							class="mt-5 max-w-[18rem] font-serif text-2xl font-black leading-tight text-[#0f0f10] uppercase sm:text-3xl"
 						>
 							{spotlightProduct.name || 'Stuff Original Premium Nida Fabric Abaya - Mauve Taupe'}
 						</h3>
 
 						<div class="mt-7 flex items-baseline gap-4">
-							<span class="text-3xl font-black text-[#7836ae] tabular-nums sm:text-4xl">
+							<span class="text-3xl font-black text-[#1a1a1a] tabular-nums sm:text-4xl">
 								{formatMoney(spotlightProduct.salePrice || 5200)}
 							</span>
-							<span class="text-base font-bold text-[#898190] line-through tabular-nums">
+							<span class="text-base font-bold text-[#6b7280] line-through tabular-nums">
 								{formatMoney(spotlightProduct.price || 6500)}
 							</span>
 						</div>
 
-						<div class="mt-5 h-px w-full max-w-[16rem] border-t border-dashed border-[#dbc6ee]"></div>
+						<div class="mt-5 h-px w-full max-w-[16rem] border-t border-dashed border-[#dcdcdc]"></div>
 
 						<div class="mt-4">
-							<p class="text-[0.78rem] font-black text-[#1c1727] uppercase">
+							<p class="text-[0.78rem] font-black text-[#0f0f10] uppercase">
 								Color: <span>{selectedColor}</span>
 							</p>
 							<div class="mt-3 flex gap-4">
@@ -140,7 +140,7 @@
 										onclick={() => (selectedColor = color.name)}
 										class="flex size-9 items-center justify-center rounded-full border transition-colors duration-200 {selectedColor ===
 										color.name
-											? 'border-[#7d37b0] bg-white'
+											? 'border-[#1a1a1a] bg-white'
 											: 'border-transparent bg-white'}"
 										aria-label={`Select ${color.name}`}
 									>
@@ -154,7 +154,7 @@
 						</div>
 
 						<div class="mt-5">
-							<p class="text-[0.78rem] font-black text-[#1c1727] uppercase">
+							<p class="text-[0.78rem] font-black text-[#0f0f10] uppercase">
 								Size: <span>{selectedSize === 'M' ? 'Medium' : selectedSize}</span>
 							</p>
 							<div class="mt-3 flex gap-4">
@@ -164,8 +164,8 @@
 										onclick={() => (selectedSize = size)}
 										class="flex size-11 items-center justify-center rounded-xl border text-sm font-black transition-colors duration-200 {selectedSize ===
 										size
-											? 'border-[#7d37b0] bg-[#7d37b0] text-white'
-											: 'border-[#e4d7ef] bg-white text-[#3a3142]'}"
+											? 'border-[#1a1a1a] bg-[#1a1a1a] text-white'
+											: 'border-[#e0e0e0] bg-white text-[#3a3a3a]'}"
 									>
 										{size}
 									</button>
@@ -176,7 +176,7 @@
 						<button
 							type="button"
 							onclick={handleSpotlightAddToCart}
-							class="mt-7 inline-flex min-h-12 w-full max-w-[16rem] items-center justify-center gap-3 rounded-2xl bg-[#7d37b0] px-6 text-sm font-black text-white uppercase shadow-[0_14px_30px_rgba(125,55,176,0.28)] transition-colors duration-200 hover:bg-[#62258e]"
+							class="mt-7 inline-flex min-h-12 w-full max-w-[16rem] items-center justify-center gap-3 rounded-2xl bg-[#1a1a1a] px-6 text-sm font-black text-white uppercase shadow-[0_14px_30px_rgba(0,0,0,0.28)] transition-colors duration-200 hover:bg-[#242424]"
 						>
 							<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 								<path
@@ -192,10 +192,10 @@
 
 					<div class="relative order-1 flex min-h-[330px] items-center justify-center md:order-2">
 						<div
-							class="absolute inset-x-4 top-3 bottom-3 rounded-t-full border-[10px] border-[#e9daf7] bg-[#f2e7fb]"
+							class="absolute inset-x-4 top-3 bottom-3 rounded-t-full border-[10px] border-[#e5e5e5] bg-[#f0f0f0]"
 						></div>
 						<div
-							class="relative z-10 h-[320px] w-[250px] overflow-hidden rounded-t-full rounded-b-2xl border border-[#dbc4ef] shadow-[0_16px_34px_rgba(77,41,106,0.16)] sm:h-[410px] sm:w-[320px]"
+							class="relative z-10 h-[320px] w-[250px] overflow-hidden rounded-t-full rounded-b-2xl border border-[#dcdcdc] shadow-[0_16px_34px_rgba(0,0,0,0.16)] sm:h-[410px] sm:w-[320px]"
 						>
 							<img
 								src={spotlightStaticImage}
@@ -205,7 +205,7 @@
 						</div>
 
 						<div
-							class="absolute top-8 right-2 z-20 flex size-24 flex-col items-center justify-center rounded-full border-2 border-[#d9bdf0] bg-[#7d37b0] text-center text-white shadow-[0_10px_24px_rgba(80,35,113,0.24)] sm:size-28"
+							class="absolute top-8 right-2 z-20 flex size-24 flex-col items-center justify-center rounded-full border-2 border-[#d4d4d4] bg-[#1a1a1a] text-center text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] sm:size-28"
 						>
 							<span class="text-sm font-black uppercase">Save</span>
 							<span class="text-3xl font-black leading-none">30%</span>
@@ -213,7 +213,7 @@
 						</div>
 
 						<span
-							class="absolute bottom-2 left-7 z-20 rounded-md bg-[#7030a0] px-4 py-2 text-xs font-black text-white uppercase shadow-[0_10px_22px_rgba(112,48,160,0.28)]"
+							class="absolute bottom-2 left-7 z-20 rounded-md bg-[#1a1a1a] px-4 py-2 text-xs font-black text-white uppercase shadow-[0_10px_22px_rgba(0,0,0,0.28)]"
 						>
 							Online Exclusive
 						</span>
@@ -225,9 +225,9 @@
 				{#each offerCards as card}
 					<a
 						href={card.href}
-						class="group grid grid-cols-[6.2rem_1fr_2.5rem] items-center gap-4 rounded-[1.35rem] border border-[#eadcf8] bg-white/94 p-4 shadow-[0_12px_34px_rgba(79,38,113,0.1)] transition-colors duration-200 hover:border-[#cfaeea] sm:grid-cols-[7.2rem_1fr_3rem] sm:p-5"
+						class="group grid grid-cols-[6.2rem_1fr_2.5rem] items-center gap-4 rounded-[1.35rem] border border-[#e5e5e5] bg-white/94 p-4 shadow-[0_12px_34px_rgba(0,0,0,0.1)] transition-colors duration-200 hover:border-[#c7c7c7] sm:grid-cols-[7.2rem_1fr_3rem] sm:p-5"
 					>
-						<div class="h-28 overflow-hidden rounded-xl bg-[#f4edf8] sm:h-32">
+						<div class="h-28 overflow-hidden rounded-xl bg-[#f0f0f0] sm:h-32">
 							<img
 								src={card.image}
 								alt={card.title}
@@ -242,15 +242,15 @@
 								{card.badge}
 								{#if card.badge === 'Best Choice'} ♥{/if}
 							</span>
-							<h4 class="mt-3 font-serif text-lg font-black leading-tight text-[#1c1727] uppercase">
+							<h4 class="mt-3 font-serif text-lg font-black leading-tight text-[#0f0f10] uppercase">
 								{card.title}
 							</h4>
-							<p class="mt-1 text-sm leading-snug text-[#3f3745]">{card.description}</p>
-							<p class="mt-3 text-base font-black text-[#7d37b0]">From {formatMoney(card.price)}</p>
+							<p class="mt-1 text-sm leading-snug text-[#4a4a4a]">{card.description}</p>
+							<p class="mt-3 text-base font-black text-[#1a1a1a]">From {formatMoney(card.price)}</p>
 						</div>
 
 						<span
-							class="flex size-10 items-center justify-center rounded-full border border-[#eadcf8] bg-[#fbf6ff] text-[#7d37b0] transition-colors duration-200 group-hover:bg-[#7d37b0] group-hover:text-white sm:size-12"
+							class="flex size-10 items-center justify-center rounded-full border border-[#e5e5e5] bg-[#fafafa] text-[#1a1a1a] transition-colors duration-200 group-hover:bg-[#1a1a1a] group-hover:text-white sm:size-12"
 							aria-hidden="true"
 						>
 							<svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -183,10 +183,10 @@
 
 	<!-- Info Container -->
 	<div
-		class="relative z-10 flex flex-1 flex-col justify-between bg-white p-2.5 pt-2 text-left shadow-[inset_0_1px_0_rgba(124,58,237,0.08)] sm:p-3 sm:pt-2.5"
+		class="relative z-10 flex flex-1 flex-col justify-between bg-white p-2.5 pt-2 text-left shadow-[inset_0_1px_0_rgba(0,0,0,0.08)] sm:p-3 sm:pt-2.5"
 	>
 		<svg
-			class="pointer-events-none absolute top-2 right-0 size-28 text-[#b894e4]/16 sm:size-36"
+			class="pointer-events-none absolute top-2 right-0 size-28 text-black/16 sm:size-36"
 			fill="none"
 			viewBox="0 0 120 120"
 			aria-hidden="true"
@@ -211,7 +211,7 @@
 		<div class="relative z-10 space-y-2">
 			<div class="flex items-center justify-between gap-2">
 				<span
-					class="inline-flex items-center gap-1 rounded bg-[#8b3edb] px-1.5 py-0.5 text-[0.42rem] font-black text-white uppercase shadow-[0_6px_14px_rgba(139,62,219,0.2)] sm:text-[0.48rem]"
+					class="inline-flex items-center gap-1 rounded bg-[#0a0a0a] px-1.5 py-0.5 text-[0.42rem] font-black text-white uppercase shadow-[0_6px_14px_rgba(0,0,0,0.2)] sm:text-[0.48rem]"
 				>
 					<svg class="size-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
 						<path d="M10 1.8 12.7 7.3l6.1.9-4.4 4.3 1 6.1L10 15.7l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L10 1.8Z" />
@@ -234,16 +234,16 @@
 
 			<a
 				{href}
-				class="relative block font-serif text-[0.78rem] leading-tight font-black text-[#241238] uppercase transition-colors hover:text-[#7c3aed] sm:line-clamp-2 sm:text-[0.95rem]"
+				class="relative block font-serif text-[0.78rem] leading-tight font-black text-[#1a1a1a] uppercase transition-colors hover:text-black sm:line-clamp-2 sm:text-[0.95rem]"
 			>
 				{product.name}
 			</a>
 
 			<div
-				class="relative grid grid-cols-2 overflow-hidden rounded-lg border border-[#e9ddfb] bg-[#fbf8ff]/95 text-[#6b42a0] shadow-[0_8px_24px_rgba(124,58,237,0.08)]"
+				class="relative grid grid-cols-2 overflow-hidden rounded-lg border border-[#e5e5e5] bg-gray-50/95 text-[#4a4a4a] shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
 			>
 				<svg
-					class="pointer-events-none absolute inset-y-2 left-1/2 h-auto w-1 -translate-x-1/2 text-[#b894e4]/45"
+					class="pointer-events-none absolute inset-y-2 left-1/2 h-auto w-1 -translate-x-1/2 text-black/45"
 					viewBox="0 0 4 48"
 					preserveAspectRatio="none"
 					aria-hidden="true"
@@ -258,7 +258,7 @@
 				</svg>
 
 				<div class="flex min-w-0 items-center justify-center gap-1 px-1 py-1">
-					<svg class="size-4 shrink-0 text-[#8b3edb]" fill="currentColor" viewBox="0 0 20 20">
+					<svg class="size-4 shrink-0 text-[#0a0a0a]" fill="currentColor" viewBox="0 0 20 20">
 						<path d="M17.7 9.3 10.7 2.3A1 1 0 0 0 10 2H3a1 1 0 0 0-1 1v7c0 .3.1.5.3.7l7 7a1 1 0 0 0 1.4 0l7-7a1 1 0 0 0 0-1.4ZM6 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
 					</svg>
 					<span class="text-[0.46rem] leading-tight font-black uppercase sm:text-[0.54rem]">
@@ -267,7 +267,7 @@
 				</div>
 
 				<div class="flex min-w-0 items-center justify-center gap-1 px-1 py-1">
-					<svg class="size-4 shrink-0 text-[#7c3aed]" fill="currentColor" viewBox="0 0 20 20">
+					<svg class="size-4 shrink-0 text-[#2a2a2a]" fill="currentColor" viewBox="0 0 20 20">
 						<path d="M5 5a3 3 0 1 1 5 2.2A3 3 0 1 1 15 5h1a1 1 0 0 1 1 1v3H3V6a1 1 0 0 1 1-1h1Zm2 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1Zm4 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1ZM3 11h6v7H5a2 2 0 0 1-2-2v-5Zm8 7v-7h6v5a2 2 0 0 1-2 2h-4Z" />
 					</svg>
 					<span class="text-[0.46rem] leading-tight font-black uppercase sm:text-[0.54rem]">
@@ -279,7 +279,7 @@
 
 		<div class="relative z-10 mt-2 pt-1.5">
 			<svg
-				class="absolute top-0 left-0 h-3 w-full text-[#dfcff4]"
+				class="absolute top-0 left-0 h-3 w-full text-[#d9d9d9]"
 				viewBox="0 0 320 16"
 				preserveAspectRatio="none"
 				aria-hidden="true"
@@ -296,7 +296,7 @@
 			<div class="flex items-center justify-between gap-1 pt-1.5 sm:gap-2">
 				<div class="w-[3.85rem] min-w-0 sm:w-[5.8rem]">
 					<div class="flex items-baseline gap-1 whitespace-nowrap sm:gap-1.5">
-						<span class="text-[0.74rem] font-black text-[#150b26] tabular-nums sm:text-[1.08rem]">
+						<span class="text-[0.74rem] font-black text-[#0a0a0a] tabular-nums sm:text-[1.08rem]">
 							{formatMoney(product.salePrice || product.price)}
 						</span>
 						{#if product.salePrice}
@@ -319,7 +319,7 @@
 				{:else}
 					<a
 						{href}
-						class="inline-flex min-h-6 shrink-0 items-center justify-center gap-0.5 rounded-full bg-[#7c2ec4] px-1.5 text-[0.48rem] font-black text-white shadow-[0_8px_18px_rgba(124,46,196,0.22)] transition-colors duration-200 hover:bg-[#5f219d] sm:min-h-8 sm:gap-1.5 sm:px-3 sm:text-[0.68rem]"
+						class="inline-flex min-h-6 shrink-0 items-center justify-center gap-0.5 rounded-full bg-[#0a0a0a] px-1.5 text-[0.48rem] font-black text-white shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition-colors duration-200 hover:bg-[#242424] sm:min-h-8 sm:gap-1.5 sm:px-3 sm:text-[0.68rem]"
 					>
 						<svg class="size-2.5 sm:size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path

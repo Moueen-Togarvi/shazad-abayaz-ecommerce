@@ -33,6 +33,14 @@ const parseCartItems = (value: string): CheckoutCartItem[] => {
 	return parsed;
 };
 
+const getCodShippingCharge = (quantity: number) => {
+	if (quantity <= 1) return 300;
+	if (quantity === 2) return 400;
+	if (quantity <= 4) return 500;
+	if (quantity <= 7) return 700;
+	return 700;
+};
+
 const orderNumberCandidate = () => {
 	const date = new Date().toISOString().slice(2, 10).replace(/-/g, '');
 	return `ABY-${date}-${randomBytes(2).toString('hex').toUpperCase()}`;
@@ -85,7 +93,7 @@ export const actions: Actions = {
 		const city = getText(data, 'city');
 		const postalCode = getText(data, 'postalCode');
 		const phone = getText(data, 'phone');
-		const shippingMethod = getText(data, 'shippingMethod') === 'EXPRESS' ? 'EXPRESS' : 'STANDARD';
+		const shippingMethod = 'STANDARD';
 		const paymentMethod = 'COD';
 
 		if (!email || !firstName || !lastName || !addressLine1 || !city || !postalCode || !phone) {
@@ -144,7 +152,8 @@ export const actions: Actions = {
 		}
 
 		const subtotal = validatedItems.reduce((total, item) => total + item.price * item.quantity, 0);
-		const shippingCost = shippingMethod === 'EXPRESS' ? 1200 : 0;
+		const totalPieces = validatedItems.reduce((total, item) => total + item.quantity, 0);
+		const shippingCost = getCodShippingCharge(totalPieces);
 		const discountTotal = 0;
 		const totalAmount = subtotal + shippingCost - discountTotal;
 		const orderNumber = await createOrderNumber();

@@ -137,7 +137,7 @@
 
 					<div class="flex items-start">
 						<svg
-							class="mt-0.5 mr-4 h-5 w-5 text-[#8b45b8]"
+							class="mt-0.5 mr-4 h-5 w-5 text-[#0a0a0a]"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"

@@ -2,10 +2,10 @@
 	import { cart } from '$lib/client/cart.svelte';
 	import { cartPixelPayload, trackInitiateCheckout } from '$lib/client/pixels';
 	import { formatMoney } from '$lib/shared/money';
+	import { SUPPORT_PHONE_DISPLAY } from '$lib/shared/seo';
 	import { onMount } from 'svelte';
 
 	type PaymentMethod = 'COD';
-	type ShippingMethod = 'STANDARD' | 'EXPRESS';
 
 	let { form } = $props();
 
@@ -19,12 +19,26 @@
 	let city = $state('');
 	let postalCode = $state('');
 	let phone = $state('');
-	let shippingMethod = $state<ShippingMethod>('STANDARD');
 	let paymentMethod = $state<PaymentMethod>('COD');
 
-	const expressShipping = 1200;
+	const codDeliveryCharges = [
+		{ quantity: '1 piece', amount: 300, label: 'Rs. 300/-' },
+		{ quantity: '2 pieces', amount: 400, label: 'Rs. 400/-' },
+		{ quantity: '3 to 4 pieces', amount: 500, label: 'Rs. 500/-' },
+		{ quantity: '5 to 7 pieces', amount: 700, label: 'Rs. 700/-' }
+	];
+	const getCodShippingCharge = (quantity: number) => {
+		if (quantity <= 1) return 300;
+		if (quantity === 2) return 400;
+		if (quantity <= 4) return 500;
+		if (quantity <= 7) return 700;
+		return 700;
+	};
 	const cartJson = $derived(JSON.stringify(cart.items));
-	const shippingTotal = $derived(shippingMethod === 'EXPRESS' ? expressShipping : 0);
+	const totalPieces = $derived(
+		cart.items.reduce((total, item) => total + Math.max(1, Number(item.quantity || 0)), 0)
+	);
+	const shippingTotal = $derived(getCodShippingCharge(totalPieces));
 	const orderTotal = $derived(cart.subtotal + shippingTotal);
 
 	const validateRequiredDetails = () => {
@@ -79,13 +93,13 @@
 
 <div class="min-h-screen bg-cream">
 	<header class="border-b border-gray-200 py-6">
-		<div class="mx-auto flex max-w-4xl justify-center px-4">
+		<div class="mx-auto flex max-w-6xl justify-center px-4">
 			<a href="/" class="font-serif text-2xl tracking-widest uppercase">Shahzad Abaya's</a>
 		</div>
 	</header>
 
-	<div class="mx-auto flex max-w-4xl flex-col gap-12 px-4 py-10 md:flex-row">
-		<div class="w-full md:w-3/5">
+	<div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-10 md:flex-row md:gap-10">
+		<div class="w-full md:w-[64%] lg:w-[68%]">
 			<nav class="mb-10 flex items-center text-xs tracking-widest uppercase">
 				<a href="/cart" class="text-gray-400 hover:text-black">Cart</a>
 				<svg
@@ -318,31 +332,55 @@
 					</div>
 
 					<h2 class="mb-4 font-serif text-xl">Shipping Method</h2>
-					<div class="mb-8 divide-y divide-gray-100 rounded-none border border-gray-200">
-						<label class="flex cursor-pointer items-center justify-between p-4 hover:bg-gray-50">
+					<div class="mb-8 rounded-none border border-gray-200">
+						<div class="flex items-center justify-between p-4">
 							<div class="flex items-center">
-								<input
-									type="radio"
-									bind:group={shippingMethod}
-									value="STANDARD"
-									class="form-radio h-4 w-4 border-gray-300 text-black focus:ring-black"
-								/>
-								<span class="ml-3 text-sm">Standard Shipping (5-7 Business Days)</span>
+								<span class="inline-flex h-4 w-4 rounded-full border-4 border-black"></span>
+								<div class="ml-3">
+									<p class="text-sm font-medium text-black">Cash on Delivery Shipping</p>
+									<p class="text-xs text-gray-500">
+										{totalPieces} {totalPieces === 1 ? 'piece' : 'pieces'} in cart
+									</p>
+								</div>
 							</div>
-							<span class="text-sm font-medium">Free</span>
-						</label>
-						<label class="flex cursor-pointer items-center justify-between p-4 hover:bg-gray-50">
-							<div class="flex items-center">
-								<input
-									type="radio"
-									bind:group={shippingMethod}
-									value="EXPRESS"
-									class="form-radio h-4 w-4 border-gray-300 text-black focus:ring-black"
-								/>
-								<span class="ml-3 text-sm">DHL Express (2-3 Business Days)</span>
+							<span class="text-sm font-medium">{formatMoney(shippingTotal)}</span>
+						</div>
+					</div>
+
+					<div class="mb-8 rounded-2xl border border-[#eadfce] bg-[#fcfaf6] p-4 shadow-[0_8px_24px_rgba(161,137,92,0.08)]">
+						<div class="flex items-start justify-between gap-3">
+							<div>
+								<p class="text-xs font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
+									COD Confirmation
+								</p>
+								<h3 class="mt-1 font-serif text-lg text-[#1f1a17]">
+									Advance delivery charges apply
+								</h3>
 							</div>
-							<span class="text-sm font-medium">{formatMoney(expressShipping)}</span>
-						</label>
+							<span class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase">
+								COD
+							</span>
+						</div>
+
+						<p class="mt-3 text-sm leading-6 text-[#4f463d]">
+							If you choose Cash on Delivery, order confirmation requires advance payment of delivery charges.
+						</p>
+						<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
+							اگر آپ COD منتخب کرتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع کروانا ضروری ہے۔
+						</p>
+
+						<div class="mt-4 grid gap-2 sm:grid-cols-2">
+							{#each codDeliveryCharges as charge}
+								<div class="flex items-center justify-between rounded-lg bg-white px-3 py-2 text-sm text-[#2f2924]">
+									<span>{charge.quantity}</span>
+									<span class="font-semibold">{charge.label}</span>
+								</div>
+							{/each}
+						</div>
+
+						<p class="mt-4 text-xs leading-5 text-[#6a5d4d]">
+							Bank / Easypaisa details payment step mein show hongi.
+						</p>
 					</div>
 
 					<div class="flex items-center justify-between pt-4">
@@ -381,7 +419,7 @@
 					<input type="hidden" name="city" value={city} />
 					<input type="hidden" name="postalCode" value={postalCode} />
 					<input type="hidden" name="phone" value={phone} />
-					<input type="hidden" name="shippingMethod" value={shippingMethod} />
+					<input type="hidden" name="shippingMethod" value="STANDARD" />
 
 					<h2 class="mb-2 font-serif text-xl">Payment</h2>
 					<p class="mb-6 text-sm font-light text-gray-500">
@@ -423,10 +461,82 @@
 							</label>
 						</div>
 
-						<div
-							class="border-t border-gray-100 bg-white p-6 text-center text-sm font-light text-gray-500"
-						>
-							Pay with cash upon delivery.
+						<div class="border-t border-gray-100 bg-[#fcfaf6] p-5 sm:p-6">
+							<div class="rounded-2xl border border-[#e8dfcf] bg-white p-4 text-left shadow-[0_10px_30px_rgba(161,137,92,0.08)] sm:p-5">
+								<div class="mb-4 flex items-start justify-between gap-3">
+									<div>
+										<p class="text-xs font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
+											Online Order Policy
+										</p>
+										<h3 class="mt-1 font-serif text-lg text-[#1f1a17]">
+											COD Confirmation Details
+										</h3>
+									</div>
+									<span class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase">
+										COD
+									</span>
+								</div>
+
+								<p class="text-sm leading-6 text-[#4f463d]">
+									Cash on Delivery orders require advance payment of delivery charges for order confirmation.
+								</p>
+								<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
+									اگر آپ کیش آن ڈیلیوری چاہتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع کروانا ضروری ہے۔
+								</p>
+
+								<div class="mt-5 grid gap-4 lg:grid-cols-2">
+									<div class="rounded-xl border border-[#eee6d9] bg-[#fffdfa] p-4">
+										<h4 class="text-xs font-semibold tracking-[0.18em] text-[#7c6244] uppercase">
+											Payment Methods
+										</h4>
+										<div class="mt-3 space-y-3 text-sm text-[#2f2924]">
+											<div>
+												<p class="font-semibold">Meezan Bank</p>
+												<p class="mt-1 text-[#5f554c]">Account Title: Hassan Shahzad</p>
+												<p class="text-[#5f554c]">Account No: 52010107846427</p>
+											</div>
+											<div class="h-px bg-[#efe6d8]"></div>
+											<div>
+												<p class="font-semibold">Easypaisa</p>
+												<p class="mt-1 text-[#5f554c]">Account Title: Abdul Hanan Ali</p>
+												<p class="text-[#5f554c]">Account No: 03129996424</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="rounded-xl border border-[#eee6d9] bg-[#fffdfa] p-4">
+										<h4 class="text-xs font-semibold tracking-[0.18em] text-[#7c6244] uppercase">
+											COD Delivery Charges
+										</h4>
+										<div class="mt-3 space-y-2 text-sm text-[#2f2924]">
+											{#each codDeliveryCharges as charge}
+												<div class="flex items-center justify-between gap-4 rounded-lg bg-[#faf5ec] px-3 py-2">
+													<span>{charge.quantity}</span>
+													<span class="font-semibold">{charge.label}</span>
+												</div>
+											{/each}
+										</div>
+									</div>
+								</div>
+
+								<div class="mt-5 rounded-xl border border-[#f1dfc2] bg-[#fff8ec] p-4">
+									<p class="text-xs font-semibold tracking-[0.18em] text-[#9a7330] uppercase">Note</p>
+									<div class="mt-2 space-y-2 text-sm leading-6 text-[#55483b]">
+										<p>Order confirm karne ke liye upar diye gaye kisi bhi account mein payment zaroor share karein.</p>
+										<p>
+											Payment bhejne ke baad screenshot WhatsApp par send karein:
+											<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
+										</p>
+										<p dir="rtl">بغیر ایڈوانس ادائیگی کے آرڈر کنفرم نہیں ہوگا۔</p>
+										<p dir="rtl">
+											ادائیگی کے بعد اسکرین شاٹ واٹس ایپ نمبر
+											<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
+											پر بھیج دیں۔
+										</p>
+										<p dir="rtl">شکریہ! ہم آپ کے اعتماد کے مشکور ہیں۔</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
@@ -458,7 +568,7 @@
 			{/if}
 		</div>
 
-		<div class="w-full border-l border-gray-200 md:w-2/5 md:pl-10">
+		<div class="w-full border-l border-gray-200 md:w-[36%] md:pl-8 lg:w-[32%] lg:pl-10">
 			{#if cart.items.length === 0}
 				<div class="mb-6 rounded border border-gray-200 p-4 text-sm text-gray-500">
 					Your bag is empty. Add a product before checkout.
@@ -508,9 +618,7 @@
 				</div>
 				<div class="flex justify-between">
 					<span class="text-gray-600">Shipping</span>
-					<span class="text-xs text-gray-500"
-						>{step >= 2 ? formatMoney(shippingTotal) : 'Calculated at next step'}</span
-					>
+					<span class="text-xs text-gray-500">{formatMoney(shippingTotal)}</span>
 				</div>
 			</div>
 

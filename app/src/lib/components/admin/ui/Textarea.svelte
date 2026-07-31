@@ -28,7 +28,6 @@
 		id={id}
 		{rows}
 		{...rest}
-		value={String(value ?? '')}
 		class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 shadow-sm transition-colors placeholder:text-gray-400 focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
-	></textarea>
+	>{String(value ?? '')}</textarea>
 </Field>

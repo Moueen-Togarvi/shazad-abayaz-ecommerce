@@ -28,10 +28,6 @@
 	let storefrontSettings = $derived((data.storefrontSettings || {}) as Record<string, any>);
 
 	let heroRoot: HTMLElement;
-	let heroSlideIndex = $state(0);
-	let previousHeroSlideIndex = $state<number | null>(null);
-	let heroSlideDirection = $state<'next' | 'previous'>('next');
-	let previousHeroSlideTimer: ReturnType<typeof setTimeout> | undefined;
 	let heroWordTimers: ReturnType<typeof setTimeout>[] = [];
 
 	let heroHeadlinePhrases = $derived(
@@ -54,27 +50,6 @@
 	let heroHeadingLead = $derived(`${heroLeadDisplay}.`);
 	let heroHeadingSupport = $derived(`${heroSupportDisplay}.`);
 	let heroHeadingAccent = $derived('Abayas.');
-
-	const heroSlides = [
-		{
-			src: '/hero/custom-hero.png',
-			alt: 'Shahzad Abayas hero banner'
-		}
-	];
-
-	function showHeroSlide(direction: 'next' | 'previous') {
-		previousHeroSlideIndex = heroSlideIndex;
-		heroSlideDirection = direction;
-		heroSlideIndex =
-			direction === 'next'
-				? (heroSlideIndex + 1) % heroSlides.length
-				: (heroSlideIndex - 1 + heroSlides.length) % heroSlides.length;
-
-		if (previousHeroSlideTimer) clearTimeout(previousHeroSlideTimer);
-		previousHeroSlideTimer = setTimeout(() => {
-			previousHeroSlideIndex = null;
-		}, 950);
-	}
 
 	function homeSection(key: string, homepageLimit: number) {
 		return (
@@ -217,9 +192,6 @@
 	onMount(() => {
 		let active = true;
 		let destroyAnimation: (() => void) | undefined;
-		const slideTimer = setInterval(() => {
-			showHeroSlide('next');
-		}, 3000);
 		const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const scheduleHeroWordTimer = (callback: () => void, delay: number) => {
 			const timer = setTimeout(callback, delay);
@@ -357,8 +329,6 @@
 
 		return () => {
 			active = false;
-			clearInterval(slideTimer);
-			if (previousHeroSlideTimer) clearTimeout(previousHeroSlideTimer);
 			clearHeroWordTimers();
 			destroyAnimation?.();
 		};
@@ -385,27 +355,15 @@
 	bind:this={heroRoot}
 	class="hero-cinematic relative isolate -mt-[4.25rem] overflow-hidden bg-[#eeece4] text-[#0a0a0a] md:-mt-[4.75rem]"
 >
-	<div
-		class="hero-bg absolute inset-0 -z-30"
-		class:hero-bg--previous={heroSlideDirection === 'previous'}
-		data-depth="0"
-	>
-		{#each heroSlides as slide, index}
-			<img
-				src={slide.src}
-				alt={slide.alt}
-				width="1672"
-				height="941"
-				fetchpriority={index === 0 ? 'high' : 'auto'}
-				aria-hidden={index !== heroSlideIndex}
-				class="hero-bg__slide h-full w-full bg-[#eadac8] object-cover object-[72%_center] sm:object-center"
-				class:hero-bg__slide--active={index === heroSlideIndex}
-				class:hero-bg__slide--previous-next={index === previousHeroSlideIndex &&
-					heroSlideDirection === 'next'}
-				class:hero-bg__slide--previous-previous={index === previousHeroSlideIndex &&
-					heroSlideDirection === 'previous'}
-			/>
-		{/each}
+	<div class="hero-bg absolute inset-0 -z-30" data-depth="0">
+		<img
+			src="/hero/custom-hero.png"
+			alt="Shahzad Abayas hero banner"
+			width="1672"
+			height="941"
+			fetchpriority="high"
+			class="hero-bg__image h-full w-full bg-[#eadac8] object-cover object-[72%_center] sm:object-center"
+		/>
 	</div>
 
 	<div
@@ -415,38 +373,32 @@
 			class="max-w-[12rem] px-1 py-4 drop-shadow-[0_2px_12px_rgba(255,255,255,0.72)] sm:max-w-[25rem] sm:px-5 lg:max-w-[27rem]"
 		>
 			<p
-				class="mb-1.5 text-[0.42rem] font-black tracking-[0.24em] text-[#8b45b8] uppercase sm:mb-3 sm:text-[0.68rem] sm:tracking-[0.34em]"
+				class="mb-1.5 text-[0.42rem] font-black tracking-[0.24em] text-[#0a0a0a] uppercase sm:mb-3 sm:text-[0.68rem] sm:tracking-[0.34em]"
 			>
 				Timeless Elegance
 			</p>
-			<div class="mb-1 flex items-center justify-start gap-2 text-[#a764c8] sm:justify-center sm:gap-2.5">
+			<div class="mb-1 flex items-center justify-start gap-2 text-[#2a2a2a] sm:justify-center sm:gap-2.5">
 				<span class="h-px w-6 bg-current sm:w-8"></span>
 				<span class="size-1.5 rotate-45 bg-current"></span>
 				<span class="h-px w-6 bg-current sm:w-8"></span>
 			</div>
 			<h1
-				class="font-serif text-[1.45rem] leading-none font-normal tracking-[0.1em] text-[#3b174f] uppercase sm:text-[3.8rem] sm:tracking-[0.12em] lg:text-[4.8rem]"
+				class="font-serif text-[1.45rem] leading-none font-normal tracking-[0.1em] text-[#0a0a0a] uppercase sm:text-[3.8rem] sm:tracking-[0.12em] lg:text-[4.8rem]"
 			>
 				Shahzad
 			</h1>
 			<h2
-				class="-mt-0.5 font-serif text-[1.16rem] leading-none font-normal tracking-[0.06em] text-[#3b174f] uppercase sm:-mt-2 sm:text-[3rem] sm:tracking-[0.08em] lg:text-[3.9rem]"
+				class="-mt-0.5 font-serif text-[1.16rem] leading-none font-normal tracking-[0.06em] text-[#0a0a0a] uppercase sm:-mt-2 sm:text-[3rem] sm:tracking-[0.08em] lg:text-[3.9rem]"
 			>
 				Abaya's
 			</h2>
 			<p
-				class="-mt-0.5 font-serif text-[0.95rem] leading-none text-[#9c55bd] italic sm:-mt-1 sm:text-[2.05rem] lg:text-[2.45rem]"
-				style="font-family: 'Playfair Display', Georgia, serif;"
-			>
-				Collection
-			</p>
-			<p
-				class="mt-2 text-[0.42rem] font-black tracking-[0.13em] text-[#4a255e] uppercase sm:mt-4 sm:text-[0.68rem] sm:tracking-[0.24em]"
+				class="mt-2 text-[0.42rem] font-black tracking-[0.13em] text-[#1a1a1a] uppercase sm:mt-4 sm:text-[0.68rem] sm:tracking-[0.24em]"
 			>
 				• Modesty. Elegance. You •
 			</p>
 			<p
-				class="mt-1.5 max-w-[10rem] text-[0.42rem] leading-snug font-semibold text-[#5c3a68] text-pretty sm:mx-auto sm:mt-2.5 sm:max-w-[16rem] sm:text-xs"
+				class="mt-1.5 max-w-[10rem] text-[0.42rem] leading-snug font-semibold text-[#3f3f3f] text-pretty sm:mx-auto sm:mt-2.5 sm:max-w-[16rem] sm:text-xs"
 			>
 				Discover our premium abaya collection crafted for every moment of your life.
 			</p>
@@ -454,10 +406,10 @@
 	</div>
 
 	<div
-		class="absolute bottom-8 left-[18%] z-20 hidden grid grid-cols-4 gap-5 text-center text-[#8b45b8] sm:grid lg:left-[26%] lg:gap-7"
+		class="absolute bottom-8 left-[18%] z-20 hidden grid grid-cols-4 gap-5 text-center text-[#0a0a0a] sm:grid lg:left-[26%] lg:gap-7"
 	>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
 				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m12 3 7 6-7 12L5 9l7-6Z" />
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 9h14M9 9l3 12 3-12" />
@@ -466,7 +418,7 @@
 			<span class="text-[0.5rem] font-black leading-tight uppercase">Premium<br />Quality</span>
 		</div>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
 				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 4C12 4 6 8 5 18c8 0 14-5 15-14Z" />
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 18c4-5 8-7 13-9" />
@@ -475,7 +427,7 @@
 			<span class="text-[0.5rem] font-black leading-tight uppercase">Lightweight<br />& Comfort</span>
 		</div>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
 				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" />
 					<circle cx="12" cy="12" r="3" stroke-width="1.8" />
@@ -484,7 +436,7 @@
 			<span class="text-[0.5rem] font-black leading-tight uppercase">Elegant<br />Design</span>
 		</div>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#8b45b8]/28 bg-white/40">
+			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
 				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3 19 6v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Z" />
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 12 2 2 4-5" />
@@ -529,13 +481,13 @@
 					Curated Edits
 				</p>
 				<h2 class="font-serif text-3xl leading-tight text-[#0a0a0a] uppercase sm:text-4xl">
-					Signature <span class="text-[#7e2bb8]">Collections</span>
+					Signature <span class="text-[#0a0a0a]">Collections</span>
 				</h2>
 			</div>
 			<div class="max-w-md space-y-4 sm:text-right">
-				<p class="text-sm leading-6 font-medium text-[#5f5365]">
+				<p class="text-sm leading-6 font-medium text-[#6b7280]">
 					Refined edits for the pieces you reach for most: daily essentials, occasion layers, and
-					<span class="font-bold text-[#7e2bb8]">timeless black abayas.</span>
+					<span class="font-bold text-[#0a0a0a]">timeless black abayas.</span>
 				</p>
 			</div>
 		</div>
@@ -681,10 +633,10 @@
 		<div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
 			<div>
 				<h2 class="mb-2 font-serif text-3xl tracking-widest text-black uppercase">
-					New <span class="text-[#7e2bb8]">Arrivals</span>
+					New <span class="text-[#0a0a0a]">Arrivals</span>
 				</h2>
-				<p class="font-light text-[#6f6076]">
-					The latest additions to our <span class="font-semibold text-[#8b45b8]">collection</span>
+				<p class="font-light text-[#6b7280]">
+					The latest additions to our <span class="font-semibold text-[#0a0a0a]">collection</span>
 				</p>
 			</div>
 		</div>
@@ -719,7 +671,7 @@
 		<div class="mb-8 flex flex-col gap-6">
 			<div class="text-center">
 				<h2 class="font-serif text-3xl tracking-widest text-[#0a0a0a] uppercase">
-					Most <span class="text-[#7e2bb8]">Loved</span>
+					Most <span class="text-[#0a0a0a]">Loved</span>
 				</h2>
 			</div>
 
@@ -727,7 +679,7 @@
 				<div class="category-ribbon__track">
 					{#each bestsellerCategoryTags as tag}
 						<span
-							class="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-[#8b45b8]/18 bg-[#fbf7ff] px-4 text-[0.68rem] font-black tracking-[0.12em] text-[#2f143f] uppercase shadow-[0_10px_22px_rgba(126,43,184,0.08)]"
+							class="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-[#0a0a0a]/18 bg-gray-50 px-4 text-[0.68rem] font-black tracking-[0.12em] text-[#1a1a1a] uppercase shadow-[0_10px_22px_rgba(0,0,0,0.08)]"
 						>
 							{tag}
 						</span>
@@ -826,88 +778,9 @@
 		mask-image: linear-gradient(to right, black 48%, transparent 94%);
 	}
 
-	.hero-bg__slide {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		visibility: hidden;
-		opacity: 0;
-		transform: translate3d(100%, 0, 0) scale(1.025);
-		will-change: transform, opacity, filter;
-	}
-
-	.hero-bg__slide--active {
-		z-index: 2;
-		visibility: visible;
-		opacity: 1;
-		transform: translate3d(0, 0, 0) scale(1);
-		animation: hero-slide-in-next 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
-	}
-
-	.hero-bg--previous .hero-bg__slide--active {
-		animation-name: hero-slide-in-previous;
-	}
-
-	.hero-bg__slide--previous-next {
-		z-index: 1;
-		visibility: visible;
-		animation: hero-slide-out-next 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
-	}
-
-	.hero-bg__slide--previous-previous {
-		z-index: 1;
-		visibility: visible;
-		animation: hero-slide-out-previous 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
-	}
-
-	@keyframes hero-slide-in-next {
-		0% {
-			opacity: 0;
-			transform: translate3d(100%, 0, 0) scale(1.1);
-			filter: grayscale(20%) brightness(0.7);
-		}
-		100% {
-			opacity: 1;
-			transform: translate3d(0, 0, 0) scale(1);
-			filter: grayscale(0%) brightness(1);
-		}
-	}
-
-	@keyframes hero-slide-out-next {
-		0% {
-			opacity: 1;
-			transform: translate3d(0, 0, 0) scale(1);
-		}
-		100% {
-			opacity: 0;
-			transform: translate3d(-30%, 0, 0) scale(0.9) blur(4px);
-			filter: brightness(0.5);
-		}
-	}
-
-	@keyframes hero-slide-in-previous {
-		0% {
-			opacity: 0;
-			transform: translate3d(-100%, 0, 0) scale(1.1);
-			filter: grayscale(20%) brightness(0.7);
-		}
-		100% {
-			opacity: 1;
-			transform: translate3d(0, 0, 0) scale(1);
-			filter: grayscale(0%) brightness(1);
-		}
-	}
-
-	@keyframes hero-slide-out-previous {
-		0% {
-			opacity: 1;
-			transform: translate3d(0, 0, 0) scale(1);
-		}
-		100% {
-			opacity: 0;
-			transform: translate3d(30%, 0, 0) scale(0.9) blur(4px);
-			filter: brightness(0.5);
-		}
+	.hero-bg__image {
+		display: block;
+		will-change: transform, filter;
 	}
 
 	.hero-heading-stack {
