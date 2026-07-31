@@ -66,6 +66,13 @@
 		)
 	] as string[]);
 
+	let variantColorHexes = $derived(
+		(product.variants || []).reduce((map: Record<string, string>, v: any) => {
+			if (v.color && v.colorHex) map[v.color.toLowerCase().trim()] = v.colorHex;
+			return map;
+		}, {})
+	);
+
 	let discountPercent = $derived(
 		product.salePrice && product.price
 			? Math.round(
@@ -98,7 +105,8 @@
 			olive: '#808000',
 			indigo: '#4b0082'
 		};
-		return colorsMap[colorName.toLowerCase().trim()] || '#d1d5db';
+		const key = colorName.toLowerCase().trim();
+		return variantColorHexes[key] || colorsMap[key] || '#d1d5db';
 	}
 </script>
 

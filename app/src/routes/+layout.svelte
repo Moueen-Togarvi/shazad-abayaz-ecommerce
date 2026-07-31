@@ -280,7 +280,7 @@ fbq('init', '${metaPixelId}');`)
 
 						<form action="/search" method="GET" class="ml-auto hidden min-w-0 lg:block">
 							<label
-								class="flex h-11 w-[13rem] items-center gap-2 overflow-hidden rounded-full border border-white/24 bg-[#0a0a0a]/88 pr-3 pl-4 text-white shadow-[0_12px_28px_rgba(20,53,45,0.16)] backdrop-blur-md transition-colors focus-within:bg-[#0a0a0a]"
+								class="flex h-10 w-[13rem] items-center gap-2 overflow-hidden rounded-full border border-white/24 bg-[#0a0a0a]/88 pr-3 pl-4 text-white shadow-[0_12px_28px_rgba(20,53,45,0.16)] backdrop-blur-md transition-colors focus-within:bg-[#0a0a0a]"
 							>
 								<svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path

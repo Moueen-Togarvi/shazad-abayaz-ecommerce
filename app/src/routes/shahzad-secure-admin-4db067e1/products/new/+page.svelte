@@ -8,6 +8,7 @@
 		type: VariantKind;
 		size: string;
 		color: string;
+		colorHex: string;
 		stockCount: number;
 		sku: string;
 	};
@@ -16,11 +17,11 @@
 	let collections = $derived((data.collections || []) as Array<any>);
 	let nextVariantId = 2;
 	let variants = $state<VariantRow[]>([
-		{ id: 1, type: 'size', size: 'S (52)', color: 'Black', stockCount: 0, sku: '' }
+		{ id: 1, type: 'size', size: 'S (52)', color: 'Black', colorHex: '#000000', stockCount: 0, sku: '' }
 	]);
 
 	const sizes = ['XS (50)', 'S (52)', 'M (54)', 'L (56)', 'XL (58)', 'XXL (60)', 'S-XL', 'XS-L'];
-	const colors = [
+	const presetColors = [
 		{ name: 'Black', hex: '#000000' },
 		{ name: 'White', hex: '#ffffff' },
 		{ name: 'Blue', hex: '#2563eb' },
@@ -40,6 +41,7 @@
 				type,
 				size: 'S (52)',
 				color: 'Black',
+				colorHex: '#000000',
 				stockCount: 0,
 				sku: ''
 			}
@@ -102,7 +104,11 @@
 					<div class="space-y-3">
 						{#each variants as variant, index (variant.id)}
 							<div class="rounded-xl border border-admin-border bg-gray-50/60 p-4">
-								<div class="grid gap-3 md:grid-cols-[9rem_1fr_7rem_1fr_auto] md:items-end">
+								<div
+									class="grid gap-3 md:items-end {variant.type === 'color'
+										? 'md:grid-cols-[9rem_1fr_10rem_7rem_1fr_auto]'
+										: 'md:grid-cols-[9rem_1fr_7rem_1fr_auto]'}"
+								>
 									<Field label="Type" class="text-xs">
 										{#snippet children()}
 											<select
@@ -132,18 +138,35 @@
 											{/snippet}
 										</Field>
 									{:else}
-										<Field label="Colour" class="text-xs">
+										<Field label="Colour Name" class="text-xs">
 											{#snippet children()}
-												<select
+												<input
+													type="text"
 													name="variantColor"
 													bind:value={variant.color}
+													placeholder="e.g. Emerald Velvet"
 													class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
-												>
-													{#each colors as color}
-														<option value={color.name}>{color.name}</option>
-													{/each}
-												</select>
+												/>
 												<input type="hidden" name="variantSize" value="One Size" />
+											{/snippet}
+										</Field>
+
+										<Field label="Swatch" class="text-xs">
+											{#snippet children()}
+												<div class="flex items-center gap-2">
+													<input
+														type="color"
+														name="variantColorHex"
+														bind:value={variant.colorHex}
+														class="h-9 w-11 shrink-0 cursor-pointer rounded-lg border border-admin-border bg-white p-1"
+													/>
+													<input
+														type="text"
+														bind:value={variant.colorHex}
+														placeholder="#000000"
+														class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
+													/>
+												</div>
 											{/snippet}
 										</Field>
 									{/if}
@@ -184,17 +207,22 @@
 								</div>
 
 								{#if variant.type === 'color'}
-									<div class="mt-3 flex flex-wrap gap-2">
-										{#each colors as color}
+									<div class="mt-3 flex flex-wrap items-center gap-2">
+										<span class="text-xs text-gray-400">Presets:</span>
+										{#each presetColors as preset}
 											<button
 												type="button"
 												class="h-6 w-6 rounded-full border border-admin-border ring-offset-2 transition {variant.color ===
-												color.name
+												preset.name
 													? 'ring-2 ring-admin-primary'
 													: ''}"
-												style={`background-color: ${color.hex}`}
-												aria-label={`Select ${color.name}`}
-												onclick={() => (variant.color = color.name)}
+												style={`background-color: ${preset.hex}`}
+												aria-label={`Select ${preset.name}`}
+												title={preset.name}
+												onclick={() => {
+													variant.color = preset.name;
+													variant.colorHex = preset.hex;
+												}}
 											></button>
 										{/each}
 									</div>

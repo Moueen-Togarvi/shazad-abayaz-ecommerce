@@ -26,6 +26,12 @@
 			)
 		)
 	);
+	let variantColorHexMap = $derived(
+		(product.variants || []).reduce((map: Record<string, string>, variant: any) => {
+			if (variant.color && variant.colorHex) map[variant.color] = variant.colorHex;
+			return map;
+		}, {})
+	);
 	let selectedColor = $state('');
 	let selectedSize = $state('');
 	let availableSizes = $derived(
@@ -301,7 +307,7 @@
 								color
 									? 'ring-black'
 									: 'ring-transparent hover:ring-gray-300'}"
-								style={`background-color: ${colorHex[color] || '#d9d0bd'}`}
+								style={`background-color: ${variantColorHexMap[color] || colorHex[color] || '#d9d0bd'}`}
 								title={color}
 								aria-label={`Select ${color}`}
 							></button>

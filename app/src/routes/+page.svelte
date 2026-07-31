@@ -353,7 +353,7 @@
 
 <section
 	bind:this={heroRoot}
-	class="hero-cinematic relative isolate -mt-[4.25rem] overflow-hidden bg-[#eeece4] text-[#0a0a0a] md:-mt-[4.75rem]"
+	class="hero-cinematic relative isolate -mt-[4.25rem] min-h-[calc(100vh+20px)] overflow-hidden bg-[#eeece4] text-[#0a0a0a] md:-mt-[4.75rem]"
 >
 	<div class="hero-bg absolute inset-0 -z-30" data-depth="0">
 		<img
@@ -362,7 +362,7 @@
 			width="1672"
 			height="941"
 			fetchpriority="high"
-			class="hero-bg__image h-full w-full bg-[#eadac8] object-cover object-[72%_center] sm:object-center"
+			class="hero-bg__image h-full w-full scale-[1.02] bg-[#eadac8] object-cover object-[72%_center] sm:object-center"
 		/>
 	</div>
 

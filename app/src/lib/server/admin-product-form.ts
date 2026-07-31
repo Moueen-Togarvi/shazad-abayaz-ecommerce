@@ -1,5 +1,6 @@
 export type ParsedProductVariant = {
 	color: string;
+	colorHex: string | null;
 	size: string;
 	stockCount: number;
 	sku: string;
@@ -36,6 +37,8 @@ const skuPart = (value: string) =>
 const getValue = (values: FormDataEntryValue[], index: number) =>
 	String(values[index] ?? '').trim();
 
+const isValidHex = (value: string) => /^#[0-9a-fA-F]{6}$/.test(value);
+
 const getPrice = (value: FormDataEntryValue | null) => {
 	const raw = String(value ?? '').trim();
 	return raw ? Number(raw) : Number.NaN;
@@ -70,6 +73,7 @@ export const parseProductForm = (data: FormData): ParsedProductForm => {
 
 	const variantTypes = data.getAll('variantType');
 	const variantColors = data.getAll('variantColor');
+	const variantColorHexes = data.getAll('variantColorHex');
 	const variantSizes = data.getAll('variantSize');
 	const variantStocks = data.getAll('variantStock');
 	const variantSkus = data.getAll('variantSku');
@@ -78,6 +82,8 @@ export const parseProductForm = (data: FormData): ParsedProductForm => {
 		.map((typeValue, index) => {
 			const type = String(typeValue) === 'color' ? 'color' : 'size';
 			const color = type === 'color' ? getValue(variantColors, index) || 'Black' : 'Default';
+			const colorHexRaw = type === 'color' ? getValue(variantColorHexes, index) : '';
+			const colorHex = isValidHex(colorHexRaw) ? colorHexRaw.toLowerCase() : null;
 			const size = type === 'size' ? getValue(variantSizes, index) || 'One Size' : 'One Size';
 			const stockCountValue = Number(getValue(variantStocks, index) || 0);
 			const stockCount = Number.isFinite(stockCountValue)
@@ -89,6 +95,7 @@ export const parseProductForm = (data: FormData): ParsedProductForm => {
 
 			return {
 				color,
+				colorHex,
 				size,
 				stockCount,
 				sku
@@ -115,6 +122,7 @@ export const parseProductForm = (data: FormData): ParsedProductForm => {
 				: [
 						{
 							color: 'Default',
+							colorHex: null,
 							size: 'One Size',
 							stockCount: 0,
 							sku: `${skuPart(slug) || 'PRODUCT'}-DEFAULT-1`
