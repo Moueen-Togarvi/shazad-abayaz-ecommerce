@@ -77,6 +77,7 @@ export const actions: Actions = {
 	saveBanners: async ({ request, cookies }) => {
 		const data = await request.formData();
 		const getText = (key: string) => String(data.get(key) ?? '').trim();
+		const bannerSection = String(data.get('bannerSection') ?? '').trim();
 
 		let slide1_image = getText('slide1_image');
 		let slide2_image = getText('slide2_image');
@@ -89,90 +90,110 @@ export const actions: Actions = {
 		const remove_flash_sale = data.get('remove_flash_sale_image') === 'on';
 
 		try {
-			// Slide 1
-			const u1 = await saveBannerImageFile(data.get('slide1_image_file'));
-			if (u1) {
-				if (slide1_image) await deleteBannerImageFile(slide1_image);
-				slide1_image = u1;
-			} else if (remove_slide1) {
-				if (slide1_image) await deleteBannerImageFile(slide1_image);
-				slide1_image = '';
+			if (bannerSection === 'slide1') {
+				const upload = await saveBannerImageFile(data.get('slide1_image_file'));
+				if (upload) {
+					if (slide1_image) await deleteBannerImageFile(slide1_image);
+					slide1_image = upload;
+				} else if (remove_slide1) {
+					if (slide1_image) await deleteBannerImageFile(slide1_image);
+					slide1_image = '';
+				}
 			}
 
-			// Slide 2
-			const u2 = await saveBannerImageFile(data.get('slide2_image_file'));
-			if (u2) {
-				if (slide2_image) await deleteBannerImageFile(slide2_image);
-				slide2_image = u2;
-			} else if (remove_slide2) {
-				if (slide2_image) await deleteBannerImageFile(slide2_image);
-				slide2_image = '';
+			if (bannerSection === 'slide2') {
+				const upload = await saveBannerImageFile(data.get('slide2_image_file'));
+				if (upload) {
+					if (slide2_image) await deleteBannerImageFile(slide2_image);
+					slide2_image = upload;
+				} else if (remove_slide2) {
+					if (slide2_image) await deleteBannerImageFile(slide2_image);
+					slide2_image = '';
+				}
 			}
 
-			// Slide 3
-			const u3 = await saveBannerImageFile(data.get('slide3_image_file'));
-			if (u3) {
-				if (slide3_image) await deleteBannerImageFile(slide3_image);
-				slide3_image = u3;
-			} else if (remove_slide3) {
-				if (slide3_image) await deleteBannerImageFile(slide3_image);
-				slide3_image = '';
+			if (bannerSection === 'slide3') {
+				const upload = await saveBannerImageFile(data.get('slide3_image_file'));
+				if (upload) {
+					if (slide3_image) await deleteBannerImageFile(slide3_image);
+					slide3_image = upload;
+				} else if (remove_slide3) {
+					if (slide3_image) await deleteBannerImageFile(slide3_image);
+					slide3_image = '';
+				}
 			}
 
-			// Flash Sale
-			const ufs = await saveBannerImageFile(data.get('flash_sale_image_file'));
-			if (ufs) {
-				if (flash_sale_image) await deleteBannerImageFile(flash_sale_image);
-				flash_sale_image = ufs;
-			} else if (remove_flash_sale) {
-				if (flash_sale_image) await deleteBannerImageFile(flash_sale_image);
-				flash_sale_image = '';
+			if (bannerSection === 'flashSale') {
+				const upload = await saveBannerImageFile(data.get('flash_sale_image_file'));
+				if (upload) {
+					if (flash_sale_image) await deleteBannerImageFile(flash_sale_image);
+					flash_sale_image = upload;
+				} else if (remove_flash_sale) {
+					if (flash_sale_image) await deleteBannerImageFile(flash_sale_image);
+					flash_sale_image = '';
+				}
 			}
 		} catch (err: any) {
 			return fail(400, { error: err.message || 'Failed to upload images.' });
 		}
 
-		const settings = {
-			// Slide 1
-			slide1_title: getText('slide1_title'),
-			slide1_tagline: getText('slide1_tagline'),
-			slide1_description: getText('slide1_description'),
-			slide1_link: getText('slide1_link'),
-			slide1_image,
-			slide1_promo: getText('slide1_promo'),
+		let settings: Record<string, string>;
 
-			// Slide 2
-			slide2_title: getText('slide2_title'),
-			slide2_tagline: getText('slide2_tagline'),
-			slide2_description: getText('slide2_description'),
-			slide2_link: getText('slide2_link'),
-			slide2_image,
-			slide2_promo: getText('slide2_promo'),
-
-			// Slide 3
-			slide3_title: getText('slide3_title'),
-			slide3_tagline: getText('slide3_tagline'),
-			slide3_description: getText('slide3_description'),
-			slide3_link: getText('slide3_link'),
-			slide3_image,
-			slide3_promo: getText('slide3_promo'),
-
-			// Flash Sale
-			flash_sale_enabled: data.get('flash_sale_enabled') === 'on' ? 'true' : 'false',
-			flash_sale_title: getText('flash_sale_title'),
-			flash_sale_subtitle: getText('flash_sale_subtitle'),
-			flash_sale_description: getText('flash_sale_description'),
-			flash_sale_image,
-			flash_sale_hours: getText('flash_sale_hours') || '2',
-			flash_sale_minutes: getText('flash_sale_minutes') || '14',
-			flash_sale_seconds: getText('flash_sale_seconds') || '30',
-			flash_sale_cta_label: getText('flash_sale_cta_label'),
-			flash_sale_cta_link: getText('flash_sale_cta_link')
-		};
+		if (bannerSection === 'slide1') {
+			settings = {
+				slide1_title: getText('slide1_title'),
+				slide1_tagline: getText('slide1_tagline'),
+				slide1_description: getText('slide1_description'),
+				slide1_link: getText('slide1_link'),
+				slide1_image,
+				slide1_promo: getText('slide1_promo')
+			};
+		} else if (bannerSection === 'slide2') {
+			settings = {
+				slide2_title: getText('slide2_title'),
+				slide2_tagline: getText('slide2_tagline'),
+				slide2_description: getText('slide2_description'),
+				slide2_link: getText('slide2_link'),
+				slide2_image,
+				slide2_promo: getText('slide2_promo')
+			};
+		} else if (bannerSection === 'slide3') {
+			settings = {
+				slide3_title: getText('slide3_title'),
+				slide3_tagline: getText('slide3_tagline'),
+				slide3_description: getText('slide3_description'),
+				slide3_link: getText('slide3_link'),
+				slide3_image,
+				slide3_promo: getText('slide3_promo')
+			};
+		} else {
+			settings = {
+				flash_sale_enabled: data.get('flash_sale_enabled') === 'on' ? 'true' : 'false',
+				flash_sale_title: getText('flash_sale_title'),
+				flash_sale_subtitle: getText('flash_sale_subtitle'),
+				flash_sale_description: getText('flash_sale_description'),
+				flash_sale_image,
+				flash_sale_hours: getText('flash_sale_hours') || '2',
+				flash_sale_minutes: getText('flash_sale_minutes') || '14',
+				flash_sale_seconds: getText('flash_sale_seconds') || '30',
+				flash_sale_cta_label: getText('flash_sale_cta_label'),
+				flash_sale_cta_link: getText('flash_sale_cta_link')
+			};
+		}
 
 		await saveSettings(settings);
 
-		setAdminFlash(cookies, 'Promo Banners and Flash Sale Timer updated successfully.');
+		const bannerLabels: Record<string, string> = {
+			slide1: 'Slide 1 banner',
+			slide2: 'Slide 2 banner',
+			slide3: 'Slide 3 banner',
+			flashSale: 'Flash sale section'
+		};
+
+		setAdminFlash(
+			cookies,
+			`${bannerLabels[bannerSection] ?? 'Storefront banner'} updated successfully.`
+		);
 		throw redirect(303, '/shahzad-secure-admin-4db067e1/storefront');
 	},
 

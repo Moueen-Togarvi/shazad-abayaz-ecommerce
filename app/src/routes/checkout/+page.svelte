@@ -67,17 +67,13 @@
 		step = 2;
 	};
 
-	const continueToPayment = () => {
-		if (!validateRequiredDetails()) return;
-
-		checkoutError = '';
-		step = 3;
-	};
-
 	const handlePlaceOrder = (event: SubmitEvent) => {
 		if (!validateRequiredDetails()) {
 			event.preventDefault();
+			return;
 		}
+
+		checkoutError = '';
 	};
 
 	onMount(() => {
@@ -91,61 +87,43 @@
 	<title>Checkout | Shahzad Abaya's</title>
 </svelte:head>
 
-<div class="min-h-screen bg-[#f8f5ef]">
-	<header class="border-b border-gray-200 py-6">
+<div class="min-h-screen bg-[linear-gradient(180deg,#f7f3ec_0%,#fbf9f5_36%,#f8f4ee_100%)]">
+	<header class="border-b border-black/5 bg-white/80 py-4 backdrop-blur">
 		<div class="mx-auto flex max-w-6xl justify-center px-4">
-			<a href="/" class="font-serif text-2xl tracking-widest uppercase">Shahzad Abaya's</a>
+			<a href="/" class="font-serif text-xl tracking-[0.32em] uppercase sm:text-2xl">Shahzad Abaya's</a>
 		</div>
 	</header>
 
-	<div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 md:flex-row md:gap-10 lg:py-12">
+	<div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-6 md:flex-row md:gap-8 lg:py-10">
 		<div class="w-full md:w-[64%] lg:w-[68%]">
-			<nav class="mb-10 flex items-center text-xs tracking-widest uppercase">
+			<nav class="mb-6 flex items-center gap-3 text-[11px] tracking-[0.24em] uppercase sm:mb-8">
 				<a href="/cart" class="text-gray-400 hover:text-black">Cart</a>
-				<svg
-					class="mx-2 h-3 w-3 text-gray-300"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-				<span class={step >= 1 ? 'font-medium text-black' : 'text-gray-400'}>Information</span>
-				<svg
-					class="mx-2 h-3 w-3 text-gray-300"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-				<span class={step >= 2 ? 'font-medium text-black' : 'text-gray-400'}>Shipping</span>
-				<svg
-					class="mx-2 h-3 w-3 text-gray-300"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-				<span class={step >= 3 ? 'font-medium text-black' : 'text-gray-400'}>Payment</span>
+				<span class="text-gray-300">/</span>
+				<span class={step >= 1 ? 'font-semibold text-black' : 'text-gray-400'}>Information</span>
+				<span class="text-gray-300">/</span>
+				<span class={step >= 2 ? 'font-semibold text-black' : 'text-gray-400'}>
+					Shipping & Payment
+				</span>
 			</nav>
 
 			{#if form?.error || checkoutError}
-				<div class="mb-6 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+				<div class="mb-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-sm">
 					{form?.error || checkoutError}
 				</div>
 			{/if}
 
 			{#if step === 1}
-				<div>
-					<div class="mb-4 flex items-center justify-between gap-4">
-						<h2 class="font-serif text-xl">Contact Information</h2>
-						<span class="text-sm font-light text-gray-500">
+				<div class="rounded-[1.75rem] border border-black/6 bg-white p-5 shadow-[0_20px_60px_rgba(35,28,20,0.06)] sm:p-7">
+					<div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+						<div>
+							<p class="text-[11px] font-semibold tracking-[0.24em] text-[#9b7b42] uppercase">Step 1</p>
+							<h2 class="mt-1 font-serif text-xl text-[#1d1814] sm:text-2xl">Contact & Address</h2>
+						</div>
+						<span class="text-xs text-gray-500 sm:text-sm">
 							Already have an account? <a href="/login" class="text-black underline">Log in</a>
 						</span>
 					</div>
-					<div class="mb-8">
+					<div class="mb-7">
 						<label
 							for="checkout-email"
 							class="mb-1 block text-xs font-bold tracking-[0.08em] text-gray-700 uppercase"
@@ -159,7 +137,7 @@
 							bind:value={email}
 							required
 							autocomplete="email"
-							class="w-full rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+							class="w-full rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 						/>
 						<label class="mt-3 flex cursor-pointer items-center space-x-2">
 							<input
@@ -170,8 +148,8 @@
 						</label>
 					</div>
 
-					<h2 class="mb-4 font-serif text-xl">Shipping Address</h2>
-					<div class="mb-6 grid grid-cols-2 gap-4">
+					<h2 class="mb-4 font-serif text-lg sm:text-xl">Shipping Address</h2>
+					<div class="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
 						<div class="col-span-2 md:col-span-1">
 							<label
 								for="checkout-first-name"
@@ -186,7 +164,7 @@
 								bind:value={firstName}
 								required
 								autocomplete="given-name"
-								class="w-full rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+								class="w-full rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 							/>
 						</div>
 						<div class="col-span-2 md:col-span-1">
@@ -203,7 +181,7 @@
 								bind:value={lastName}
 								required
 								autocomplete="family-name"
-								class="w-full rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+								class="w-full rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 							/>
 						</div>
 						<div class="col-span-2">
@@ -220,7 +198,7 @@
 								bind:value={addressLine1}
 								required
 								autocomplete="address-line1"
-								class="w-full rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+								class="w-full rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 							/>
 						</div>
 						<input
@@ -228,7 +206,7 @@
 							placeholder="Apartment, suite, etc. (optional)"
 							bind:value={addressLine2}
 							autocomplete="address-line2"
-							class="col-span-2 rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+							class="col-span-2 rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 						/>
 						<div class="col-span-2 md:col-span-1">
 							<label
@@ -244,7 +222,7 @@
 								bind:value={city}
 								required
 								autocomplete="address-level2"
-								class="w-full rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+								class="w-full rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 							/>
 						</div>
 						<div class="col-span-2 md:col-span-1">
@@ -261,7 +239,7 @@
 								bind:value={postalCode}
 								required
 								autocomplete="postal-code"
-								class="w-full rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+								class="w-full rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 							/>
 						</div>
 						<div class="col-span-2">
@@ -278,13 +256,13 @@
 								bind:value={phone}
 								required
 								autocomplete="tel"
-								class="w-full rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+								class="w-full rounded-2xl border-gray-200 px-4 py-3 text-sm shadow-sm transition-all duration-150 focus:border-black focus:ring-2 focus:ring-black/10"
 							/>
 						</div>
 					</div>
 
-					<div class="flex items-center justify-between pt-4">
-						<a href="/cart" class="flex items-center text-sm text-gray-500 hover:text-black">
+					<div class="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+						<a href="/cart" class="flex items-center text-sm text-gray-500 transition-colors hover:text-black">
 							<svg class="mr-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path
 									stroke-linecap="round"
@@ -297,128 +275,15 @@
 						</a>
 						<button
 							type="button"
-							class="bg-black px-8 py-4 text-sm tracking-widest text-white uppercase transition-colors hover:bg-gold"
+							class="inline-flex min-h-12 items-center justify-center rounded-2xl bg-black px-6 py-3 text-sm font-semibold tracking-[0.2em] text-white uppercase shadow-[0_16px_35px_rgba(0,0,0,0.16)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#b9965b] active:translate-y-0"
 							onclick={continueToShipping}
 						>
-							Continue to shipping
-						</button>
-					</div>
-				</div>
-			{:else if step === 2}
-				<div>
-					<div class="mb-8 rounded-none border border-gray-200 p-4 text-sm font-light">
-						<div class="mb-3 flex justify-between border-b border-gray-100 pb-3">
-							<span class="text-gray-500">Contact</span>
-							<span>{email}</span>
-							<button
-								type="button"
-								class="text-xs text-gray-400 underline"
-								onclick={() => (step = 1)}
-							>
-								Change
-							</button>
-						</div>
-						<div class="flex justify-between">
-							<span class="text-gray-500">Ship to</span>
-							<span class="mx-4 truncate text-right">{addressLine1}, {city}</span>
-							<button
-								type="button"
-								class="text-xs text-gray-400 underline"
-								onclick={() => (step = 1)}
-							>
-								Change
-							</button>
-						</div>
-					</div>
-
-					<h2 class="mb-4 font-serif text-xl">Shipping Method</h2>
-					<div class="mb-8 rounded-none border border-gray-200">
-						<div class="flex items-center justify-between p-4">
-							<div class="flex items-center">
-								<span class="inline-flex h-4 w-4 rounded-full border-4 border-black"></span>
-								<div class="ml-3">
-									<p class="text-sm font-medium text-black">Cash on Delivery Shipping</p>
-									<p class="text-xs text-gray-500">
-										{totalPieces}
-										{totalPieces === 1 ? 'piece' : 'pieces'} in cart
-									</p>
-								</div>
-							</div>
-							<span class="text-sm font-medium">{formatMoney(shippingTotal)}</span>
-						</div>
-					</div>
-
-					<div
-						class="mb-8 rounded-2xl border border-[#eadfce] bg-[#fcfaf6] p-4 shadow-[0_8px_24px_rgba(161,137,92,0.08)]"
-					>
-						<div class="flex items-start justify-between gap-3">
-							<div>
-								<p class="text-xs font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
-									COD Confirmation
-								</p>
-								<h3 class="mt-1 font-serif text-lg text-[#1f1a17]">
-									Advance delivery charges apply
-								</h3>
-							</div>
-							<span
-								class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase"
-							>
-								COD
-							</span>
-						</div>
-
-						<p class="mt-3 text-sm leading-6 text-[#4f463d]">
-							If you choose Cash on Delivery, order confirmation requires advance payment of
-							delivery charges.
-						</p>
-						<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
-							اگر آپ COD منتخب کرتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع
-							کروانا ضروری ہے۔
-						</p>
-
-						<div class="mt-4 grid gap-2 sm:grid-cols-2">
-							{#each codDeliveryCharges as charge}
-								<div
-									class="flex items-center justify-between rounded-lg bg-white px-3 py-2 text-sm text-[#2f2924]"
-								>
-									<span>{charge.quantity}</span>
-									<span class="font-semibold">{charge.label}</span>
-								</div>
-							{/each}
-						</div>
-
-						<p class="mt-4 text-xs leading-5 text-[#6a5d4d]">
-							Bank / Easypaisa details payment step mein show hongi.
-						</p>
-					</div>
-
-					<div class="flex items-center justify-between pt-4">
-						<button
-							type="button"
-							class="flex items-center text-sm text-gray-500 hover:text-black"
-							onclick={() => (step = 1)}
-						>
-							<svg class="mr-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 19l-7-7 7-7"
-								/>
-							</svg>
-							Return to information
-						</button>
-						<button
-							type="button"
-							class="bg-black px-8 py-4 text-sm tracking-widest text-white uppercase transition-colors hover:bg-gold"
-							onclick={continueToPayment}
-						>
-							Continue to payment
+							Continue
 						</button>
 					</div>
 				</div>
 			{:else}
-				<form method="POST" action="?/placeOrder" onsubmit={handlePlaceOrder}>
+				<form method="POST" action="?/placeOrder" onsubmit={handlePlaceOrder} class="rounded-[1.75rem] border border-black/6 bg-white p-5 shadow-[0_20px_60px_rgba(35,28,20,0.06)] sm:p-7">
 					<input type="hidden" name="cartJson" value={cartJson} />
 					<input type="hidden" name="email" value={email} />
 					<input type="hidden" name="firstName" value={firstName} />
@@ -430,76 +295,148 @@
 					<input type="hidden" name="phone" value={phone} />
 					<input type="hidden" name="shippingMethod" value="STANDARD" />
 
-					<h2 class="mb-2 font-serif text-xl">Payment</h2>
-					<p class="mb-6 text-sm font-light text-gray-500">
-						All transactions are secure and encrypted.
-					</p>
+					<div class="mb-5">
+						<p class="text-[11px] font-semibold tracking-[0.24em] text-[#9b7b42] uppercase">Step 2</p>
+						<h2 class="mt-1 font-serif text-xl text-[#1d1814] sm:text-2xl">Shipping & Payment</h2>
+						<p class="mt-2 text-sm leading-6 text-gray-500">
+							Review your details, shipping charge, and COD confirmation info before placing the order.
+						</p>
+					</div>
 
-					<div class="mb-8 rounded-none border border-gray-200">
-						<div class="border-b border-gray-200">
-							<label
-								class="flex cursor-pointer items-center justify-between bg-gray-50 p-4 hover:bg-gray-50"
+					<div class="mb-6 rounded-2xl border border-gray-200 bg-[#fcfaf6] p-4 text-sm">
+						<div class="mb-3 flex flex-col gap-2 border-b border-gray-200 pb-3 sm:flex-row sm:items-center sm:justify-between">
+							<span class="text-gray-500">Contact</span>
+							<span class="min-w-0 text-[#1d1814]">{email}</span>
+							<button
+								type="button"
+								class="text-left text-xs font-semibold text-gray-500 underline transition-colors hover:text-black"
+								onclick={() => (step = 1)}
 							>
-								<div class="flex items-center">
-									<input
-										type="radio"
-										name="paymentMethod"
-										value="COD"
-										bind:group={paymentMethod}
-										class="form-radio h-4 w-4 border-gray-300 text-black focus:ring-black"
-									/>
-									<span class="ml-3 text-sm font-medium">Cash on Delivery (COD)</span>
-								</div>
-							</label>
+								Change
+							</button>
 						</div>
+						<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+							<span class="text-gray-500">Ship to</span>
+							<span class="min-w-0 text-[#1d1814] sm:mx-4 sm:truncate sm:text-right">
+								{addressLine1}, {city}
+							</span>
+							<button
+								type="button"
+								class="text-left text-xs font-semibold text-gray-500 underline transition-colors hover:text-black"
+								onclick={() => (step = 1)}
+							>
+								Change
+							</button>
+						</div>
+					</div>
 
+					<div class="mb-6 grid gap-5 xl:grid-cols-[0.92fr_1.08fr]">
 						<div>
-							<label class="flex cursor-not-allowed items-center justify-between p-4 opacity-55">
-								<div class="flex items-center">
-									<input
-										type="radio"
-										value="JAZZCASH"
-										disabled
-										class="form-radio h-4 w-4 border-gray-300 text-black focus:ring-black"
-									/>
-									<span class="ml-3 text-sm font-medium">JazzCash</span>
+							<h2 class="mb-3 font-serif text-lg sm:text-xl">Shipping Method</h2>
+							<div class="rounded-2xl border border-gray-200 bg-white shadow-sm">
+								<div class="flex items-center justify-between gap-3 p-4">
+									<div class="flex items-center">
+										<span class="inline-flex h-4 w-4 rounded-full border-4 border-black"></span>
+										<div class="ml-3">
+											<p class="text-sm font-semibold text-black">Cash on Delivery Shipping</p>
+											<p class="text-xs text-gray-500">
+												{totalPieces} {totalPieces === 1 ? 'piece' : 'pieces'} in cart
+											</p>
+										</div>
+									</div>
+									<span class="text-sm font-semibold">{formatMoney(shippingTotal)}</span>
 								</div>
-								<div class="rounded-sm bg-gray-200 px-2 py-1 text-xs font-bold text-gray-600">
-									Coming soon
-								</div>
-							</label>
-						</div>
+							</div>
 
-						<div class="border-t border-gray-100 bg-[#fcfaf6] p-5 sm:p-6">
 							<div
-								class="rounded-2xl border border-[#e8dfcf] bg-white p-4 text-left shadow-[0_10px_30px_rgba(161,137,92,0.08)] sm:p-5"
+								class="mt-4 rounded-2xl border border-[#eadfce] bg-[#fcfaf6] p-4 shadow-[0_8px_24px_rgba(161,137,92,0.08)]"
 							>
-								<div class="mb-4 flex items-start justify-between gap-3">
+								<div class="flex items-start justify-between gap-3">
 									<div>
-										<p class="text-xs font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
-											Online Order Policy
+										<p class="text-[11px] font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
+											COD Confirmation
 										</p>
-										<h3 class="mt-1 font-serif text-lg text-[#1f1a17]">COD Confirmation Details</h3>
+										<h3 class="mt-1 font-serif text-base text-[#1f1a17] sm:text-lg">
+											Advance delivery charges apply
+										</h3>
 									</div>
 									<span
-										class="rounded-full bg-[#f7efe1] px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase"
+										class="rounded-full bg-[#f7efe1] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase"
 									>
 										COD
 									</span>
 								</div>
 
-								<p class="text-sm leading-6 text-[#4f463d]">
-									Cash on Delivery orders require advance payment of delivery charges for order
-									confirmation.
+								<p class="mt-3 text-sm leading-6 text-[#4f463d]">
+									If you choose Cash on Delivery, order confirmation requires advance payment of delivery charges.
 								</p>
 								<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
-									اگر آپ کیش آن ڈیلیوری چاہتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس
-									میں جمع کروانا ضروری ہے۔
+									اگر آپ COD منتخب کرتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع کروانا ضروری ہے۔
 								</p>
 
-								<div class="mt-5 grid gap-4 lg:grid-cols-2">
-									<div class="rounded-xl border border-[#eee6d9] bg-[#fffdfa] p-4">
-										<h4 class="text-xs font-semibold tracking-[0.18em] text-[#7c6244] uppercase">
+								<div class="mt-4 grid gap-2 sm:grid-cols-2">
+									{#each codDeliveryCharges as charge}
+										<div class="flex items-center justify-between rounded-xl bg-white px-3 py-2 text-sm text-[#2f2924]">
+											<span>{charge.quantity}</span>
+											<span class="font-semibold">{charge.label}</span>
+										</div>
+									{/each}
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<h2 class="mb-3 font-serif text-lg sm:text-xl">Payment</h2>
+							<div class="rounded-2xl border border-gray-200 bg-white shadow-sm">
+								<div class="border-b border-gray-200">
+									<label class="flex cursor-pointer items-center justify-between bg-gray-50 p-4 transition-colors hover:bg-[#faf7f0]">
+										<div class="flex items-center">
+											<input
+												type="radio"
+												name="paymentMethod"
+												value="COD"
+												bind:group={paymentMethod}
+												class="form-radio h-4 w-4 border-gray-300 text-black focus:ring-black"
+											/>
+											<span class="ml-3 text-sm font-semibold">Cash on Delivery (COD)</span>
+										</div>
+									</label>
+								</div>
+
+								<div>
+									<label class="flex cursor-not-allowed items-center justify-between p-4 opacity-55">
+										<div class="flex items-center">
+											<input
+												type="radio"
+												value="JAZZCASH"
+												disabled
+												class="form-radio h-4 w-4 border-gray-300 text-black focus:ring-black"
+											/>
+											<span class="ml-3 text-sm font-medium">JazzCash</span>
+										</div>
+										<div class="rounded-full bg-gray-200 px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-gray-600 uppercase">
+											Coming soon
+										</div>
+									</label>
+								</div>
+							</div>
+
+							<div class="mt-4 rounded-2xl border border-[#e8dfcf] bg-[#fffdfa] p-4 shadow-[0_10px_30px_rgba(161,137,92,0.08)] sm:p-5">
+								<div class="mb-4 flex items-start justify-between gap-3">
+									<div>
+										<p class="text-[11px] font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
+											Online Order Policy
+										</p>
+										<h3 class="mt-1 font-serif text-base text-[#1f1a17] sm:text-lg">COD Confirmation Details</h3>
+									</div>
+									<span class="rounded-full bg-[#f7efe1] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase">
+										COD
+									</span>
+								</div>
+
+								<div class="grid gap-4">
+									<div class="rounded-xl border border-[#eee6d9] bg-white p-4">
+										<h4 class="text-[11px] font-semibold tracking-[0.18em] text-[#7c6244] uppercase">
 											Payment Methods
 										</h4>
 										<div class="mt-3 space-y-3 text-sm text-[#2f2924]">
@@ -517,54 +454,33 @@
 										</div>
 									</div>
 
-									<div class="rounded-xl border border-[#eee6d9] bg-[#fffdfa] p-4">
-										<h4 class="text-xs font-semibold tracking-[0.18em] text-[#7c6244] uppercase">
-											COD Delivery Charges
-										</h4>
-										<div class="mt-3 space-y-2 text-sm text-[#2f2924]">
-											{#each codDeliveryCharges as charge}
-												<div
-													class="flex items-center justify-between gap-4 rounded-lg bg-[#faf5ec] px-3 py-2"
-												>
-													<span>{charge.quantity}</span>
-													<span class="font-semibold">{charge.label}</span>
-												</div>
-											{/each}
+									<div class="rounded-xl border border-[#f1dfc2] bg-[#fff8ec] p-4">
+										<p class="text-[11px] font-semibold tracking-[0.18em] text-[#9a7330] uppercase">
+											Note
+										</p>
+										<div class="mt-2 space-y-2 text-sm leading-6 text-[#55483b]">
+											<p>Order confirm karne ke liye upar diye gaye kisi bhi account mein payment zaroor share karein.</p>
+											<p>
+												Payment bhejne ke baad screenshot WhatsApp par send karein:
+												<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
+											</p>
+											<p dir="rtl">بغیر ایڈوانس ادائیگی کے آرڈر کنفرم نہیں ہوگا۔</p>
+											<p dir="rtl">
+												ادائیگی کے بعد اسکرین شاٹ واٹس ایپ نمبر
+												<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
+												پر بھیج دیں۔
+											</p>
 										</div>
-									</div>
-								</div>
-
-								<div class="mt-5 rounded-xl border border-[#f1dfc2] bg-[#fff8ec] p-4">
-									<p class="text-xs font-semibold tracking-[0.18em] text-[#9a7330] uppercase">
-										Note
-									</p>
-									<div class="mt-2 space-y-2 text-sm leading-6 text-[#55483b]">
-										<p>
-											Order confirm karne ke liye upar diye gaye kisi bhi account mein payment
-											zaroor share karein.
-										</p>
-										<p>
-											Payment bhejne ke baad screenshot WhatsApp par send karein:
-											<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
-										</p>
-										<p dir="rtl">بغیر ایڈوانس ادائیگی کے آرڈر کنفرم نہیں ہوگا۔</p>
-										<p dir="rtl">
-											ادائیگی کے بعد اسکرین شاٹ واٹس ایپ نمبر
-											<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
-											پر بھیج دیں۔
-										</p>
-										<p dir="rtl">شکریہ! ہم آپ کے اعتماد کے مشکور ہیں۔</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="flex items-center justify-between pt-4">
+					<div class="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
 						<button
 							type="button"
-							class="flex items-center text-sm text-gray-500 hover:text-black"
-							onclick={() => (step = 2)}
+							class="flex items-center text-sm text-gray-500 transition-colors hover:text-black"
+							onclick={() => (step = 1)}
 						>
 							<svg class="mr-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path
@@ -574,12 +490,12 @@
 									d="M15 19l-7-7 7-7"
 								/>
 							</svg>
-							Return to shipping
+							Return to information
 						</button>
 						<button
 							type="submit"
 							disabled={cart.items.length === 0}
-							class="bg-black px-8 py-4 text-sm tracking-widest text-white uppercase transition-colors hover:bg-gold disabled:cursor-not-allowed disabled:bg-gray-300"
+							class="inline-flex min-h-12 items-center justify-center rounded-2xl bg-black px-6 py-3 text-sm font-semibold tracking-[0.2em] text-white uppercase shadow-[0_16px_35px_rgba(0,0,0,0.16)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#b9965b] active:translate-y-0 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none"
 						>
 							Complete order
 						</button>
@@ -589,16 +505,16 @@
 		</div>
 
 		<div
-			class="h-fit w-full rounded-2xl border border-black/8 bg-white p-5 shadow-[0_18px_50px_rgba(35,28,20,0.07)] md:sticky md:top-6 md:w-[36%] lg:w-[32%]"
+			class="h-fit w-full rounded-[1.6rem] border border-black/8 bg-white p-4 shadow-[0_18px_50px_rgba(35,28,20,0.07)] md:sticky md:top-6 md:w-[36%] md:p-5 lg:w-[32%]"
 		>
 			{#if cart.items.length === 0}
-				<div class="mb-6 rounded border border-gray-200 p-4 text-sm text-gray-500">
+				<div class="mb-5 rounded-2xl border border-gray-200 p-4 text-sm text-gray-500">
 					Your bag is empty. Add a product before checkout.
 				</div>
 			{:else}
 				{#each cart.items as item}
-					<div class="mb-5 flex items-center rounded-xl border border-black/6 bg-[#fcfaf6] p-3">
-						<div class="relative h-16 w-16 flex-shrink-0 border border-gray-200 bg-gray-100">
+					<div class="mb-4 flex items-center rounded-2xl border border-black/6 bg-[#fcfaf6] p-3">
+						<div class="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-gray-100 sm:h-16 sm:w-16">
 							<img src={item.image} alt={item.name} class="h-full w-full object-cover" />
 							<span
 								class="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gray-500 text-[10px] text-white"
@@ -607,7 +523,7 @@
 							</span>
 						</div>
 						<div class="ml-4 flex-grow">
-							<h4 class="font-serif text-sm">{item.name}</h4>
+							<h4 class="font-serif text-sm leading-5">{item.name}</h4>
 							<div
 								class="mt-2 flex flex-wrap gap-1.5 text-[10px] font-bold tracking-wide uppercase"
 							>
@@ -627,15 +543,15 @@
 				{/each}
 			{/if}
 
-			<div class="mb-4 flex space-x-2 border-y border-gray-200 py-4">
+			<div class="mb-4 flex gap-2 border-y border-gray-200 py-4">
 				<input
 					type="text"
 					placeholder="Gift card or discount code"
-					class="flex-grow rounded-none border-gray-300 p-3 text-sm focus:border-black focus:ring-black"
+					class="min-w-0 flex-grow rounded-2xl border-gray-200 px-3 py-2.5 text-sm focus:border-black focus:ring-2 focus:ring-black/10"
 				/>
 				<button
 					type="button"
-					class="bg-gray-200 px-4 text-sm font-medium tracking-widest text-gray-500 uppercase transition-colors hover:bg-gray-300"
+					class="rounded-2xl bg-gray-200 px-4 text-xs font-semibold tracking-[0.16em] text-gray-600 uppercase transition-all duration-150 hover:bg-gray-300"
 				>
 					Apply
 				</button>
@@ -646,9 +562,9 @@
 					<span class="text-gray-600">Subtotal</span>
 					<span class="font-medium text-black">{formatMoney(cart.subtotal)}</span>
 				</div>
-				<div class="flex justify-between">
+				<div class="flex justify-between gap-3">
 					<span class="text-gray-600">Shipping</span>
-					<span class="text-xs text-gray-500">{formatMoney(shippingTotal)}</span>
+					<span class="text-sm font-medium text-black">{formatMoney(shippingTotal)}</span>
 				</div>
 			</div>
 

@@ -11,7 +11,7 @@
 	let {
 		inputId = 'product-image-picker',
 		label = 'Add Image',
-		emptyText = 'Select images one by one. New images will appear here before saving.',
+		emptyText = 'Select one or more images. New images will appear here before saving.',
 		colors = []
 	} = $props<{
 		inputId?: string;
@@ -34,18 +34,18 @@
 		uploadInput.files = transfer.files;
 	};
 
-	const addPickedImage = () => {
-		const file = pickerInput?.files?.[0];
-		if (!file) return;
+	const addPickedImages = () => {
+		const files = pickerInput?.files;
+		if (!files?.length) return;
 
 		pendingImages = [
 			...pendingImages,
-			{
+			...Array.from(files).map((file) => ({
 				id: nextImageId++,
 				file,
 				previewUrl: URL.createObjectURL(file),
 				color: ''
-			}
+			}))
 		];
 
 		pickerInput.value = '';
@@ -81,8 +81,9 @@
 		bind:this={pickerInput}
 		type="file"
 		accept="image/*"
+		multiple
 		class="block w-full rounded-md border border-gray-300 text-sm shadow-sm file:mr-4 file:border-0 file:bg-[#000] file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-800 focus:border-[#000] focus:ring-[#000]"
-		onchange={addPickedImage}
+		onchange={addPickedImages}
 	/>
 
 	{#if pendingImages.length}

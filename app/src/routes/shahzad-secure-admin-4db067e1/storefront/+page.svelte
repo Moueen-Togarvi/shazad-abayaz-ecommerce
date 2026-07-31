@@ -6,9 +6,6 @@
 	let sections = $derived((data.sections || []) as Array<any>);
 	let saleTapeItems = $derived((form?.saleTapeItems ?? data.saleTapeItems ?? '') as string);
 	let storefrontSettings = $derived(data.storefrontSettings || {});
-	let heroHeadlinePhrases = $derived(
-		(form?.hero_headline_phrases ?? storefrontSettings.hero_headline_phrases ?? '') as string
-	);
 	let saleTapePreview = $derived(
 		saleTapeItems
 			.split(/\r?\n/)
@@ -142,66 +139,6 @@
 	{/if}
 
 	<div class="space-y-6">
-		<!-- Hero Typewriter Phrases Form -->
-		<form
-			method="POST"
-			action="?/saveHero"
-			class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
-		>
-			<div
-				class="flex flex-col gap-4 border-b border-gray-200 bg-gray-50 px-5 py-4 lg:flex-row lg:items-center lg:justify-between"
-			>
-				<div>
-					<p class="text-xs font-black tracking-[0.18em] text-blue-600 uppercase">
-						Homepage Hero
-					</p>
-					<h2 class="mt-1 text-xl font-black text-gray-950">Typewriter Phrases</h2>
-					<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-						Edit the rotating typewriter words in the main hero headline. Add one phrase per line.
-					</p>
-				</div>
-				<button
-					type="submit"
-					class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-5 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
-				>
-					Save Typewriter Phrases
-				</button>
-			</div>
-
-			<div class="grid gap-5 p-5 lg:grid-cols-[1fr_24rem]">
-				<div>
-					<label
-						for="heroHeadlinePhrases"
-						class="mb-2 block text-sm font-black tracking-[0.12em] text-gray-900 uppercase"
-					>
-						Phrases (one per line)
-					</label>
-					<textarea
-						id="heroHeadlinePhrases"
-						name="hero_headline_phrases"
-						rows="5"
-						class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-						>{heroHeadlinePhrases}</textarea
-					>
-				</div>
-
-				<div class="rounded-xl border border-gray-200 bg-[#f7f4ec] p-4">
-					<p class="mb-3 text-xs font-black tracking-[0.14em] text-gray-700 uppercase">
-						Current Phrases
-					</p>
-					<div class="flex flex-wrap gap-2">
-						{#each heroHeadlinePhrases.split(/\r?\n/).map(item => item.trim()).filter(Boolean) as phrase}
-							<span
-								class="rounded-full bg-[#0a0a0a] px-3 py-1.5 text-xs font-black tracking-[0.12em] text-[#c5a880] uppercase"
-							>
-								{phrase}
-							</span>
-						{/each}
-					</div>
-				</div>
-			</div>
-		</form>
-
 		<form
 			method="POST"
 			action="?/saveSaleTape"
@@ -261,47 +198,32 @@
 			</div>
 		</form>
 
-		<!-- Banner Customization Form -->
-		<form
-			method="POST"
-			action="?/saveBanners"
-			enctype="multipart/form-data"
-			class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
-		>
-			<div
-				class="flex flex-col gap-4 border-b border-gray-200 bg-gray-50 px-5 py-4 lg:flex-row lg:items-center lg:justify-between"
-			>
-				<div>
-					<p class="text-xs font-black tracking-[0.18em] text-blue-600 uppercase">
-						Promotions & Sliders
-					</p>
-					<h2 class="mt-1 text-xl font-black text-gray-950">
-						Banner Sliders & Flash Sale Settings
-					</h2>
-					<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-						Edit slide content, model images, countdown timers, and discount tags for the homepage.
-					</p>
-				</div>
-				<button
-					type="submit"
-					class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-5 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
-				>
-					Save Banner Configurations
-				</button>
+		<div class="space-y-8 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+			<div>
+				<p class="text-xs font-black tracking-[0.18em] text-blue-600 uppercase">
+					Promotions & Sliders
+				</p>
+				<h2 class="mt-1 text-xl font-black text-gray-950">Banner Sliders & Flash Sale Settings</h2>
+				<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+					Edit slide content, model images, countdown timers, and discount tags for the homepage.
+				</p>
 			</div>
 
-			<div class="space-y-8 p-5">
-				<!-- Sliding Banners Block -->
-				<div>
-					<h3
-						class="border-gray-150 mb-4 border-b pb-2 text-sm font-black tracking-[0.14em] text-gray-900 uppercase"
-					>
-						Homepage Hero Sliding Banners (Nida, Occasion, Eid Signature)
-					</h3>
+			<div>
+				<h3
+					class="border-gray-150 mb-4 border-b pb-2 text-sm font-black tracking-[0.14em] text-gray-900 uppercase"
+				>
+					Homepage Hero Sliding Banners (Nida, Occasion, Eid Signature)
+				</h3>
 
-					<div class="grid gap-6 md:grid-cols-3">
-						<!-- Slide 1 -->
-						<div class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4">
+				<div class="grid gap-6 md:grid-cols-3">
+					<form
+						method="POST"
+						action="?/saveBanners"
+						enctype="multipart/form-data"
+						class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4"
+					>
+						<input type="hidden" name="bannerSection" value="slide1" />
 							<span
 								class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
 							>
@@ -402,10 +324,22 @@
 									class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
 								/>
 							</div>
-						</div>
 
-						<!-- Slide 2 -->
-						<div class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4">
+						<button
+							type="submit"
+							class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-4 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
+						>
+							Save Slide 1
+						</button>
+					</form>
+
+					<form
+						method="POST"
+						action="?/saveBanners"
+						enctype="multipart/form-data"
+						class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4"
+					>
+						<input type="hidden" name="bannerSection" value="slide2" />
 							<span
 								class="inline-flex items-center rounded-md bg-[#c5a880]/15 px-2 py-1 text-xs font-bold text-[#a8895f]"
 							>
@@ -506,10 +440,22 @@
 									class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
 								/>
 							</div>
-						</div>
 
-						<!-- Slide 3 -->
-						<div class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4">
+						<button
+							type="submit"
+							class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-4 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
+						>
+							Save Slide 2
+						</button>
+					</form>
+
+					<form
+						method="POST"
+						action="?/saveBanners"
+						enctype="multipart/form-data"
+						class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4"
+					>
+						<input type="hidden" name="bannerSection" value="slide3" />
 							<span
 								class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
 							>
@@ -610,19 +556,31 @@
 									class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
 								/>
 							</div>
-						</div>
-					</div>
+
+						<button
+							type="submit"
+							class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-4 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
+						>
+							Save Slide 3
+						</button>
+					</form>
 				</div>
+			</div>
 
-				<!-- Flash Sale Timer Banner Block -->
-				<div>
-					<h3
-						class="border-gray-150 mb-4 border-b pb-2 text-sm font-black tracking-[0.14em] text-gray-900 uppercase"
-					>
-						Flash Sale Timer Banner
-					</h3>
+			<div>
+				<h3
+					class="border-gray-150 mb-4 border-b pb-2 text-sm font-black tracking-[0.14em] text-gray-900 uppercase"
+				>
+					Flash Sale Timer Banner
+				</h3>
 
-					<div class="space-y-4 rounded-xl border border-gray-200 bg-gray-50/50 p-5">
+				<form
+					method="POST"
+					action="?/saveBanners"
+					enctype="multipart/form-data"
+					class="space-y-4 rounded-xl border border-gray-200 bg-gray-50/50 p-5"
+				>
+					<input type="hidden" name="bannerSection" value="flashSale" />
 						<div class="flex items-center gap-3">
 							<input
 								id="flash_sale_enabled"
@@ -790,10 +748,16 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+
+					<button
+						type="submit"
+						class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-5 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
+					>
+						Save Flash Sale
+					</button>
+				</form>
 			</div>
-		</form>
+		</div>
 
 		{#each sections as section}
 			<form

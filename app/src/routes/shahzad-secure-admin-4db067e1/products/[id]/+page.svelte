@@ -251,11 +251,7 @@
 					<div class="space-y-3">
 						{#each variants as variant, index (variant.id)}
 							<div class="rounded-xl border border-admin-border bg-gray-50/60 p-4">
-								<div
-									class="grid gap-3 md:items-end {variant.type === 'color'
-										? 'md:grid-cols-[7rem_1fr_10rem_10rem_7rem_1fr_auto]'
-										: 'md:grid-cols-[9rem_1fr_7rem_1fr_auto]'}"
-								>
+								<div class="grid gap-3 md:grid-cols-2 lg:grid-cols-[7rem_minmax(0,1fr)_11rem_minmax(0,1.15fr)_7rem_minmax(0,1fr)_auto] lg:items-end">
 									<Field label="Type" class="text-xs">
 										{#snippet children()}
 											<select
@@ -271,65 +267,48 @@
 										{/snippet}
 									</Field>
 
-									{#if variant.type === 'size'}
-										<Field label="Size" class="text-xs">
-											{#snippet children()}
-												<select
-													name="variantSize"
-													bind:value={variant.size}
-													class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
-												>
-													{#each sizes as size}
-														<option value={size}>{size}</option>
-													{/each}
-												</select>
-												<input type="hidden" name="variantColor" value="Default" />
-											{/snippet}
-										</Field>
-									{:else}
-										<Field label="Colour Name" class="text-xs">
-											{#snippet children()}
+									<Field label="Colour Name" class="text-xs">
+										{#snippet children()}
+											<input
+												type="text"
+												name="variantColor"
+												bind:value={variant.color}
+												placeholder="e.g. Emerald Velvet"
+												class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
+											/>
+										{/snippet}
+									</Field>
+
+									<Field label="Size / Length" class="text-xs">
+										{#snippet children()}
+											<select
+												name="variantSize"
+												bind:value={variant.size}
+												class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
+											>
+												{#each sizes as size}<option value={size}>{size}</option>{/each}
+											</select>
+										{/snippet}
+									</Field>
+
+									<Field label="Swatch" class="text-xs">
+										{#snippet children()}
+											<div class="flex items-center gap-2">
+												<input
+													type="color"
+													name="variantColorHex"
+													bind:value={variant.colorHex}
+													class="h-9 w-11 shrink-0 cursor-pointer rounded-lg border border-admin-border bg-white p-1"
+												/>
 												<input
 													type="text"
-													name="variantColor"
-													bind:value={variant.color}
-													placeholder="e.g. Emerald Velvet"
+													bind:value={variant.colorHex}
+													placeholder="#000000"
 													class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
 												/>
-											{/snippet}
-										</Field>
-
-										<Field label="Size / Length" class="text-xs">
-											{#snippet children()}
-												<select
-													name="variantSize"
-													bind:value={variant.size}
-													class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
-												>
-													{#each sizes as size}<option value={size}>{size}</option>{/each}
-												</select>
-											{/snippet}
-										</Field>
-
-										<Field label="Swatch" class="text-xs">
-											{#snippet children()}
-												<div class="flex items-center gap-2">
-													<input
-														type="color"
-														name="variantColorHex"
-														bind:value={variant.colorHex}
-														class="h-9 w-11 shrink-0 cursor-pointer rounded-lg border border-admin-border bg-white p-1"
-													/>
-													<input
-														type="text"
-														bind:value={variant.colorHex}
-														placeholder="#000000"
-														class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
-													/>
-												</div>
-											{/snippet}
-										</Field>
-									{/if}
+											</div>
+										{/snippet}
+									</Field>
 
 									<Field label="Stock" class="text-xs">
 										{#snippet children()}
@@ -359,6 +338,7 @@
 										type="button"
 										variant="danger"
 										size="sm"
+										class="w-full lg:w-auto"
 										disabled={variants.length === 1}
 										onclick={() => removeVariant(variant.id)}
 									>
