@@ -2,6 +2,7 @@
 	import { cart } from '$lib/client/cart.svelte';
 	import { productPixelPayload, trackAddToCart } from '$lib/client/pixels';
 	import WishlistButton from '$lib/components/WishlistButton.svelte';
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 
 	let {
@@ -19,6 +20,7 @@
 	let href = $derived(`/shop/${product.slug}`);
 
 	let image = $derived(product.images?.[0]?.url || '/image.png');
+	let cardImage = $derived(cloudinaryUrl(image, 480));
 
 	let isOutOfStock = $derived(
 		!product.variants?.some((variant: any) => Number(variant.stockCount || 0) > 0)
@@ -124,8 +126,12 @@
 	>
 		<a {href} class="block h-full w-full" aria-label={`View ${product.name}`}>
 			<img
-				src={image}
+				src={cardImage}
 				alt={product.name}
+				width="480"
+				height="640"
+				loading="lazy"
+				decoding="async"
 				class="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
 			/>
 		</a>

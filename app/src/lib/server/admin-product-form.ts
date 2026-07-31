@@ -78,20 +78,21 @@ export const parseProductForm = (data: FormData): ParsedProductForm => {
 	const variantStocks = data.getAll('variantStock');
 	const variantSkus = data.getAll('variantSku');
 
-	const parsedVariants = variantTypes
-		.map((typeValue, index) => {
-			const type = String(typeValue) === 'color' ? 'color' : 'size';
-			const color = type === 'color' ? getValue(variantColors, index) || 'Black' : 'Default';
-			const colorHexRaw = type === 'color' ? getValue(variantColorHexes, index) : '';
+	const rowCount = Math.max(variantTypes.length, variantColors.length, variantSizes.length);
+	const parsedVariants = Array.from({ length: rowCount }, (_, index) => {
+			// Each row is one purchasable colour + size combination. variantType is
+			// retained as an optional input only so older open admin forms still submit safely.
+			const color = getValue(variantColors, index) || 'Default';
+			const colorHexRaw = color === 'Default' ? '' : getValue(variantColorHexes, index);
 			const colorHex = isValidHex(colorHexRaw) ? colorHexRaw.toLowerCase() : null;
-			const size = type === 'size' ? getValue(variantSizes, index) || 'One Size' : 'One Size';
+			const size = getValue(variantSizes, index) || 'One Size';
 			const stockCountValue = Number(getValue(variantStocks, index) || 0);
 			const stockCount = Number.isFinite(stockCountValue)
 				? Math.max(0, Math.trunc(stockCountValue))
 				: 0;
 			const sku =
 				getValue(variantSkus, index) ||
-				`${skuPart(slug) || 'PRODUCT'}-${skuPart(type === 'color' ? color : size) || 'VAR'}-${index + 1}`;
+				`${skuPart(slug) || 'PRODUCT'}-${skuPart(color) || 'DEFAULT'}-${skuPart(size) || 'SIZE'}-${index + 1}`;
 
 			return {
 				color,

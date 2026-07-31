@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
+
 	let { collections = [] } = $props<{ collections: any[] }>();
 
 	let needsMarquee = $derived(collections.length > 6);
@@ -55,8 +57,12 @@
 								class="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center overflow-hidden rounded-full bg-gray-50 ring-1 ring-black/18 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_20px_rgba(0,0,0,0.14)] group-hover:ring-2 group-hover:ring-black sm:h-[7.5rem] sm:w-[7.5rem]"
 							>
 								<img
-									src={category.imageUrl || '/image.png'}
+									src={cloudinaryUrl(category.imageUrl, 200) || '/image.png'}
 									alt={category.name}
+									width="200"
+									height="200"
+									loading="lazy"
+									decoding="async"
 									class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
 								/>
 							</div>

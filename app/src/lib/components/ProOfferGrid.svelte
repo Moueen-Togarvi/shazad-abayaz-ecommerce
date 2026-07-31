@@ -200,6 +200,10 @@
 							<img
 								src={spotlightStaticImage}
 								alt={spotlightProduct.name}
+								width="320"
+								height="410"
+								loading="lazy"
+								decoding="async"
 								class="h-full w-full object-cover object-top"
 							/>
 						</div>
@@ -231,6 +235,10 @@
 							<img
 								src={card.image}
 								alt={card.title}
+								width="128"
+								height="128"
+								loading="lazy"
+								decoding="async"
 								class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
 							/>
 						</div>

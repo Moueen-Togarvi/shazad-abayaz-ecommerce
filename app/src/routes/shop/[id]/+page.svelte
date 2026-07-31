@@ -5,6 +5,7 @@
 	import { cart } from '$lib/client/cart.svelte';
 	import { productPixelPayload, trackAddToCart, trackProductView } from '$lib/client/pixels';
 	import WishlistButton from '$lib/components/WishlistButton.svelte';
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 	import { SITE_NAME, absoluteUrl, jsonLdScript, metaDescription } from '$lib/shared/seo';
 
@@ -247,8 +248,12 @@
 						onclick={() => (activeImage = index)}
 					>
 						<img
-							src={image}
+							src={cloudinaryUrl(image, 160)}
 							alt={`${product.name} ${index + 1}`}
+							width="160"
+							height="224"
+							loading="lazy"
+							decoding="async"
 							class="h-full w-full object-contain object-center"
 						/>
 					</button>
@@ -273,8 +278,12 @@
 					</div>
 				{/if}
 				<img
-					src={images[activeImage] || productImage(product)}
+					src={cloudinaryUrl(images[activeImage] || productImage(product), 800)}
 					alt={product.name}
+					width="800"
+					height="1000"
+					fetchpriority="high"
+					decoding="async"
 					class="h-full w-full object-contain object-center"
 				/>
 			</div>
@@ -520,8 +529,12 @@
 						<div class="relative mb-4 aspect-[3/4] overflow-hidden bg-gray-100">
 							<a href={`/shop/${item.slug}`} class="block h-full" aria-label={`View ${item.name}`}>
 								<img
-									src={productImage(item)}
+									src={cloudinaryUrl(productImage(item), 320)}
 									alt={item.name}
+									width="320"
+									height="427"
+									loading="lazy"
+									decoding="async"
 									class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
 								/>
 							</a>

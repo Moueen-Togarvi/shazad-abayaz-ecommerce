@@ -165,6 +165,7 @@ model OrderItem {
   productName  String
   variantColor String?
   variantSize  String?
+	variantImage String?
 
   quantity        Int
   priceAtPurchase Decimal @db.Decimal(10, 2)

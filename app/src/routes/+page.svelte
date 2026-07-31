@@ -10,6 +10,7 @@
 	import CategoryCircleCards from '$lib/components/CategoryCircleCards.svelte';
 	import ProductCard from '$lib/components/ProductCard.svelte';
 
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 	import {
 		SITE_DESCRIPTION,
@@ -741,10 +742,13 @@
 				{#each reviewPhotoLoop as photo, index}
 					<figure class="review-photo-card">
 						<img
-							src={photo.url}
+							src={cloudinaryUrl(photo.url, 400)}
 							alt={`Shahzad Abaya's customer review ${index + 1}`}
+							width="400"
+							height="500"
 							class="h-full w-full object-cover object-center"
 							loading="lazy"
+							decoding="async"
 						/>
 					</figure>
 				{/each}

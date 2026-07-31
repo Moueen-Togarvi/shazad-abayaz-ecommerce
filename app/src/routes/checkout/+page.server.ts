@@ -13,6 +13,7 @@ type CheckoutCartItem = {
 	quantity?: number;
 	color?: string;
 	size?: string;
+	image?: string;
 };
 
 type ValidatedCheckoutItem = {
@@ -23,6 +24,7 @@ type ValidatedCheckoutItem = {
 	quantity: number;
 	color: string | null;
 	size: string | null;
+	image: string | null;
 };
 
 const getText = (data: FormData, key: string) => String(data.get(key) ?? '').trim();
@@ -108,7 +110,8 @@ export const actions: Actions = {
 			? await prisma.product.findMany({
 					where: { id: { in: productIds } },
 					include: {
-						variants: true
+						variants: true,
+						images: { orderBy: { displayOrder: 'asc' } }
 					}
 				})
 			: [];
@@ -148,6 +151,11 @@ export const actions: Actions = {
 				quantity: item.quantity,
 				color: variant.color,
 				size: variant.size
+				,image:
+					product.images.find((image) => image.color === variant.color)?.url ||
+					product.images.find((image) => image.url === item.image)?.url ||
+					product.images[0]?.url ||
+					null
 			});
 		}
 
@@ -208,6 +216,7 @@ export const actions: Actions = {
 								productName: item.name,
 								variantColor: item.color,
 								variantSize: item.size,
+								variantImage: item.image,
 								quantity: item.quantity,
 								priceAtPurchase: item.price
 							}))

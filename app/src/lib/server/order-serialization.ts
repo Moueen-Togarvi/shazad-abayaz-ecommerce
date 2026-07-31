@@ -61,7 +61,11 @@ export const serializeOrder = (order: any) => ({
 		quantity: item.quantity,
 		priceAtPurchase: toNumber(item.priceAtPurchase),
 		lineTotal: toNumber(item.priceAtPurchase) * Number(item.quantity || 0),
-		image: item.product?.images?.[0]?.url || '',
+		image:
+			item.variantImage ||
+			item.product?.images?.find((image: any) => image.color === item.variantColor)?.url ||
+			item.product?.images?.[0]?.url ||
+			'',
 		product: item.product
 			? {
 					id: item.product.id,
