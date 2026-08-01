@@ -2,9 +2,7 @@
 	import { cart } from '$lib/client/cart.svelte';
 	import { formatMoney } from '$lib/shared/money';
 
-	let shipping = 300;
 	let giftWrapPrice = 500;
-	let freeShippingThreshold = 15000;
 	let isGift = $state(false);
 	let giftMessage = $state('');
 </script>
@@ -160,23 +158,25 @@
 							</div>
 						{/if}
 						<div class="flex justify-between">
-							<span class="text-gray-600">Estimated Shipping</span>
-							<span>{cart.subtotal > freeShippingThreshold ? 'Free' : formatMoney(shipping)}</span>
+							<span class="text-gray-600">Shipping</span>
+							<span class="text-xs text-gray-500">Calculated at checkout</span>
 						</div>
 					</div>
+
+					<p class="mb-4 text-xs font-medium text-[#3f7a56]">
+						Choose Advance Payment at checkout for free shipping.
+					</p>
 
 					<div class="mb-8 border-t border-gray-200 pt-6">
 						<div class="flex items-end justify-between">
 							<span class="text-base font-medium tracking-widest uppercase">Total</span>
 							<span class="font-serif text-xl text-black">
-								{formatMoney(
-									cart.subtotal +
-										(isGift ? giftWrapPrice : 0) +
-										(cart.subtotal > freeShippingThreshold ? 0 : shipping)
-								)}
+								{formatMoney(cart.subtotal + (isGift ? giftWrapPrice : 0))}
 							</span>
 						</div>
-						<p class="mt-2 text-right text-xs text-gray-500">Taxes calculated at checkout</p>
+						<p class="mt-2 text-right text-xs text-gray-500">
+							Shipping and taxes calculated at checkout
+						</p>
 					</div>
 
 					<a

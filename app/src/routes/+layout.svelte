@@ -430,7 +430,7 @@ fbq('init', '${metaPixelId}');`)
 						<div
 							class="mt-3 flex items-center justify-between rounded-2xl border border-white/12 bg-white/8 px-4 py-3 text-xs font-semibold text-white"
 						>
-							<span>Free delivery over Rs. 15,000</span>
+							<span>Free shipping on full advance payment</span>
 							<span class="text-[#c8ff46]">PKR</span>
 						</div>
 					</div>

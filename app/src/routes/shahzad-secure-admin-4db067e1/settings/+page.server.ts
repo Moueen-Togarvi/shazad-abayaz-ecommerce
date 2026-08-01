@@ -23,7 +23,6 @@ const readSettingsForm = (data: FormData) => ({
 	unit_system: getText(data, 'unit_system'),
 	store_currency: getText(data, 'store_currency'),
 	default_country: getText(data, 'default_country'),
-	free_shipping_threshold: getText(data, 'free_shipping_threshold'),
 	cod_enabled: data.get('cod_enabled') === 'on' ? 'true' : 'false',
 	jazzcash_status: getText(data, 'jazzcash_status'),
 	return_policy_days: getText(data, 'return_policy_days'),
@@ -56,7 +55,7 @@ export const actions: Actions = {
 			return fail(400, { error: 'Please enter valid email addresses.', settings });
 		}
 
-		if (Number(settings.return_policy_days) < 0 || Number(settings.free_shipping_threshold) < 0) {
+		if (Number(settings.return_policy_days) < 0) {
 			return fail(400, { error: 'Numeric settings must be zero or higher.', settings });
 		}
 

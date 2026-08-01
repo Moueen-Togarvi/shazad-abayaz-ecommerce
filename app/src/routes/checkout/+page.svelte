@@ -5,7 +5,7 @@
 	import { SUPPORT_PHONE_DISPLAY } from '$lib/shared/seo';
 	import { onMount } from 'svelte';
 
-	type PaymentMethod = 'COD';
+	type PaymentMethod = 'COD' | 'ADVANCE';
 
 	let { form } = $props();
 
@@ -38,7 +38,8 @@
 	const totalPieces = $derived(
 		cart.items.reduce((total, item) => total + Math.max(1, Number(item.quantity || 0)), 0)
 	);
-	const shippingTotal = $derived(getCodShippingCharge(totalPieces));
+	const codShippingTotal = $derived(getCodShippingCharge(totalPieces));
+	const shippingTotal = $derived(paymentMethod === 'ADVANCE' ? 0 : codShippingTotal);
 	const orderTotal = $derived(cart.subtotal + shippingTotal);
 
 	const validateRequiredDetails = () => {
@@ -338,51 +339,89 @@
 									<div class="flex items-center">
 										<span class="inline-flex h-4 w-4 rounded-full border-4 border-black"></span>
 										<div class="ml-3">
-											<p class="text-sm font-semibold text-black">Cash on Delivery Shipping</p>
+											<p class="text-sm font-semibold text-black">
+												{paymentMethod === 'ADVANCE'
+													? 'Free Shipping (Advance Payment)'
+													: 'Cash on Delivery Shipping'}
+											</p>
 											<p class="text-xs text-gray-500">
 												{totalPieces} {totalPieces === 1 ? 'piece' : 'pieces'} in cart
 											</p>
 										</div>
 									</div>
-									<span class="text-sm font-semibold">{formatMoney(shippingTotal)}</span>
-								</div>
-							</div>
-
-							<div
-								class="mt-4 rounded-2xl border border-[#eadfce] bg-[#fcfaf6] p-4 shadow-[0_8px_24px_rgba(161,137,92,0.08)]"
-							>
-								<div class="flex items-start justify-between gap-3">
-									<div>
-										<p class="text-[11px] font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
-											COD Confirmation
-										</p>
-										<h3 class="mt-1 font-serif text-base text-[#1f1a17] sm:text-lg">
-											Advance delivery charges apply
-										</h3>
-									</div>
-									<span
-										class="rounded-full bg-[#f7efe1] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase"
-									>
-										COD
+									<span class="text-sm font-semibold">
+										{shippingTotal === 0 ? 'Free' : formatMoney(shippingTotal)}
 									</span>
 								</div>
-
-								<p class="mt-3 text-sm leading-6 text-[#4f463d]">
-									If you choose Cash on Delivery, order confirmation requires advance payment of delivery charges.
-								</p>
-								<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
-									اگر آپ COD منتخب کرتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع کروانا ضروری ہے۔
-								</p>
-
-								<div class="mt-4 grid gap-2 sm:grid-cols-2">
-									{#each codDeliveryCharges as charge}
-										<div class="flex items-center justify-between rounded-xl bg-white px-3 py-2 text-sm text-[#2f2924]">
-											<span>{charge.quantity}</span>
-											<span class="font-semibold">{charge.label}</span>
-										</div>
-									{/each}
-								</div>
 							</div>
+
+							{#if paymentMethod === 'ADVANCE'}
+								<div
+									class="mt-4 rounded-2xl border border-[#cfe3d6] bg-[#f4faf6] p-4 shadow-[0_8px_24px_rgba(45,120,80,0.08)]"
+								>
+									<div class="flex items-start justify-between gap-3">
+										<div>
+											<p class="text-[11px] font-semibold tracking-[0.22em] text-[#3f7a56] uppercase">
+												Advance Payment
+											</p>
+											<h3 class="mt-1 font-serif text-base text-[#1f1a17] sm:text-lg">
+												Shipping is free on full advance payment
+											</h3>
+										</div>
+										<span
+											class="rounded-full bg-[#e3f3e9] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#2f6b48] uppercase"
+										>
+											Free
+										</span>
+									</div>
+
+									<p class="mt-3 text-sm leading-6 text-[#4f463d]">
+										Pay the full order amount in advance and delivery is free — no shipping charges added.
+									</p>
+									<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
+										مکمل ایڈوانس ادائیگی پر ڈیلیوری بالکل مفت ہے۔
+									</p>
+								</div>
+							{:else}
+								<div
+									class="mt-4 rounded-2xl border border-[#eadfce] bg-[#fcfaf6] p-4 shadow-[0_8px_24px_rgba(161,137,92,0.08)]"
+								>
+									<div class="flex items-start justify-between gap-3">
+										<div>
+											<p class="text-[11px] font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
+												COD Confirmation
+											</p>
+											<h3 class="mt-1 font-serif text-base text-[#1f1a17] sm:text-lg">
+												Advance delivery charges apply
+											</h3>
+										</div>
+										<span
+											class="rounded-full bg-[#f7efe1] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase"
+										>
+											COD
+										</span>
+									</div>
+
+									<p class="mt-3 text-sm leading-6 text-[#4f463d]">
+										If you choose Cash on Delivery, order confirmation requires advance payment of delivery charges.
+									</p>
+									<p class="mt-2 text-sm leading-6 text-[#4f463d]" dir="rtl">
+										اگر آپ COD منتخب کرتے ہیں تو آرڈر کنفرم کرنے کے لیے ڈیلیوری چارجز ایڈوانس میں جمع کروانا ضروری ہے۔
+									</p>
+									<p class="mt-3 text-sm leading-6 font-semibold text-[#4f463d]">
+										Tip: Choose Advance Payment instead to get free shipping.
+									</p>
+
+									<div class="mt-4 grid gap-2 sm:grid-cols-2">
+										{#each codDeliveryCharges as charge}
+											<div class="flex items-center justify-between rounded-xl bg-white px-3 py-2 text-sm text-[#2f2924]">
+												<span>{charge.quantity}</span>
+												<span class="font-semibold">{charge.label}</span>
+											</div>
+										{/each}
+									</div>
+								</div>
+							{/if}
 						</div>
 
 						<div>
@@ -400,6 +439,24 @@
 											/>
 											<span class="ml-3 text-sm font-semibold">Cash on Delivery (COD)</span>
 										</div>
+									</label>
+								</div>
+
+								<div class="border-b border-gray-200">
+									<label class="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-[#f4faf6]">
+										<div class="flex items-center">
+											<input
+												type="radio"
+												name="paymentMethod"
+												value="ADVANCE"
+												bind:group={paymentMethod}
+												class="form-radio h-4 w-4 border-gray-300 text-black focus:ring-black"
+											/>
+											<span class="ml-3 text-sm font-semibold">Advance Payment (Bank / Easypaisa)</span>
+										</div>
+										<span class="rounded-full bg-[#e3f3e9] px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-[#2f6b48] uppercase">
+											Free shipping
+										</span>
 									</label>
 								</div>
 
@@ -421,16 +478,17 @@
 								</div>
 							</div>
 
-							<div class="mt-4 rounded-2xl border border-[#e8dfcf] bg-[#fffdfa] p-4 shadow-[0_10px_30px_rgba(161,137,92,0.08)] sm:p-5">
+							{#if paymentMethod === 'ADVANCE'}
+							<div class="mt-4 rounded-2xl border border-[#cfe3d6] bg-[#fbfffc] p-4 shadow-[0_10px_30px_rgba(45,120,80,0.08)] sm:p-5">
 								<div class="mb-4 flex items-start justify-between gap-3">
 									<div>
-										<p class="text-[11px] font-semibold tracking-[0.22em] text-[#9b7b42] uppercase">
+										<p class="text-[11px] font-semibold tracking-[0.22em] text-[#3f7a56] uppercase">
 											Online Order Policy
 										</p>
-										<h3 class="mt-1 font-serif text-base text-[#1f1a17] sm:text-lg">COD Confirmation Details</h3>
+										<h3 class="mt-1 font-serif text-base text-[#1f1a17] sm:text-lg">Advance Payment Details</h3>
 									</div>
-									<span class="rounded-full bg-[#f7efe1] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#8b6a35] uppercase">
-										COD
+									<span class="rounded-full bg-[#e3f3e9] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#2f6b48] uppercase">
+										Free shipping
 									</span>
 								</div>
 
@@ -459,7 +517,7 @@
 											Note
 										</p>
 										<div class="mt-2 space-y-2 text-sm leading-6 text-[#55483b]">
-											<p>Order confirm karne ke liye upar diye gaye kisi bhi account mein payment zaroor share karein.</p>
+											<p>Order confirm karne ke liye upar diye gaye kisi bhi account mein poori payment zaroor share karein.</p>
 											<p>
 												Payment bhejne ke baad screenshot WhatsApp par send karein:
 												<span class="font-semibold">{SUPPORT_PHONE_DISPLAY}</span>
@@ -474,6 +532,7 @@
 									</div>
 								</div>
 							</div>
+							{/if}
 						</div>
 					</div>
 					<div class="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
@@ -564,7 +623,9 @@
 				</div>
 				<div class="flex justify-between gap-3">
 					<span class="text-gray-600">Shipping</span>
-					<span class="text-sm font-medium text-black">{formatMoney(shippingTotal)}</span>
+					<span class="text-sm font-medium text-black">
+						{shippingTotal === 0 ? 'Free' : formatMoney(shippingTotal)}
+					</span>
 				</div>
 			</div>
 

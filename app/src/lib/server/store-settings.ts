@@ -15,11 +15,10 @@ export const defaultStoreSettings: SettingValues = {
 	unit_system: 'metric',
 	store_currency: 'PKR',
 	default_country: 'Pakistan',
-	free_shipping_threshold: '15000',
 	cod_enabled: 'true',
 	jazzcash_status: 'coming_soon',
 	return_policy_days: '14',
-	shipping_note: 'Free delivery over Rs. 15,000',
+	shipping_note: 'Free shipping on full advance payment',
 	order_notify_email: '',
 	resend_from_email: ''
 };
@@ -99,7 +98,6 @@ const descriptions: Record<string, string> = {
 	unit_system: 'Store measurement unit system',
 	store_currency: 'Store currency',
 	default_country: 'Default checkout country',
-	free_shipping_threshold: 'Free shipping threshold',
 	cod_enabled: 'Cash on delivery status',
 	jazzcash_status: 'JazzCash availability status',
 	return_policy_days: 'Return policy window in days',

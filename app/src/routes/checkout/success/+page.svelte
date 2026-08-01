@@ -143,7 +143,7 @@
 						</div>
 						<div class="flex justify-between text-gray-500">
 							<span>Shipping</span>
-							<span>{formatMoney(order.shippingCost)}</span>
+							<span>{order.shippingCost === 0 ? 'Free' : formatMoney(order.shippingCost)}</span>
 						</div>
 						<div class="flex justify-between text-gray-500">
 							<span>Discount</span>

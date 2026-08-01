@@ -102,6 +102,9 @@ const renderTotals = (order: NotificationOrder) => `
 	</div>
 `;
 
+const paymentMethodLabel = (paymentMethod: string) =>
+	paymentMethod === 'ADVANCE' ? 'Advance Payment (Free Shipping)' : 'Cash on Delivery';
+
 const renderCustomerOrderEmail = (order: NotificationOrder, orderUrl: string) => {
 	const rows = renderItemRows(order);
 
@@ -111,7 +114,7 @@ const renderCustomerOrderEmail = (order: NotificationOrder, orderUrl: string) =>
 			<p style="margin: 0 0 24px; color: #52524f;">Your Shahzad Abaya's order has been received successfully. We will confirm it soon.</p>
 			<div style="background: #fbf9f2; border: 1px solid #eee7d8; padding: 18px; margin-bottom: 20px;">
 				<p style="margin: 0 0 6px;"><strong>Order:</strong> ${escapeHtml(order.orderNumber)}</p>
-				<p style="margin: 0 0 6px;"><strong>Payment:</strong> Cash on Delivery</p>
+				<p style="margin: 0 0 6px;"><strong>Payment:</strong> ${paymentMethodLabel(order.paymentMethod)}</p>
 				<p style="margin: 0;"><strong>Total:</strong> ${formatMoney(order.totalAmount)}</p>
 			</div>
 			${
@@ -149,6 +152,7 @@ const renderAdminOrderEmail = (order: NotificationOrder, adminOrderUrl: string) 
 			<p style="margin: 0 0 24px; color: #52524f;">A customer placed order ${escapeHtml(order.orderNumber)} on Shahzad Abaya's.</p>
 			<div style="background: #0a0a0a; color: #ffffff; padding: 18px; margin-bottom: 20px;">
 				<p style="margin: 0 0 6px;"><strong>Total:</strong> ${formatMoney(order.totalAmount)}</p>
+				<p style="margin: 0 0 6px;"><strong>Payment:</strong> ${paymentMethodLabel(order.paymentMethod)}</p>
 				<p style="margin: 0 0 6px;"><strong>Customer:</strong> ${escapeHtml(customerName || 'Customer')}</p>
 				<p style="margin: 0;"><strong>Email:</strong> ${escapeHtml(order.guestEmail || 'No email')}</p>
 			</div>

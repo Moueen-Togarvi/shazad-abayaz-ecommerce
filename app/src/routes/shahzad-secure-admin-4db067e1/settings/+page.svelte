@@ -252,19 +252,6 @@
 						/>
 					</div>
 					<div>
-						<label for="free_shipping_threshold" class="mb-1 block text-sm font-bold text-gray-700"
-							>Free shipping threshold</label
-						>
-						<input
-							id="free_shipping_threshold"
-							name="free_shipping_threshold"
-							type="number"
-							min="0"
-							value={settings.free_shipping_threshold}
-							class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-						/>
-					</div>
-					<div>
 						<label for="return_policy_days" class="mb-1 block text-sm font-bold text-gray-700"
 							>Return policy days</label
 						>

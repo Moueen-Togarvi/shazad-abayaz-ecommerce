@@ -97,7 +97,7 @@ export const actions: Actions = {
 		const postalCode = getText(data, 'postalCode');
 		const phone = getText(data, 'phone');
 		const shippingMethod = 'STANDARD';
-		const paymentMethod = 'COD';
+		const paymentMethod = getText(data, 'paymentMethod') === 'ADVANCE' ? 'ADVANCE' : 'COD';
 
 		if (!email || !firstName || !lastName || !addressLine1 || !city || !postalCode || !phone) {
 			return fail(400, {
@@ -162,7 +162,7 @@ export const actions: Actions = {
 
 		const subtotal = validatedItems.reduce((total, item) => total + item.price * item.quantity, 0);
 		const totalPieces = validatedItems.reduce((total, item) => total + item.quantity, 0);
-		const shippingCost = getCodShippingCharge(totalPieces);
+		const shippingCost = paymentMethod === 'ADVANCE' ? 0 : getCodShippingCharge(totalPieces);
 		const discountTotal = 0;
 		const totalAmount = subtotal + shippingCost - discountTotal;
 		const orderNumber = await createOrderNumber();

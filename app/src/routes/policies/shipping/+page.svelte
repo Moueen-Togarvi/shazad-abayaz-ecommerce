@@ -2,7 +2,7 @@
 	<title>Shipping Information | Shahzad Abaya's</title>
 	<meta
 		name="description"
-		content="Read Shahzad Abaya's shipping options, delivery timelines, domestic and international shipping details, and free delivery rules."
+		content="Read Shahzad Abaya's shipping options, delivery timelines, domestic and international shipping details, and free shipping on advance payment."
 	/>
 </svelte:head>
 
@@ -33,7 +33,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each [{ method: 'Standard Shipping', time: '5-7 Business Days', cost: 'Rs. 300 (Free over Rs. 15,000)' }, { method: 'DHL Express', time: '2-3 Business Days', cost: 'Rs. 1,200' }, { method: 'Overnight (Domestic)', time: '1 Business Day', cost: 'Confirmed on WhatsApp' }, { method: 'International Standard', time: '10–15 Business Days', cost: 'Calculated at checkout' }, { method: 'International Express', time: '5–7 Business Days', cost: 'Calculated at checkout' }] as row, i}
+						{#each [{ method: 'Standard Shipping', time: '5-7 Business Days', cost: 'Rs. 300–700 (Free on advance payment)' }, { method: 'DHL Express', time: '2-3 Business Days', cost: 'Rs. 1,200' }, { method: 'Overnight (Domestic)', time: '1 Business Day', cost: 'Confirmed on WhatsApp' }, { method: 'International Standard', time: '10–15 Business Days', cost: 'Calculated at checkout' }, { method: 'International Express', time: '5–7 Business Days', cost: 'Calculated at checkout' }] as row, i}
 							<tr class="{i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b border-gray-100">
 								<td class="px-5 py-4 font-medium text-black">{row.method}</td>
 								<td class="px-5 py-4 text-gray-600">{row.time}</td>
@@ -52,10 +52,10 @@
 		<section class="border-t border-gray-100 pt-8">
 			<h2 class="mb-4 font-serif text-lg tracking-widest text-black uppercase">Free Shipping</h2>
 			<p>
-				Enjoy complimentary standard shipping on all orders over <strong
-					class="font-medium text-black">Rs. 15,000 PKR</strong
-				>. This offer applies automatically at checkout. Free shipping is valid on domestic orders
-				only.
+				Enjoy complimentary shipping on any order when you choose
+				<strong class="font-medium text-black">full advance payment</strong>
+				at checkout. Select the Advance Payment option and pay the full order amount in advance —
+				delivery charges are waived automatically. Free shipping is valid on domestic orders only.
 			</p>
 		</section>
 

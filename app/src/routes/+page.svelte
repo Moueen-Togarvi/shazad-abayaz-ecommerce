@@ -554,7 +554,7 @@
 					</div>
 					<div class="text-left leading-tight">
 						<span class="block text-xs font-black text-[#0a0a0a] uppercase">Free Shipping</span>
-						<span class="block text-[0.62rem] font-medium text-gray-500">Nationwide Delivery</span>
+						<span class="block text-[0.62rem] font-medium text-gray-500">On Full Advance Payment</span>
 					</div>
 				</div>
 
