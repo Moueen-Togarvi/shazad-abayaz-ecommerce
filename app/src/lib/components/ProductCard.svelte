@@ -132,7 +132,7 @@
 				height="640"
 				loading="lazy"
 				decoding="async"
-				class="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+				class="h-full w-full object-contain object-center"
 			/>
 		</a>
 
