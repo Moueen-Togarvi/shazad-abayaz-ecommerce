@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import type { HTMLSelectAttributes } from 'svelte/elements';
 	import Field from './Field.svelte';
 
@@ -7,12 +8,14 @@
 		help = '',
 		required = false,
 		class: klass = '',
+		children,
 		...rest
 	}: {
 		label?: string;
 		help?: string;
 		required?: boolean;
 		class?: string;
+		children: Snippet;
 	} & HTMLSelectAttributes = $props();
 
 	const generatedId = `sel-${Math.random().toString(36).slice(2, 9)}`;
@@ -24,5 +27,7 @@
 		id={id}
 		{...rest}
 		class="block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 shadow-sm transition-colors focus:border-admin-primary focus:ring-2 focus:ring-admin-primary/20 focus:outline-none"
-	></select>
+	>
+		{@render children()}
+	</select>
 </Field>

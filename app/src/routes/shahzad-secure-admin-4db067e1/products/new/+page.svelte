@@ -82,7 +82,7 @@
 	<title>Add Product | Shahzad Abaya's Admin</title>
 </svelte:head>
 
-<div class="mx-auto max-w-5xl pb-12">
+<div class="mx-auto max-w-[90rem] pb-12">
 	<PageHeader
 		title="Add Product"
 		subtitle="Create a new product in your catalog."
@@ -96,8 +96,8 @@
 	{/if}
 
 	<form method="POST" action="?/create" enctype="multipart/form-data">
-		<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-			<div class="space-y-6 lg:col-span-2">
+		<div class="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1fr)_20rem]">
+			<div class="min-w-0 space-y-6">
 				<Card title="Details">
 					<div class="space-y-5">
 						<TextInput label="Title" name="name" placeholder="e.g. Ayla Nida Abaya" required />
@@ -159,8 +159,8 @@
 					<div class="space-y-3">
 						{#each variants as variant, index (variant.id)}
 							<div class="rounded-xl border border-admin-border bg-gray-50/60 p-4">
-								<div class="grid gap-3 md:grid-cols-2 lg:grid-cols-[6rem_minmax(9rem,1fr)_minmax(9rem,1fr)_minmax(0,1.15fr)_6rem_minmax(0,1fr)_auto] lg:items-start">
-									<Field label="Type" class="text-xs">
+								<div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-12 xl:items-end">
+									<Field label="Type" class="min-w-0 text-xs xl:col-span-2">
 										{#snippet children()}
 											<select
 												name="variantType"
@@ -175,7 +175,7 @@
 										{/snippet}
 									</Field>
 
-									<Field label="Colour Name" class="text-xs">
+									<Field label="Colour Name" class="min-w-0 text-xs xl:col-span-2">
 										{#snippet children()}
 											<input
 												type="text"
@@ -187,7 +187,7 @@
 										{/snippet}
 									</Field>
 
-									<Field label="Size / Length" class="text-xs">
+									<Field label="Size / Length" class="min-w-0 text-xs xl:col-span-2">
 										{#snippet children()}
 											<select
 												name="variantSize"
@@ -199,7 +199,7 @@
 										{/snippet}
 									</Field>
 
-									<Field label="Swatch" class="text-xs">
+									<Field label="Swatch" class="min-w-0 text-xs xl:col-span-2">
 										{#snippet children()}
 											<div class="flex items-center gap-2">
 												<input
@@ -218,7 +218,7 @@
 										{/snippet}
 									</Field>
 
-									<Field label="Stock" class="text-xs">
+									<Field label="Stock" class="min-w-0 text-xs xl:col-span-1">
 										{#snippet children()}
 											<input
 												name="variantStock"
@@ -230,7 +230,7 @@
 										{/snippet}
 									</Field>
 
-									<Field label="SKU" class="text-xs">
+									<Field label="SKU" class="min-w-0 text-xs xl:col-span-2">
 										{#snippet children()}
 											<input
 												name="variantSku"
@@ -246,7 +246,7 @@
 										type="button"
 										variant="danger"
 										size="sm"
-										class="w-full lg:mt-6.5 lg:w-auto"
+										class="w-full xl:col-span-1"
 										disabled={variants.length === 1}
 										onclick={() => removeVariant(variant.id)}
 									>
