@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
+
 	let { data } = $props();
 	let products = $derived((data.products || []) as Array<any>);
 	const lookbookDescription =
 		"Explore the Shahzad Abaya's lookbook for premium abaya styling, modest layers, nida essentials, and occasion outfit ideas.";
 
 	function productImage(product: any) {
-		return product.images?.[0]?.url || '/image.png';
+		return product.images?.[0]?.url || '/image.webp';
 	}
 </script>
 
@@ -25,8 +27,12 @@
 	<div class="absolute inset-0 z-10 bg-black/45"></div>
 	{#if products[0]}
 		<img
-			src={productImage(products[0])}
+			src={cloudinaryUrl(productImage(products[0]), 1280)}
 			alt={products[0].name}
+			width="1280"
+			height="720"
+			fetchpriority="high"
+			decoding="async"
 			class="absolute inset-0 h-full w-full object-cover object-center"
 		/>
 	{/if}
@@ -59,8 +65,12 @@
 						class="overflow-hidden bg-gray-100 {index % 3 === 1 ? 'aspect-[2/3]' : 'aspect-[3/4]'}"
 					>
 						<img
-							src={productImage(item)}
+							src={cloudinaryUrl(productImage(item), 640)}
 							alt={item.name}
+							width="640"
+							height="853"
+							loading="lazy"
+							decoding="async"
 							class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</div>

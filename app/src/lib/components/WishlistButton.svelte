@@ -25,7 +25,7 @@
 
 	function productImage(item: any) {
 		return (
-			item?.images?.[0]?.url || item?.image || item?.collections?.[0]?.imageUrl || '/image.png'
+			item?.images?.[0]?.url || item?.image || item?.collections?.[0]?.imageUrl || '/image.webp'
 		);
 	}
 

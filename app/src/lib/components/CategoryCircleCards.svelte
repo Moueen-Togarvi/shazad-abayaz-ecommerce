@@ -4,9 +4,8 @@
 	let { collections = [] } = $props<{ collections: any[] }>();
 
 	let needsMarquee = $derived(collections.length > 6);
-	// We need 4 copies to make sure the marquee is seamless
 	let displayCollections = $derived(
-		needsMarquee ? [...collections, ...collections, ...collections, ...collections] : collections
+		needsMarquee ? [...collections, ...collections] : collections
 	);
 </script>
 

@@ -73,7 +73,7 @@
 	};
 
 	function productImage(item: any) {
-		return item.images?.[0]?.url || '/image.png';
+		return item.images?.[0]?.url || '/image.webp';
 	}
 
 	function primaryVariant(item: any) {

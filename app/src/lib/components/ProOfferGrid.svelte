@@ -9,7 +9,7 @@
 	let selectedColor = $state('Midnight');
 	let selectedSize = $state('M');
 
-	const spotlightStaticImage = '/products/georgette-abaya/georgette-abaya-charcoal-grey.png';
+	const spotlightStaticImage = '/products/georgette-abaya/georgette-abaya-charcoal-grey.webp';
 
 	let spotlightProduct = $derived(
 		products.find((p: any) => p.slug.includes('mauve') || p.slug.includes('nida')) ||
@@ -24,7 +24,7 @@
 	const offerCards = [
 		{
 			href: '/shop?category=premium-abayas',
-			image: '/products/georgette-abaya/georgette-abaya-blush-pink.png',
+			image: '/products/georgette-abaya/georgette-abaya-blush-pink.webp',
 			badge: 'Essential Match',
 			title: 'Premium Abayas',
 			description: 'Soft Nida Fabric | Full Flare, 12 Colors',
@@ -33,7 +33,7 @@
 		},
 		{
 			href: '/shop?category=daily-wear',
-			image: '/products/nida-cutdana/nida-cutdana-teal-classic.png',
+			image: '/products/nida-cutdana/nida-cutdana-teal-classic.webp',
 			badge: 'Best Choice',
 			title: 'Daily Crepe Cuts',
 			description: 'Minimalist Cuts for All-Day Comfort',
@@ -42,7 +42,7 @@
 		},
 		{
 			href: '/shop?category=occasion',
-			image: '/products/cutdana-lace/cutdana-lace-navy-blue.png',
+			image: '/products/cutdana-lace/cutdana-lace-navy-blue.webp',
 			badge: 'Limited Edition',
 			title: 'Luxe Stonework',
 			description: 'Intricate Hand-Embellished Detailing',

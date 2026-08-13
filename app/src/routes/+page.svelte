@@ -28,7 +28,6 @@
 	let homeSections = $derived((data.homeSections || {}) as Record<string, any>);
 	let storefrontSettings = $derived((data.storefrontSettings || {}) as Record<string, any>);
 
-	let heroRoot: HTMLElement;
 	let heroWordTimers: ReturnType<typeof setTimeout>[] = [];
 
 	let heroHeadlinePhrases = $derived(
@@ -134,7 +133,7 @@
 	}
 
 	function productImage(item: any) {
-		return item.images?.[0]?.url || collections[0]?.imageUrl || '/image.png';
+		return item.images?.[0]?.url || collections[0]?.imageUrl || '/image.webp';
 	}
 
 	function primaryVariant(item: any) {
@@ -192,7 +191,6 @@
 
 	onMount(() => {
 		let active = true;
-		let destroyAnimation: (() => void) | undefined;
 		const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const scheduleHeroWordTimer = (callback: () => void, delay: number) => {
 			const timer = setTimeout(callback, delay);
@@ -247,18 +245,34 @@
 				step();
 			};
 
-			deleteWord(heroLeadDisplay, (value) => (heroLeadDisplay = value), () => {
-				typeWord(nextLeadWord, (value) => (heroLeadDisplay = value), () => {
-					heroLeadWordIndex = nextLeadIndex;
-				});
-			});
+			deleteWord(
+				heroLeadDisplay,
+				(value) => (heroLeadDisplay = value),
+				() => {
+					typeWord(
+						nextLeadWord,
+						(value) => (heroLeadDisplay = value),
+						() => {
+							heroLeadWordIndex = nextLeadIndex;
+						}
+					);
+				}
+			);
 
 			scheduleHeroWordTimer(() => {
-				deleteWord(heroSupportDisplay, (value) => (heroSupportDisplay = value), () => {
-					typeWord(nextSupportWord, (value) => (heroSupportDisplay = value), () => {
-						heroSupportWordIndex = nextSupportIndex;
-					});
-				});
+				deleteWord(
+					heroSupportDisplay,
+					(value) => (heroSupportDisplay = value),
+					() => {
+						typeWord(
+							nextSupportWord,
+							(value) => (heroSupportDisplay = value),
+							() => {
+								heroSupportWordIndex = nextSupportIndex;
+							}
+						);
+					}
+				);
 			}, 180);
 
 			scheduleHeroWordTimer(runHeroWordCycle, 4200);
@@ -268,76 +282,16 @@
 			scheduleHeroWordTimer(runHeroWordCycle, 2400);
 		}
 
-		import('gsap').then(({ gsap }) => {
-			if (!active || !heroRoot) return;
-
-			const mm = gsap.matchMedia();
-			const ctx = gsap.context(() => {
-				mm.add(
-					{
-						reduceMotion: '(prefers-reduced-motion: reduce)'
-					},
-					(context) => {
-						const reduceMotion = Boolean(context.conditions?.reduceMotion);
-						const revealItems = gsap.utils.toArray<HTMLElement>('.hero-reveal');
-						const bgImage = heroRoot.querySelector('.hero-bg');
-
-						gsap.set(revealItems, { willChange: 'transform, opacity' });
-
-						if (reduceMotion) {
-							gsap.set([revealItems, bgImage].flat().filter(Boolean), {
-								autoAlpha: 1,
-								clearProps: 'transform,filter,willChange'
-							});
-							return () => {};
-						}
-
-						const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-						if (bgImage) {
-							tl.fromTo(
-								bgImage,
-								{ filter: 'blur(4px)' },
-								{ filter: 'blur(0px)', duration: 1.3, ease: 'power2.out' },
-								0
-							);
-						}
-
-						tl.fromTo(
-							revealItems,
-							{ autoAlpha: 0, y: 18 },
-							{
-								autoAlpha: 1,
-								y: 0,
-								duration: 0.72,
-								stagger: 0.075
-							},
-							0.2
-						);
-
-						return () => {
-							gsap.set(revealItems, { clearProps: 'willChange' });
-						};
-					}
-				);
-			}, heroRoot);
-
-			destroyAnimation = () => {
-				mm.revert();
-				ctx.revert();
-			};
-		});
-
 		return () => {
 			active = false;
 			clearHeroWordTimers();
-			destroyAnimation?.();
 		};
 	});
 </script>
 
 <svelte:head>
 	<title>Shahzad Abaya's | Premium Modest Fashion</title>
+	<link rel="preload" as="image" href="/hero/custom-hero.webp" fetchpriority="high" />
 	<meta name="description" content={homeDescription} />
 	<meta
 		name="keywords"
@@ -353,16 +307,16 @@
 </svelte:head>
 
 <section
-	bind:this={heroRoot}
 	class="hero-cinematic relative isolate -mt-[4.25rem] min-h-[calc(100vh+20px)] overflow-hidden bg-[#eeece4] text-[#0a0a0a] md:-mt-[4.75rem]"
 >
 	<div class="hero-bg absolute inset-0 -z-30" data-depth="0">
 		<img
-			src="/hero/custom-hero.png"
+			src="/hero/custom-hero.webp"
 			alt="Shahzad Abayas hero banner"
-			width="1672"
-			height="941"
+			width="1600"
+			height="753"
 			fetchpriority="high"
+			decoding="async"
 			class="hero-bg__image h-full w-full scale-[1.02] bg-[#eadac8] object-cover object-[72%_center] sm:object-center"
 		/>
 	</div>
@@ -378,7 +332,9 @@
 			>
 				Timeless Elegance
 			</p>
-			<div class="mb-1 flex items-center justify-start gap-2 text-[#2a2a2a] sm:justify-center sm:gap-2.5">
+			<div
+				class="mb-1 flex items-center justify-start gap-2 text-[#2a2a2a] sm:justify-center sm:gap-2.5"
+			>
 				<span class="h-px w-6 bg-current sm:w-8"></span>
 				<span class="size-1.5 rotate-45 bg-current"></span>
 				<span class="h-px w-6 bg-current sm:w-8"></span>
@@ -399,7 +355,7 @@
 				• Modesty. Elegance. You •
 			</p>
 			<p
-				class="mt-1.5 max-w-[10rem] text-[0.42rem] leading-snug font-semibold text-[#3f3f3f] text-pretty sm:mx-auto sm:mt-2.5 sm:max-w-[16rem] sm:text-xs"
+				class="mt-1.5 max-w-[10rem] text-[0.42rem] leading-snug font-semibold text-pretty text-[#3f3f3f] sm:mx-auto sm:mt-2.5 sm:max-w-[16rem] sm:text-xs"
 			>
 				Discover our premium abaya collection crafted for every moment of your life.
 			</p>
@@ -407,46 +363,114 @@
 	</div>
 
 	<div
-		class="absolute bottom-8 left-[18%] z-20 hidden grid grid-cols-4 gap-5 text-center text-[#0a0a0a] sm:grid lg:left-[26%] lg:gap-7"
+		class="absolute bottom-8 left-[18%] z-20 grid hidden grid-cols-4 gap-5 text-center text-[#0a0a0a] sm:grid lg:left-[26%] lg:gap-7"
 	>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
-				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m12 3 7 6-7 12L5 9l7-6Z" />
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 9h14M9 9l3 12 3-12" />
+			<span
+				class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40"
+			>
+				<svg
+					class="size-4"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.8"
+						d="m12 3 7 6-7 12L5 9l7-6Z"
+					/>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.8"
+						d="M5 9h14M9 9l3 12 3-12"
+					/>
 				</svg>
 			</span>
-			<span class="text-[0.5rem] font-black leading-tight uppercase">Premium<br />Quality</span>
+			<span class="text-[0.5rem] leading-tight font-black uppercase">Premium<br />Quality</span>
 		</div>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
-				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 4C12 4 6 8 5 18c8 0 14-5 15-14Z" />
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 18c4-5 8-7 13-9" />
+			<span
+				class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40"
+			>
+				<svg
+					class="size-4"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.8"
+						d="M20 4C12 4 6 8 5 18c8 0 14-5 15-14Z"
+					/>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.8"
+						d="M5 18c4-5 8-7 13-9"
+					/>
 				</svg>
 			</span>
-			<span class="text-[0.5rem] font-black leading-tight uppercase">Lightweight<br />& Comfort</span>
+			<span class="text-[0.5rem] leading-tight font-black uppercase"
+				>Lightweight<br />& Comfort</span
+			>
 		</div>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
-				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" />
+			<span
+				class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40"
+			>
+				<svg
+					class="size-4"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.8"
+						d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"
+					/>
 					<circle cx="12" cy="12" r="3" stroke-width="1.8" />
 				</svg>
 			</span>
-			<span class="text-[0.5rem] font-black leading-tight uppercase">Elegant<br />Design</span>
+			<span class="text-[0.5rem] leading-tight font-black uppercase">Elegant<br />Design</span>
 		</div>
 		<div class="flex flex-col items-center gap-1.5">
-			<span class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40">
-				<svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3 19 6v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Z" />
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m9 12 2 2 4-5" />
+			<span
+				class="flex size-9 items-center justify-center rounded-full border border-[#0a0a0a]/28 bg-white/40"
+			>
+				<svg
+					class="size-4"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.8"
+						d="M12 3 19 6v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3Z"
+					/>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.8"
+						d="m9 12 2 2 4-5"
+					/>
 				</svg>
 			</span>
-			<span class="text-[0.5rem] font-black leading-tight uppercase">All Day<br />Confidence</span>
+			<span class="text-[0.5rem] leading-tight font-black uppercase">All Day<br />Confidence</span>
 		</div>
 	</div>
-
 </section>
 
 {#if saleTapeEnabled && saleTapeItems.length}
@@ -554,7 +578,9 @@
 					</div>
 					<div class="text-left leading-tight">
 						<span class="block text-xs font-black text-[#0a0a0a] uppercase">Free Shipping</span>
-						<span class="block text-[0.62rem] font-medium text-gray-500">On Full Advance Payment</span>
+						<span class="block text-[0.62rem] font-medium text-gray-500"
+							>On Full Advance Payment</span
+						>
 					</div>
 				</div>
 
@@ -762,77 +788,8 @@
 		overflow: hidden;
 	}
 
-	.hero-copy {
-		text-shadow: 0 2px 20px rgba(255, 255, 255, 0.34);
-	}
-
-	.hero-copy-rings {
-		width: min(48rem, 64vw);
-		aspect-ratio: 1;
-		border-radius: 9999px;
-		opacity: 0.42;
-		transform: translate(-28%, -50%);
-		background: repeating-radial-gradient(
-			circle at center,
-			transparent 0,
-			transparent 5.4rem,
-			rgba(197, 168, 128, 0.22) 5.45rem,
-			transparent 5.53rem
-		);
-		mask-image: linear-gradient(to right, black 48%, transparent 94%);
-	}
-
 	.hero-bg__image {
 		display: block;
-		will-change: transform, filter;
-	}
-
-	.hero-heading-stack {
-		display: inline-flex;
-		flex-direction: column;
-		gap: 0.04em;
-	}
-
-	.hero-heading-line {
-		display: flex;
-		flex-wrap: nowrap;
-		align-items: center;
-		gap: 0.2em;
-	}
-
-	.hero-heading-line--accent {
-		gap: 0.18em;
-	}
-
-	.hero-heading-logo {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 0.98em;
-		height: 0.98em;
-		margin-inline: 0.04em 0.02em;
-		padding: 0.035em;
-		border-radius: 0.3em 0.22em 0.34em 0.18em;
-		background: #111111;
-		box-shadow:
-			0 12px 24px rgba(10, 10, 10, 0.22),
-			-0.02em 0 0 0 rgba(255, 255, 255, 0.96),
-			0 -0.02em 0 0 rgba(255, 255, 255, 0.96);
-		transform: translateY(0.04em) rotate(-14deg);
-	}
-
-	.hero-heading-logo__image {
-		width: 88%;
-		height: 88%;
-		background: white;
-		border-radius: 9999px;
-		object-fit: contain;
-		transform: rotate(14deg);
-	}
-
-	.hero-brand-accent {
-		color: #9b794f;
-		font-style: italic;
 	}
 
 	.sale-tape-stage {
@@ -993,10 +950,6 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.hero-bg__slide {
-			transition: none;
-		}
-
 		.product-loop__track,
 		.review-photo-loop__track {
 			animation: none;
@@ -1005,30 +958,6 @@
 	}
 
 	@media (max-width: 640px) {
-		.hero-heading-stack {
-			gap: 0.02em;
-		}
-
-		.hero-heading-line {
-			flex-wrap: nowrap;
-		}
-
-		.hero-heading-line {
-			gap: 0.16em;
-		}
-
-		.hero-heading-logo {
-			width: 0.9em;
-			height: 0.9em;
-			border-radius: 0.22em;
-		}
-
-		.hero-copy-rings {
-			width: 34rem;
-			opacity: 0.3;
-			transform: translate(-48%, -50%);
-		}
-
 		.sale-tape-stage {
 			min-height: 3.3rem;
 			margin-inline: -2rem;

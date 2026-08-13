@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const category = {
 	name: 'Handmade Cutdana Lace Abayas',
 	slug: 'handmade-cutdana-lace-abayas',
-	imageUrl: '/products/cutdana-lace/cutdana-lace-sage-grey.png'
+	imageUrl: '/products/cutdana-lace/cutdana-lace-sage-grey.webp'
 };
 
 const items = [
@@ -24,11 +24,12 @@ const items = [
 const products = items.map(({ color, slug }) => ({
 	name: `Stuff Original Premium Nida Fabric Abaya - ${color}`,
 	slug: `stuff-original-premium-nida-fabric-abaya-${slug}`,
-	description: 'Full flair front-open abaya in original premium Nida fabric with handmade cutdana lace.',
+	description:
+		'Full flair front-open abaya in original premium Nida fabric with handmade cutdana lace.',
 	fabricDetails: 'Original premium Nida fabric, handmade cutdana lace trim, front-open flair cut.',
 	price: '6500',
 	salePrice: '5200',
-	images: [`/products/cutdana-lace/cutdana-lace-${slug}.png`],
+	images: [`/products/cutdana-lace/cutdana-lace-${slug}.webp`],
 	collections: [category.slug],
 	variants: [
 		{

@@ -6,15 +6,15 @@
 
 	const bannerSlides = [
 		{
-			image: '/banner-section/banner-1.png',
+			image: '/banner-section/banner-1.webp',
 			alt: 'Shahzad Abayas featured banner collection'
 		},
 		{
-			image: '/banner-section/banner-2.png',
+			image: '/banner-section/banner-2.webp',
 			alt: 'Shahzad Abayas premium modest wear banner'
 		},
 		{
-			image: '/banner-section/banner-3.png',
+			image: '/banner-section/banner-3.webp',
 			alt: 'Shahzad Abayas new arrival banner'
 		}
 	];
@@ -66,7 +66,8 @@
 					alt={slide.alt}
 					class="absolute inset-0 size-full object-contain object-center transition-transform duration-[800ms] ease-in-out sm:object-cover"
 					style="transform: translateX({(index - activeSlide) * 100}%);"
-					loading={index === 0 ? 'eager' : 'lazy'}
+					loading="lazy"
+					decoding="async"
 				/>
 			{/each}
 

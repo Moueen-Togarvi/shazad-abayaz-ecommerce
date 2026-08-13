@@ -58,7 +58,7 @@ const fallbackCollectionSeed: StorefrontCollectionBase[] = [
 		name: 'Georgette Abayas',
 		slug: 'georgette-abayas',
 		description: null,
-		imageUrl: '/products/georgette-abaya/georgette-abaya-slate-blue.png',
+		imageUrl: '/products/georgette-abaya/georgette-abaya-slate-blue.webp',
 		isVisible: true,
 		displayOrder: 0
 	},
@@ -67,7 +67,7 @@ const fallbackCollectionSeed: StorefrontCollectionBase[] = [
 		name: 'Nida Cutdana Abayas',
 		slug: 'nida-cutdana-abayas',
 		description: null,
-		imageUrl: '/products/nida-cutdana/nida-cutdana-teal-classic.png',
+		imageUrl: '/products/nida-cutdana/nida-cutdana-teal-classic.webp',
 		isVisible: true,
 		displayOrder: 1
 	},
@@ -76,7 +76,7 @@ const fallbackCollectionSeed: StorefrontCollectionBase[] = [
 		name: 'Handmade Cutdana Lace Abayas',
 		slug: 'handmade-cutdana-lace-abayas',
 		description: null,
-		imageUrl: '/products/cutdana-lace/cutdana-lace-sage-grey.png',
+		imageUrl: '/products/cutdana-lace/cutdana-lace-sage-grey.webp',
 		isVisible: true,
 		displayOrder: 2
 	}
@@ -116,13 +116,13 @@ const fallbackDemoNames = [
 ];
 
 const fallbackDemoImages = [
-	'/abaya11.png',
-	'/abaya22.png',
-	'/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png',
-	'/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png',
-	'/ChatGPT%20Image%20May%2025,%202026,%2006_25_13%20PM.png',
-	'/ChatGPT%20Image%20May%2025,%202026,%2006_07_28%20PM.png',
-	'/ChatGPT%20Image%20May%2025,%202026,%2006_25_25%20PM.png'
+	'/products/georgette-abaya/georgette-abaya-slate-blue.webp',
+	'/products/nida-cutdana/nida-cutdana-teal-classic.webp',
+	'/products/cutdana-lace/cutdana-lace-sage-grey.webp',
+	'/products/chiffon-dmc-stones-abaya/chiffon-dmc-sage-green.webp',
+	'/products/chest-chunnat-abaya/chest-chunnat-rosewood.webp',
+	'/products/dmc-stones-abaya/dmc-stones-navy-blue.webp',
+	'/products/georgette-abaya/georgette-abaya-blush-pink.webp'
 ];
 
 const fallbackDemoColors = ['Black', 'Emerald', 'Sage', 'Ivory', 'Navy', 'Charcoal', 'Olive'];
@@ -198,7 +198,7 @@ const fallbackProductSeed: StorefrontProduct[] = [
 		images: [
 			{
 				id: 'fallback-image-haya-1',
-				url: '/abaya11.png',
+				url: '/products/georgette-abaya/georgette-abaya-slate-blue.webp',
 				altText: 'Haya Everyday Abaya',
 				displayOrder: 0
 			}
@@ -236,7 +236,7 @@ const fallbackProductSeed: StorefrontProduct[] = [
 		images: [
 			{
 				id: 'fallback-image-emerald-1',
-				url: '/abaya22.png',
+				url: '/products/nida-cutdana/nida-cutdana-teal-classic.webp',
 				altText: 'Emerald Layered Abaya',
 				displayOrder: 0
 			}
@@ -265,7 +265,7 @@ const fallbackProductSeed: StorefrontProduct[] = [
 const fallbackReviewPhotos = [
 	{
 		id: 'fallback-review-photo-1',
-		url: '/ChatGPT%20Image%20May%2025,%202026,%2006_25_30%20PM.png'
+		url: '/products/cutdana-lace/cutdana-lace-sage-grey.webp'
 	}
 ];
 

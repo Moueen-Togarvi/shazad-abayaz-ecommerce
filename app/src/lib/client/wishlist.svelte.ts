@@ -20,7 +20,7 @@ const normalizeItem = (item: WishlistItem): WishlistItem => ({
 	name: item.name || "Shahzad Abaya's abaya",
 	price: Number(item.price || item.salePrice || 0),
 	salePrice: item.salePrice ? Number(item.salePrice) : null,
-	image: item.image || '/image.png'
+	image: item.image || '/image.webp'
 });
 
 export function createWishlist() {

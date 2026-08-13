@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 
 	let { form } = $props();
@@ -91,7 +92,15 @@
 						<div class="flex items-center gap-4">
 							<div class="h-16 w-12 flex-shrink-0 bg-gray-100">
 								{#if item.image}
-									<img src={item.image} alt={item.productName} class="h-full w-full object-cover" />
+									<img
+										src={cloudinaryUrl(item.image, 160)}
+										alt={item.productName}
+										width="48"
+										height="64"
+										loading="lazy"
+										decoding="async"
+										class="h-full w-full object-cover"
+									/>
 								{/if}
 							</div>
 							<div class="min-w-0 flex-1">

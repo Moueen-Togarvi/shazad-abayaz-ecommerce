@@ -3,6 +3,7 @@
 	import { navigating, page } from '$app/state';
 	import { env } from '$env/dynamic/public';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	import { onMount } from 'svelte';
 	import './layout.css';
 	import AbayizaLoader from '$lib/components/AbayizaLoader.svelte';
 	import AbayizaWordmark from '$lib/components/AbayizaWordmark.svelte';
@@ -25,7 +26,7 @@
 	let { children } = $props();
 	let mobileMenuOpen = $state(false);
 	let whatsAppMenuOpen = $state(false);
-	let scrollY = $state(0);
+	let isScrolled = $state(false);
 
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
@@ -48,7 +49,6 @@
 	const announcementLoop = Array.from({ length: 8 }, () => announcementItems).flat();
 
 	let isAdminRoute = $derived(page.url.pathname.startsWith('/shahzad-secure-admin-4db067e1'));
-	let isScrolled = $derived(scrollY > 24);
 	let isNavigating = $derived(Boolean(navigating.to));
 	let canonicalHref = $derived(canonicalUrl(page.url));
 	let robotsMeta = $derived(
@@ -101,6 +101,25 @@
 		])
 	);
 	let lastTrackedPath = '';
+
+	onMount(() => {
+		let frame = 0;
+		const updateScrollState = () => {
+			if (frame) return;
+			frame = requestAnimationFrame(() => {
+				isScrolled = window.scrollY > 24;
+				frame = 0;
+			});
+		};
+
+		updateScrollState();
+		window.addEventListener('scroll', updateScrollState, { passive: true });
+
+		return () => {
+			window.removeEventListener('scroll', updateScrollState);
+			if (frame) cancelAnimationFrame(frame);
+		};
+	});
 
 	function shouldNoindex(url: URL) {
 		const noindexPrefixes = [
@@ -180,8 +199,6 @@ fbq('init', '${metaPixelId}');`)
 	});
 </script>
 
-<svelte:window bind:scrollY />
-
 <svelte:head>
 	<meta name="robots" content={robotsMeta} />
 	<meta name="theme-color" content="#0a0a0a" />
@@ -244,7 +261,7 @@ fbq('init', '${metaPixelId}');`)
 							class="group inline-flex min-w-0 shrink-0 items-center gap-0 rounded-full border border-white/70 bg-white/86 py-1 pr-1.5 pl-1.5 shadow-[0_12px_30px_rgba(0,0,0,0.14)] backdrop-blur-md sm:gap-2.5 sm:pr-4"
 						>
 							<img
-								src="/image.png"
+								src="/image.webp"
 								alt="Shahzad Abaya's"
 								width="640"
 								height="640"
@@ -252,8 +269,7 @@ fbq('init', '${metaPixelId}');`)
 							/>
 							<span class="hidden leading-none sm:block">
 								<AbayizaWordmark class="block text-sm text-black" />
-								<span
-									class="mt-1 block text-[9px] font-semibold tracking-[0.08em] text-black"
+								<span class="mt-1 block text-[9px] font-semibold tracking-[0.08em] text-black"
 									>Where Elegance Meets Modesty</span
 								>
 							</span>
@@ -497,7 +513,7 @@ fbq('init', '${metaPixelId}');`)
 				<div class="grid grid-cols-1 gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr_1.1fr] lg:gap-10">
 					<div class="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6">
 						<h3 class="mb-4 text-xl text-white"><AbayizaWordmark /></h3>
-						<p class="text-sm leading-6 font-light text-white/60 text-pretty">
+						<p class="text-sm leading-6 font-light text-pretty text-white/60">
 							Where elegance meets modesty — premium abayas crafted for everyday grace and
 							occasion-ready confidence.
 						</p>
@@ -522,7 +538,9 @@ fbq('init', '${metaPixelId}');`)
 					</div>
 
 					<div class="pt-2">
-						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-white/80 uppercase">Support</h4>
+						<h4 class="mb-5 text-xs font-black tracking-[0.18em] text-white/80 uppercase">
+							Support
+						</h4>
 						<ul class="space-y-3 text-sm font-light text-white/58">
 							<li><a href="/contact" class="transition-colors hover:text-white">Contact Us</a></li>
 							<li>
@@ -532,7 +550,9 @@ fbq('init', '${metaPixelId}');`)
 								<a href="/size-guide" class="transition-colors hover:text-white">Size Guide</a>
 							</li>
 							<li>
-								<a href="/policies/privacy" class="transition-colors hover:text-white">Privacy Policy</a>
+								<a href="/policies/privacy" class="transition-colors hover:text-white"
+									>Privacy Policy</a
+								>
 							</li>
 						</ul>
 					</div>
@@ -613,7 +633,7 @@ fbq('init', '${metaPixelId}');`)
 						class="inline-flex items-center gap-2 text-sm font-black tracking-[0.16em] text-white uppercase transition-colors hover:text-[#c8ff46] sm:text-base"
 					>
 						<img
-							src="/final%20logo%20bhai%20shb.png"
+							src="/final%20logo%20bhai%20shb.webp"
 							alt=""
 							class="h-6 w-6 rounded-full object-cover ring-1 ring-white/20"
 							loading="lazy"

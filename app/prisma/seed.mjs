@@ -16,7 +16,7 @@ const categories = [
 	{
 		name: 'Georgette Abayas',
 		slug: 'georgette-abayas',
-		imageUrl: '/products/georgette-abaya/georgette-abaya-slate-blue.png'
+		imageUrl: '/products/georgette-abaya/georgette-abaya-slate-blue.webp'
 	}
 ];
 
@@ -43,7 +43,7 @@ const products = georgetteColors.map(({ color, slug }) => ({
 	fabricDetails: 'Soft georgette fabric, front-open flair cut, elastic cuffs.',
 	price: '3500',
 	salePrice: '2500',
-	images: [`/products/georgette-abaya/georgette-abaya-${slug}.png`],
+	images: [`/products/georgette-abaya/georgette-abaya-${slug}.webp`],
 	collections: ['georgette-abayas'],
 	variants: [
 		{

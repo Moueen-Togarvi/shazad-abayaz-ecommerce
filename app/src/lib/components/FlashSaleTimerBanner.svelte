@@ -3,7 +3,7 @@
 
 	let { settings = {} } = $props<{ settings?: Record<string, any> }>();
 
-	const staticFlashSaleImage = '/products/georgette-abaya/georgette-abaya-charcoal-grey.png';
+	const staticFlashSaleImage = '/products/georgette-abaya/georgette-abaya-charcoal-grey.webp';
 
 	function getInitialTime() {
 		const h = settings.flashSaleHours !== undefined ? Number(settings.flashSaleHours) : 2;
@@ -99,6 +99,10 @@
 					<img
 						src={staticFlashSaleImage}
 						alt="Limited edition abaya flash sale"
+						width="380"
+						height="390"
+						loading="lazy"
+						decoding="async"
 						class="relative z-10 h-full w-full object-cover object-top drop-shadow-[0_18px_28px_rgba(0,0,0,0.12)]"
 					/>
 

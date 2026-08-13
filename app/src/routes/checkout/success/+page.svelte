@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cart } from '$lib/client/cart.svelte';
 	import { trackPurchaseOnce } from '$lib/client/pixels';
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 	import { onMount } from 'svelte';
 
@@ -75,8 +76,7 @@
 				<div class="relative my-6 border-t border-dashed border-gray-300">
 					<span class="absolute top-1/2 -left-10 h-8 w-8 -translate-y-1/2 rounded-full bg-white"
 					></span>
-					<span
-						class="absolute top-1/2 -right-10 h-8 w-8 -translate-y-1/2 rounded-full bg-white"
+					<span class="absolute top-1/2 -right-10 h-8 w-8 -translate-y-1/2 rounded-full bg-white"
 					></span>
 				</div>
 
@@ -118,8 +118,12 @@
 								<div class="h-16 w-14 shrink-0 overflow-hidden rounded-lg bg-gray-100">
 									{#if item.image}
 										<img
-											src={item.image}
+											src={cloudinaryUrl(item.image, 160)}
 											alt={item.productName}
+											width="56"
+											height="64"
+											loading="lazy"
+											decoding="async"
 											class="h-full w-full object-cover"
 										/>
 									{/if}
@@ -127,7 +131,8 @@
 								<div class="min-w-0 flex-1">
 									<p class="font-medium text-[#0a0a0a]">{item.productName}</p>
 									<p class="mt-1 text-xs text-gray-500">
-										{[item.variantColor, item.variantSize].filter(Boolean).join(' / ') || "Shahzad Abaya's"} x
+										{[item.variantColor, item.variantSize].filter(Boolean).join(' / ') ||
+											"Shahzad Abaya's"} x
 										{item.quantity}
 									</p>
 								</div>

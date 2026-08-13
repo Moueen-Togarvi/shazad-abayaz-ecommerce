@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cart } from '$lib/client/cart.svelte';
 	import { wishlist, type WishlistItem } from '$lib/client/wishlist.svelte';
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 
 	function itemPrice(item: WishlistItem) {
@@ -60,10 +61,12 @@
 							aria-label={`View ${item.name}`}
 						>
 							<img
-								src={item.image}
+								src={cloudinaryUrl(item.image, 640)}
 								alt={item.name}
 								width="1200"
 								height="900"
+								loading="lazy"
+								decoding="async"
 								class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
 							/>
 							<span

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { SITE_NAME, absoluteUrl, jsonLdScript } from '$lib/shared/seo';
 
 	let { data } = $props();
@@ -27,20 +28,20 @@
 	);
 
 	const fallbackImages = [
-		'/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png',
-		'/abaya22.png',
-		'/abaya11.png',
-		'/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png',
-		'/ChatGPT%20Image%20May%2025,%202026,%2006_25_13%20PM.png',
-		'/ChatGPT%20Image%20May%2025,%202026,%2006_07_28%20PM.png'
+		'/products/georgette-abaya/georgette-abaya-slate-blue.webp',
+		'/products/nida-cutdana/nida-cutdana-teal-classic.webp',
+		'/products/cutdana-lace/cutdana-lace-sage-grey.webp',
+		'/products/chiffon-dmc-stones-abaya/chiffon-dmc-sage-green.webp',
+		'/products/chest-chunnat-abaya/chest-chunnat-rosewood.webp',
+		'/products/dmc-stones-abaya/dmc-stones-navy-blue.webp'
 	];
 
 	const slugImages: Record<string, string> = {
-		'nida-essentials': '/ChatGPT%20Image%20May%2025,%202026,%2006_25_42%20PM.png',
-		occasion: '/abaya22.png',
-		'daily-wear': '/abaya11.png',
-		'premium-nida': '/ChatGPT%20Image%20May%2025,%202026,%2006_25_13%20PM.png',
-		'eid-edit': '/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png'
+		'nida-essentials': '/products/nida-cutdana/nida-cutdana-teal-classic.webp',
+		occasion: '/products/chiffon-dmc-stones-abaya/chiffon-dmc-sage-green.webp',
+		'daily-wear': '/products/georgette-abaya/georgette-abaya-slate-blue.webp',
+		'premium-nida': '/products/nida-cutdana/nida-cutdana-mocha-taupe.webp',
+		'eid-edit': '/products/cutdana-lace/cutdana-lace-navy-blue.webp'
 	};
 
 	let filteredCollections = $derived(
@@ -88,8 +89,8 @@
 				<div>
 					<h1 class="font-serif text-4xl leading-tight uppercase sm:text-5xl">Collections</h1>
 					<p class="mt-4 max-w-2xl text-sm leading-6 font-medium text-[#52524f] sm:text-base">
-						Browse Shahzad Abaya's by edit: everyday nida, occasion layers, Eid pieces, and premium black
-						abayas.
+						Browse Shahzad Abaya's by edit: everyday nida, occasion layers, Eid pieces, and premium
+						black abayas.
 					</p>
 				</div>
 
@@ -139,10 +140,12 @@
 					>
 						<div class="relative aspect-[4/3] overflow-hidden bg-[#eeece4]">
 							<img
-								src={collectionImage(collection, index)}
+								src={cloudinaryUrl(collectionImage(collection, index), 640)}
 								alt={collection.name}
 								width="1200"
 								height="900"
+								loading={index < 2 ? 'eager' : 'lazy'}
+								decoding="async"
 								class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
 							/>
 							<div

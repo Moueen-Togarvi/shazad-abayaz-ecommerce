@@ -65,6 +65,7 @@ export const load: PageServerLoad = async () => {
 				prisma.collection.findMany({
 					where: { isVisible: true },
 					orderBy: { displayOrder: 'asc' },
+					take: 12,
 					include: {
 						_count: {
 							select: { products: true }
@@ -73,7 +74,8 @@ export const load: PageServerLoad = async () => {
 				}),
 				prisma.reviewPhoto.findMany({
 					where: { isVisible: true },
-					orderBy: [{ displayOrder: 'asc' }, { createdAt: 'desc' }]
+					orderBy: [{ displayOrder: 'asc' }, { createdAt: 'desc' }],
+					take: 12
 				}),
 				storefrontSectionProduct?.findMany
 					? storefrontSectionProduct.findMany({

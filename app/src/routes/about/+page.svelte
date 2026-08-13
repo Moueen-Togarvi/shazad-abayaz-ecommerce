@@ -48,10 +48,11 @@
 	class="relative isolate -mt-[4.25rem] overflow-hidden bg-[#0a0a0a] text-white md:-mt-[4.75rem]"
 >
 	<img
-		src="/ChatGPT%20Image%20May%2025,%202026,%2006_25_51%20PM.png"
+		src="/hero/custom-hero.webp"
 		alt="Shahzad Abaya's abaya editorial"
-		width="1670"
-		height="941"
+		width="1600"
+		height="753"
+		decoding="async"
 		class="absolute inset-0 -z-30 h-full w-full object-cover object-center"
 		fetchpriority="high"
 	/>

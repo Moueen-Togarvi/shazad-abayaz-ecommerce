@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cart } from '$lib/client/cart.svelte';
 	import { cartPixelPayload, trackInitiateCheckout } from '$lib/client/pixels';
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 	import { SUPPORT_PHONE_DISPLAY } from '$lib/shared/seo';
 	import { onMount } from 'svelte';
@@ -574,7 +575,15 @@
 				{#each cart.items as item}
 					<div class="mb-4 flex items-center rounded-2xl border border-black/6 bg-[#fcfaf6] p-3">
 						<div class="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-gray-100 sm:h-16 sm:w-16">
-							<img src={item.image} alt={item.name} class="h-full w-full object-cover" />
+							<img
+								src={cloudinaryUrl(item.image, 160)}
+								alt={item.name}
+								width="64"
+								height="64"
+								loading="lazy"
+								decoding="async"
+								class="h-full w-full object-cover"
+							/>
 							<span
 								class="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gray-500 text-[10px] text-white"
 							>

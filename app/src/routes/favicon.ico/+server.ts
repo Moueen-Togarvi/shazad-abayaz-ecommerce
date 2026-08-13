@@ -4,6 +4,6 @@ export const GET: RequestHandler = () =>
 	new Response(null, {
 		status: 308,
 		headers: {
-			Location: '/image.png'
+			Location: '/image.webp'
 		}
 	});

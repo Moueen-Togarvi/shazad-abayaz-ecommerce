@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const category = {
 	name: 'Nida Cutdana Abayas',
 	slug: 'nida-cutdana-abayas',
-	imageUrl: '/products/nida-cutdana/nida-cutdana-teal-classic.png'
+	imageUrl: '/products/nida-cutdana/nida-cutdana-teal-classic.webp'
 };
 
 const items = [
@@ -29,7 +29,7 @@ const products = items.map(({ color, slug }) => ({
 	fabricDetails: 'Premium Nida fabric, handmade cutdana lace embroidery, front-open flair cut.',
 	price: '6500',
 	salePrice: '5200',
-	images: [`/products/nida-cutdana/nida-cutdana-${slug}.png`],
+	images: [`/products/nida-cutdana/nida-cutdana-${slug}.webp`],
 	collections: [category.slug],
 	variants: [
 		{

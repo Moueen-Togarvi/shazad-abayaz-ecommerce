@@ -4,7 +4,7 @@ export const SITE_DESCRIPTION =
 	"Shop premium Shahzad Abaya's abayas for modest everyday wear, occasion styling, Eid edits, and soft nida essentials.";
 export const SITE_KEYWORDS =
 	"abayas, modest fashion, nida abaya, premium abayas, black abaya, eid abaya, Shahzad Abaya's";
-export const SITE_IMAGE = '/image.png';
+export const SITE_IMAGE = '/image.webp';
 export const TIKTOK_URL = 'https://www.tiktok.com/@_abayiza_';
 export const STORE_ADDRESS = 'H block Meena Bazar Attock city';
 export const SUPPORT_PHONE_DISPLAY = '03269222727';

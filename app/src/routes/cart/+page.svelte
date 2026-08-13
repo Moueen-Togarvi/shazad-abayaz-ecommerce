@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { cart } from '$lib/client/cart.svelte';
+	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
 
 	let giftWrapPrice = 500;
@@ -49,8 +50,12 @@
 							<div class="mb-4 flex w-full md:mb-0 md:w-1/2">
 								<a href="/shop/{item.productId}" class="block h-32 w-24 flex-shrink-0 bg-gray-100">
 									<img
-										src={item.image}
+										src={cloudinaryUrl(item.image, 240)}
 										alt={item.name}
+										width="96"
+										height="128"
+										loading="lazy"
+										decoding="async"
 										class="h-full w-full object-cover object-top"
 									/>
 								</a>
@@ -112,8 +117,8 @@
 								Add Premium Gift Wrapping ({formatMoney(giftWrapPrice)})
 							</span>
 							<span class="text-xs font-light text-gray-500"
-								>Your items will be beautifully packaged in our signature Shahzad Abaya's gift box with a
-								satin ribbon.</span
+								>Your items will be beautifully packaged in our signature Shahzad Abaya's gift box
+								with a satin ribbon.</span
 							>
 						</div>
 					</label>

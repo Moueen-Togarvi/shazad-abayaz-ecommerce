@@ -83,14 +83,6 @@
 		contain: paint;
 	}
 
-	.hero-bg img {
-		transform-origin: 50% 50%;
-		will-change: transform, filter;
-	}
-
-	.hero-reveal {
-		will-change: transform, opacity;
-	}
 }
 
 @media (min-width: 1024px) {
@@ -100,10 +92,6 @@
 		aspect-ratio: auto;
 	}
 
-	.hero-bg__slide {
-		object-fit: cover;
-		object-position: center top;
-	}
 }
 
 @media (max-width: 640px) {
@@ -123,8 +111,7 @@
 		transition-duration: 0.01ms !important;
 	}
 
-	.hero-bg img,
-	.hero-reveal {
+	.hero-bg img {
 		filter: none !important;
 		opacity: 1 !important;
 		transform: none !important;

@@ -33,6 +33,26 @@ function filtersFrom(url: URL) {
 	};
 }
 
+function databaseWhere(filters: ReturnType<typeof filtersFrom>) {
+	const where: Record<string, any> = { isActive: true };
+	const and: Record<string, any>[] = [];
+
+	if (filters.q) {
+		where.OR = [
+			{ name: { contains: filters.q, mode: 'insensitive' } },
+			{ slug: { contains: filters.q, mode: 'insensitive' } },
+			{ description: { contains: filters.q, mode: 'insensitive' } },
+			{ fabricDetails: { contains: filters.q, mode: 'insensitive' } }
+		];
+	}
+	if (filters.category) where.collections = { some: { slug: filters.category } };
+	if (filters.color) and.push({ variants: { some: { color: filters.color } } });
+	if (filters.size) and.push({ variants: { some: { size: filters.size } } });
+	if (and.length) where.AND = and;
+
+	return where;
+}
+
 function productMatchesFilters(product: any, filters: ReturnType<typeof filtersFrom>) {
 	const query = filters.q.toLowerCase();
 	const matchesQuery =
@@ -101,32 +121,37 @@ export const load: PageServerLoad = async ({ url }) => {
 	const requestedPage = requestedPageFrom(url);
 
 	try {
-		const [allProducts, collections] = await Promise.all([
+		const where = databaseWhere(filters);
+		const [filteredTotal, totalProducts, optionProducts, collections] = await Promise.all([
+			prisma.product.count({ where }),
+			prisma.product.count({ where: { isActive: true } }),
 			prisma.product.findMany({
 				where: { isActive: true },
-				include: productInclude,
-				orderBy: { createdAt: 'desc' }
+				select: { variants: { select: { color: true, size: true } } }
 			}),
 			prisma.collection.findMany({
 				where: { isVisible: true },
 				orderBy: { displayOrder: 'asc' }
 			})
 		]);
-		const serializedProducts = allProducts.map(serializeStorefrontProduct);
-		const products = serializedProducts.filter((product: any) =>
-			productMatchesFilters(product, filters)
-		);
-		const options = buildOptions(serializedProducts);
-		const pagedProducts = pageSlice(products, requestedPage);
+		const pagination = buildPagination(filteredTotal, requestedPage);
+		const products = await prisma.product.findMany({
+			where,
+			include: productInclude,
+			orderBy: { createdAt: 'desc' },
+			skip: (pagination.page - 1) * SHOP_PAGE_SIZE,
+			take: SHOP_PAGE_SIZE
+		});
+		const options = buildOptions(optionProducts);
 
 		return {
-			products: pagedProducts.products,
+			products: products.map(serializeStorefrontProduct),
 			collections,
 			colors: options.colors,
 			sizes: options.sizes,
 			filters,
-			pagination: pagedProducts.pagination,
-			totalProducts: serializedProducts.length,
+			pagination,
+			totalProducts,
 			selectedCollection: filters.category
 		};
 	} catch (error) {
