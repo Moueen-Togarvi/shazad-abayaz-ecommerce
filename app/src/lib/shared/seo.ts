@@ -5,7 +5,7 @@ export const SITE_DESCRIPTION =
 export const SITE_KEYWORDS =
 	"abayas, modest fashion, nida abaya, premium abayas, black abaya, eid abaya, Shahzad Abaya's";
 export const SITE_IMAGE = '/image.webp';
-export const TIKTOK_URL = 'https://www.tiktok.com/@_abayiza_';
+export const TIKTOK_URL = 'https://www.tiktok.com/@shahzadabaya';
 export const STORE_ADDRESS = 'H block Meena Bazar Attock city';
 export const SUPPORT_PHONE_DISPLAY = '03269222727';
 export const SUPPORT_PHONE_INTERNATIONAL = '+92 326 9222727';

@@ -593,7 +593,7 @@ fbq('init', '${metaPixelId}');`)
 					</div>
 					<div class="mt-4 flex items-center gap-3 text-gray-500 md:mt-0">
 						<a
-							href="https://www.tiktok.com/@_abayiza_"
+							href={TIKTOK_URL}
 							target="_blank"
 							rel="noreferrer"
 							class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-white/30 hover:bg-white/12"
