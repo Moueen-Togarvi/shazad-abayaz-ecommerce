@@ -120,7 +120,7 @@
 >
 	<!-- Image Container -->
 	<div
-		class="relative block overflow-hidden bg-[#eeece4] {layout === 'list'
+		class="relative block overflow-hidden bg-[#d8c3b6] {layout === 'list'
 			? `w-full sm:w-64 sm:shrink-0 ${aspectRatio}`
 			: `w-full ${aspectRatio}`}"
 	>
@@ -132,7 +132,7 @@
 				height="640"
 				loading="lazy"
 				decoding="async"
-				class="h-full w-full object-contain object-center"
+				style="height: 100%; width: auto; max-width: 100%; margin-inline: auto; object-fit: contain; object-position: center;"
 			/>
 		</a>
 
@@ -191,7 +191,10 @@
 			preserveAspectRatio="none"
 			aria-hidden="true"
 		>
-			<path d="M0 20V9.3C64-2.7 112 12 174 7 242.5 1.3 296 2.7 360 11.7V20H0Z" fill="currentColor" />
+			<path
+				d="M0 20V9.3C64-2.7 112 12 174 7 242.5 1.3 296 2.7 360 11.7V20H0Z"
+				fill="currentColor"
+			/>
 		</svg>
 	</div>
 
@@ -228,7 +231,9 @@
 					class="inline-flex items-center gap-1 rounded bg-[#0a0a0a] px-1.5 py-0.5 text-[0.42rem] font-black text-white uppercase shadow-[0_6px_14px_rgba(0,0,0,0.2)] sm:text-[0.48rem]"
 				>
 					<svg class="size-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-						<path d="M10 1.8 12.7 7.3l6.1.9-4.4 4.3 1 6.1L10 15.7l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L10 1.8Z" />
+						<path
+							d="M10 1.8 12.7 7.3l6.1.9-4.4 4.3 1 6.1L10 15.7l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L10 1.8Z"
+						/>
 					</svg>
 					Premium
 				</span>
@@ -273,7 +278,9 @@
 
 				<div class="flex min-w-0 items-center justify-center gap-1 px-1 py-1">
 					<svg class="size-4 shrink-0 text-[#0a0a0a]" fill="currentColor" viewBox="0 0 20 20">
-						<path d="M17.7 9.3 10.7 2.3A1 1 0 0 0 10 2H3a1 1 0 0 0-1 1v7c0 .3.1.5.3.7l7 7a1 1 0 0 0 1.4 0l7-7a1 1 0 0 0 0-1.4ZM6 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
+						<path
+							d="M17.7 9.3 10.7 2.3A1 1 0 0 0 10 2H3a1 1 0 0 0-1 1v7c0 .3.1.5.3.7l7 7a1 1 0 0 0 1.4 0l7-7a1 1 0 0 0 0-1.4ZM6 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+						/>
 					</svg>
 					<span class="text-[0.46rem] leading-tight font-black uppercase sm:text-[0.54rem]">
 						{discountPercent || 20}% Off Sale
@@ -282,7 +289,9 @@
 
 				<div class="flex min-w-0 items-center justify-center gap-1 px-1 py-1">
 					<svg class="size-4 shrink-0 text-[#2a2a2a]" fill="currentColor" viewBox="0 0 20 20">
-						<path d="M5 5a3 3 0 1 1 5 2.2A3 3 0 1 1 15 5h1a1 1 0 0 1 1 1v3H3V6a1 1 0 0 1 1-1h1Zm2 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1Zm4 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1ZM3 11h6v7H5a2 2 0 0 1-2-2v-5Zm8 7v-7h6v5a2 2 0 0 1-2 2h-4Z" />
+						<path
+							d="M5 5a3 3 0 1 1 5 2.2A3 3 0 1 1 15 5h1a1 1 0 0 1 1 1v3H3V6a1 1 0 0 1 1-1h1Zm2 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1Zm4 0h2a1 1 0 1 0-1-1 1 1 0 0 0-1 1ZM3 11h6v7H5a2 2 0 0 1-2-2v-5Zm8 7v-7h6v5a2 2 0 0 1-2 2h-4Z"
+						/>
 					</svg>
 					<span class="text-[0.46rem] leading-tight font-black uppercase sm:text-[0.54rem]">
 						Limited Offer
@@ -315,7 +324,7 @@
 						</span>
 						{#if product.salePrice}
 							<span
-								class="text-[0.46rem] font-bold text-red-600 line-through tabular-nums sm:text-[0.68rem]"
+								class="text-[0.46rem] font-bold text-red-600 tabular-nums line-through sm:text-[0.68rem]"
 							>
 								{formatMoney(product.price)}
 							</span>
