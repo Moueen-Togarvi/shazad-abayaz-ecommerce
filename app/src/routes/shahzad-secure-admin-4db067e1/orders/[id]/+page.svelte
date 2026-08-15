@@ -1,13 +1,6 @@
 <script lang="ts">
 	import { formatMoney } from '$lib/shared/money';
-	import {
-		Badge,
-		Button,
-		Card,
-		Modal,
-		PageHeader,
-		orderStatus
-	} from '$lib/components/admin/ui';
+	import { Badge, Button, Card, Modal, PageHeader, orderStatus } from '$lib/components/admin/ui';
 
 	let { data, form } = $props();
 	let order = $derived(data.order as any);
@@ -24,6 +17,7 @@
 				: '/shahzad-secure-admin-4db067e1/orders'
 	);
 	const status = $derived(orderStatus(order.status));
+	const labelBase = $derived(`/shahzad-secure-admin-4db067e1/orders/${order.id}/shipping-label`);
 </script>
 
 <svelte:head>
@@ -31,8 +25,46 @@
 </svelte:head>
 
 <div class="mx-auto max-w-7xl pb-12">
-	<PageHeader title={order.orderNumber} subtitle={`Placed ${new Date(order.createdAt).toLocaleString()} · ${order.items.length} item${order.items.length === 1 ? '' : 's'}`} backHref={backHref}>
+	<PageHeader
+		title={order.orderNumber}
+		subtitle={`Placed ${new Date(order.createdAt).toLocaleString()} · ${order.items.length} item${order.items.length === 1 ? '' : 's'}`}
+		{backHref}
+	>
 		{#snippet actions()}
+			<Button href={`${labelBase}.pdf`} variant="secondary" download>
+				<svg
+					class="h-4 w-4"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"
+					/>
+				</svg>
+				Download PDF
+			</Button>
+			<Button href={`${labelBase}/print`} variant="primary" target="_blank" rel="noreferrer">
+				<svg
+					class="h-4 w-4"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					aria-hidden="true"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M6 9V3h12v6M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2m-10-4h12v7H6v-7z"
+					/>
+				</svg>
+				Print Label
+			</Button>
 			<Badge tone={status.tone}>{status.label}</Badge>
 			<Badge tone="neutral">Cash on Delivery</Badge>
 		{/snippet}
@@ -106,13 +138,17 @@
 			<!-- Items -->
 			<Card title="Items in this order">
 				{#snippet header()}
-					<Badge tone="neutral">{order.items.length} item{order.items.length === 1 ? '' : 's'}</Badge>
+					<Badge tone="neutral"
+						>{order.items.length} item{order.items.length === 1 ? '' : 's'}</Badge
+					>
 				{/snippet}
 
 				<div class="-m-6 divide-y divide-admin-border">
 					{#each order.items as item (item.id)}
 						<div class="grid gap-4 p-5 md:grid-cols-[7.5rem_1fr_auto] md:items-center">
-							<div class="h-36 overflow-hidden rounded-xl border border-admin-border bg-gray-100 md:h-32">
+							<div
+								class="h-36 overflow-hidden rounded-xl border border-admin-border bg-gray-100 md:h-32"
+							>
 								{#if item.image}
 									<img
 										src={item.image}
@@ -120,7 +156,9 @@
 										class="h-full w-full object-cover object-center"
 									/>
 								{:else}
-									<div class="flex h-full items-center justify-center text-xs font-medium text-gray-400">
+									<div
+										class="flex h-full items-center justify-center text-xs font-medium text-gray-400"
+									>
 										No image
 									</div>
 								{/if}
@@ -139,7 +177,9 @@
 							</div>
 							<div class="text-left md:text-right">
 								<p class="text-sm text-gray-400">{formatMoney(item.priceAtPurchase)} each</p>
-								<p class="mt-1 text-lg font-semibold text-gray-900">{formatMoney(item.lineTotal)}</p>
+								<p class="mt-1 text-lg font-semibold text-gray-900">
+									{formatMoney(item.lineTotal)}
+								</p>
 							</div>
 						</div>
 					{/each}
@@ -161,7 +201,9 @@
 					<div class="flex justify-between text-gray-600">
 						<span>Shipping</span><span>{formatMoney(order.shippingCost)}</span>
 					</div>
-					<div class="flex justify-between border-t border-admin-border pt-3 text-base font-semibold text-gray-900">
+					<div
+						class="flex justify-between border-t border-admin-border pt-3 text-base font-semibold text-gray-900"
+					>
 						<span>Total due</span><span>{formatMoney(order.totalAmount)}</span>
 					</div>
 				</div>
@@ -169,6 +211,50 @@
 		</div>
 
 		<aside class="space-y-6">
+			<!-- Shipping label -->
+			<Card title="Shipping label">
+				<div class="rounded-xl border border-dashed border-admin-border bg-gray-50 p-4">
+					<div class="flex items-start gap-3">
+						<div
+							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-gray-700 shadow-sm"
+						>
+							<svg
+								class="h-5 w-5"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.8"
+									d="M3 5v14M7 5v14M10 5v14M14 5v14M16 5v14M21 5v14"
+								/>
+							</svg>
+						</div>
+						<div>
+							<p class="text-sm font-semibold text-gray-900">Ready automatically</p>
+							<p class="mt-1 text-xs leading-5 text-gray-500">
+								Includes the order barcode, QR code, address, items and COD amount.
+							</p>
+						</div>
+					</div>
+					<div class="mt-4 grid grid-cols-2 gap-2">
+						<Button href={`${labelBase}.pdf`} variant="secondary" size="sm" download
+							>Download</Button
+						>
+						<Button
+							href={`${labelBase}/print`}
+							variant="primary"
+							size="sm"
+							target="_blank"
+							rel="noreferrer">Print</Button
+						>
+					</div>
+				</div>
+			</Card>
+
 			<!-- Customer -->
 			<Card title="Customer">
 				<div class="space-y-3 text-sm text-gray-600">
@@ -178,13 +264,15 @@
 					</div>
 					<div>
 						<p class="text-xs font-medium tracking-wide text-gray-400 uppercase">Email</p>
-						<p class="mt-0.5 break-all font-medium text-gray-900">
+						<p class="mt-0.5 font-medium break-all text-gray-900">
 							{order.customerEmail || 'No email saved'}
 						</p>
 					</div>
 					<div>
 						<p class="text-xs font-medium tracking-wide text-gray-400 uppercase">Mobile</p>
-						<p class="mt-0.5 font-medium text-gray-900">{order.customerPhone || 'No phone saved'}</p>
+						<p class="mt-0.5 font-medium text-gray-900">
+							{order.customerPhone || 'No phone saved'}
+						</p>
 					</div>
 				</div>
 			</Card>
@@ -195,7 +283,8 @@
 					<div>
 						<p class="text-xs font-medium tracking-wide text-gray-400 uppercase">Name</p>
 						<p class="mt-0.5 font-medium text-gray-900">
-							{address.firstName || '—'} {address.lastName || ''}
+							{address.firstName || '—'}
+							{address.lastName || ''}
 						</p>
 					</div>
 					<div>
@@ -241,7 +330,9 @@
 					</div>
 					<div class="flex items-center justify-between">
 						<span class="text-gray-500">Updated</span>
-						<span class="font-medium text-gray-900">{new Date(order.updatedAt).toLocaleDateString()}</span>
+						<span class="font-medium text-gray-900"
+							>{new Date(order.updatedAt).toLocaleDateString()}</span
+						>
 					</div>
 				</div>
 			</Card>
