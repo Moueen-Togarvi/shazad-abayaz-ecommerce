@@ -12,6 +12,13 @@ export const HOME_SECTION_CONFIGS = [
 		homepageLimit: 4
 	},
 	{
+		key: 'tie-n-die-abaya',
+		eyebrow: 'Editorial Showcase',
+		title: 'Tie N Die Abaya',
+		description: 'Soft Nida abayas presented in graceful gradient shades.',
+		homepageLimit: 4
+	},
+	{
 		key: 'new-arrivals',
 		eyebrow: 'New Arrivals',
 		title: 'New Arrivals',

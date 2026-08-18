@@ -9,6 +9,7 @@
 	import FlashSaleTimerBanner from '$lib/components/FlashSaleTimerBanner.svelte';
 	import CategoryCircleCards from '$lib/components/CategoryCircleCards.svelte';
 	import ProductCard from '$lib/components/ProductCard.svelte';
+	import TieNDyeShowcase from '$lib/components/TieNDyeShowcase.svelte';
 
 	import { cloudinaryUrl } from '$lib/shared/cloudinary-image';
 	import { formatMoney } from '$lib/shared/money';
@@ -84,6 +85,7 @@
 	}
 
 	let signatureCollectionsSection = $derived(homeSection('signature-collections', 4));
+	let tieNDyeSection = $derived(homeSection('tie-n-die-abaya', 4));
 	let newArrivalsSection = $derived(homeSection('new-arrivals', 4));
 	let mostLovedSection = $derived(homeSection('most-loved', 8));
 	let curatedEdits = $derived(
@@ -551,6 +553,9 @@
 		{/if}
 	</div>
 </section>
+
+<!-- Tie N Die editorial product showcase -->
+<TieNDyeShowcase products={tieNDyeSection.products} />
 
 <!-- Abaya Low-Height Sliding Banner -->
 <AbayaSlidingBanner slides={bannerSlides} />
