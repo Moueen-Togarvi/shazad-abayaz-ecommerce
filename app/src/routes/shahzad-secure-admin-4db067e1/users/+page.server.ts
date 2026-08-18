@@ -1,7 +1,7 @@
 import { hashPassword, isSuperAdmin } from '$lib/server/admin-auth';
 import { setAdminFlash } from '$lib/server/admin-flash';
 import prisma from '$lib/server/prisma';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 const roles = ['CUSTOMER', 'EDITOR', 'SUPER_ADMIN'];
@@ -15,6 +15,10 @@ const requireSuperAdmin = (locals: App.Locals) => {
 };
 
 export const load: PageServerLoad = async ({ url, locals }) => {
+	if (!isSuperAdmin(locals.adminUser?.role)) {
+		throw error(403, 'Only a super admin can manage users.');
+	}
+
 	const q = url.searchParams.get('q')?.trim() || '';
 	const role = url.searchParams.get('role')?.trim() || '';
 

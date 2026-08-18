@@ -3,40 +3,13 @@ import {
 	isCloudinaryConfigured,
 	uploadImageToCloudinary
 } from '$lib/server/cloudinary-media';
+import { isUploadFile, readValidatedImageFile } from '$lib/server/image-upload-validation';
 import { randomUUID } from 'node:crypto';
 import { mkdir, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-type UploadFile = File & {
-	arrayBuffer: () => Promise<ArrayBuffer>;
-	name: string;
-	size: number;
-	type: string;
-};
-
-const allowedExtensions = new Set(['.avif', '.gif', '.jpeg', '.jpg', '.png', '.webp']);
-const extensionByType: Record<string, string> = {
-	'image/avif': '.avif',
-	'image/gif': '.gif',
-	'image/jpeg': '.jpg',
-	'image/png': '.png',
-	'image/webp': '.webp'
-};
-
 const uploadDir = () => path.join(process.cwd(), 'static', 'uploads', 'reviews');
-
-const isUploadFile = (value: FormDataEntryValue): value is UploadFile =>
-	typeof value === 'object' &&
-	value !== null &&
-	'arrayBuffer' in value &&
-	'name' in value &&
-	'size' in value;
-
-const imageExtension = (file: UploadFile) => {
-	const fromName = path.extname(file.name).toLowerCase();
-	if (allowedExtensions.has(fromName)) return fromName;
-	return extensionByType[file.type] ?? '.jpg';
-};
+const MAX_REVIEW_IMAGES_PER_REQUEST = 6;
 
 export const saveReviewImageFiles = async (data: FormData) => {
 	const files = data
@@ -45,6 +18,9 @@ export const saveReviewImageFiles = async (data: FormData) => {
 		.filter((file) => file.size > 0);
 
 	if (files.length === 0) return [];
+	if (files.length > MAX_REVIEW_IMAGES_PER_REQUEST) {
+		throw new Error(`You can upload up to ${MAX_REVIEW_IMAGES_PER_REQUEST} review images at once.`);
+	}
 
 	if (isCloudinaryConfigured()) {
 		return Promise.all(files.map((file) => uploadImageToCloudinary(file, 'reviews')));
@@ -54,12 +30,8 @@ export const saveReviewImageFiles = async (data: FormData) => {
 
 	const urls: string[] = [];
 	for (const file of files) {
-		if (!file.type.startsWith('image/')) {
-			throw new Error('Only image files are allowed.');
-		}
-
-		const filename = `${Date.now()}-${randomUUID()}${imageExtension(file)}`;
-		const bytes = Buffer.from(await file.arrayBuffer());
+		const { bytes, extension } = await readValidatedImageFile(file);
+		const filename = `${Date.now()}-${randomUUID()}${extension}`;
 		await writeFile(path.join(uploadDir(), filename), bytes);
 		urls.push(`/uploads/reviews/${filename}`);
 	}

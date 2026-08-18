@@ -1,12 +1,6 @@
 import { env } from '$env/dynamic/private';
+import { readValidatedImageFile, type UploadFile } from '$lib/server/image-upload-validation';
 import { createHash } from 'node:crypto';
-
-type UploadFile = File & {
-	arrayBuffer: () => Promise<ArrayBuffer>;
-	name: string;
-	size: number;
-	type: string;
-};
 
 type CloudinaryUploadResponse = {
 	secure_url?: string;
@@ -56,9 +50,7 @@ export const uploadImageToCloudinary = async (file: UploadFile, folder: string) 
 		throw new Error('Cloudinary is not configured.');
 	}
 
-	if (!file.type.startsWith('image/')) {
-		throw new Error('Only image files are allowed.');
-	}
+	const { bytes } = await readValidatedImageFile(file);
 
 	const timestamp = Math.floor(Date.now() / 1000);
 	const targetFolder = `${baseFolder()}/${folder}`.replace(/^\/+|\/+$/g, '');
@@ -68,7 +60,7 @@ export const uploadImageToCloudinary = async (file: UploadFile, folder: string) 
 	};
 
 	const body = new FormData();
-	body.set('file', new Blob([await file.arrayBuffer()], { type: file.type }), file.name);
+	body.set('file', new Blob([bytes], { type: file.type }), file.name);
 	body.set('api_key', apiKey() || '');
 	body.set('folder', targetFolder);
 	body.set('timestamp', String(timestamp));

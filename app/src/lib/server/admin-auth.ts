@@ -5,8 +5,12 @@ import { createHmac, randomBytes, scryptSync, timingSafeEqual } from 'node:crypt
 export const ADMIN_SESSION_COOKIE = 'shahzad_admin_session';
 const SESSION_MAX_AGE = 60 * 60 * 24 * 7;
 
-const sessionSecret = () =>
-	env.ADMIN_SESSION_SECRET || env.AUTH_SECRET || env.DATABASE_URL || 'shahzad-abayas-local-admin-secret';
+const sessionSecret = () => {
+	const configuredSecret = env.ADMIN_SESSION_SECRET?.trim() || env.AUTH_SECRET?.trim();
+	if (configuredSecret) return configuredSecret;
+	if (env.NODE_ENV !== 'production') return 'shahzad-abayas-development-only-secret';
+	throw new Error('ADMIN_SESSION_SECRET or AUTH_SECRET must be configured in production.');
+};
 
 const sign = (payload: string) =>
 	createHmac('sha256', sessionSecret()).update(payload).digest('base64url');
@@ -51,7 +55,16 @@ export const verifyAdminSessionToken = async (token: string | undefined) => {
 	if (!token) return null;
 
 	const [encodedPayload, signature] = token.split('.');
-	if (!encodedPayload || !signature || sign(encodedPayload) !== signature) return null;
+	if (!encodedPayload || !signature) return null;
+
+	const expectedSignature = Buffer.from(sign(encodedPayload));
+	const suppliedSignature = Buffer.from(signature);
+	if (
+		expectedSignature.length !== suppliedSignature.length ||
+		!timingSafeEqual(expectedSignature, suppliedSignature)
+	) {
+		return null;
+	}
 
 	let payload: { userId?: string; role?: string; exp?: number };
 	try {

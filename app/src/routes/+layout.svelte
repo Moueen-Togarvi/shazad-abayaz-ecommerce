@@ -14,6 +14,7 @@
 		PRIMARY_WHATSAPP_URL,
 		SITE_BRAND,
 		SITE_IMAGE,
+		SITE_LOGO,
 		SITE_NAME,
 		STORE_ADDRESS,
 		SUPPORT_PHONE_DISPLAY,
@@ -51,12 +52,11 @@
 	let isAdminRoute = $derived(page.url.pathname.startsWith('/shahzad-secure-admin-4db067e1'));
 	let isNavigating = $derived(Boolean(navigating.to));
 	let canonicalHref = $derived(canonicalUrl(page.url));
-	let robotsMeta = $derived(
-		shouldNoindex(page.url) ? 'noindex,follow' : 'index,follow,max-image-preview:large'
-	);
+	let robotsMeta = $derived(robotsDirective(page.url));
 	let socialImage = $derived(absoluteUrl(SITE_IMAGE, page.url.origin));
-	let metaPixelId = $derived((env.PUBLIC_META_PIXEL_ID || '').trim());
-	let tikTokPixelId = $derived((env.PUBLIC_TIKTOK_PIXEL_ID || '').trim());
+	let siteLogo = $derived(absoluteUrl(SITE_LOGO, page.url.origin));
+	let metaPixelId = $derived(safePixelId(env.PUBLIC_META_PIXEL_ID));
+	let tikTokPixelId = $derived(safePixelId(env.PUBLIC_TIKTOK_PIXEL_ID));
 	let pixelNoscriptUrl = $derived(
 		metaPixelId ? `https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1` : ''
 	);
@@ -68,7 +68,8 @@
 				name: SITE_NAME,
 				alternateName: SITE_BRAND,
 				url: absoluteUrl('/', page.url.origin),
-				logo: socialImage,
+				'@id': `${absoluteUrl('/', page.url.origin)}#organization`,
+				logo: siteLogo,
 				image: socialImage,
 				address: {
 					'@type': 'PostalAddress',
@@ -121,22 +122,30 @@
 		};
 	});
 
-	function shouldNoindex(url: URL) {
-		const noindexPrefixes = [
+	function safePixelId(value: string | undefined) {
+		const pixelId = String(value || '').trim();
+		return /^[A-Za-z0-9_-]{1,64}$/.test(pixelId) ? pixelId : '';
+	}
+
+	function robotsDirective(url: URL) {
+		const privatePrefixes = [
 			'/shahzad-secure-admin-4db067e1',
 			'/account',
 			'/cart',
 			'/checkout',
 			'/login',
 			'/track',
-			'/wishlist',
-			'/search'
+			'/wishlist'
 		];
 		const hasFilterParams = ['q', 'color', 'size', 'category', 'collection'].some((key) =>
 			url.searchParams.has(key)
 		);
 
-		return noindexPrefixes.some((prefix) => url.pathname.startsWith(prefix)) || hasFilterParams;
+		if (privatePrefixes.some((prefix) => url.pathname.startsWith(prefix))) {
+			return 'noindex,nofollow,noarchive';
+		}
+		if (url.pathname.startsWith('/search') || hasFilterParams) return 'noindex,follow';
+		return 'index,follow,max-image-preview:large';
 	}
 
 	function canonicalUrl(url: URL) {
@@ -207,8 +216,10 @@ fbq('init', '${metaPixelId}');`)
 	<meta property="og:locale" content="en_PK" />
 	<meta property="og:url" content={canonicalHref} />
 	<meta property="og:image" content={socialImage} />
+	<meta property="og:image:alt" content={`${SITE_NAME} premium modest abaya collection`} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:image" content={socialImage} />
+	<meta name="twitter:image:alt" content={`${SITE_NAME} premium modest abaya collection`} />
 	{#if !isAdminRoute}
 		{@html metaPixelScript}
 		{@html tikTokPixelScript}

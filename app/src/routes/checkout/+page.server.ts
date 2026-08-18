@@ -28,12 +28,20 @@ type ValidatedCheckoutItem = {
 };
 
 const getText = (data: FormData, key: string) => String(data.get(key) ?? '').trim();
+const MAX_CART_JSON_LENGTH = 100_000;
+const MAX_CART_LINES = 50;
+const MAX_ITEM_QUANTITY = 50;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_PATTERN = /^\+?[0-9][0-9\s()-]{7,19}$/;
 
 const parseCartItems = (value: string): CheckoutCartItem[] => {
+	if (!value || value.length > MAX_CART_JSON_LENGTH) return [];
 	const parsed = JSON.parse(value);
-	if (!Array.isArray(parsed)) return [];
+	if (!Array.isArray(parsed) || parsed.length > MAX_CART_LINES) return [];
 	return parsed;
 };
+
+const hasValidLength = (value: string, max: number) => value.length > 0 && value.length <= max;
 
 const getCodShippingCharge = (quantity: number) => {
 	if (quantity <= 1) return 300;
@@ -70,25 +78,41 @@ export const actions: Actions = {
 		}
 
 		const normalizedItems = cartItems
-			.map((item) => ({
-				productId: String(item.productId ?? '').trim(),
-				variantId: String(item.variantId || item.id || '').trim(),
-				name: String(item.name ?? '').trim(),
-				price: Number(item.price ?? 0),
-				quantity: Math.max(1, Math.trunc(Number(item.quantity ?? 1))),
-				color: item.color ? String(item.color) : null,
-				size: item.size ? String(item.size) : null,
-				image: item.image ? String(item.image) : undefined
-			}))
+			.map((item) => {
+				const quantity = Math.trunc(Number(item.quantity ?? 1));
+				return {
+					productId: String(item.productId ?? '')
+						.trim()
+						.slice(0, 100),
+					variantId: String(item.variantId || item.id || '')
+						.trim()
+						.slice(0, 100),
+					name: String(item.name ?? '')
+						.trim()
+						.slice(0, 200),
+					price: Number(item.price ?? 0),
+					quantity,
+					color: item.color ? String(item.color).trim().slice(0, 100) : null,
+					size: item.size ? String(item.size).trim().slice(0, 50) : null,
+					image: item.image ? String(item.image).trim().slice(0, 2_000) : undefined
+				};
+			})
 			.filter(
-				(item) => item.name && Number.isFinite(item.price) && item.price >= 0 && item.quantity > 0
+				(item) =>
+					item.productId &&
+					item.variantId &&
+					item.name &&
+					Number.isFinite(item.price) &&
+					item.price >= 0 &&
+					item.quantity > 0 &&
+					item.quantity <= MAX_ITEM_QUANTITY
 			);
 
 		if (normalizedItems.length === 0) {
 			return fail(400, { error: 'Your cart is empty. Add a product before placing an order.' });
 		}
 
-		const email = getText(data, 'email');
+		const email = getText(data, 'email').toLowerCase();
 		const firstName = getText(data, 'firstName');
 		const lastName = getText(data, 'lastName');
 		const addressLine1 = getText(data, 'addressLine1');
@@ -103,6 +127,23 @@ export const actions: Actions = {
 			return fail(400, {
 				error:
 					'Please complete all required fields: email, address, city, postal code, and mobile number.'
+			});
+		}
+
+		if (
+			!hasValidLength(email, 254) ||
+			!EMAIL_PATTERN.test(email) ||
+			!hasValidLength(firstName, 80) ||
+			!hasValidLength(lastName, 80) ||
+			!hasValidLength(addressLine1, 200) ||
+			addressLine2.length > 200 ||
+			!hasValidLength(city, 100) ||
+			!hasValidLength(postalCode, 20) ||
+			!hasValidLength(phone, 20) ||
+			!PHONE_PATTERN.test(phone)
+		) {
+			return fail(400, {
+				error: 'Please enter valid contact and shipping details.'
 			});
 		}
 

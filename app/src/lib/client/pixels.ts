@@ -23,8 +23,13 @@ type CartLikeItem = {
 	quantity?: number;
 };
 
-export const metaPixelId = (env.PUBLIC_META_PIXEL_ID || '').trim();
-export const tikTokPixelId = (env.PUBLIC_TIKTOK_PIXEL_ID || '').trim();
+const safePixelId = (value: string | undefined) => {
+	const pixelId = String(value || '').trim();
+	return /^[A-Za-z0-9_-]{1,64}$/.test(pixelId) ? pixelId : '';
+};
+
+export const metaPixelId = safePixelId(env.PUBLIC_META_PIXEL_ID);
+export const tikTokPixelId = safePixelId(env.PUBLIC_TIKTOK_PIXEL_ID);
 
 export function pixelsEnabled() {
 	return Boolean(metaPixelId || tikTokPixelId);
