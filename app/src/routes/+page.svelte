@@ -27,6 +27,20 @@
 	let reviewPhotos = $derived((data.reviewPhotos || []) as Array<any>);
 	let homeSections = $derived((data.homeSections || {}) as Record<string, any>);
 	let storefrontSettings = $derived((data.storefrontSettings || {}) as Record<string, any>);
+	let bannerSlides = $derived([
+		{
+			image: storefrontSettings.slide1Image || '/banner-section/banner-1.webp',
+			alt: 'Shahzad Abayas featured banner collection'
+		},
+		{
+			image: storefrontSettings.slide2Image || '/banner-section/banner-2.webp',
+			alt: 'Shahzad Abayas premium modest wear banner'
+		},
+		{
+			image: storefrontSettings.slide3Image || '/banner-section/banner-3.webp',
+			alt: 'Shahzad Abayas new arrival banner'
+		}
+	]);
 
 	let heroWordTimers: ReturnType<typeof setTimeout>[] = [];
 
@@ -539,7 +553,7 @@
 </section>
 
 <!-- Abaya Low-Height Sliding Banner -->
-<AbayaSlidingBanner />
+<AbayaSlidingBanner slides={bannerSlides} />
 
 <!-- Features / Trust Banner -->
 <section class="bg-cream px-4 pt-4 pb-6 sm:px-6 lg:px-8">

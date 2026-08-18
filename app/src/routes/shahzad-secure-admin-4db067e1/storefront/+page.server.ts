@@ -141,30 +141,15 @@ export const actions: Actions = {
 
 		if (bannerSection === 'slide1') {
 			settings = {
-				slide1_title: getText('slide1_title'),
-				slide1_tagline: getText('slide1_tagline'),
-				slide1_description: getText('slide1_description'),
-				slide1_link: getText('slide1_link'),
-				slide1_image,
-				slide1_promo: getText('slide1_promo')
+				slide1_image
 			};
 		} else if (bannerSection === 'slide2') {
 			settings = {
-				slide2_title: getText('slide2_title'),
-				slide2_tagline: getText('slide2_tagline'),
-				slide2_description: getText('slide2_description'),
-				slide2_link: getText('slide2_link'),
-				slide2_image,
-				slide2_promo: getText('slide2_promo')
+				slide2_image
 			};
 		} else if (bannerSection === 'slide3') {
 			settings = {
-				slide3_title: getText('slide3_title'),
-				slide3_tagline: getText('slide3_tagline'),
-				slide3_description: getText('slide3_description'),
-				slide3_link: getText('slide3_link'),
-				slide3_image,
-				slide3_promo: getText('slide3_promo')
+				slide3_image
 			};
 		} else {
 			settings = {

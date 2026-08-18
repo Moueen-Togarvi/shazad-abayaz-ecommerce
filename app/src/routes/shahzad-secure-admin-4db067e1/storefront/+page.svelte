@@ -205,7 +205,7 @@
 				</p>
 				<h2 class="mt-1 text-xl font-black text-gray-950">Banner Sliders & Flash Sale Settings</h2>
 				<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-					Edit slide content, model images, countdown timers, and discount tags for the homepage.
+					Upload homepage slider images and manage the flash sale settings.
 				</p>
 			</div>
 
@@ -224,112 +224,56 @@
 						class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4"
 					>
 						<input type="hidden" name="bannerSection" value="slide1" />
-							<span
-								class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
+						<span
+							class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
+						>
+							Slide 1: Nida Essentials
+						</span>
+
+						<div class="space-y-2">
+							<label for="slide1_image_file" class="block text-xs font-bold text-gray-700 uppercase"
+								>Slide Image</label
 							>
-								Slide 1: Nida Essentials
-							</span>
-
-							<div>
-								<label for="slide1_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
-								<input
-									id="slide1_title"
-									type="text"
-									name="slide1_title"
-									value={storefrontSettings.slide1_title || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide1_tagline" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
-								<input
-									id="slide1_tagline"
-									type="text"
-									name="slide1_tagline"
-									value={storefrontSettings.slide1_tagline || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide1_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
-									>Description</label
+							{#if storefrontSettings.slide1_image}
+								<div
+									class="relative mb-1 aspect-[16/7] w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
 								>
-								<textarea
-									id="slide1_description"
-									name="slide1_description"
-									rows="3"
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-									>{storefrontSettings.slide1_description || ''}</textarea
+									<img
+										src={storefrontSettings.slide1_image}
+										alt="Slide 1 Preview"
+										class="h-full w-full object-contain"
+									/>
+								</div>
+								<label
+									class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
 								>
-							</div>
-
-							<div>
-								<label for="slide1_promo" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
-								>
-								<input
-									id="slide1_promo"
-									type="text"
-									name="slide1_promo"
-									value={storefrontSettings.slide1_promo || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide1_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
-								<input
-									id="slide1_link"
-									type="text"
-									name="slide1_link"
-									value={storefrontSettings.slide1_link || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div class="space-y-2">
-								<label for="slide1_image_file" class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
-								{#if storefrontSettings.slide1_image}
-									<div
-										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
-									>
-										<img
-											src={storefrontSettings.slide1_image}
-											alt="Slide 1 Preview"
-											class="h-full w-full object-contain"
-										/>
-									</div>
-									<label
-										class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
-									>
-										<input
-											name="remove_slide1_image"
-											type="checkbox"
-											class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
-										/>
-										<span class="font-medium text-red-700">Remove current image</span>
-									</label>
-								{/if}
-								<input
-									type="hidden"
-									name="slide1_image"
-									value={storefrontSettings.slide1_image || ''}
-								/>
-								<input
-									id="slide1_image_file"
-									type="file"
-									name="slide1_image_file"
-									accept="image/*"
-									class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
-								/>
-							</div>
+									<input
+										name="remove_slide1_image"
+										type="checkbox"
+										class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
+									/>
+									<span class="font-medium text-red-700">Remove current image</span>
+								</label>
+							{/if}
+							<input
+								type="hidden"
+								name="slide1_image"
+								value={storefrontSettings.slide1_image || ''}
+							/>
+							<input
+								id="slide1_image_file"
+								type="file"
+								name="slide1_image_file"
+								accept="image/*"
+								class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
+							/>
+						</div>
 
 						<button
 							type="submit"
 							class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-4 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
 						>
-							Save Slide 1
+							Save Slide 1 Image
 						</button>
 					</form>
 
@@ -340,112 +284,56 @@
 						class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4"
 					>
 						<input type="hidden" name="bannerSection" value="slide2" />
-							<span
-								class="inline-flex items-center rounded-md bg-[#c5a880]/15 px-2 py-1 text-xs font-bold text-[#a8895f]"
+						<span
+							class="inline-flex items-center rounded-md bg-[#c5a880]/15 px-2 py-1 text-xs font-bold text-[#a8895f]"
+						>
+							Slide 2: Occasion Wear
+						</span>
+
+						<div class="space-y-2">
+							<label for="slide2_image_file" class="block text-xs font-bold text-gray-700 uppercase"
+								>Slide Image</label
 							>
-								Slide 2: Occasion Wear
-							</span>
-
-							<div>
-								<label for="slide2_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
-								<input
-									id="slide2_title"
-									type="text"
-									name="slide2_title"
-									value={storefrontSettings.slide2_title || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide2_tagline" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
-								<input
-									id="slide2_tagline"
-									type="text"
-									name="slide2_tagline"
-									value={storefrontSettings.slide2_tagline || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide2_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
-									>Description</label
+							{#if storefrontSettings.slide2_image}
+								<div
+									class="relative mb-1 aspect-[16/7] w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
 								>
-								<textarea
-									id="slide2_description"
-									name="slide2_description"
-									rows="3"
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-									>{storefrontSettings.slide2_description || ''}</textarea
+									<img
+										src={storefrontSettings.slide2_image}
+										alt="Slide 2 Preview"
+										class="h-full w-full object-contain"
+									/>
+								</div>
+								<label
+									class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
 								>
-							</div>
-
-							<div>
-								<label for="slide2_promo" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
-								>
-								<input
-									id="slide2_promo"
-									type="text"
-									name="slide2_promo"
-									value={storefrontSettings.slide2_promo || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide2_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
-								<input
-									id="slide2_link"
-									type="text"
-									name="slide2_link"
-									value={storefrontSettings.slide2_link || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div class="space-y-2">
-								<label for="slide2_image_file" class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
-								{#if storefrontSettings.slide2_image}
-									<div
-										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
-									>
-										<img
-											src={storefrontSettings.slide2_image}
-											alt="Slide 2 Preview"
-											class="h-full w-full object-contain"
-										/>
-									</div>
-									<label
-										class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
-									>
-										<input
-											name="remove_slide2_image"
-											type="checkbox"
-											class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
-										/>
-										<span class="font-medium text-red-700">Remove current image</span>
-									</label>
-								{/if}
-								<input
-									type="hidden"
-									name="slide2_image"
-									value={storefrontSettings.slide2_image || ''}
-								/>
-								<input
-									id="slide2_image_file"
-									type="file"
-									name="slide2_image_file"
-									accept="image/*"
-									class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
-								/>
-							</div>
+									<input
+										name="remove_slide2_image"
+										type="checkbox"
+										class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
+									/>
+									<span class="font-medium text-red-700">Remove current image</span>
+								</label>
+							{/if}
+							<input
+								type="hidden"
+								name="slide2_image"
+								value={storefrontSettings.slide2_image || ''}
+							/>
+							<input
+								id="slide2_image_file"
+								type="file"
+								name="slide2_image_file"
+								accept="image/*"
+								class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
+							/>
+						</div>
 
 						<button
 							type="submit"
 							class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-4 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
 						>
-							Save Slide 2
+							Save Slide 2 Image
 						</button>
 					</form>
 
@@ -456,112 +344,56 @@
 						class="space-y-3 rounded-xl border border-gray-200 bg-gray-50/50 p-4"
 					>
 						<input type="hidden" name="bannerSection" value="slide3" />
-							<span
-								class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
+						<span
+							class="inline-flex items-center rounded-md bg-[#0a0a0a]/10 px-2 py-1 text-xs font-bold text-[#0a0a0a]"
+						>
+							Slide 3: Eid Signature
+						</span>
+
+						<div class="space-y-2">
+							<label for="slide3_image_file" class="block text-xs font-bold text-gray-700 uppercase"
+								>Slide Image</label
 							>
-								Slide 3: Eid Signature
-							</span>
-
-							<div>
-								<label for="slide3_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
-								<input
-									id="slide3_title"
-									type="text"
-									name="slide3_title"
-									value={storefrontSettings.slide3_title || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide3_tagline" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Tagline</label>
-								<input
-									id="slide3_tagline"
-									type="text"
-									name="slide3_tagline"
-									value={storefrontSettings.slide3_tagline || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide3_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
-									>Description</label
+							{#if storefrontSettings.slide3_image}
+								<div
+									class="relative mb-1 aspect-[16/7] w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
 								>
-								<textarea
-									id="slide3_description"
-									name="slide3_description"
-									rows="3"
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-									>{storefrontSettings.slide3_description || ''}</textarea
+									<img
+										src={storefrontSettings.slide3_image}
+										alt="Slide 3 Preview"
+										class="h-full w-full object-contain"
+									/>
+								</div>
+								<label
+									class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
 								>
-							</div>
-
-							<div>
-								<label for="slide3_promo" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Promo Tag</label
-								>
-								<input
-									id="slide3_promo"
-									type="text"
-									name="slide3_promo"
-									value={storefrontSettings.slide3_promo || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="slide3_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Link URL</label>
-								<input
-									id="slide3_link"
-									type="text"
-									name="slide3_link"
-									value={storefrontSettings.slide3_link || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div class="space-y-2">
-								<label for="slide3_image_file" class="block text-xs font-bold text-gray-700 uppercase">Slide Image</label>
-								{#if storefrontSettings.slide3_image}
-									<div
-										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
-									>
-										<img
-											src={storefrontSettings.slide3_image}
-											alt="Slide 3 Preview"
-											class="h-full w-full object-contain"
-										/>
-									</div>
-									<label
-										class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
-									>
-										<input
-											name="remove_slide3_image"
-											type="checkbox"
-											class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
-										/>
-										<span class="font-medium text-red-700">Remove current image</span>
-									</label>
-								{/if}
-								<input
-									type="hidden"
-									name="slide3_image"
-									value={storefrontSettings.slide3_image || ''}
-								/>
-								<input
-									id="slide3_image_file"
-									type="file"
-									name="slide3_image_file"
-									accept="image/*"
-									class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
-								/>
-							</div>
+									<input
+										name="remove_slide3_image"
+										type="checkbox"
+										class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
+									/>
+									<span class="font-medium text-red-700">Remove current image</span>
+								</label>
+							{/if}
+							<input
+								type="hidden"
+								name="slide3_image"
+								value={storefrontSettings.slide3_image || ''}
+							/>
+							<input
+								id="slide3_image_file"
+								type="file"
+								name="slide3_image_file"
+								accept="image/*"
+								class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
+							/>
+						</div>
 
 						<button
 							type="submit"
 							class="inline-flex min-h-10 items-center justify-center rounded-md bg-black px-4 text-sm font-bold text-white shadow-sm hover:bg-gray-800"
 						>
-							Save Slide 3
+							Save Slide 3 Image
 						</button>
 					</form>
 				</div>
@@ -581,173 +413,186 @@
 					class="space-y-4 rounded-xl border border-gray-200 bg-gray-50/50 p-5"
 				>
 					<input type="hidden" name="bannerSection" value="flashSale" />
-						<div class="flex items-center gap-3">
-							<input
-								id="flash_sale_enabled"
-								name="flash_sale_enabled"
-								type="checkbox"
-								checked={storefrontSettings.flash_sale_enabled === 'true'}
-								class="h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
-							/>
+					<div class="flex items-center gap-3">
+						<input
+							id="flash_sale_enabled"
+							name="flash_sale_enabled"
+							type="checkbox"
+							checked={storefrontSettings.flash_sale_enabled === 'true'}
+							class="h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
+						/>
+						<label
+							for="flash_sale_enabled"
+							class="cursor-pointer text-sm font-bold text-gray-900 uppercase"
+						>
+							Enable Flash Sale Timer Section
+						</label>
+					</div>
+
+					<div class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+						<div>
 							<label
-								for="flash_sale_enabled"
-								class="cursor-pointer text-sm font-bold text-gray-900 uppercase"
+								for="flash_sale_title"
+								class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label
 							>
-								Enable Flash Sale Timer Section
-							</label>
+							<input
+								id="flash_sale_title"
+								type="text"
+								name="flash_sale_title"
+								value={storefrontSettings.flash_sale_title || ''}
+								class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
+							/>
 						</div>
 
-						<div class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+						<div>
+							<label
+								for="flash_sale_subtitle"
+								class="mb-1 block text-xs font-bold text-gray-700 uppercase">Cursive Subtitle</label
+							>
+							<input
+								id="flash_sale_subtitle"
+								type="text"
+								name="flash_sale_subtitle"
+								value={storefrontSettings.flash_sale_subtitle || ''}
+								class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
+							/>
+						</div>
+
+						<div>
+							<label
+								for="flash_sale_description"
+								class="mb-1 block text-xs font-bold text-gray-700 uppercase">Discount Tagline</label
+							>
+							<input
+								id="flash_sale_description"
+								type="text"
+								name="flash_sale_description"
+								value={storefrontSettings.flash_sale_description || ''}
+								class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
+							/>
+						</div>
+
+						<div class="space-y-2">
+							<label
+								for="flash_sale_image_file"
+								class="block text-xs font-bold text-gray-700 uppercase">Model Image</label
+							>
+							{#if storefrontSettings.flash_sale_image}
+								<div
+									class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
+								>
+									<img
+										src={storefrontSettings.flash_sale_image}
+										alt="Flash Sale Preview"
+										class="h-full w-full object-contain"
+									/>
+								</div>
+								<label
+									class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
+								>
+									<input
+										name="remove_flash_sale_image"
+										type="checkbox"
+										class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
+									/>
+									<span class="font-medium text-red-700">Remove current image</span>
+								</label>
+							{/if}
+							<input
+								type="hidden"
+								name="flash_sale_image"
+								value={storefrontSettings.flash_sale_image || ''}
+							/>
+							<input
+								id="flash_sale_image_file"
+								type="file"
+								name="flash_sale_image_file"
+								accept="image/*"
+								class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
+							/>
+						</div>
+
+						<div>
+							<label
+								for="flash_sale_cta_label"
+								class="mb-1 block text-xs font-bold text-gray-700 uppercase">CTA Button Text</label
+							>
+							<input
+								id="flash_sale_cta_label"
+								type="text"
+								name="flash_sale_cta_label"
+								value={storefrontSettings.flash_sale_cta_label || ''}
+								class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
+							/>
+						</div>
+
+						<div>
+							<label
+								for="flash_sale_cta_link"
+								class="mb-1 block text-xs font-bold text-gray-700 uppercase">CTA Button URL</label
+							>
+							<input
+								id="flash_sale_cta_link"
+								type="text"
+								name="flash_sale_cta_link"
+								value={storefrontSettings.flash_sale_cta_link || ''}
+								class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
+							/>
+						</div>
+					</div>
+
+					<div class="space-y-3 border-t border-gray-200 pt-4">
+						<span class="block text-xs font-bold text-gray-700 uppercase">
+							Sale Duration Countdown (Timer value relative to user visit session)
+						</span>
+						<div class="grid max-w-sm grid-cols-3 gap-4">
 							<div>
-								<label for="flash_sale_title" class="mb-1 block text-xs font-bold text-gray-700 uppercase">Title</label>
+								<label
+									for="flash_sale_hours"
+									class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase">Hours</label
+								>
 								<input
-									id="flash_sale_title"
-									type="text"
-									name="flash_sale_title"
-									value={storefrontSettings.flash_sale_title || ''}
+									id="flash_sale_hours"
+									type="number"
+									name="flash_sale_hours"
+									min="0"
+									max="23"
+									value={storefrontSettings.flash_sale_hours || '2'}
 									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
 								/>
 							</div>
-
 							<div>
-								<label for="flash_sale_subtitle" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
-									>Cursive Subtitle</label
+								<label
+									for="flash_sale_minutes"
+									class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase">Minutes</label
 								>
 								<input
-									id="flash_sale_subtitle"
-									type="text"
-									name="flash_sale_subtitle"
-									value={storefrontSettings.flash_sale_subtitle || ''}
+									id="flash_sale_minutes"
+									type="number"
+									name="flash_sale_minutes"
+									min="0"
+									max="59"
+									value={storefrontSettings.flash_sale_minutes || '14'}
 									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
 								/>
 							</div>
-
 							<div>
-								<label for="flash_sale_description" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
-									>Discount Tagline</label
+								<label
+									for="flash_sale_seconds"
+									class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase">Seconds</label
 								>
 								<input
-									id="flash_sale_description"
-									type="text"
-									name="flash_sale_description"
-									value={storefrontSettings.flash_sale_description || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div class="space-y-2">
-								<label for="flash_sale_image_file" class="block text-xs font-bold text-gray-700 uppercase">Model Image</label>
-								{#if storefrontSettings.flash_sale_image}
-									<div
-										class="relative mb-1 h-24 w-full overflow-hidden rounded-md border border-gray-200 bg-gray-100"
-									>
-										<img
-											src={storefrontSettings.flash_sale_image}
-											alt="Flash Sale Preview"
-											class="h-full w-full object-contain"
-										/>
-									</div>
-									<label
-										class="mb-2 flex cursor-pointer items-center gap-2 rounded-md border border-red-200 bg-red-50 p-2 text-xs"
-									>
-										<input
-											name="remove_flash_sale_image"
-											type="checkbox"
-											class="h-3.5 w-3.5 rounded border-red-300 text-red-600 focus:ring-red-500"
-										/>
-										<span class="font-medium text-red-700">Remove current image</span>
-									</label>
-								{/if}
-								<input
-									type="hidden"
-									name="flash_sale_image"
-									value={storefrontSettings.flash_sale_image || ''}
-								/>
-								<input
-									id="flash_sale_image_file"
-									type="file"
-									name="flash_sale_image_file"
-									accept="image/*"
-									class="w-full text-xs text-gray-500 file:mr-3 file:rounded-md file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-blue-700 hover:file:bg-blue-100"
-								/>
-							</div>
-
-							<div>
-								<label for="flash_sale_cta_label" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
-									>CTA Button Text</label
-								>
-								<input
-									id="flash_sale_cta_label"
-									type="text"
-									name="flash_sale_cta_label"
-									value={storefrontSettings.flash_sale_cta_label || ''}
-									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-								/>
-							</div>
-
-							<div>
-								<label for="flash_sale_cta_link" class="mb-1 block text-xs font-bold text-gray-700 uppercase"
-									>CTA Button URL</label
-								>
-								<input
-									id="flash_sale_cta_link"
-									type="text"
-									name="flash_sale_cta_link"
-									value={storefrontSettings.flash_sale_cta_link || ''}
+									id="flash_sale_seconds"
+									type="number"
+									name="flash_sale_seconds"
+									min="0"
+									max="59"
+									value={storefrontSettings.flash_sale_seconds || '30'}
 									class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
 								/>
 							</div>
 						</div>
-
-						<div class="space-y-3 border-t border-gray-200 pt-4">
-							<span class="block text-xs font-bold text-gray-700 uppercase">
-								Sale Duration Countdown (Timer value relative to user visit session)
-							</span>
-							<div class="grid max-w-sm grid-cols-3 gap-4">
-								<div>
-									<label for="flash_sale_hours" class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
-										>Hours</label
-									>
-									<input
-										id="flash_sale_hours"
-										type="number"
-										name="flash_sale_hours"
-										min="0"
-										max="23"
-										value={storefrontSettings.flash_sale_hours || '2'}
-										class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-									/>
-								</div>
-								<div>
-									<label for="flash_sale_minutes" class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
-										>Minutes</label
-									>
-									<input
-										id="flash_sale_minutes"
-										type="number"
-										name="flash_sale_minutes"
-										min="0"
-										max="59"
-										value={storefrontSettings.flash_sale_minutes || '14'}
-										class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-									/>
-								</div>
-								<div>
-									<label for="flash_sale_seconds" class="mb-1 block text-[0.65rem] font-bold text-gray-500 uppercase"
-										>Seconds</label
-									>
-									<input
-										id="flash_sale_seconds"
-										type="number"
-										name="flash_sale_seconds"
-										min="0"
-										max="59"
-										value={storefrontSettings.flash_sale_seconds || '30'}
-										class="w-full rounded-md border-gray-300 text-sm focus:border-black focus:ring-black"
-									/>
-								</div>
-							</div>
-						</div>
+					</div>
 
 					<button
 						type="submit"

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { formatMoney } from '$lib/shared/money';
 	import {
 		Badge,
@@ -9,8 +10,9 @@
 		orderStatus
 	} from '$lib/components/admin/ui';
 
-	let { data } = $props();
+	let { data, form } = $props();
 	let orders = $derived(data.orders || []);
+	let totalOrderCount = $derived(data.totalOrderCount || 0);
 	let filters = $derived(
 		(data.filters || { date: '', email: '', phone: '', name: '', city: '' }) as {
 			date: string;
@@ -21,6 +23,15 @@
 		}
 	);
 	const filterFields = ['email', 'phone', 'name', 'city'] as const;
+
+	let deleteStep = $state<0 | 1 | 2>(0);
+	let deletePassword = $state('');
+	let deleting = $state(false);
+
+	const closeDeleteFlow = () => {
+		deleteStep = 0;
+		deletePassword = '';
+	};
 </script>
 
 <div class="mx-auto max-w-7xl">
@@ -32,8 +43,15 @@
 			<Button href="/shahzad-secure-admin-4db067e1/orders/cancelled" variant="danger">
 				Cancelled
 			</Button>
+			<Button variant="danger" onclick={() => (deleteStep = 1)}>Delete All Orders</Button>
 		{/snippet}
 	</PageHeader>
+
+	{#if form?.error}
+		<div class="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+			{form.error}
+		</div>
+	{/if}
 
 	<!-- Filters -->
 	<Card bodyClass="p-4" class="mb-4">
@@ -157,3 +175,86 @@
 		</div>
 	</div>
 </div>
+
+{#if deleteStep === 1}
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
+		<div class="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl">
+			<p class="text-xs font-black tracking-[0.16em] text-red-600 uppercase">
+				Delete All Orders
+			</p>
+			<h2 class="mt-2 text-xl font-black text-gray-950">Are you absolutely sure?</h2>
+			<p class="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+				This will permanently delete all {totalOrderCount} order{totalOrderCount === 1
+					? ''
+					: 's'} in the database — active, completed, and cancelled. This cannot be undone.
+			</p>
+			<div class="mt-5 flex justify-end gap-3">
+				<button
+					type="button"
+					class="rounded-full border border-gray-300 px-5 py-2 text-sm font-black text-gray-700 hover:bg-gray-50"
+					onclick={closeDeleteFlow}
+				>
+					Cancel
+				</button>
+				<button
+					type="button"
+					class="rounded-full bg-red-600 px-5 py-2 text-sm font-black text-white hover:bg-red-700"
+					onclick={() => (deleteStep = 2)}
+				>
+					Yes, Continue
+				</button>
+			</div>
+		</div>
+	</div>
+{/if}
+
+{#if deleteStep === 2}
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
+		<div class="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl">
+			<p class="text-xs font-black tracking-[0.16em] text-red-600 uppercase">Final Confirmation</p>
+			<h2 class="mt-2 text-xl font-black text-gray-950">Enter your password to confirm</h2>
+			<p class="mt-1 text-sm text-gray-500">
+				For your security, deleting all orders requires your admin password.
+			</p>
+			<form
+				method="POST"
+				action="?/deleteAll"
+				use:enhance={() => {
+					deleting = true;
+					return async ({ update }) => {
+						await update();
+						deleting = false;
+						closeDeleteFlow();
+					};
+				}}
+			>
+				<input
+					type="password"
+					name="password"
+					bind:value={deletePassword}
+					placeholder="Your admin password"
+					autocomplete="current-password"
+					required
+					class="mt-4 block w-full rounded-lg border border-admin-border bg-white px-3 py-2 text-sm text-gray-900 transition-colors focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:outline-none"
+				/>
+				<div class="mt-5 flex justify-end gap-3">
+					<button
+						type="button"
+						class="rounded-full border border-gray-300 px-5 py-2 text-sm font-black text-gray-700 hover:bg-gray-50"
+						onclick={closeDeleteFlow}
+						disabled={deleting}
+					>
+						Cancel
+					</button>
+					<button
+						type="submit"
+						class="rounded-full bg-red-600 px-5 py-2 text-sm font-black text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+						disabled={deleting || !deletePassword}
+					>
+						{deleting ? 'Deleting…' : 'Delete All Orders Permanently'}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{/if}

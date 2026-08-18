@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	type BannerSlide = { image: string; alt?: string };
+
+	let { slides = [] }: { slides?: BannerSlide[] } = $props();
 
 	let activeSlide = $state(0);
 	let sliderHovered = $state(false);
 
-	const bannerSlides = [
+	const fallbackSlides: BannerSlide[] = [
 		{
 			image: '/banner-section/banner-1.webp',
 			alt: 'Shahzad Abayas featured banner collection'
@@ -18,6 +21,9 @@
 			alt: 'Shahzad Abayas new arrival banner'
 		}
 	];
+	let bannerSlides = $derived(
+		slides.length ? slides.filter((slide) => slide.image) : fallbackSlides
+	);
 
 	let slideInterval: ReturnType<typeof setInterval>;
 
@@ -63,7 +69,7 @@
 			{#each bannerSlides as slide, index}
 				<img
 					src={slide.image}
-					alt={slide.alt}
+					alt={slide.alt || `Featured banner ${index + 1}`}
 					class="absolute inset-0 size-full object-contain object-center transition-transform duration-[800ms] ease-in-out sm:object-cover"
 					style="transform: translateX({(index - activeSlide) * 100}%);"
 					loading="lazy"
